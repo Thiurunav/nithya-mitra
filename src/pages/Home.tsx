@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
-import { TrustStrip } from '../components/TrustStrip';
-import { ProblemSection } from '../components/ProblemSection';
-import { CompanionshipSection } from '../components/CompanionshipSection';
+import { RealitySection } from '../components/RealitySection';
 import { ServicesSection } from '../components/ServicesSection';
 import { HowItWorks } from '../components/HowItWorks';
 import { SupportPlans } from '../components/SupportPlans';
-import { CareTracks } from '../components/CareTracks';
-import { TrustSection } from '../components/TrustSection';
-import { TeamSection } from '../components/TeamSection';
-import { Testimonials } from '../components/Testimonials';
-import { CaseStudies } from '../components/CaseStudies';
-import { FounderStory } from '../components/FounderStory';
+import { TrustAndLeadership } from '../components/TrustAndLeadership';
 import { FAQ } from '../components/FAQ';
 import { EnquiryForm } from '../components/EnquiryForm';
 import { FinalCTA } from '../components/FinalCTA';
@@ -41,63 +34,42 @@ export const Home: React.FC = () => {
         {/* Hero Section */}
         <Hero onOpenEnquiry={() => scrollToEnquiry()} />
 
-        {/* 4 Trust Principles Strip */}
-        <TrustStrip />
+        {/* The Reality of Distance (Consolidated & Punchy) */}
+        <RealitySection />
 
-        {/* Problem Section (Pains, Frustrations, Questions) */}
-        <ProblemSection />
-
-        {/* Emotional / Companionship Focus Section */}
-        <CompanionshipSection />
-
-        {/* Core Services Section with Drawer details */}
+        {/* 6 Core Coordination Pillars */}
         <ServicesSection
           onSelectServiceForEnquiry={(serviceTitle) =>
             scrollToEnquiry(undefined, serviceTitle)
           }
         />
 
-        {/* 4-Step Narrative Timeline */}
+        {/* 3-Step Simple System */}
         <HowItWorks />
 
-        {/* Support Plans */}
+        {/* 3 Support Plans */}
         <SupportPlans onSelectPlan={(planId) => scrollToEnquiry(planId)} />
 
-        {/* Optional Care Tracks Horizontal Scroll */}
-        <CareTracks />
+        {/* Trust, Chennai Roots & Leadership */}
+        <TrustAndLeadership />
 
-        {/* Trust Framework Section */}
-        <TrustSection />
-
-        {/* Local Ground Team Section */}
-        <TeamSection onScheduleIntro={() => scrollToEnquiry()} />
-
-        {/* Video Testimonials & Privacy Commitment */}
-        <Testimonials />
-
-        {/* Real Situations & Operational Scenarios */}
-        <CaseStudies />
-
-        {/* Founder Story & Brand Philosophy */}
-        <FounderStory />
-
-        {/* Accordion FAQs */}
+        {/* 5 Essential FAQs */}
         <FAQ />
 
-        {/* Consultation / Conversion Enquiry Form */}
+        {/* Frictionless Consultation Booking */}
         <EnquiryForm
           initialPlan={selectedPlan}
           initialService={selectedService}
         />
 
-        {/* Final Conversion CTA */}
+        {/* Final Reassuring CTA */}
         <FinalCTA onOpenEnquiry={() => scrollToEnquiry()} />
       </main>
 
       {/* Footer */}
       <Footer />
 
-      {/* WhatsApp Integration: Floating desktop pill + Mobile sticky bar */}
+      {/* Floating WhatsApp pill on desktop + mobile action bar */}
       <WhatsAppFloating onOpenEnquiry={() => scrollToEnquiry()} />
     </div>
   );
