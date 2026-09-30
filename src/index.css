@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest: #17352F;
+  --color-forest-light: #21463F;
+  --color-forest-dark: #0E2420;
+  --color-ivory: #F7F4ED;
+  --color-ivory-light: #FBFAF6;
+  --color-ivory-dark: #EAE5DB;
+  --color-terracotta: #B86F55;
+  --color-terracotta-hover: #9E5B44;
+  --color-terracotta-light: #F6ECE7;
+  --color-sand: #D8C8B3;
+  --color-sand-light: #EFE7DC;
+  --color-charcoal: #17211F;
+  --color-muted: #68716D;
+  --color-border-subtle: rgba(23, 53, 47, 0.12);
+
+  --font-serif: "Cormorant Garamond", "DM Serif Display", Georgia, serif;
+  --font-display: "DM Serif Display", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #17352F;
+    color: #F7F4ED;
+  }
+}
+
+/* Subtle editorial paper grain texture overlay */
+.bg-grain {
+  background-image: radial-gradient(rgba(23, 53, 47, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Custom discreet scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7F4ED;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8C8B3;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B86F55;
+}
+
+/* Clean focus-visible outline for keyboard navigation */
+:focus-visible {
+  outline: 2px solid #17352F;
+  outline-offset: 3px;
+}
