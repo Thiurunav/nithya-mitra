@@ -93,22 +93,22 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentService.num}
-                  initial={{ opacity: 0, scale: 1.03 }}
+                  initial={{ opacity: 0, scale: 1.02 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="relative h-[380px] sm:h-[440px] w-full"
+                  transition={{ duration: 0.35 }}
+                  className="relative h-[420px] sm:h-[490px] w-full"
                 >
                   <img
                     src={currentService.fullService.image}
                     alt={currentService.title}
-                    className="w-full h-full object-cover filter saturate-[0.95] contrast-[1.02]"
+                    className="w-full h-full object-cover object-top filter saturate-[0.98] contrast-[1.02]"
                   />
                   
                   {/* Subtle Gradient & Context Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#17352F]/95 via-[#17352F]/40 to-transparent flex flex-col justify-end p-6 sm:p-8 text-[#F7F4ED]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#17352F]/95 via-[#17352F]/45 via-45% to-transparent flex flex-col justify-end p-6 sm:p-7 text-[#F7F4ED]">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-[#B86F55] font-semibold">
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-[#B86F55] font-semibold bg-[#17352F]/60 px-2 py-0.5 rounded-xs backdrop-blur-xs">
                         Service {currentService.num} of 06
                       </span>
                       <span className="text-[11px] font-mono text-[#D8C8B3]">

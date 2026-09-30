@@ -19,7 +19,7 @@ export const servicesData: ServiceItem[] = [
       'Checking in after a monsoon storm or sudden power disruption to ensure safety and provisions.',
       'Setting up a new smartphone or television so your parents can stay on video calls with your children.'
     ],
-    image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80',
+    image: '/vayosh-service-wellbeing.jpg',
     category: 'core'
   },
   {
@@ -40,7 +40,7 @@ export const servicesData: ServiceItem[] = [
       'Obtaining second opinions and coordinating with trusted local diagnostic centers for blood tests at home.',
       'Ensuring you receive an objective post-consultation summary rather than relying on fragmented phone calls.'
     ],
-    image: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=1200&q=80',
+    image: '/vayosh-service-healthcare.jpg',
     category: 'wellbeing'
   },
   {
@@ -61,7 +61,7 @@ export const servicesData: ServiceItem[] = [
       'Waterproofing or roof repairs needed before the monsoon season begins.',
       'Periodic structural inspection and tenant coordination for your family property in India.'
     ],
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+    image: '/vayosh-service-property.jpg',
     category: 'practical'
   },
   {
@@ -82,7 +82,7 @@ export const servicesData: ServiceItem[] = [
       'Receiving overseas deliveries that require customs payment or local signature verification in India.',
       'Dispatching physical tax filings or property document original files safely across borders.'
     ],
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80',
+    image: '/vayosh-team-uniform.jpg',
     category: 'practical'
   },
   {
@@ -103,7 +103,7 @@ export const servicesData: ServiceItem[] = [
       'Procuring certified physical copies of municipal tax receipts or land registry documentation.',
       'Coordinating document verification with local banks for account updates.'
     ],
-    image: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80',
+    image: '/vayosh-service-documents.jpg',
     category: 'practical'
   },
   {
@@ -124,7 +124,7 @@ export const servicesData: ServiceItem[] = [
       'Your parents are admitted to the emergency ward and need a responsible local person by their side while you board your flight.',
       'Coordinating admission formalities, medicine procurement, and hospital administration when hours count.'
     ],
-    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80',
+    image: '/vayosh-service-emergency.jpg',
     category: 'specialist'
   },
   {
@@ -145,7 +145,7 @@ export const servicesData: ServiceItem[] = [
       'Observing that your mother is struggling with stair steps and recommending a ground-floor transition.',
       'Providing peace of mind through detailed photo updates showing your parents smiling and well-supported.'
     ],
-    image: 'https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?auto=format&fit=crop&w=1200&q=80',
+    image: '/vayosh-companionship.jpg',
     category: 'wellbeing'
   },
   {
@@ -166,7 +166,7 @@ export const servicesData: ServiceItem[] = [
       'Your mother would love to visit the neighbourhood temple on Friday mornings with a respectful escort.',
       'A friendly face to share conversation over filter coffee once a week so the house does not feel so quiet.'
     ],
-    image: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=80',
+    image: '/vayosh-companionship.jpg',
     category: 'wellbeing'
   },
   {
@@ -187,7 +187,7 @@ export const servicesData: ServiceItem[] = [
       'Vetting and supervising a reliable 12-hour or 24-hour attendant agency for post-operative recovery.',
       'Coordinating rental and doorstep installation of an ergonomic patient bed or mobility ramp.'
     ],
-    image: 'https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=1200&q=80',
+    image: '/vayosh-service-specialist.jpg',
     category: 'specialist'
   }
 ];
