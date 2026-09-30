@@ -7,6 +7,11 @@ export const brandImages = {
     alt: 'Elderly Indian parent reading a handwritten letter at home in gentle morning light',
     caption: 'Real moments at home in India, keeping family close across oceans.'
   },
+  teamUniform: {
+    src: '/vayosh-team-uniform.jpg',
+    alt: 'Vayosh on-ground coordination team wearing matching branded forest-green polo t-shirts outside a family home in Chennai',
+    caption: 'Vayosh field care coordinators in official attire outside a family residence in Chennai, Tamil Nadu.'
+  },
   heroConnection: {
     src: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=85',
     alt: 'NRI professional staying connected with family',
