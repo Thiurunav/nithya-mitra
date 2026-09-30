@@ -51,10 +51,12 @@ export const RealitySection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17352F] leading-[1.16]"
+            className="text-3xl sm:text-4xl lg:text-[2.75rem] font-medium leading-[1.12] text-[#17211F] tracking-tight"
           >
-            The problem is not that you don’t care.
-            <span className="block font-sans italic font-normal text-[#17211F] mt-2">
+            <span className="block font-sans font-normal text-[#17211F]">
+              The problem is not that you don’t care.
+            </span>
+            <span className="block font-serif italic font-medium text-[#17352F] mt-1 sm:mt-2">
               The problem is that you cannot always be there.
             </span>
           </motion.h2>

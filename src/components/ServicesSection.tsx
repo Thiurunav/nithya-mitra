@@ -75,8 +75,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17352F] leading-tight">
-            One trusted point of contact for home.
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-medium leading-[1.12] text-[#17211F] tracking-tight">
+            <span className="block font-sans font-normal text-[#17211F]">
+              One trusted point of contact
+            </span>
+            <span className="block font-serif italic font-medium text-[#17352F] mt-1 sm:mt-2">
+              for home in India.
+            </span>
           </h2>
 
           <p className="mt-4 text-base sm:text-lg text-[#68716D] font-light max-w-xl">

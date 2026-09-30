@@ -51,9 +51,14 @@ export const GroundTeamSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17352F] leading-tight"
+            className="text-3xl sm:text-4xl lg:text-[2.75rem] font-medium leading-[1.12] text-[#17211F] tracking-tight mb-4"
           >
-            The people looking after home when you are not here.
+            <span className="block font-sans font-normal text-[#17211F]">
+              The people looking after home
+            </span>
+            <span className="block font-serif italic font-medium text-[#17352F] mt-1 sm:mt-2">
+              when you are not here.
+            </span>
           </motion.h2>
 
           <p className="mt-4 text-base sm:text-lg text-[#68716D] font-light max-w-2xl leading-relaxed">
