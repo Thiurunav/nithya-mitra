@@ -19,8 +19,8 @@ export const brandImages = {
   },
   founder: {
     src: '/vayosh-founder.jpg',
-    alt: 'Thirunavukkarasu Natarajan, Founder & Managing Director of Vayosh, Chennai',
-    caption: 'Thirunavukkarasu Natarajan · Founder & Managing Director, Chennai'
+    alt: 'Kumaresan, Founder & Managing Director of Vayosh, Chennai',
+    caption: 'Kumaresan · Founder & Managing Director, Chennai'
   },
   heroConnection: {
     src: '/vayosh-hero-story.jpg',

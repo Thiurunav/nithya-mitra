@@ -26,7 +26,7 @@ export const FounderStory: React.FC = () => {
               />
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#17352F]/90 via-[#17352F]/60 to-transparent p-6 text-[#F7F4ED]">
                 <p className="font-serif text-lg font-medium text-[#F7F4ED]">
-                  Thirunavukkarasu Natarajan
+                  Kumaresan
                 </p>
                 <p className="text-xs uppercase tracking-widest text-[#D8C8B3] mt-0.5">
                   Founder & Managing Director · Chennai, Tamil Nadu
@@ -85,7 +85,7 @@ export const FounderStory: React.FC = () => {
             <div className="mt-8 pt-6 border-t border-[#17352F]/10 flex items-center justify-between">
               <div>
                 <span className="font-serif italic text-2xl text-[#17352F] tracking-wide block">
-                  Thirunavukkarasu Natarajan
+                  Kumaresan
                 </span>
                 <span className="text-[11px] uppercase tracking-wider text-[#68716D] font-mono">
                   Founder · Vayosh Coordination

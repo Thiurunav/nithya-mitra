@@ -2,12 +2,12 @@ import type { TeamMember } from '../types';
 
 export const teamMembersData: TeamMember[] = [
   {
-    id: 'thirunav-natarajan',
-    name: 'Thirunavukkarasu Natarajan',
+    id: 'kumaresan',
+    name: 'Kumaresan',
     role: 'Founder & Managing Director',
     city: 'Chennai, Tamil Nadu',
     bio: 'Guided by personal experience with distance and family elder care, founded Vayosh to give global Indians an accountable, empathetic local presence back home.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+    image: '/vayosh-founder.jpg',
     specialty: 'Strategy & Family Partnerships'
   },
   {

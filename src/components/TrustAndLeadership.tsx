@@ -40,15 +40,15 @@ export const TrustAndLeadership: React.FC = () => {
             <div className="relative rounded-sm overflow-hidden border border-[#17352F]/15 bg-[#EAE5DB] shadow-md max-w-sm mx-auto lg:max-w-none">
               <img
                 src={brandImages.founder.src}
-                alt="Thirunavukkarasu Natarajan, Founder"
-                className="w-full h-[360px] sm:h-[400px] object-cover object-top filter saturate-[0.92]"
+                alt="Kumaresan, Founder & Managing Director"
+                className="w-full h-[360px] sm:h-[400px] object-cover object-top filter saturate-[0.98]"
                 loading="lazy"
               />
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#17352F]/90 via-[#17352F]/60 to-transparent p-5 text-[#F7F4ED]">
-                <p className="font-serif text-lg font-medium">Thirunavukkarasu Natarajan</p>
+                <p className="font-serif text-lg font-medium">Kumaresan</p>
                 <div className="flex items-center gap-1.5 text-xs text-[#D8C8B3] mt-0.5">
                   <MapPin className="w-3.5 h-3.5 text-[#B86F55]" />
-                  <span>Founder · Chennai, Tamil Nadu</span>
+                  <span>Founder & Managing Director · Chennai, Tamil Nadu</span>
                 </div>
               </div>
             </div>
