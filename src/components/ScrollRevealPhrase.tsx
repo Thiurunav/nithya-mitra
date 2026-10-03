@@ -61,8 +61,8 @@ export const ScrollRevealPhrase: React.FC = () => {
       if (textRef.current) {
         const fullWidth = textRef.current.scrollWidth;
         const windowWidth = window.innerWidth;
-        // Start: First word ("We") enters from the right
-        const startX = windowWidth * 0.4;
+        // Start: First word ("We") enters a bit right from the center
+        const startX = windowWidth * 0.62;
         // End: Last word ("there.") lands right in the center of the viewport
         const endX = windowWidth * 0.5 - fullWidth + 140;
         setScrollRange({ start: startX, end: endX });
