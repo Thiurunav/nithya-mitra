@@ -3,9 +3,9 @@
 
 export const brandImages = {
   hero: {
-    src: '/vayosh-hero-story.jpg',
-    alt: 'One picture tells the whole story: Elderly Indian parents at home in Chennai with their Nithya Mitra ground coordinator in uniform, connecting live on video call with their NRI family abroad',
-    caption: 'One frame, the complete story: Your parents at home. Your trusted coordinator on ground. You connected from anywhere in the world.'
+    src: '/nithya-mitra-hero-elderly.jpg',
+    alt: 'Elderly South Indian couple at home in Chennai sharing morning filter coffee and reading newspaper in peace',
+    caption: 'One frame, the complete story: Your parents living with dignity, happiness and complete care at home.'
   },
   teamUniform: {
     src: '/vayosh-team-uniform.jpg',
