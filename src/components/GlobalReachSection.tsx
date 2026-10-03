@@ -19,17 +19,18 @@ export const GlobalReachSection: React.FC = () => {
     restDelta: 0.001,
   });
 
-  // Phase 1 (0 -> 0.35): Top Title "Trusted by NRI families worldwide"
-  const titleOpacity = useTransform(smoothProgress, [0.15, 0.38], [1, 0]);
-  const titleY = useTransform(smoothProgress, [0.15, 0.38], [0, -25]);
+  // Map X-position: starts from the absolute right ('80vw'), glides to center ('0%'), then moves left ('-24%')
+  const mapX = useTransform(smoothProgress, [0, 0.32, 0.68], ['80vw', '0%', '-24%']);
+  const mapOpacity = useTransform(smoothProgress, [0, 0.12], [0.3, 1]);
+  const mapScale = useTransform(smoothProgress, [0, 0.32, 0.68], [0.95, 1, 0.92]);
 
-  // Phase 2 (0.3 -> 0.75): Map slides horizontally to the LEFT
-  const mapX = useTransform(smoothProgress, [0.25, 0.65], ['0%', '-24%']);
-  const mapScale = useTransform(smoothProgress, [0.25, 0.65], [1, 0.92]);
+  // Phase 1 (0 -> 0.35): Top Title "Trusted by NRI families worldwide"
+  const titleOpacity = useTransform(smoothProgress, [0, 0.12, 0.34, 0.44], [0, 1, 1, 0]);
+  const titleY = useTransform(smoothProgress, [0.34, 0.44], [0, -25]);
 
   // Phase 2 (0.35 -> 0.75): Right content card glides in from the RIGHT
-  const contentOpacity = useTransform(smoothProgress, [0.4, 0.68], [0, 1]);
-  const contentX = useTransform(smoothProgress, [0.4, 0.68], [60, 0]);
+  const contentOpacity = useTransform(smoothProgress, [0.42, 0.68], [0, 1]);
+  const contentX = useTransform(smoothProgress, [0.42, 0.68], [60, 0]);
   const contentPointerEvents = useTransform(smoothProgress, (p) => (p > 0.38 ? 'auto' : 'none'));
 
   const scrollToEnquiry = () => {
@@ -62,15 +63,16 @@ export const GlobalReachSection: React.FC = () => {
         {/* Interactive Layout Stage */}
         <div className="relative w-full max-w-7xl mx-auto flex items-center justify-center">
           
-          {/* DOTTED MAP (Animates from Center -> Left on Scroll) */}
+          {/* DOTTED MAP (Animates from Absolute Right -> Center -> Left on Scroll) */}
           <motion.div
             style={{
               x: mapX,
+              opacity: mapOpacity,
               scale: mapScale,
             }}
             className="w-full max-w-4xl flex items-center justify-center will-change-transform"
           >
-            <DottedMap dotRadius={0.2} dotColor="#17352F" />
+            <DottedMap dotRadius={0.22} dotColor="#17352F" />
           </motion.div>
 
           {/* RIGHT SIDE CONTENT PANEL (Reveals as Map moves to the Left) */}
@@ -99,7 +101,7 @@ export const GlobalReachSection: React.FC = () => {
               Dedicated on-ground coordinators in Chennai bridging time zones, accompanied doctor visits, and verified updates for NRI families worldwide.
             </p>
 
-            {/* Interactive Action Pill Container (Inspired by Reference Design) */}
+            {/* Interactive Action Pill Container */}
             <div className="w-full bg-white rounded-2xl p-2.5 sm:p-3 border border-[#17352F]/10 shadow-[0_12px_30px_rgba(23,53,47,0.08)] flex flex-wrap sm:flex-nowrap items-center justify-between gap-3">
               <div className="flex items-center gap-4 px-3 text-xs text-[#17211F]/80">
                 <div className="flex items-center gap-1.5">

@@ -18,7 +18,7 @@ interface SinglePin {
 }
 
 export const DottedMap: React.FC<DottedMapProps> = ({
-  dotRadius = 0.2,
+  dotRadius = 0.22,
   dotColor = '#17352F',
   grid = 'diagonal',
   className = '',
@@ -43,7 +43,7 @@ export const DottedMap: React.FC<DottedMapProps> = ({
     { name: 'Canada', lat: 56.1304, lng: -106.3468, labelOffset: { dx: 0, dy: -2.0 } },
     { name: 'UK', lat: 55.3781, lng: -3.4360, labelOffset: { dx: 0, dy: -2.0 } },
     { name: 'UAE', lat: 23.4241, lng: 53.8478, labelOffset: { dx: 0, dy: -2.0 } },
-    { name: 'India (Hub)', lat: 13.0827, lng: 80.2707, isHub: true, labelOffset: { dx: 0, dy: 3.0 } },
+    { name: 'India (Hub)', lat: 13.0827, lng: 80.2707, isHub: true, labelOffset: { dx: 0, dy: 3.2 } },
     { name: 'Singapore', lat: 1.3521, lng: 103.8198, labelOffset: { dx: 0, dy: -2.0 } },
     { name: 'Australia', lat: -25.2744, lng: 133.7751, labelOffset: { dx: 0, dy: 3.0 } },
   ], []);
@@ -64,12 +64,12 @@ export const DottedMap: React.FC<DottedMapProps> = ({
     <div className={`relative w-full h-full flex items-center justify-center ${className}`}>
       <svg
         viewBox="0 0 119 50"
-        className="w-full h-auto max-h-[480px] object-contain select-none pointer-events-none"
+        className="w-full h-auto max-h-[500px] object-contain select-none pointer-events-none"
         preserveAspectRatio="xMidYMid meet"
         style={{ overflow: 'visible' }}
       >
-        {/* Base Map Dots (+5% darker, uniform 22% opacity) */}
-        <g opacity="0.22">
+        {/* Base Map Dots (Crisp & Darker: 38% opacity) */}
+        <g opacity="0.38">
           {svgPoints.map((pt: any, idx: number) => (
             <circle
               key={idx}
@@ -86,7 +86,7 @@ export const DottedMap: React.FC<DottedMapProps> = ({
           {mappedPins.map((pin) => {
             const isHub = pin.isHub;
             const dx = pin.labelOffset?.dx || 0;
-            const dy = pin.labelOffset?.dy || (isHub ? 3.0 : -2.0);
+            const dy = pin.labelOffset?.dy || (isHub ? 3.2 : -2.0);
 
             return (
               <g key={pin.name}>
@@ -99,7 +99,7 @@ export const DottedMap: React.FC<DottedMapProps> = ({
                     fill="none"
                     stroke="#B86F55"
                     strokeWidth="0.2"
-                    opacity="0.6"
+                    opacity="0.75"
                   >
                     <animate
                       attributeName="r"
@@ -120,7 +120,7 @@ export const DottedMap: React.FC<DottedMapProps> = ({
                 <circle
                   cx={pin.x}
                   cy={pin.y}
-                  r={isHub ? 1.0 : 0.75}
+                  r={isHub ? 1.05 : 0.8}
                   fill={isHub ? '#B86F55' : '#17352F'}
                   stroke="#FFFFFF"
                   strokeWidth="0.3"
@@ -131,7 +131,7 @@ export const DottedMap: React.FC<DottedMapProps> = ({
                   x={pin.x + dx}
                   y={pin.y + dy}
                   textAnchor="middle"
-                  fontSize={isHub ? '1.4' : '1.15'}
+                  fontSize={isHub ? '1.45' : '1.2'}
                   fontFamily="system-ui, -apple-system, sans-serif"
                   fontWeight={isHub ? '700' : '600'}
                   fill={isHub ? '#B86F55' : '#17211F'}
