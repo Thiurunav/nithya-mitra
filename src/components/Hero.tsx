@@ -133,12 +133,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={() => setIsPaused(true)}
-      className="relative isolate min-h-[90vh] md:min-h-screen flex items-center pt-28 sm:pt-36 min-[850px]:pt-40 pb-16 sm:pb-20 overflow-hidden border-b border-[#17352F]/15 cursor-default select-none"
+      className="relative isolate min-h-[90vh] md:min-h-screen flex items-center pt-28 sm:pt-36 min-[850px]:pt-40 pb-20 sm:pb-28 overflow-hidden rounded-b-[2.5rem] sm:rounded-b-[3.5rem] md:rounded-b-[4rem] border-b border-[#17352F]/15 cursor-default select-none shadow-[0_20px_50px_rgba(23,53,47,0.1)]"
     >
-      {/* FULL-SCREEN HERO BACKGROUND CAROUSEL WITH SCROLL PARALLAX */}
+      {/* FULL-SCREEN HERO BACKGROUND CAROUSEL WITH SCROLL PARALLAX & SOFT CURVED BOTTOM */}
       <motion.div
         style={{ y: bgScrollY }}
-        className="absolute inset-0 min-[850px]:inset-2.5 z-0 overflow-hidden rounded-br-4xl rounded-bl-4xl bg-[#1A1816] will-change-transform"
+        className="absolute inset-0 min-[850px]:inset-2.5 z-0 overflow-hidden rounded-b-[2.5rem] sm:rounded-b-[3.5rem] md:rounded-b-[4rem] bg-[#1A1816] will-change-transform shadow-[0_20px_50px_rgba(0,0,0,0.35)]"
       >
         
         <AnimatePresence mode="wait">
@@ -148,7 +148,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
             animate={{ opacity: 1, scale: 1.06 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full rounded-b-[2.5rem] sm:rounded-b-[3.5rem] md:rounded-b-[4rem] overflow-hidden"
           >
             {/* Parallax Image that glides in the OPPOSITE direction on hover */}
             <motion.img
@@ -167,7 +167,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
         {/* Subtle Directional Scrim for crisp text contrast on left while keeping parents 100% natural on right */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/35 via-45% to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
       </motion.div>
 
       {/* Main Content Container: Clean Minimal Typography with gentle Scroll Parallax */}
@@ -247,7 +247,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       </motion.div>
 
       {/* Bottom Carousel Controls & Active Slide Tag */}
-      <div className="absolute bottom-6 left-4 sm:left-8 right-4 sm:right-8 z-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pointer-events-none">
+      <div className="absolute bottom-8 sm:bottom-10 left-4 sm:left-8 right-4 sm:right-8 z-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pointer-events-none">
         
         {/* Active Scene Caption Pill */}
         <motion.div
