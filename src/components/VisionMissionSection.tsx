@@ -29,10 +29,10 @@ export const VisionMissionSection: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="group relative h-[400px] sm:h-[440px] rounded-3xl overflow-hidden shadow-lg border border-[#17352F]/10 flex items-end cursor-pointer bg-[#17352F]"
           >
-            {/* Background Image */}
+            {/* Background Image: Global NRI Family Connection */}
             <div 
               className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-105"
-              style={{ backgroundImage: `url('/vayosh-hero-story.jpg')` }}
+              style={{ backgroundImage: `url('/vision-global-care.jpg')` }}
             />
             {/* Subtle Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#17352F]/90 via-[#17352F]/40 to-transparent" />
@@ -72,10 +72,10 @@ export const VisionMissionSection: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="group relative h-[400px] sm:h-[440px] rounded-3xl overflow-hidden shadow-lg border border-[#17352F]/10 flex items-end cursor-pointer bg-[#17352F]"
           >
-            {/* Background Image */}
+            {/* Background Image: Attentive On-Ground Doctor Coordination */}
             <div 
               className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-105"
-              style={{ backgroundImage: `url('/vayosh-companionship.jpg')` }}
+              style={{ backgroundImage: `url('/mission-ground-care.jpg')` }}
             />
             {/* Subtle Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#17352F]/90 via-[#17352F]/40 to-transparent" />
