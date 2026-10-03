@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, ShieldCheck, Clock, Video, Globe2 } from 'lucide-react';
-import type { Variants } from 'framer-motion';
+import { ArrowDownRight, ShieldCheck, Clock, Video } from 'lucide-react';
 import { brandImages } from '../data/assets';
 
 interface HeroProps {
@@ -14,216 +13,168 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const lineVariants: Variants = {
-    hidden: { opacity: 0, y: 35 },
-    visible: (custom: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        delay: custom * 0.15,
-        ease: [0.16, 1, 0.3, 1] as const
-      }
-    })
-  };
-
   return (
-    <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden border-b border-[#17352F]/10">
-      {/* Subtle warm architectural background aura */}
-      <div className="absolute top-0 right-0 w-[55%] h-[80%] bg-gradient-to-b from-[#EFE8DC]/40 via-transparent to-transparent -z-10 pointer-events-none" />
+    <section className="relative flex flex-col items-center pt-32 sm:pt-40 md:pt-48 pb-16 md:pb-24 overflow-hidden border-b border-[#17352F]/10">
+      
+      {/* Background with warm ambient glow in our project colors (Forest Green & Terracotta) */}
+      <div
+        className="absolute inset-0 min-[850px]:inset-2.5 bg-cover bg-center bg-no-repeat -z-10 rounded-br-4xl rounded-bl-4xl pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(23, 53, 47, 0.08) 0%, rgba(184, 111, 85, 0.05) 45%, rgba(247, 244, 237, 0) 100%), #F7F4ED'
+        }}
+        aria-hidden="true"
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
-          {/* Left Column: Editorial Messaging */}
-          <div className="lg:col-span-6 flex flex-col justify-center">
-            
-            {/* Eyebrow with pulsing dot */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-flex items-center gap-2 mb-6"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#B86F55] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#B86F55]" />
-              </span>
-              <span className="text-[11px] md:text-xs font-semibold uppercase tracking-[0.25em] text-[#B86F55]">
-                FOR NRIs WITH FAMILY IN INDIA
-              </span>
-            </motion.div>
+      {/* Main Centered Content (Ditto Inspiration Layout) */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+        
+        {/* Eyebrow Badge ("Now Available ✦" style) */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="inline-flex items-center gap-1.5 pl-4 pr-3.5 py-1.5 rounded-xl border border-[#17352F]/15 bg-white/90 backdrop-blur-sm text-[#17211F] text-xs sm:text-sm font-medium mb-6 shadow-xs"
+        >
+          <span>Now Supporting NRI Families</span>
+          <span className="text-[#B86F55] font-serif text-sm">✦</span>
+        </motion.div>
 
-            {/* Headline with Masked Line-by-Line Reveal */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-medium leading-[1.08] text-[#17211F] tracking-tight mb-6">
-              <div className="overflow-hidden pb-1">
-                <motion.span
-                  custom={1}
-                  variants={lineVariants}
-                  initial="hidden"
-                  animate="visible"
-                  className="block font-sans font-normal text-[#17211F]"
-                >
-                  You built a life abroad.
-                </motion.span>
-              </div>
-              <div className="overflow-hidden pb-2">
-                <motion.span
-                  custom={2}
-                  variants={lineVariants}
-                  initial="hidden"
-                  animate="visible"
-                  className="block font-serif italic font-medium text-[#17352F] mt-1"
-                >
-                  Who looks after home?
-                </motion.span>
-              </div>
-            </h1>
+        {/* Massive 2-Line Headline ("Build Faster / Ship with Confidence" style) */}
+        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-medium tracking-tight leading-[1.08] mb-6 text-[#17211F]">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="block font-sans font-medium"
+          >
+            You Built Abroad
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="block font-sans font-medium text-[#17211F]"
+          >
+            Protect Home with{' '}
+            <span className="italic font-serif text-[#17352F] font-normal">
+              Certainty
+            </span>
+          </motion.span>
+        </h1>
 
-            {/* Supporting Text */}
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              className="text-base sm:text-lg text-[#17211F]/80 leading-relaxed font-light mb-8"
-            >
-              When your parents and family are back in India, distance can turn everyday needs into quiet worry. Nithya Mitra gives you one trusted point of contact on the ground — coordinating parent visits, wellbeing, healthcare, domestic assistance, and continuous family connection.
-            </motion.p>
+        {/* Centered Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="text-base sm:text-lg text-[#17211F]/75 max-w-2xl mx-auto mb-8 font-light leading-relaxed"
+        >
+          The dedicated on-ground family coordination service for NRIs — caring for your elderly parents, ancestral property, and urgent needs in India without compromise.
+        </motion.p>
 
-            {/* CTAs with Micro-animations */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-6"
-            >
-              <motion.button
-                whileHover={{ scale: 1.015 }}
-                whileTap={{ scale: 0.985 }}
-                onClick={onOpenEnquiry || (() => scrollTo('enquiry'))}
-                className="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-sm bg-[#17352F] hover:bg-[#21463F] text-[#F7F4ED] text-xs uppercase tracking-widest font-semibold transition-all duration-200 shadow-sm hover:shadow-md group cursor-pointer"
-              >
-                <span>Tell Us About Your Family</span>
-                <ArrowUpRight className="w-4 h-4 text-[#D8C8B3] transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </motion.button>
+        {/* The Signature Dual-Pill CTA Button ("Get Started ↘" style) */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-center gap-4 mb-4"
+        >
+          <button
+            onClick={onOpenEnquiry || (() => scrollTo('enquiry'))}
+            type="button"
+            className="group relative cursor-pointer inline-flex items-center shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none"
+          >
+            <span className="absolute right-0 inset-y-0 w-[calc(100%-2rem)] rounded-xl bg-[#B86F55] transition-colors duration-300 group-hover:bg-[#9E5B44]" />
+            <span className="relative z-10 px-7 py-3.5 sm:px-8 sm:py-4 rounded-xl bg-[#17352F] text-[#F7F4ED] font-medium text-sm sm:text-base tracking-wide border border-white/10">
+              Free Consultation
+            </span>
+            <span className="relative -left-px z-10 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-[#F7F4ED] bg-[#B86F55] transition-colors duration-300 group-hover:bg-[#9E5B44]">
+              <ArrowDownRight className="w-5 h-5 transition-transform duration-300 group-hover:-rotate-45" />
+            </span>
+          </button>
 
-              <motion.button
-                whileHover={{ scale: 1.015 }}
-                whileTap={{ scale: 0.985 }}
-                onClick={() => scrollTo('how-it-works')}
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-sm border border-[#17352F]/25 hover:border-[#17352F] text-[#17352F] hover:bg-[#17352F]/5 text-xs uppercase tracking-widest font-medium transition-all duration-200 cursor-pointer"
-              >
-                <span>How Nithya Mitra Works</span>
-              </motion.button>
-            </motion.div>
-
-            {/* Reassurance Micro-Strip */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.65 }}
-              className="flex flex-wrap items-center gap-y-2 gap-x-5 text-xs text-[#68716D] font-normal"
-            >
-              <div className="flex items-center gap-1.5 transition-colors hover:text-[#17352F]">
-                <Clock className="w-3.5 h-3.5 text-[#B86F55]" />
-                <span>20-min consultation</span>
-              </div>
-              <span className="text-[#D8C8B3]">·</span>
-              <div className="flex items-center gap-1.5 transition-colors hover:text-[#17352F]">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#17352F]" />
-                <span>No obligation</span>
-              </div>
-              <span className="text-[#D8C8B3]">·</span>
-              <div className="flex items-center gap-1.5 transition-colors hover:text-[#17352F]">
-                <Video className="w-3.5 h-3.5 text-[#17352F]" />
-                <span>WhatsApp / Zoom</span>
-              </div>
-            </motion.div>
-
-            {/* Geographic acknowledgment */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.75 }}
-              className="mt-7 pt-5 border-t border-[#17352F]/10 flex items-center gap-3 text-xs text-[#68716D]"
-            >
-              <Globe2 className="w-4 h-4 text-[#B86F55] shrink-0" />
-              <span>
-                Supporting NRI families residing in the <strong className="text-[#17211F] font-medium">USA</strong>, <strong className="text-[#17211F] font-medium">UK</strong>, <strong className="text-[#17211F] font-medium">Canada</strong>, <strong className="text-[#17211F] font-medium">Australia</strong>, <strong className="text-[#17211F] font-medium">Singapore</strong>, and <strong className="text-[#17211F] font-medium">worldwide</strong>.
-              </span>
-            </motion.div>
-
+          {/* Micro Reassurances */}
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-[#68716D] font-normal pt-1">
+            <div className="flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-[#B86F55]" />
+              <span>20-min consultation</span>
+            </div>
+            <span className="text-[#D8C8B3]">·</span>
+            <div className="flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#17352F]" />
+              <span>No obligation</span>
+            </div>
+            <span className="text-[#D8C8B3]">·</span>
+            <div className="flex items-center gap-1.5">
+              <Video className="w-3.5 h-3.5 text-[#17352F]" />
+              <span>WhatsApp / Zoom</span>
+            </div>
           </div>
+        </motion.div>
 
-          {/* Right Column: The Whole Picture in One Frame */}
-          <div className="lg:col-span-6 relative">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="relative mx-auto max-w-lg lg:max-w-none"
-            >
-              {/* Primary Showcase Card Frame */}
-              <div className="rounded-sm overflow-hidden border border-[#17352F]/15 bg-[#FBFAF6] shadow-[0_20px_45px_rgba(23,53,47,0.09)] group">
-                
-                {/* Photo Area with 4:3 Ratio (100% Uncropped Full Story) */}
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#EAE5DB]">
-                  <img
-                    src={brandImages.hero.src}
-                    alt={brandImages.hero.alt}
-                    className="w-full h-full object-cover object-center filter saturate-[0.96] contrast-[1.02] transition-transform duration-700 ease-out group-hover:scale-101"
-                    loading="eager"
-                    fetchPriority="high"
-                  />
-                  
-                  {/* Top Floating Badge: Live Presence Status */}
-                  <div className="absolute top-3.5 left-3.5 bg-[#17352F]/90 backdrop-blur-md text-[#F7F4ED] px-3 py-1.5 rounded-sm border border-[#F7F4ED]/20 shadow-sm flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="text-[10px] uppercase tracking-widest font-mono font-medium">
-                      Ground Coordination · Chennai Hub
-                    </span>
-                  </div>
+      </div>
+
+      {/* Elderly Showcase (Inspiration Perspective Frame below Hero CTA) */}
+      <motion.div
+        initial={{ opacity: 0, y: 35 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16"
+      >
+        <div className="relative rounded-2xl overflow-hidden border border-[#17352F]/15 shadow-2xl bg-[#FBFAF6] [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)] group">
+          
+          {/* Authentic Elderly Parents + Ground Coordinator Story Image */}
+          <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden bg-[#EAE5DB]">
+            <img
+              src={brandImages.hero.src}
+              alt="Elderly Indian parents in Chennai supported at home by Nithya Mitra coordinator with NRI son on video call"
+              className="w-full h-full object-cover object-center filter saturate-[0.98] contrast-[1.02] transition-transform duration-700 ease-out group-hover:scale-[1.01]"
+              loading="eager"
+              fetchPriority="high"
+            />
+            
+            {/* Top Left Floating Pill: Live Ground Status */}
+            <div className="absolute top-4 left-4 bg-[#17352F]/90 backdrop-blur-md text-[#F7F4ED] px-3.5 py-1.5 rounded-xl border border-white/15 shadow-md flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[11px] font-mono uppercase tracking-wider font-medium">
+                Live Ground Hub · Chennai, India
+              </span>
+            </div>
+
+            {/* Top Right Floating Pill: Timezone Connection */}
+            <div className="absolute top-4 right-4 hidden sm:flex items-center gap-2 bg-white/90 backdrop-blur-md text-[#17211F] px-3.5 py-1.5 rounded-xl border border-black/10 shadow-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
+              <span className="text-[11px] font-mono uppercase tracking-wider text-[#17211F] font-medium">
+                USA · UK · Worldwide ↔ India
+              </span>
+            </div>
+
+            {/* Bottom Caption Overlay */}
+            <div className="absolute bottom-6 left-6 right-6 hidden md:flex items-center justify-between bg-[#17352F]/85 backdrop-blur-md text-[#F7F4ED] p-3.5 px-5 rounded-xl border border-white/10 shadow-lg">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center font-serif text-sm font-semibold text-[#D8C8B3]">
+                  NM
+                </span>
+                <div className="text-left">
+                  <p className="text-xs font-semibold text-[#F7F4ED]">
+                    The Whole Picture in One Frame
+                  </p>
+                  <p className="text-[11px] text-[#D8C8B3] font-light">
+                    Elderly parents in their living room · Assigned care lead in official uniform · NRI son connected live
+                  </p>
                 </div>
-
-                {/* Editorial Caption Bar: Explaining The Whole Picture In One Glance */}
-                <div className="p-4 sm:p-5 border-t border-[#17352F]/10 bg-[#FBFAF6]">
-                  <div className="flex items-center justify-between text-xs border-b border-[#17352F]/10 pb-2.5 mb-3">
-                    <span className="font-serif italic text-sm text-[#17352F] font-medium">
-                      "One frame. The whole Nithya Mitra promise."
-                    </span>
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#B86F55] font-semibold bg-[#B86F55]/10 px-2 py-0.5 rounded-xs">
-                      Three-Way Connection
-                    </span>
-                  </div>
-
-                  {/* 3 Pillars in the 1 Picture */}
-                  <div className="grid grid-cols-3 gap-2">
-                    <div className="bg-[#F3EFE6] p-2.5 rounded-sm border border-[#17352F]/8">
-                      <span className="block text-[10px] font-mono uppercase tracking-wider text-[#68716D]">01 · On Screen</span>
-                      <p className="text-xs font-semibold text-[#17211F] mt-0.5">NRI Family</p>
-                      <p className="text-[11px] text-[#68716D] leading-tight mt-0.5 hidden sm:block">Connected on video call</p>
-                    </div>
-
-                    <div className="bg-[#F3EFE6] p-2.5 rounded-sm border border-[#17352F]/8">
-                      <span className="block text-[10px] font-mono uppercase tracking-wider text-[#68716D]">02 · In Chennai</span>
-                      <p className="text-xs font-semibold text-[#17211F] mt-0.5">Elderly Parents</p>
-                      <p className="text-[11px] text-[#68716D] leading-tight mt-0.5 hidden sm:block">Comfort of their home</p>
-                    </div>
-
-                    <div className="bg-[#17352F]/10 p-2.5 rounded-sm border border-[#17352F]/20">
-                      <span className="block text-[10px] font-mono uppercase tracking-wider text-[#17352F] font-semibold">03 · On Ground</span>
-                      <p className="text-xs font-semibold text-[#17352F] mt-0.5">Nithya Mitra Lead</p>
-                      <p className="text-[11px] text-[#17352F]/80 leading-tight mt-0.5 hidden sm:block">Official uniform & ID</p>
-                    </div>
-                  </div>
-                </div>
-
               </div>
-            </motion.div>
+
+              <span className="text-[11px] font-mono uppercase tracking-wider text-[#D8C8B3] bg-white/10 px-3 py-1 rounded-lg">
+                100% Verified Presence
+              </span>
+            </div>
+
           </div>
 
         </div>
-      </div>
+      </motion.div>
+
     </section>
   );
 };
