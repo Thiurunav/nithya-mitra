@@ -6,54 +6,58 @@ import { ArrowDownRight, MapPin, Clock } from 'lucide-react';
 export const GlobalReachSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // 300vh scroll container for spacious 3-stage scroll sequence:
-  // 1. Enter from absolute right
-  // 2. Firm center rest plateau (large & centered)
-  // 3. Move to left with right-side content reveal
+  // 250vh scroll container for smooth, responsive vertical scrolling sequence
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end'],
   });
 
-  // Smooth responsive spring physics
+  // Smooth responsive spring physics for fluid scroll tracking
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 26,
+    stiffness: 90,
+    damping: 22,
     restDelta: 0.001,
   });
 
-  // Map X-Position:
-  // 0.00 -> 0.22 : Slides from '80vw' (absolute right) into '0%' (Center)
-  // 0.22 -> 0.54 : REMAINS FIRMLY LOCKED AT '0%' (Center Rest Plateau)
-  // 0.54 -> 0.82 : Glides from '0%' to '-26%' (Left Split Position)
-  const mapX = useTransform(
+  // 1. Text Vertical Position & Scale:
+  // Starts lower (120px) -> Enters center (0px) -> Shrinks and glides up (-40px)
+  const titleY = useTransform(
     smoothProgress,
-    [0, 0.22, 0.54, 0.82],
-    ['80vw', '0%', '0%', '-26%']
+    [0, 0.28, 0.65],
+    [110, 0, -35]
   );
-
-  // Map Scale:
-  // Starts at 1.0, enlarges to 1.15 in the center for a prominent view, then scales to 0.88 on the left
-  const mapScale = useTransform(
+  const titleScale = useTransform(
     smoothProgress,
-    [0, 0.22, 0.54, 0.82],
-    [0.95, 1.15, 1.15, 0.88]
+    [0, 0.28, 0.65],
+    [1.18, 1.18, 0.88]
   );
-
-  const mapOpacity = useTransform(smoothProgress, [0, 0.12], [0.3, 1]);
-
-  // Phase 1 & 2: Centered Title visible during entrance and center plateau, fades as map moves left
   const titleOpacity = useTransform(
     smoothProgress,
-    [0, 0.12, 0.52, 0.62],
-    [0, 1, 1, 0]
+    [0, 0.18],
+    [0, 1]
   );
-  const titleY = useTransform(smoothProgress, [0.52, 0.62], [0, -25]);
 
-  // Phase 3: Right content card emerges only after the center rest plateau
-  const contentOpacity = useTransform(smoothProgress, [0.56, 0.78], [0, 1]);
-  const contentX = useTransform(smoothProgress, [0.56, 0.78], [60, 0]);
-  const contentPointerEvents = useTransform(smoothProgress, (p) => (p > 0.54 ? 'auto' : 'none'));
+  // 2. Map Vertical Position, Scale & Opacity:
+  // Rises smoothly from down below into the center as the text shrinks
+  const mapY = useTransform(
+    smoothProgress,
+    [0.24, 0.68],
+    ['42vh', '0vh']
+  );
+  const mapScale = useTransform(
+    smoothProgress,
+    [0.24, 0.68],
+    [0.85, 1.05]
+  );
+  const mapOpacity = useTransform(
+    smoothProgress,
+    [0.24, 0.48],
+    [0, 1]
+  );
+
+  // 3. Bottom live coordination action bar (reveals smoothly beneath the centered map)
+  const bottomBarOpacity = useTransform(smoothProgress, [0.65, 0.86], [0, 1]);
+  const bottomBarY = useTransform(smoothProgress, [0.65, 0.86], [35, 0]);
 
   const scrollToEnquiry = () => {
     const el = document.getElementById('enquiry');
@@ -63,94 +67,76 @@ export const GlobalReachSection: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="relative h-[300vh] bg-[#F7F4ED] text-[#17211F]"
+      className="relative h-[250vh] bg-[#F7F4ED] text-[#17211F]"
     >
       {/* Sticky Viewport Frame (100vh) */}
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 select-none">
         
-        {/* Centered Title with generous breathing room below top navbar */}
+        {/* Animated Header: Enters from bottom to center, then shrinks and glides up */}
         <motion.div
           style={{
-            opacity: titleOpacity,
             y: titleY,
+            scale: titleScale,
+            opacity: titleOpacity,
           }}
-          className="absolute top-24 sm:top-28 lg:top-32 z-20 text-center pointer-events-none"
+          className="z-20 text-center pointer-events-none will-change-transform mb-2 sm:mb-4"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-serif font-normal text-[#17211F] leading-[1.2] tracking-tight">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#17352F]/15 bg-white/80 backdrop-blur-md text-[#17352F] text-xs font-medium mb-3 shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
+            <span>Direct Global Coordination</span>
+          </div>
+          
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-normal text-[#17211F] leading-[1.18] tracking-tight">
             Trusted by NRI families
-            <span className="block">worldwide</span>
+            <span className="block italic text-[#B86F55]">worldwide</span>
           </h2>
         </motion.div>
 
-        {/* Interactive Layout Stage (Positioned with generous top padding to prevent any overlap with title) */}
-        <div className="relative w-full max-w-7xl mx-auto flex items-center justify-center pt-24 sm:pt-28 lg:pt-32 mt-6 sm:mt-8">
-          
-          {/* DOTTED MAP (Animates: Right -> Big Center Plateau -> Left) */}
-          <motion.div
-            style={{
-              x: mapX,
-              opacity: mapOpacity,
-              scale: mapScale,
-            }}
-            className="w-full max-w-5xl flex items-center justify-center will-change-transform"
-          >
-            <DottedMap dotRadius={0.22} dotColor="#17352F" />
-          </motion.div>
+        {/* Dotted Map: Rises smoothly from down below to the center */}
+        <motion.div
+          style={{
+            y: mapY,
+            scale: mapScale,
+            opacity: mapOpacity,
+          }}
+          className="relative z-10 w-full max-w-5xl flex items-center justify-center will-change-transform"
+        >
+          <DottedMap dotRadius={0.22} dotColor="#17352F" />
+        </motion.div>
 
-          {/* RIGHT SIDE CONTENT PANEL (Reveals as Map moves to the Left) */}
-          <motion.div
-            style={{
-              opacity: contentOpacity,
-              x: contentX,
-              pointerEvents: contentPointerEvents as any,
-            }}
-            className="absolute right-0 top-1/2 -translate-y-1/2 w-full max-w-md lg:max-w-lg z-30 flex flex-col items-start text-left pl-4"
-          >
-            {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#17352F]/15 bg-white/80 backdrop-blur-md text-[#17352F] text-xs font-medium mb-4 shadow-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
-              <span>Direct Global Coordination</span>
-            </div>
-
-            {/* Headline */}
-            <h3 className="font-serif text-3xl sm:text-4xl lg:text-[2.65rem] font-normal leading-[1.18] text-[#17211F] mb-4">
-              Your family in India,
-              <span className="block italic text-[#B86F55]">always protected.</span>
-            </h3>
-
-            {/* Concise Description */}
-            <p className="text-sm sm:text-base text-[#17211F]/75 font-light leading-relaxed mb-8 max-w-md">
-              Dedicated on-ground coordinators in Chennai bridging time zones, accompanied doctor visits, and verified updates for NRI families worldwide.
-            </p>
-
-            {/* Interactive Action Pill Container */}
-            <div className="w-full bg-white rounded-2xl p-2.5 sm:p-3 border border-[#17352F]/10 shadow-[0_12px_30px_rgba(23,53,47,0.08)] flex flex-wrap sm:flex-nowrap items-center justify-between gap-3">
-              <div className="flex items-center gap-4 px-3 text-xs text-[#17211F]/80">
-                <div className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#B86F55]" />
-                  <span className="font-medium">Chennai, India</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-[#17352F]" />
-                  <span className="font-mono text-[11px]">Live IST</span>
-                </div>
+        {/* Bottom Coordination Status & Action Bar: Reveals under the centered map */}
+        <motion.div
+          style={{
+            opacity: bottomBarOpacity,
+            y: bottomBarY,
+          }}
+          className="z-20 w-full max-w-xl mt-3 sm:mt-5 will-change-transform"
+        >
+          <div className="w-full bg-white/95 backdrop-blur-xl rounded-2xl p-2.5 sm:p-3.5 border border-[#17352F]/10 shadow-[0_15px_35px_rgba(23,53,47,0.08)] flex flex-wrap sm:flex-nowrap items-center justify-between gap-3">
+            <div className="flex items-center gap-4 px-3 text-xs text-[#17211F]/80">
+              <div className="flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-[#B86F55]" />
+                <span className="font-medium">Hub: Chennai, India</span>
               </div>
-
-              {/* Consultation Booking Button */}
-              <button
-                onClick={scrollToEnquiry}
-                type="button"
-                className="group w-full sm:w-auto px-4 py-2.5 rounded-xl bg-[#17352F] hover:bg-[#21463F] text-[#F7F4ED] text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer shrink-0"
-              >
-                <span>Book Consultation</span>
-                <ArrowDownRight className="w-3.5 h-3.5 text-[#B86F55] transition-transform duration-200 group-hover:-rotate-45" />
-              </button>
+              <div className="flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-[#17352F]" />
+                <span className="font-mono text-[11px]">24/7 Global NRI Care</span>
+              </div>
             </div>
-          </motion.div>
 
-        </div>
+            <button
+              onClick={scrollToEnquiry}
+              type="button"
+              className="group w-full sm:w-auto px-4 py-2.5 rounded-xl bg-[#17352F] hover:bg-[#21463F] text-[#F7F4ED] text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer shrink-0"
+            >
+              <span>Book Consultation</span>
+              <ArrowDownRight className="w-3.5 h-3.5 text-[#B86F55] transition-transform duration-200 group-hover:-rotate-45" />
+            </button>
+          </div>
+        </motion.div>
 
       </div>
     </div>
   );
 };
+
