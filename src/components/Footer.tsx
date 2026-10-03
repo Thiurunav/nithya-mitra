@@ -11,7 +11,7 @@ const footerData = {
     name: 'NITHYA MITRA',
     tagline: '“Your Family in India, Our Responsibility.”',
     description:
-      'Dedicated on-ground family and eldercare coordination for NRIs across the US, UK, Canada, Australia, Singapore and worldwide whose parents live in India.',
+      'Dedicated on-ground family support and eldercare coordination for NRIs across the US, UK, Canada, Australia, Singapore, and worldwide whose parents live in India.',
   },
   socialLinks: [
     {
@@ -55,9 +55,9 @@ const footerData = {
   ],
   aboutLinks: [
     { text: 'About Nithya Mitra', id: 'about' },
-    { text: 'Leadership & Story', id: 'trust' },
+    { text: 'Leadership & Roots', id: 'trust' },
     { text: 'How It Works', id: 'how-it-works' },
-    { text: 'Service Standards', id: 'services' },
+    { text: 'Ground Infrastructure', id: 'bento-grid' },
   ],
   serviceLinks: [
     { text: 'Parent Wellbeing Visits', id: 'services' },
@@ -67,7 +67,7 @@ const footerData = {
   ],
   helpfulLinks: [
     { text: 'Common FAQs', id: 'faq' },
-    { text: 'Book Free Consultation', id: 'enquiry' },
+    { text: 'Consultation Booking', id: 'enquiry' },
     { text: 'Live Care Desk', href: 'https://wa.me/919789066588', hasIndicator: true },
   ],
   contactInfo: [
@@ -94,28 +94,28 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#F7F4ED] text-[#17211F] w-full border-t border-[#17352F]/15">
-      <div className="mx-auto max-w-7xl px-4 pt-16 pb-10 sm:px-6 lg:px-8 lg:pt-20">
+    <footer className="bg-[#0E2420] text-[#F7F4ED] w-full border-t border-[#17352F] rounded-t-3xl pt-16 pb-12 shadow-2xl">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Main 4-Column + Brand Layout */}
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 pb-12 border-b border-[#21463F]/80">
           
           {/* Brand & Mission Column */}
           <div>
             <div className="flex items-center gap-3 justify-center sm:justify-start">
-              <div className="w-8 h-8 rounded-sm bg-[#17352F] flex items-center justify-center text-[#F7F4ED] font-serif font-bold text-sm tracking-wider">
+              <div className="w-8 h-8 rounded-sm bg-[#F7F4ED] flex items-center justify-center text-[#17352F] font-serif font-bold text-sm tracking-wider">
                 NM
               </div>
-              <span className="font-serif tracking-[0.2em] text-xl font-semibold text-[#17352F] uppercase">
+              <span className="font-serif tracking-[0.2em] text-xl font-semibold text-[#FBFAF6] uppercase">
                 {footerData.company.name}
               </span>
             </div>
 
-            <p className="font-serif italic text-sm text-[#B86F55] mt-3 text-center sm:text-left">
+            <p className="font-serif italic text-sm text-[#D8C8B3] mt-3 text-center sm:text-left">
               {footerData.company.tagline}
             </p>
 
-            <p className="text-[#17211F]/70 mt-4 max-w-md text-xs sm:text-sm text-center font-light leading-relaxed sm:max-w-sm sm:text-left">
+            <p className="text-[#F7F4ED]/70 mt-4 max-w-md text-xs sm:text-sm text-center font-light leading-relaxed sm:max-w-xs sm:text-left">
               {footerData.company.description}
             </p>
 
@@ -127,7 +127,7 @@ export const Footer: React.FC = () => {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-full border border-[#17352F]/15 flex items-center justify-center text-[#17352F] hover:bg-[#17352F] hover:text-[#F7F4ED] hover:border-[#17352F] transition-all duration-200"
+                    className="w-9 h-9 rounded-full border border-[#F7F4ED]/20 flex items-center justify-center text-[#F7F4ED] hover:bg-[#F7F4ED] hover:text-[#17352F] hover:border-[#F7F4ED] transition-all duration-200"
                     aria-label={label}
                   >
                     {icon}
@@ -137,20 +137,20 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* 4 Links Sub-Columns */}
+          {/* 4 Links Sub-Columns (About Us, Services, Helpful Links, Contact Us) */}
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-2">
             
             {/* Col 1: About Us */}
             <div className="text-center sm:text-left">
-              <p className="text-sm font-serif font-semibold uppercase tracking-wider text-[#17352F]">
+              <p className="text-sm font-serif font-medium tracking-wider text-[#D8C8B3] uppercase">
                 About Us
               </p>
-              <ul className="mt-5 space-y-3 text-xs sm:text-sm">
+              <ul className="mt-5 space-y-3.5 text-xs sm:text-sm">
                 {footerData.aboutLinks.map(({ text, id }) => (
                   <li key={text}>
                     <button
                       onClick={() => scrollTo(id)}
-                      className="text-[#17211F]/70 hover:text-[#17352F] transition-colors cursor-pointer"
+                      className="text-[#F7F4ED]/75 hover:text-[#FBFAF6] transition-colors cursor-pointer"
                     >
                       {text}
                     </button>
@@ -161,15 +161,15 @@ export const Footer: React.FC = () => {
 
             {/* Col 2: Services */}
             <div className="text-center sm:text-left">
-              <p className="text-sm font-serif font-semibold uppercase tracking-wider text-[#17352F]">
+              <p className="text-sm font-serif font-medium tracking-wider text-[#D8C8B3] uppercase">
                 Our Services
               </p>
-              <ul className="mt-5 space-y-3 text-xs sm:text-sm">
+              <ul className="mt-5 space-y-3.5 text-xs sm:text-sm">
                 {footerData.serviceLinks.map(({ text, id }) => (
                   <li key={text}>
                     <button
                       onClick={() => scrollTo(id)}
-                      className="text-[#17211F]/70 hover:text-[#17352F] transition-colors cursor-pointer"
+                      className="text-[#F7F4ED]/75 hover:text-[#FBFAF6] transition-colors cursor-pointer"
                     >
                       {text}
                     </button>
@@ -180,10 +180,10 @@ export const Footer: React.FC = () => {
 
             {/* Col 3: Helpful Links */}
             <div className="text-center sm:text-left">
-              <p className="text-sm font-serif font-semibold uppercase tracking-wider text-[#17352F]">
+              <p className="text-sm font-serif font-medium tracking-wider text-[#D8C8B3] uppercase">
                 Helpful Links
               </p>
-              <ul className="mt-5 space-y-3 text-xs sm:text-sm">
+              <ul className="mt-5 space-y-3.5 text-xs sm:text-sm">
                 {footerData.helpfulLinks.map(({ text, id, href, hasIndicator }) => (
                   <li key={text}>
                     {href ? (
@@ -193,22 +193,22 @@ export const Footer: React.FC = () => {
                         rel="noopener noreferrer"
                         className={`${
                           hasIndicator
-                            ? 'inline-flex items-center justify-center gap-1.5 sm:justify-start text-[#17352F] font-medium'
-                            : 'text-[#17211F]/70 hover:text-[#17352F] transition-colors'
+                            ? 'inline-flex items-center justify-center gap-2 sm:justify-start text-[#FBFAF6] font-medium'
+                            : 'text-[#F7F4ED]/75 hover:text-[#FBFAF6] transition-colors'
                         }`}
                       >
                         <span>{text}</span>
                         {hasIndicator && (
                           <span className="relative flex h-2 w-2">
-                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
-                            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-600" />
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
                           </span>
                         )}
                       </a>
                     ) : (
                       <button
                         onClick={() => scrollTo(id)}
-                        className="text-[#17211F]/70 hover:text-[#17352F] transition-colors cursor-pointer"
+                        className="text-[#F7F4ED]/75 hover:text-[#FBFAF6] transition-colors cursor-pointer"
                       >
                         {text}
                       </button>
@@ -220,25 +220,25 @@ export const Footer: React.FC = () => {
 
             {/* Col 4: Contact Us */}
             <div className="text-center sm:text-left">
-              <p className="text-sm font-serif font-semibold uppercase tracking-wider text-[#17352F]">
+              <p className="text-sm font-serif font-medium tracking-wider text-[#D8C8B3] uppercase">
                 Contact Us
               </p>
-              <ul className="mt-5 space-y-3 text-xs sm:text-sm">
+              <ul className="mt-5 space-y-3.5 text-xs sm:text-sm">
                 {footerData.contactInfo.map(({ icon: Icon, text, href, isAddress }) => (
                   <li key={text}>
                     {href ? (
                       <a
-                        className="flex items-center justify-center gap-2 sm:justify-start text-[#17211F]/75 hover:text-[#17352F] transition-colors"
+                        className="flex items-center justify-center gap-2 sm:justify-start text-[#F7F4ED]/80 hover:text-[#D8C8B3] transition-colors"
                         href={href}
                       >
                         <Icon className="w-3.5 h-3.5 text-[#B86F55] shrink-0" />
                         <span>{text}</span>
                       </a>
                     ) : (
-                      <div className="flex items-start justify-center gap-2 sm:justify-start text-[#17211F]/75">
+                      <div className="flex items-start justify-center gap-2 sm:justify-start text-[#D8C8B3]">
                         <Icon className="w-3.5 h-3.5 text-[#B86F55] shrink-0 mt-0.5" />
                         {isAddress ? (
-                          <address className="not-italic leading-tight">
+                          <address className="not-italic leading-relaxed">
                             {text}
                           </address>
                         ) : (
@@ -255,22 +255,22 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar with Legal Links */}
-        <div className="mt-14 border-t border-[#17352F]/10 pt-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-xs text-[#17211F]/60">
+        <div className="mt-8 pt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-xs text-[#F7F4ED]/60 font-light">
             <p>
               &copy; 2026 {footerData.company.name} Coordination Services. All rights reserved.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 text-[11px]">
-              <Link to="/privacy-policy" className="hover:text-[#17352F] transition-colors">
+              <Link to="/privacy-policy" className="hover:text-[#FBFAF6] transition-colors">
                 Privacy Policy
               </Link>
               <span>·</span>
-              <Link to="/terms" className="hover:text-[#17352F] transition-colors">
+              <Link to="/terms" className="hover:text-[#FBFAF6] transition-colors">
                 Terms of Service
               </Link>
               <span>·</span>
-              <Link to="/disclaimer" className="hover:text-[#17352F] transition-colors text-[#B86F55]">
+              <Link to="/disclaimer" className="hover:text-[#FBFAF6] transition-colors text-[#D8C8B3]">
                 Service & Medical Disclaimer
               </Link>
             </div>
