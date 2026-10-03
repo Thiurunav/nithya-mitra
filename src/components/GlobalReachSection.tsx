@@ -79,13 +79,8 @@ export const GlobalReachSection: React.FC = () => {
             scale: titleScale,
             opacity: titleOpacity,
           }}
-          className="z-20 text-center pointer-events-none will-change-transform mb-2 sm:mb-4"
+          className="z-20 text-center pointer-events-none will-change-transform mb-3 sm:mb-5"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#17352F]/15 bg-white/80 backdrop-blur-md text-[#17352F] text-xs font-medium mb-3 shadow-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
-            <span>Direct Global Coordination</span>
-          </div>
-          
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-normal text-[#17211F] leading-[1.18] tracking-tight">
             Trusted by NRI families
             <span className="block italic text-[#B86F55]">worldwide</span>
