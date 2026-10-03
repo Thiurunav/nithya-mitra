@@ -33,11 +33,11 @@ export const GlobalReachSection: React.FC = () => {
   );
 
   // Map Scale:
-  // Starts at 1.0, enlarges to 1.16 in the center for a prominent view, then scales to 0.88 on the left
+  // Starts at 1.0, enlarges to 1.15 in the center for a prominent view, then scales to 0.88 on the left
   const mapScale = useTransform(
     smoothProgress,
     [0, 0.22, 0.54, 0.82],
-    [0.95, 1.16, 1.16, 0.88]
+    [0.95, 1.15, 1.15, 0.88]
   );
 
   const mapOpacity = useTransform(smoothProgress, [0, 0.12], [0.3, 1]);
@@ -68,13 +68,13 @@ export const GlobalReachSection: React.FC = () => {
       {/* Sticky Viewport Frame (100vh) */}
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 select-none">
         
-        {/* Centered Title (Firmly visible while map is large & centered) */}
+        {/* Centered Title with generous breathing room */}
         <motion.div
           style={{
             opacity: titleOpacity,
             y: titleY,
           }}
-          className="absolute top-14 sm:top-18 z-20 text-center pointer-events-none"
+          className="absolute top-10 sm:top-14 z-20 text-center pointer-events-none"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-serif font-normal text-[#17211F] leading-[1.2] tracking-tight">
             Trusted by NRI families
@@ -82,8 +82,8 @@ export const GlobalReachSection: React.FC = () => {
           </h2>
         </motion.div>
 
-        {/* Interactive Layout Stage */}
-        <div className="relative w-full max-w-7xl mx-auto flex items-center justify-center">
+        {/* Interactive Layout Stage (Positioned with generous top padding to prevent any overlap with title) */}
+        <div className="relative w-full max-w-7xl mx-auto flex items-center justify-center pt-16 sm:pt-20 lg:pt-24 mt-4 sm:mt-6">
           
           {/* DOTTED MAP (Animates: Right -> Big Center Plateau -> Left) */}
           <motion.div
