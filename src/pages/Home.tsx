@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
-import { RealitySection } from '../components/RealitySection';
-import { GroundTeamSection } from '../components/GroundTeamSection';
+import { FamilyTransitionSection } from '../components/FamilyTransitionSection';
 import { ServicesSection } from '../components/ServicesSection';
 import { HowItWorks } from '../components/HowItWorks';
+import { GroundTeamSection } from '../components/GroundTeamSection';
 import { SupportPlans } from '../components/SupportPlans';
 import { TrustAndLeadership } from '../components/TrustAndLeadership';
 import { FAQ } from '../components/FAQ';
@@ -34,11 +34,8 @@ export const Home: React.FC = () => {
         {/* Hero Section */}
         <Hero onOpenEnquiry={() => scrollToEnquiry()} />
 
-        {/* The Reality of Distance (Consolidated & Punchy) */}
-        <RealitySection />
-
-        {/* Ground Team in Matching Uniform: "The people looking after home when you are not here" */}
-        <GroundTeamSection />
+        {/* Smooth Scroll Curved Triptych Transition (Oscar Health style) */}
+        <FamilyTransitionSection onOpenEnquiry={() => scrollToEnquiry()} />
 
         {/* 6 Core Coordination Pillars */}
         <ServicesSection
@@ -49,6 +46,9 @@ export const Home: React.FC = () => {
 
         {/* 3-Step Simple System */}
         <HowItWorks />
+
+        {/* Ground Team in Matching Uniform: "The people looking after home when you are not here" */}
+        <GroundTeamSection />
 
         {/* 3 Support Plans */}
         <SupportPlans onSelectPlan={(planId) => scrollToEnquiry(planId)} />
