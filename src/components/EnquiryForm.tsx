@@ -82,7 +82,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialPlan }) => {
                 Prefer to chat right now?
               </span>
               <a
-                href="https://wa.me/919789066588?text=Hi%20Vayosh%2C%20I%20would%20like%20to%20understand%20how%20you%20can%20support%20my%20parents%20in%20India."
+                href="https://wa.me/919789066588?text=Hi%20Nithya Mitra%2C%20I%20would%20like%20to%20understand%20how%20you%20can%20support%20my%20parents%20in%20India."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-semibold text-[#17352F] hover:text-[#B86F55] transition-colors"
@@ -120,7 +120,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialPlan }) => {
                 
                 {initialPlan && (
                   <div className="text-xs text-[#17352F] bg-[#FBFAF6] p-2.5 rounded-sm border border-[#17352F]/10 flex items-center justify-between">
-                    <span>Interested in plan: <strong>Vayosh {initialPlan}</strong></span>
+                    <span>Interested in plan: <strong>Nithya Mitra {initialPlan}</strong></span>
                   </div>
                 )}
 

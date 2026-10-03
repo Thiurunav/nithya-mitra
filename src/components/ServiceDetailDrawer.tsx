@@ -93,11 +93,11 @@ export const ServiceDetailDrawer: React.FC<ServiceDetailDrawerProps> = ({
               </p>
             </div>
 
-            {/* What Vayosh Coordinates */}
+            {/* What Nithya Mitra Coordinates */}
             <div className="bg-[#F7F4ED] p-6 rounded-sm border border-[#17352F]/10 space-y-4">
               <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-[#17352F] flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#B86F55]" />
-                What Vayosh Coordinates
+                What Nithya Mitra Coordinates
               </h4>
               <ul className="space-y-2.5">
                 {service.whatWeCoordinate.map((item, idx) => (
@@ -130,7 +130,7 @@ export const ServiceDetailDrawer: React.FC<ServiceDetailDrawerProps> = ({
             <div className="p-4 bg-[#EFE8DC]/60 border border-[#D8C8B3] rounded-sm flex items-start gap-3">
               <AlertCircle className="w-4 h-4 text-[#B86F55] shrink-0 mt-0.5" />
               <p className="text-xs text-[#17211F]/80 leading-relaxed">
-                <strong className="font-semibold text-[#17352F]">Accountability Commitment:</strong> Vayosh acts as your local coordinator, vetting appropriate partners and staying accountable for follow-through. Vayosh does not claim to directly deliver clinical, medical or specialized licensed trades itself.
+                <strong className="font-semibold text-[#17352F]">Accountability Commitment:</strong> Nithya Mitra acts as your local coordinator, vetting appropriate partners and staying accountable for follow-through. Nithya Mitra does not claim to directly deliver clinical, medical or specialized licensed trades itself.
               </p>
             </div>
 
@@ -151,7 +151,7 @@ export const ServiceDetailDrawer: React.FC<ServiceDetailDrawerProps> = ({
               }}
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-sm bg-[#17352F] hover:bg-[#21463F] text-[#F7F4ED] text-xs uppercase tracking-widest font-semibold transition-all shadow-sm group cursor-pointer"
             >
-              <span>Discuss This with Vayosh</span>
+              <span>Discuss This with Nithya Mitra</span>
               <ArrowUpRight className="w-4 h-4 text-[#D8C8B3] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
           </div>

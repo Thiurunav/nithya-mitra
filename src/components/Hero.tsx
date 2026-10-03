@@ -87,7 +87,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
               transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
               className="text-base sm:text-lg text-[#17211F]/80 leading-relaxed font-light mb-8"
             >
-              When your parents and family are back in India, distance can turn everyday needs into quiet worry. Vayosh gives you one trusted point of contact on the ground — coordinating parent visits, wellbeing, healthcare, domestic assistance, and continuous family connection.
+              When your parents and family are back in India, distance can turn everyday needs into quiet worry. Nithya Mitra gives you one trusted point of contact on the ground — coordinating parent visits, wellbeing, healthcare, domestic assistance, and continuous family connection.
             </motion.p>
 
             {/* CTAs with Micro-animations */}
@@ -113,7 +113,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
                 onClick={() => scrollTo('how-it-works')}
                 className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-sm border border-[#17352F]/25 hover:border-[#17352F] text-[#17352F] hover:bg-[#17352F]/5 text-xs uppercase tracking-widest font-medium transition-all duration-200 cursor-pointer"
               >
-                <span>How Vayosh Works</span>
+                <span>How Nithya Mitra Works</span>
               </motion.button>
             </motion.div>
 
@@ -189,7 +189,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
                 <div className="p-4 sm:p-5 border-t border-[#17352F]/10 bg-[#FBFAF6]">
                   <div className="flex items-center justify-between text-xs border-b border-[#17352F]/10 pb-2.5 mb-3">
                     <span className="font-serif italic text-sm text-[#17352F] font-medium">
-                      "One frame. The whole Vayosh promise."
+                      "One frame. The whole Nithya Mitra promise."
                     </span>
                     <span className="text-[10px] font-mono uppercase tracking-wider text-[#B86F55] font-semibold bg-[#B86F55]/10 px-2 py-0.5 rounded-xs">
                       Three-Way Connection
@@ -212,7 +212,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
 
                     <div className="bg-[#17352F]/10 p-2.5 rounded-sm border border-[#17352F]/20">
                       <span className="block text-[10px] font-mono uppercase tracking-wider text-[#17352F] font-semibold">03 · On Ground</span>
-                      <p className="text-xs font-semibold text-[#17352F] mt-0.5">Vayosh Lead</p>
+                      <p className="text-xs font-semibold text-[#17352F] mt-0.5">Nithya Mitra Lead</p>
                       <p className="text-[11px] text-[#17352F]/80 leading-tight mt-0.5 hidden sm:block">Official uniform & ID</p>
                     </div>
                   </div>

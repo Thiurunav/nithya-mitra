@@ -49,7 +49,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ onScheduleIntro }) => 
             onClick={onScheduleIntro}
             className="inline-flex items-center gap-2 px-6 py-3.5 rounded-sm border border-[#17352F] text-[#17352F] hover:bg-[#17352F] hover:text-[#F7F4ED] text-xs uppercase tracking-widest font-semibold transition-all shrink-0 cursor-pointer shadow-sm group"
           >
-            <span>Meet the Vayosh Team</span>
+            <span>Meet the Nithya Mitra Team</span>
             <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </motion.button>
         </div>

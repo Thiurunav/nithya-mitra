@@ -57,7 +57,7 @@ export const FounderStory: React.FC = () => {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17352F] leading-tight mb-8"
             >
-              Why Vayosh exists
+              Why Nithya Mitra exists
             </motion.h2>
 
             <motion.div
@@ -74,10 +74,10 @@ export const FounderStory: React.FC = () => {
                 When parents age, normal life continues until suddenly it doesn't. A water pump breaks, a prescription needs checking, an orthopaedic doctor needs to be visited, or a monsoon storm leaves them sitting alone in a quiet house. Calling neighbours or distant relatives feels intrusive. Managing local handymen from 12 hours away feels frustrating.
               </p>
               <p className="font-serif italic text-lg sm:text-xl text-[#17352F] border-l-2 border-[#B86F55] pl-4 py-1 my-4">
-                "We did not build Vayosh to be an impersonal app or a faceless vendor directory. We built it to be a trusted, accountable extension of yourself on the ground in India."
+                "We did not build Nithya Mitra to be an impersonal app or a faceless vendor directory. We built it to be a trusted, accountable extension of yourself on the ground in India."
               </p>
               <p>
-                Whether it is sharing unhurried tea and conversation, escorting a parent to an eye appointment, checking on property upkeep, or being the first calm voice on the ground in an emergency — Vayosh exists so distance never leaves your parents feeling far away.
+                Whether it is sharing unhurried tea and conversation, escorting a parent to an eye appointment, checking on property upkeep, or being the first calm voice on the ground in an emergency — Nithya Mitra exists so distance never leaves your parents feeling far away.
               </p>
             </motion.div>
 
@@ -88,7 +88,7 @@ export const FounderStory: React.FC = () => {
                   Kumaresan
                 </span>
                 <span className="text-[11px] uppercase tracking-wider text-[#68716D] font-mono">
-                  Founder · Vayosh Coordination
+                  Founder · Nithya Mitra Coordination
                 </span>
               </div>
               <div className="text-right">

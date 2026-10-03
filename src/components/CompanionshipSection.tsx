@@ -151,7 +151,7 @@ export const CompanionshipSection: React.FC = () => {
         >
           <div className="max-w-2xl">
             <p className="font-serif text-lg sm:text-xl text-[#F7F4ED] leading-snug">
-              Vayosh is not here to replace family. It is here to make sure distance does not mean your parents are left feeling alone.
+              Nithya Mitra is not here to replace family. It is here to make sure distance does not mean your parents are left feeling alone.
             </p>
           </div>
 

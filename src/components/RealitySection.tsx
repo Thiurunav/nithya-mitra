@@ -68,7 +68,7 @@ export const RealitySection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-5 text-base sm:text-lg text-[#68716D] font-light leading-relaxed max-w-2xl"
           >
-            When you live thousands of miles away, coordinating everyday needs across timezones causes endless remote worry. Vayosh gives you one trusted local point of contact on the ground.
+            When you live thousands of miles away, coordinating everyday needs across timezones causes endless remote worry. Nithya Mitra gives you one trusted local point of contact on the ground.
           </motion.p>
         </div>
 

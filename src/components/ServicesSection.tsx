@@ -85,7 +85,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           </h2>
 
           <p className="mt-4 text-base sm:text-lg text-[#68716D] font-light max-w-xl">
-            Select a service to review how Vayosh coordinates on the ground and remains accountable.
+            Select a service to review how Nithya Mitra coordinates on the ground and remains accountable.
           </p>
         </div>
 
@@ -240,7 +240,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 
         {/* Accountability Disclaimer */}
         <div className="mt-12 text-center text-xs text-[#68716D] font-light max-w-2xl mx-auto">
-          Vayosh acts as your local coordinator and remains accountable for the journey. We do not claim to provide medical treatments or licensed trade works directly.
+          Nithya Mitra acts as your local coordinator and remains accountable for the journey. We do not claim to provide medical treatments or licensed trade works directly.
         </div>
 
       </div>

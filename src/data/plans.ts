@@ -3,7 +3,7 @@ import type { SupportPlan } from '../types';
 export const supportPlansData: SupportPlan[] = [
   {
     id: 'advanced',
-    name: 'Vayosh Advanced',
+    name: 'Nithya Mitra Advanced',
     badge: 'ESSENTIAL SUPPORT',
     audience: 'For independent parents who mainly need regular wellbeing checks, local coordination and a reliable point of contact.',
     features: [
@@ -20,7 +20,7 @@ export const supportPlansData: SupportPlan[] = [
   },
   {
     id: 'premium',
-    name: 'Vayosh Premium',
+    name: 'Nithya Mitra Premium',
     badge: 'ENHANCED SUPPORT',
     highlight: 'MOST COMPREHENSIVE',
     isPopular: true,
@@ -41,7 +41,7 @@ export const supportPlansData: SupportPlan[] = [
   },
   {
     id: 'elite',
-    name: 'Vayosh Elite',
+    name: 'Nithya Mitra Elite',
     badge: 'HIGH-TOUCH SUPPORT',
     audience: 'For families managing complex health, mobility or high-frequency day-to-day support needs from abroad.',
     features: [

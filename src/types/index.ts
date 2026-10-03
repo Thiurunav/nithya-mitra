@@ -64,7 +64,7 @@ export interface CaseStudyItem {
   location: string;
   familyLocation: string;
   problem: string;
-  whatVayoshCoordinated: string;
+  whatNithyaMitraCoordinated: string;
   familyUpdate: string;
   outcome: string;
   status: 'verified' | 'upcoming';

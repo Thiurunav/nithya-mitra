@@ -168,7 +168,7 @@ export const ProblemSection: React.FC = () => {
               </ul>
             </div>
             <div className="mt-8 pt-4 border-t border-[#17352F]/5 text-xs text-[#68716D] italic">
-              Vayosh was created precisely to answer these questions with accountability.
+              Nithya Mitra was created precisely to answer these questions with accountability.
             </div>
           </motion.div>
 

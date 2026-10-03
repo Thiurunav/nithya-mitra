@@ -71,7 +71,7 @@ export const HowItWorks: React.FC = () => {
                   <strong className="text-sm text-[#17352F]">8:00 AM PST / 4:00 PM GMT</strong>
                 </div>
                 <div className="p-3 bg-[#17352F] text-[#F7F4ED] rounded-sm">
-                  <span className="text-[10px] text-[#D8C8B3] block">Vayosh Lead (India)</span>
+                  <span className="text-[10px] text-[#D8C8B3] block">Nithya Mitra Lead (India)</span>
                   <strong className="text-sm text-[#FBFAF6]">9:30 PM IST (Chennai)</strong>
                 </div>
               </div>
@@ -90,13 +90,13 @@ export const HowItWorks: React.FC = () => {
                   <div className="w-12 h-12 rounded-full overflow-hidden bg-[#17352F] shrink-0">
                     <img
                       src="/vayosh-team-uniform.jpg"
-                      alt="Vayosh Lead"
+                      alt="Nithya Mitra Lead"
                       className="w-full h-full object-cover object-top"
                     />
                   </div>
                   <div>
                     <h5 className="text-sm font-serif font-semibold text-[#17352F]">
-                      Vayosh Designated Care Lead
+                      Nithya Mitra Designated Care Lead
                     </h5>
                     <span className="text-[11px] text-[#B86F55] font-mono">
                       Verified Photo ID · Official Polo Uniform
@@ -183,7 +183,7 @@ export const HowItWorks: React.FC = () => {
                       V
                     </div>
                     <div>
-                      <span className="text-xs font-semibold block leading-tight">Vayosh Lead · Chennai</span>
+                      <span className="text-xs font-semibold block leading-tight">Nithya Mitra Lead · Chennai</span>
                       <span className="text-[10px] text-white/80">Online · Dedicated Family Channel</span>
                     </div>
                   </div>

@@ -45,7 +45,7 @@ export const Testimonials: React.FC = () => {
           >
             <ShieldCheck className="w-4 h-4 text-[#17352F] shrink-0" />
             <span>
-              We do not fabricate testimonials. Real family video reflections will appear here as Vayosh supports families, strictly with their prior written consent.
+              We do not fabricate testimonials. Real family video reflections will appear here as Nithya Mitra supports families, strictly with their prior written consent.
             </span>
           </motion.div>
         </div>
@@ -139,7 +139,7 @@ export const Testimonials: React.FC = () => {
                 Family Story Recording Notice
               </h3>
               <p className="text-xs sm:text-sm text-[#17211F]/80 font-light leading-relaxed mb-6">
-                Vayosh is currently documenting video interviews with our founding NRI families across the US, UK, and Canada. To respect the privacy and dignity of our elders and their families, verified recordings will be released here once fully authenticated and licensed.
+                Nithya Mitra is currently documenting video interviews with our founding NRI families across the US, UK, and Canada. To respect the privacy and dignity of our elders and their families, verified recordings will be released here once fully authenticated and licensed.
               </p>
               <div className="p-4 bg-[#EFE8DC] rounded-sm text-xs text-[#17352F] font-mono mb-6">
                 Target Release: 2026 Customer Cohort Stories · High-Definition Documentary Series

@@ -7,8 +7,8 @@ export const FAQ: React.FC = () => {
 
   const faqs = [
     {
-      q: 'Does Vayosh help with loneliness and companionship?',
-      a: 'Yes. We coordinate agreed, unhurried wellbeing visits where our team sits down, listens, enjoys tea, and shares genuine conversation. However, Vayosh is strictly a human support service, not a medical psychiatric or clinical counselling practice.'
+      q: 'Does Nithya Mitra help with loneliness and companionship?',
+      a: 'Yes. We coordinate agreed, unhurried wellbeing visits where our team sits down, listens, enjoys tea, and shares genuine conversation. However, Nithya Mitra is strictly a human support service, not a medical psychiatric or clinical counselling practice.'
     },
     {
       q: 'Are you an elder-care agency or a family coordination service?',
@@ -29,7 +29,7 @@ export const FAQ: React.FC = () => {
   ];
 
   return (
-    <section id="faqs" className="py-20 md:py-28 bg-[#F7F4ED] border-b border-[#17352F]/10">
+    <section id="faq" className="py-20 md:py-28 bg-[#F7F4ED] border-b border-[#17352F]/10">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

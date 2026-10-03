@@ -8,7 +8,7 @@ export const TrustSection: React.FC = () => {
     {
       icon: ShieldCheck,
       title: 'Clear Accountability',
-      desc: 'One primary point of contact instead of making you chase multiple unknown vendors. When a task is assigned, your Vayosh care lead owns the journey until completion.'
+      desc: 'One primary point of contact instead of making you chase multiple unknown vendors. When a task is assigned, your Nithya Mitra care lead owns the journey until completion.'
     },
     {
       icon: Eye,
@@ -63,7 +63,7 @@ export const TrustSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-4 text-base sm:text-lg text-[#68716D] font-light max-w-2xl leading-relaxed"
           >
-            Because Vayosh deals with families, homes, health records and important local tasks, the trust system needs to be visible, documented, and tested every single day.
+            Because Nithya Mitra deals with families, homes, health records and important local tasks, the trust system needs to be visible, documented, and tested every single day.
           </motion.p>
         </div>
 

@@ -23,7 +23,7 @@ export const TrustAndLeadership: React.FC = () => {
   ];
 
   return (
-    <section id="trust" className="py-20 md:py-28 bg-[#FBFAF6] border-b border-[#17352F]/10">
+    <section id="about" className="py-20 md:py-28 bg-[#FBFAF6] border-b border-[#17352F]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Split: Founder Note & Local Presence */}
@@ -59,7 +59,7 @@ export const TrustAndLeadership: React.FC = () => {
             <div className="inline-flex items-center gap-2 mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#B86F55]">
-                WHY VAYOSH
+                WHY NITHYA MITRA
               </span>
             </div>
 
@@ -72,10 +72,10 @@ export const TrustAndLeadership: React.FC = () => {
                 Every NRI knows the silent anxiety of distance. You build an inspiring life in Dallas, London, Toronto, or Sydney — but home is still where your parents live.
               </p>
               <p className="font-serif italic text-lg text-[#17352F] border-l-2 border-[#B86F55] pl-4 py-0.5">
-                "We did not build Vayosh to be an impersonal software app. We built it to be a dependable, caring extension of yourself in India."
+                "We did not build Nithya Mitra to be an impersonal software app. We built it to be a dependable, caring extension of yourself in India."
               </p>
               <p>
-                Whether it is sharing unhurried tea and conversation, escorting a parent to an orthopaedic review, or being the first calm voice on the ground in an emergency — Vayosh exists so you never feel helpless from afar.
+                Whether it is sharing unhurried tea and conversation, escorting a parent to an orthopaedic review, or being the first calm voice on the ground in an emergency — Nithya Mitra exists so you never feel helpless from afar.
               </p>
             </div>
           </div>

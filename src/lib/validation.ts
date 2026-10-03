@@ -20,7 +20,7 @@ export const enquirySchema = z.object({
     .min(2, { message: 'Please specify the city/town in India where your family lives (e.g. Chennai)' }),
   whoToSupport: z.enum(
     ['Parents', 'One parent', 'Parents + other family members', 'Other'],
-    { message: 'Please select whom you would like Vayosh to support' }
+    { message: 'Please select whom you would like Nithya Mitra to support' }
   ),
   supportTypes: z
     .array(z.string())

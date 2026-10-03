@@ -11,7 +11,7 @@ export const SupportPlans: React.FC<SupportPlansProps> = ({ onSelectPlan }) => {
     {
       id: 'advanced',
       badge: 'ESSENTIAL',
-      name: 'Vayosh Advanced',
+      name: 'Nithya Mitra Advanced',
       forWhom: 'For independent parents who need regular checks and reliable local backup.',
       highlights: [
         'Bi-weekly scheduled parent wellbeing visits',
@@ -24,7 +24,7 @@ export const SupportPlans: React.FC<SupportPlansProps> = ({ onSelectPlan }) => {
     {
       id: 'premium',
       badge: 'ENHANCED · MOST CHOSEN',
-      name: 'Vayosh Premium',
+      name: 'Nithya Mitra Premium',
       isPopular: true,
       forWhom: 'For parents who need hands-on assistance and frequent healthcare liaison.',
       highlights: [
@@ -38,7 +38,7 @@ export const SupportPlans: React.FC<SupportPlansProps> = ({ onSelectPlan }) => {
     {
       id: 'elite',
       badge: 'HIGH-TOUCH',
-      name: 'Vayosh Elite',
+      name: 'Nithya Mitra Elite',
       forWhom: 'For families managing complex health, mobility, or post-operative needs.',
       highlights: [
         'Everything in Premium plan',

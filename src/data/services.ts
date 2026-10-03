@@ -28,7 +28,7 @@ export const servicesData: ServiceItem[] = [
     title: 'Healthcare Coordination',
     tagline: 'Coordinate appointments, hospital visits and communication with trusted healthcare partners.',
     description:
-      'Navigating India’s healthcare landscape remotely is stressful. Vayosh acts as your on-the-ground coordinator—scheduling consultations, ensuring your parents are accompanied, and transmitting doctor briefings back to you clearly.',
+      'Navigating India’s healthcare landscape remotely is stressful. Nithya Mitra acts as your on-the-ground coordinator—scheduling consultations, ensuring your parents are accompanied, and transmitting doctor briefings back to you clearly.',
     whatWeCoordinate: [
       'Appointment bookings with vetted specialists, geriatricians, and diagnostics labs',
       'Compassionate physical accompaniment to hospital consultations and diagnostic clinics',
@@ -110,12 +110,12 @@ export const servicesData: ServiceItem[] = [
     id: 'emergency-coordination',
     number: '06',
     title: 'Emergency Coordination',
-    tagline: 'When something unexpected happens, Vayosh provides a local point of contact to help coordinate next steps.',
+    tagline: 'When something unexpected happens, Nithya Mitra provides a local point of contact to help coordinate next steps.',
     description:
-      'The 3 AM phone call is every NRI’s quiet fear. In sudden crises, Vayosh provides an immediate, calm, reliable point of contact on the ground to coordinate ambulance dispatch, hospital liaison, and family communication.',
+      'The 3 AM phone call is every NRI’s quiet fear. In sudden crises, Nithya Mitra provides an immediate, calm, reliable point of contact on the ground to coordinate ambulance dispatch, hospital liaison, and family communication.',
     whatWeCoordinate: [
       'Immediate liaison with pre-designated private ambulance services and emergency departments',
-      'Dispatch of a Vayosh coordination representative to the emergency hospital reception',
+      'Dispatch of a Nithya Mitra coordination representative to the emergency hospital reception',
       'Real-time, level-headed updates to overseas family members regarding hospital admissions',
       'Liaison with attending hospital staff regarding initial formalities and emergency deposit logistics'
     ],
@@ -175,7 +175,7 @@ export const servicesData: ServiceItem[] = [
     title: 'Specialist Partner Coordination',
     tagline: 'Coordinate appropriate doctors, physiotherapy, carers, attendants and other qualified partners where required.',
     description:
-      'When your family’s needs exceed daily coordination, we connect you with vetted, licensed specialist partners. Vayosh does not provide medical or clinical care itself—we identify, vet, and coordinate accountable partner providers.',
+      'When your family’s needs exceed daily coordination, we connect you with vetted, licensed specialist partners. Nithya Mitra does not provide medical or clinical care itself—we identify, vet, and coordinate accountable partner providers.',
     whatWeCoordinate: [
       'Liaison with vetted geriatric homecare nursing and attendant agencies',
       'Coordination of certified home physiotherapists and occupational therapists',

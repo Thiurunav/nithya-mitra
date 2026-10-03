@@ -8,7 +8,7 @@ interface WhatsAppFloatingProps {
 
 export const WhatsAppFloating: React.FC<WhatsAppFloatingProps> = ({ onOpenEnquiry }) => {
   const whatsappUrl =
-    'https://wa.me/919789066588?text=Hi%20Vayosh%2C%20I%20found%20you%20online%20and%20would%20like%20to%20understand%20how%20you%20can%20support%20my%20family%20in%20India.';
+    'https://wa.me/919789066588?text=Hi%20Nithya Mitra%2C%20I%20found%20you%20online%20and%20would%20like%20to%20understand%20how%20you%20can%20support%20my%20family%20in%20India.';
 
   const handleEnquiry = () => {
     if (onOpenEnquiry) {
@@ -35,7 +35,7 @@ export const WhatsAppFloating: React.FC<WhatsAppFloatingProps> = ({ onOpenEnquir
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#17352F] text-[#F7F4ED] border border-[#D8C8B3]/30 shadow-[0_8px_24px_rgba(23,53,47,0.25)] hover:bg-[#21463F] hover:shadow-[0_12px_28px_rgba(23,53,47,0.35)] transition-all duration-300 group cursor-pointer"
-          aria-label="Direct WhatsApp line with Vayosh"
+          aria-label="Direct WhatsApp line with Nithya Mitra"
         >
           <div className="relative">
             <span className="animate-ping absolute -top-0.5 -right-0.5 inline-flex h-2 w-2 rounded-full bg-[#25D366] opacity-75" />

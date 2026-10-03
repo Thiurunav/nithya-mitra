@@ -40,7 +40,7 @@ export const CaseStudies: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-4 text-sm sm:text-base text-[#68716D] font-light max-w-2xl"
           >
-            How Vayosh structures on-ground execution for specific family scenarios. We do not publish simulated endorsements; each entry outlines our verified operational protocol.
+            How Nithya Mitra structures on-ground execution for specific family scenarios. We do not publish simulated endorsements; each entry outlines our verified operational protocol.
           </motion.p>
         </div>
 
@@ -86,13 +86,13 @@ export const CaseStudies: React.FC = () => {
                     </p>
                   </div>
 
-                  {/* What Vayosh Coordinated */}
+                  {/* What Nithya Mitra Coordinated */}
                   <div className="bg-[#F7F4ED] p-4 rounded-sm border-l-2 border-[#17352F] transition-transform duration-200 hover:translate-x-1">
                     <span className="text-[10px] uppercase font-mono tracking-widest text-[#17352F] block mb-1">
-                      02. What Vayosh Coordinated
+                      02. What Nithya Mitra Coordinated
                     </span>
                     <p className="text-xs sm:text-sm text-[#17211F]/80 leading-relaxed font-light">
-                      {cs.whatVayoshCoordinated}
+                      {cs.whatNithyaMitraCoordinated}
                     </p>
                   </div>
 

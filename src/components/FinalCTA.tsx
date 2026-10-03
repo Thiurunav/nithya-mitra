@@ -84,13 +84,13 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenEnquiry }) => {
           <motion.a
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            href="https://wa.me/919789066588?text=Hi%20Vayosh%2C%20I%20found%20you%20online%20and%20would%20like%20to%20understand%20how%20you%20can%20support%20my%20family%20in%20India."
+            href="https://wa.me/919789066588?text=Hi%20Nithya Mitra%2C%20I%20found%20you%20online%20and%20would%20like%20to%20understand%20how%20you%20can%20support%20my%20family%20in%20India."
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto px-7 py-4 border border-[#D8C8B3]/30 hover:border-[#D8C8B3] text-[#F7F4ED] hover:bg-[#21463F] text-xs uppercase tracking-widest font-semibold rounded-sm transition-all flex items-center justify-center gap-2"
           >
             <MessageCircle className="w-4 h-4 text-[#25D366]" />
-            <span>WhatsApp Vayosh</span>
+            <span>WhatsApp Nithya Mitra</span>
           </motion.a>
         </motion.div>
 

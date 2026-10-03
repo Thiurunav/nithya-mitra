@@ -8,7 +8,7 @@ export const GroundTeamSection: React.FC = () => {
     {
       icon: ShieldCheck,
       title: 'Identifiable Official Uniform & ID',
-      desc: 'Our coordinators wear the official Vayosh dark-green polo and present verified credentials before entering any family home.'
+      desc: 'Our coordinators wear the official Nithya Mitra dark-green polo and present verified credentials before entering any family home.'
     },
     {
       icon: UserCheck,
@@ -28,7 +28,7 @@ export const GroundTeamSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-[#FBFAF6] border-b border-[#17352F]/10 overflow-hidden">
+    <section id="trust" className="py-20 md:py-28 bg-[#FBFAF6] border-b border-[#17352F]/10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -86,7 +86,7 @@ export const GroundTeamSection: React.FC = () => {
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
                 <span className="text-[11px] font-mono uppercase tracking-widest text-[#B86F55] font-semibold block mb-1">
-                  OFFICIAL VAYOSH FIELD TEAM · CHENNAI HUB
+                  OFFICIAL NITHYA MITRA FIELD TEAM · CHENNAI HUB
                 </span>
                 <p className="font-serif italic text-lg sm:text-2xl text-[#FBFAF6]">
                   "When distance keeps you abroad, your family sees familiar, caring faces at the door."
