@@ -19,40 +19,35 @@ export const GlobalReachSection: React.FC = () => {
     restDelta: 0.001,
   });
 
-  // 1. Text Vertical Position & Scale:
-  // Starts lower (120px) -> Enters center (0px) -> Shrinks and glides up (-40px)
+  // 1. Text Vertical Position & Scale (No fade-in, solid text gliding up smoothly from bottom):
+  // Starts down ('55vh') -> Glides to center ('0vh') -> Shrinks and glides up ('-80px')
   const titleY = useTransform(
     smoothProgress,
-    [0, 0.28, 0.65],
-    [110, 0, -35]
+    [0, 0.32, 0.70],
+    ['55vh', '0vh', '-80px']
   );
   const titleScale = useTransform(
     smoothProgress,
-    [0, 0.28, 0.65],
-    [1.18, 1.18, 0.88]
-  );
-  const titleOpacity = useTransform(
-    smoothProgress,
-    [0, 0.18],
-    [0, 1]
+    [0, 0.32, 0.70],
+    [1.22, 1.22, 0.88]
   );
 
   // 2. Map Vertical Position, Scale & Opacity:
   // Rises smoothly from down below into the center as the text shrinks
   const mapY = useTransform(
     smoothProgress,
-    [0.24, 0.68],
-    ['42vh', '0vh']
+    [0.26, 0.72],
+    ['65vh', '0vh']
   );
   const mapScale = useTransform(
     smoothProgress,
-    [0.24, 0.68],
+    [0.26, 0.72],
     [0.85, 1.05]
   );
   const mapOpacity = useTransform(
     smoothProgress,
-    [0.24, 0.48],
-    [0, 1]
+    [0.26, 0.50],
+    [0.2, 1]
   );
 
   // 3. Bottom live coordination action bar (reveals smoothly beneath the centered map)
@@ -72,12 +67,11 @@ export const GlobalReachSection: React.FC = () => {
       {/* Sticky Viewport Frame (100vh) */}
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 select-none">
         
-        {/* Animated Header: Enters from bottom to center, then shrinks and glides up */}
+        {/* Animated Header: Glides smoothly from bottom to center, then shrinks and glides up */}
         <motion.div
           style={{
             y: titleY,
             scale: titleScale,
-            opacity: titleOpacity,
           }}
           className="z-20 text-center pointer-events-none will-change-transform mb-3 sm:mb-5"
         >
