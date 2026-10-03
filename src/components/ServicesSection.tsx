@@ -162,7 +162,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                 <div
                   key={card.id}
                   onClick={() => setSelectedService(card.fullService)}
-                  className="w-[340px] sm:w-[390px] h-[460px] shrink-0 rounded-3xl bg-white/95 border border-black/5 shadow-[0_8px_30px_rgba(23,53,47,0.04)] p-8 sm:p-9 flex flex-col justify-between group cursor-pointer hover:shadow-lg transition-all"
+                  className="w-[340px] sm:w-[390px] h-[460px] shrink-0 rounded-3xl bg-[#EFE8DC] border border-[#17352F]/10 shadow-[0_8px_24px_rgba(23,53,47,0.04)] p-8 sm:p-9 flex flex-col justify-between group cursor-pointer hover:shadow-md hover:bg-[#EAE2D4] transition-all"
                 >
                   {/* Floating Center Visual Image (Clean, No dark boxes or badges) */}
                   <div className="flex-1 flex items-center justify-center p-2">

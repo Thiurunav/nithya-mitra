@@ -1,222 +1,283 @@
 import React from 'react';
-import { Globe, ShieldCheck, CheckCheck, Video, PhoneCall } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { CheckCircle2, Loader2, Circle, Send, Plus, Mic } from 'lucide-react';
 
 export const HowItWorks: React.FC = () => {
   return (
-    <section id="how-it-works" className="py-24 md:py-32 bg-[#FBFAF6] border-b border-[#17352F]/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="how-it-works" className="py-24 sm:py-32 lg:py-40 bg-[#F7F4ED] text-[#17211F] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32 sm:space-y-40 lg:space-y-48">
         
-        {/* Header */}
-        <div className="max-w-3xl mb-16 md:mb-20">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#B86F55]">
-              THE JOURNEY
-            </span>
-          </div>
+        {/* ========================================================================= */}
+        {/* STORY 01: Nithya Mitra handles your paperwork & groundwork (Left text, Right canvas) */}
+        {/* ========================================================================= */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          
+          {/* Left Text Column */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-4 lg:pr-4"
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-serif font-normal text-[#17211F] leading-[1.18] tracking-tight mb-4">
+              Nithya Mitra does
+              <span className="block italic text-[#17352F]">the groundwork</span>
+            </h2>
+            <p className="text-sm sm:text-base text-[#17211F]/70 font-light leading-relaxed">
+              Handling clinic appointments, doctor notes, prescription delivery, and bank formalities smoothly, without delay.
+            </p>
+          </motion.div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17352F] leading-tight">
-            A simple system between you and home.
-          </h2>
+          {/* Right Canvas Column with Floating Task Progress Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-8 flex items-center justify-center"
+          >
+            <div className="relative w-full max-w-[680px] aspect-[16/10] sm:aspect-[16/9] rounded-[2.5rem] overflow-hidden shadow-[0_24px_60px_rgba(23,53,47,0.12)] border border-[#17352F]/10 flex items-center justify-center p-4 sm:p-8">
+              
+              {/* Soft Impressionist Ambient Motion-Blurred Background */}
+              <div
+                className="absolute inset-0 bg-cover bg-center filter blur-[1px] saturate-[1.1] scale-105"
+                style={{
+                  backgroundImage:
+                    'radial-gradient(ellipse at 30% 20%, #E8D399 0%, transparent 60%), radial-gradient(ellipse at 80% 80%, #9FB2A8 0%, transparent 60%), linear-gradient(135deg, #DFCEBA 0%, #C9BAA3 50%, #B2A28D 100%)',
+                }}
+              />
+              <div className="absolute inset-0 bg-black/5 backdrop-blur-[0.5px]" />
 
-          <p className="mt-4 text-base sm:text-lg text-[#68716D] font-light max-w-xl">
-            How remote worry transforms into documented on-ground care in three transparent stages.
-          </p>
+              {/* Center Floating White Status Card (Inspired by Lassie Screenshot 1) */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative z-10 w-full max-w-[420px] sm:max-w-[460px] bg-white/95 backdrop-blur-md rounded-2xl p-5 sm:p-6 shadow-2xl border border-black/5"
+              >
+                {/* Header */}
+                <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-black/5">
+                  <div className="w-5 h-5 rounded-full bg-[#17352F] flex items-center justify-center text-[10px] text-[#F7F4ED] font-serif font-bold">
+                    NM
+                  </div>
+                  <span className="text-xs font-semibold text-[#17211F] tracking-wide">
+                    Nithya Mitra coordinator active...
+                  </span>
+                </div>
+
+                {/* Task List */}
+                <div className="space-y-2.5 text-xs">
+                  {/* Task 1: Completed */}
+                  <div className="flex items-center justify-between p-2.5 rounded-xl bg-[#F7F4ED]/80 border border-black/5">
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <span className="font-medium text-[#17211F]">
+                        Accompanied eye clinic visit
+                      </span>
+                    </div>
+                    <span className="text-[11px] font-mono text-emerald-700 font-medium">
+                      Completed
+                    </span>
+                  </div>
+
+                  {/* Task 2: In progress */}
+                  <div className="flex items-center justify-between p-2.5 rounded-xl bg-white border border-black/8 shadow-xs">
+                    <div className="flex items-center gap-2.5">
+                      <Loader2 className="w-4 h-4 text-[#B86F55] animate-spin shrink-0" />
+                      <span className="font-medium text-[#17211F]">
+                        Collecting prescription & doctor notes
+                      </span>
+                    </div>
+                    <span className="text-[11px] font-mono text-[#B86F55] font-medium">
+                      In progress...
+                    </span>
+                  </div>
+
+                  {/* Task 3: Up next */}
+                  <div className="flex items-center justify-between p-2.5 rounded-xl bg-white/60 border border-black/5">
+                    <div className="flex items-center gap-2.5">
+                      <Circle className="w-4 h-4 text-black/30 shrink-0" />
+                      <span className="text-black/60">
+                        Evening welfare & tea check-in
+                      </span>
+                    </div>
+                    <span className="text-[11px] font-mono text-black/40">
+                      Up next
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+
+            </div>
+          </motion.div>
+
         </div>
 
-        {/* Narrative Journey: 3 Tangible, Visual Stages (No Generic Cards!) */}
-        <div className="space-y-12 lg:space-y-16">
+        {/* ========================================================================= */}
+        {/* STORY 02: Keeps you in the loop (Right text, Left canvas) */}
+        {/* ========================================================================= */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
-          {/* Stage 01: Timezone Consultation */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#F7F4ED] p-8 sm:p-10 rounded-sm border border-[#17352F]/12">
-            <div className="lg:col-span-6 space-y-4">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs uppercase tracking-widest text-[#B86F55] font-semibold">
-                  Stage 01
-                </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#17352F]/20" />
-                <span className="text-xs text-[#68716D] font-mono">
-                  Zero Obligation
-                </span>
-              </div>
+          {/* Left Canvas Column with Live Verification Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-8 order-2 lg:order-1 flex items-center justify-center"
+          >
+            <div className="relative w-full max-w-[680px] aspect-[16/10] sm:aspect-[16/9] rounded-[2.5rem] overflow-hidden shadow-[0_24px_60px_rgba(23,53,47,0.12)] border border-[#17352F]/10 flex items-center justify-center p-4 sm:p-8">
+              
+              {/* Soft Green Impressionist Blurred Background */}
+              <div
+                className="absolute inset-0 bg-cover bg-center filter blur-[1px] saturate-[1.1] scale-105"
+                style={{
+                  backgroundImage:
+                    'radial-gradient(ellipse at 70% 30%, #A8C4A0 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, #7E9C7E 0%, transparent 60%), linear-gradient(135deg, #99B299 0%, #6E886E 50%, #4B634B 100%)',
+                }}
+              />
+              <div className="absolute inset-0 bg-black/10 backdrop-blur-[0.5px]" />
 
-              <h3 className="text-2xl sm:text-3xl font-serif text-[#17352F]">
-                Tell us what matters most.
-              </h3>
-
-              <p className="text-sm sm:text-base text-[#17211F]/80 font-light leading-relaxed">
-                An unhurried 20-minute discussion over Zoom or WhatsApp scheduled around your local timezone. We listen to your parents' daily habits, preferred doctors, home maintenance needs, and the specific worries keeping you up at night.
-              </p>
-
-              <div className="pt-2 flex flex-wrap gap-3 text-xs text-[#17352F]">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-[#17352F]/10 rounded-sm">
-                  <Video className="w-3.5 h-3.5 text-[#B86F55]" />
-                  <span>Zoom / WhatsApp Video</span>
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-[#17352F]/10 rounded-sm">
-                  <Globe className="w-3.5 h-3.5 text-[#17352F]" />
-                  <span>PST · EST · GMT · AEDT Timezones</span>
-                </span>
-              </div>
-            </div>
-
-            {/* Timezone Visual Widget */}
-            <div className="lg:col-span-6 bg-white p-6 rounded-sm border border-[#17352F]/15 shadow-sm space-y-4">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-[#68716D] block border-b border-[#17352F]/10 pb-2">
-                Consultation Scheduling Preview
-              </span>
-              <div className="grid grid-cols-2 gap-3 text-xs">
-                <div className="p-3 bg-[#FBFAF6] rounded-sm border border-[#17352F]/10">
-                  <span className="text-[10px] text-[#68716D] block">Your Location (Abroad)</span>
-                  <strong className="text-sm text-[#17352F]">8:00 AM PST / 4:00 PM GMT</strong>
-                </div>
-                <div className="p-3 bg-[#17352F] text-[#F7F4ED] rounded-sm">
-                  <span className="text-[10px] text-[#D8C8B3] block">Nithya Mitra Lead (India)</span>
-                  <strong className="text-sm text-[#FBFAF6]">9:30 PM IST (Chennai)</strong>
-                </div>
-              </div>
-              <p className="text-xs text-[#68716D] italic">
-                "We speak your language — cultural understanding, regional family respect, and absolute discretion."
-              </p>
-            </div>
-          </div>
-
-          {/* Stage 02: On-Ground Execution */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#F7F4ED] p-8 sm:p-10 rounded-sm border border-[#17352F]/12">
-            <div className="lg:col-span-6 space-y-4 order-2 lg:order-1">
-              {/* Coordinator Credential Card */}
-              <div className="bg-white p-6 rounded-sm border border-[#17352F]/15 shadow-sm space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full overflow-hidden bg-[#17352F] shrink-0">
-                    <img
-                      src="/vayosh-team-uniform.jpg"
-                      alt="Nithya Mitra Lead"
-                      className="w-full h-full object-cover object-top"
-                    />
+              {/* Center Floating Notification Card (Inspired by Lassie Screenshot 2) */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative z-10 w-full max-w-[420px] sm:max-w-[460px] bg-white/95 backdrop-blur-md rounded-2xl p-5 sm:p-6 shadow-2xl border border-black/5"
+              >
+                {/* Header */}
+                <div className="flex items-start gap-2.5 mb-4 pb-3 border-b border-black/5">
+                  <div className="w-5 h-5 rounded-full bg-[#17352F] flex items-center justify-center text-[10px] text-[#F7F4ED] font-serif font-bold shrink-0 mt-0.5">
+                    NM
                   </div>
                   <div>
-                    <h5 className="text-sm font-serif font-semibold text-[#17352F]">
-                      Nithya Mitra Designated Care Lead
-                    </h5>
-                    <span className="text-[11px] text-[#B86F55] font-mono">
-                      Verified Photo ID · Official Polo Uniform
+                    <span className="text-xs font-semibold text-[#17211F] block leading-tight">
+                      Apollo Hospitals consultation completed
+                    </span>
+                    <span className="text-[11px] text-black/50 font-mono">
+                      Cardiology checkup & 30-day medicine refill
                     </span>
                   </div>
                 </div>
-                <div className="p-3 bg-[#FBFAF6] rounded-sm text-xs text-[#17211F]/80 leading-relaxed border border-[#17352F]/10">
-                  "Arrives at your parents' door with respect, punctuality, and verified authority. No strangers, no revolving gig workers."
-                </div>
-              </div>
-            </div>
 
-            <div className="lg:col-span-6 space-y-4 order-1 lg:order-2">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs uppercase tracking-widest text-[#B86F55] font-semibold">
-                  Stage 02
-                </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#17352F]/20" />
-                <span className="text-xs text-[#68716D] font-mono">
-                  Physical Ground Presence
-                </span>
-              </div>
-
-              <h3 className="text-2xl sm:text-3xl font-serif text-[#17352F]">
-                We coordinate on the ground.
-              </h3>
-
-              <p className="text-sm sm:text-base text-[#17211F]/80 font-light leading-relaxed">
-                Whether it is a scheduled wellbeing visit over morning filter coffee, escorting your mother through an appointment at Apollo or Fortis, or supervising an electrician fixing the distribution box, our coordinator owns the responsibility in person.
-              </p>
-
-              <div className="pt-2 flex flex-wrap gap-2 text-xs text-[#17352F]">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-[#17352F]/10 rounded-sm">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#17352F]" />
-                  <span>Physical Attendance</span>
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-[#17352F]/10 rounded-sm">
-                  <PhoneCall className="w-3.5 h-3.5 text-[#B86F55]" />
-                  <span>Direct Escalation Link</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Stage 03: Direct Transparent NRI Update (The WhatsApp Experience) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#F7F4ED] p-8 sm:p-10 rounded-sm border border-[#17352F]/12">
-            <div className="lg:col-span-6 space-y-4">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs uppercase tracking-widest text-[#B86F55] font-semibold">
-                  Stage 03
-                </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#17352F]/20" />
-                <span className="text-xs text-[#68716D] font-mono">
-                  Instant Documentation
-                </span>
-              </div>
-
-              <h3 className="text-2xl sm:text-3xl font-serif text-[#17352F]">
-                You stay completely informed.
-              </h3>
-
-              <p className="text-sm sm:text-base text-[#17211F]/80 font-light leading-relaxed">
-                You never have to wonder what happened. Following every visit or errand, you receive a concise, structured briefing on WhatsApp with timestamps, photos, doctor notes, and receipts so you have complete peace of mind.
-              </p>
-
-              <div className="pt-2 flex flex-wrap gap-2 text-xs text-[#17352F]">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-[#17352F]/10 rounded-sm">
-                  <CheckCheck className="w-3.5 h-3.5 text-[#25D366]" />
-                  <span>Structured WhatsApp Summaries</span>
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-[#17352F]/10 rounded-sm">
-                  <span>Photo & Audio Verification</span>
-                </span>
-              </div>
-            </div>
-
-            {/* Realistic WhatsApp Briefing Mockup */}
-            <div className="lg:col-span-6">
-              <div className="bg-[#EFEAE2] rounded-md border border-[#17352F]/20 shadow-md overflow-hidden max-w-md mx-auto">
-                {/* WhatsApp Header */}
-                <div className="bg-[#075E54] text-white px-4 py-2.5 flex items-center justify-between">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-full bg-[#25D366] text-white flex items-center justify-center font-bold text-xs">
-                      V
-                    </div>
-                    <div>
-                      <span className="text-xs font-semibold block leading-tight">Nithya Mitra Lead · Chennai</span>
-                      <span className="text-[10px] text-white/80">Online · Dedicated Family Channel</span>
-                    </div>
-                  </div>
-                  <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded font-mono">LIVE</span>
-                </div>
-
-                {/* Chat Bubble Area */}
-                <div className="p-4 space-y-3 text-xs">
-                  <div className="bg-white p-3.5 rounded-lg rounded-tl-none shadow-xs border border-black/5 max-w-[92%] space-y-2">
-                    <p className="text-[#17211F] leading-relaxed">
-                      <strong>Vanakkam Anand!</strong> Just completed the weekly parent visit in Mylapore with Appa and Amma.
-                    </p>
-                    <ul className="text-[11px] text-[#17211F]/80 space-y-1 list-disc pl-3">
-                      <li>Blood pressure recorded: <strong>124/82 mmHg</strong> (Normal).</li>
-                      <li>30-day cardiologist medication refill verified & delivered.</li>
-                      <li>Kitchen AC water drain checked — technician completed clearing.</li>
-                      <li>Shared afternoon filter coffee; both in cheerful spirits!</li>
-                    </ul>
-                    <div className="flex items-center justify-end gap-1 text-[10px] text-gray-500 pt-1">
-                      <span>11:42 AM IST</span>
-                      <CheckCheck className="w-3.5 h-3.5 text-[#34B7F1]" />
-                    </div>
+                {/* Verified Steps */}
+                <div className="space-y-2.5 text-xs">
+                  <div className="flex items-center gap-2 text-[#17211F]">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>Vitals & ECG readings recorded (124/82 mmHg)</span>
                   </div>
 
-                  <div className="text-center">
-                    <span className="text-[10px] text-gray-500 bg-white/70 px-2.5 py-0.5 rounded-full font-mono">
-                      Photos & Receipts Archived to Family Vault
-                    </span>
+                  <div className="p-2.5 rounded-xl bg-[#F7F4ED]/90 border border-black/5 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#B86F55]">📥</span>
+                      <span className="font-medium text-[#17211F]">Prescription verified & delivered to home</span>
+                    </div>
+                    <span className="text-[10px] font-mono text-black/40">30 doses</span>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-[#17211F]">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>Summary notes & voice check-in sent to WhatsApp</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
+
             </div>
-          </div>
+          </motion.div>
+
+          {/* Right Text Column */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-4 order-1 lg:order-2 lg:pl-4"
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-serif font-normal text-[#17211F] leading-[1.18] tracking-tight mb-4">
+              Keeps you
+              <span className="block italic text-[#17352F]">in the loop</span>
+            </h2>
+            <p className="text-sm sm:text-base text-[#17211F]/70 font-light leading-relaxed">
+              Watch your coordinator complete tasks on the ground in Chennai, sending you timestamped photos, doctor notes, and audio summaries.
+            </p>
+          </motion.div>
+
+        </div>
+
+        {/* ========================================================================= */}
+        {/* STORY 03: And answers your questions (Left text, Right canvas) */}
+        {/* ========================================================================= */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          
+          {/* Left Text Column */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-4 lg:pr-4"
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-serif font-normal text-[#17211F] leading-[1.18] tracking-tight mb-4">
+              And answers
+              <span className="block italic text-[#17352F]">your questions</span>
+            </h2>
+            <p className="text-sm sm:text-base text-[#17211F]/70 font-light leading-relaxed">
+              Need an update about your parents? Want to schedule an urgent clinic visit? Your dedicated coordinator in Chennai is always ready to help.
+            </p>
+          </motion.div>
+
+          {/* Right Canvas Column with Floating Search/Message Pill */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-8 flex items-center justify-center"
+          >
+            <div className="relative w-full max-w-[680px] aspect-[16/10] sm:aspect-[16/9] rounded-[2.5rem] overflow-hidden shadow-[0_24px_60px_rgba(23,53,47,0.12)] border border-[#17352F]/10 flex items-center justify-center p-4 sm:p-8">
+              
+              {/* Soft Floral / Rose Ambient Motion-Blurred Background */}
+              <div
+                className="absolute inset-0 bg-cover bg-center filter blur-[1px] saturate-[1.1] scale-105"
+                style={{
+                  backgroundImage:
+                    'radial-gradient(ellipse at 40% 40%, #E6C2BF 0%, transparent 60%), radial-gradient(ellipse at 80% 60%, #B8C7B4 0%, transparent 60%), linear-gradient(135deg, #D4B2AC 0%, #B0A09B 50%, #8E7F7A 100%)',
+                }}
+              />
+              <div className="absolute inset-0 bg-black/5 backdrop-blur-[0.5px]" />
+
+              {/* Center Floating Interactive Input Pill (Inspired by Lassie Screenshot 3) */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative z-10 w-full max-w-[460px] sm:max-w-[500px] bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-full px-4 sm:px-6 py-3.5 sm:py-4 shadow-2xl border border-black/5 flex items-center justify-between gap-3"
+              >
+                <div className="flex items-center gap-3 flex-1 min-w-0">
+                  <div className="w-6 h-6 rounded-full border border-black/15 flex items-center justify-center text-black/50 shrink-0">
+                    <Plus className="w-3.5 h-3.5" />
+                  </div>
+                  <span className="text-xs sm:text-sm text-[#17211F] font-normal truncate">
+                    Can we arrange a home visit for Appa tomorrow at 10 AM?
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <div className="w-7 h-7 rounded-full bg-black/5 flex items-center justify-center text-black/60">
+                    <Mic className="w-3.5 h-3.5" />
+                  </div>
+                  <div className="w-7 h-7 rounded-full bg-[#17352F] flex items-center justify-center text-white">
+                    <Send className="w-3 h-3 ml-0.5" />
+                  </div>
+                </div>
+              </motion.div>
+
+            </div>
+          </motion.div>
 
         </div>
 
