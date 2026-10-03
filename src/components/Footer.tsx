@@ -97,12 +97,12 @@ export const Footer: React.FC = () => {
     <footer className="bg-[#0E2420] text-[#F7F4ED] w-full border-t border-[#17352F] rounded-t-3xl pt-16 pb-12 shadow-2xl">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
-        {/* Main 4-Column + Brand Layout */}
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 pb-12 border-b border-[#21463F]/80">
+        {/* Main 12-Column Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-[#21463F]/80">
           
-          {/* Brand & Mission Column */}
-          <div>
-            <div className="flex items-center gap-3 justify-center sm:justify-start">
+          {/* Brand & Mission Column (Span 4) */}
+          <div className="lg:col-span-4 text-left">
+            <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-sm bg-[#F7F4ED] flex items-center justify-center text-[#17352F] font-serif font-bold text-sm tracking-wider">
                 NM
               </div>
@@ -111,16 +111,16 @@ export const Footer: React.FC = () => {
               </span>
             </div>
 
-            <p className="font-serif italic text-sm text-[#D8C8B3] mt-3 text-center sm:text-left">
+            <p className="font-serif italic text-sm text-[#D8C8B3] mt-3">
               {footerData.company.tagline}
             </p>
 
-            <p className="text-[#F7F4ED]/70 mt-4 max-w-md text-xs sm:text-sm text-center font-light leading-relaxed sm:max-w-xs sm:text-left">
+            <p className="text-[#F7F4ED]/70 mt-4 max-w-sm text-xs sm:text-sm font-light leading-relaxed">
               {footerData.company.description}
             </p>
 
             {/* Social Icons */}
-            <ul className="mt-7 flex justify-center gap-4 sm:justify-start">
+            <ul className="mt-7 flex items-center gap-3.5">
               {footerData.socialLinks.map(({ icon, label, href }) => (
                 <li key={label}>
                   <a
@@ -137,20 +137,20 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* 4 Links Sub-Columns (About Us, Services, Helpful Links, Contact Us) */}
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-2">
+          {/* 4 Links Columns (Span 8: 4 equal 2-col slots) */}
+          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-left">
             
             {/* Col 1: About Us */}
-            <div className="text-center sm:text-left">
-              <p className="text-sm font-serif font-medium tracking-wider text-[#D8C8B3] uppercase">
+            <div className="text-left">
+              <p className="text-xs sm:text-sm font-serif font-medium tracking-wider text-[#D8C8B3] uppercase">
                 About Us
               </p>
-              <ul className="mt-5 space-y-3.5 text-xs sm:text-sm">
+              <ul className="mt-4 space-y-3 text-xs sm:text-sm">
                 {footerData.aboutLinks.map(({ text, id }) => (
                   <li key={text}>
                     <button
                       onClick={() => scrollTo(id)}
-                      className="text-[#F7F4ED]/75 hover:text-[#FBFAF6] transition-colors cursor-pointer"
+                      className="text-[#F7F4ED]/75 hover:text-[#FBFAF6] transition-colors cursor-pointer text-left block"
                     >
                       {text}
                     </button>
@@ -160,16 +160,16 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Col 2: Services */}
-            <div className="text-center sm:text-left">
-              <p className="text-sm font-serif font-medium tracking-wider text-[#D8C8B3] uppercase">
+            <div className="text-left">
+              <p className="text-xs sm:text-sm font-serif font-medium tracking-wider text-[#D8C8B3] uppercase">
                 Our Services
               </p>
-              <ul className="mt-5 space-y-3.5 text-xs sm:text-sm">
+              <ul className="mt-4 space-y-3 text-xs sm:text-sm">
                 {footerData.serviceLinks.map(({ text, id }) => (
                   <li key={text}>
                     <button
                       onClick={() => scrollTo(id)}
-                      className="text-[#F7F4ED]/75 hover:text-[#FBFAF6] transition-colors cursor-pointer"
+                      className="text-[#F7F4ED]/75 hover:text-[#FBFAF6] transition-colors cursor-pointer text-left block"
                     >
                       {text}
                     </button>
@@ -179,11 +179,11 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Col 3: Helpful Links */}
-            <div className="text-center sm:text-left">
-              <p className="text-sm font-serif font-medium tracking-wider text-[#D8C8B3] uppercase">
+            <div className="text-left">
+              <p className="text-xs sm:text-sm font-serif font-medium tracking-wider text-[#D8C8B3] uppercase">
                 Helpful Links
               </p>
-              <ul className="mt-5 space-y-3.5 text-xs sm:text-sm">
+              <ul className="mt-4 space-y-3 text-xs sm:text-sm">
                 {footerData.helpfulLinks.map(({ text, id, href, hasIndicator }) => (
                   <li key={text}>
                     {href ? (
@@ -193,8 +193,8 @@ export const Footer: React.FC = () => {
                         rel="noopener noreferrer"
                         className={`${
                           hasIndicator
-                            ? 'inline-flex items-center justify-center gap-2 sm:justify-start text-[#FBFAF6] font-medium'
-                            : 'text-[#F7F4ED]/75 hover:text-[#FBFAF6] transition-colors'
+                            ? 'inline-flex items-center gap-2 text-[#FBFAF6] font-medium'
+                            : 'text-[#F7F4ED]/75 hover:text-[#FBFAF6] transition-colors block'
                         }`}
                       >
                         <span>{text}</span>
@@ -208,7 +208,7 @@ export const Footer: React.FC = () => {
                     ) : (
                       <button
                         onClick={() => scrollTo(id)}
-                        className="text-[#F7F4ED]/75 hover:text-[#FBFAF6] transition-colors cursor-pointer"
+                        className="text-[#F7F4ED]/75 hover:text-[#FBFAF6] transition-colors cursor-pointer text-left block"
                       >
                         {text}
                       </button>
@@ -219,23 +219,23 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Col 4: Contact Us */}
-            <div className="text-center sm:text-left">
-              <p className="text-sm font-serif font-medium tracking-wider text-[#D8C8B3] uppercase">
+            <div className="text-left">
+              <p className="text-xs sm:text-sm font-serif font-medium tracking-wider text-[#D8C8B3] uppercase">
                 Contact Us
               </p>
-              <ul className="mt-5 space-y-3.5 text-xs sm:text-sm">
+              <ul className="mt-4 space-y-3 text-xs sm:text-sm">
                 {footerData.contactInfo.map(({ icon: Icon, text, href, isAddress }) => (
                   <li key={text}>
                     {href ? (
                       <a
-                        className="flex items-center justify-center gap-2 sm:justify-start text-[#F7F4ED]/80 hover:text-[#D8C8B3] transition-colors"
+                        className="flex items-center gap-2 text-[#F7F4ED]/80 hover:text-[#D8C8B3] transition-colors"
                         href={href}
                       >
                         <Icon className="w-3.5 h-3.5 text-[#B86F55] shrink-0" />
                         <span>{text}</span>
                       </a>
                     ) : (
-                      <div className="flex items-start justify-center gap-2 sm:justify-start text-[#D8C8B3]">
+                      <div className="flex items-start gap-2 text-[#D8C8B3]">
                         <Icon className="w-3.5 h-3.5 text-[#B86F55] shrink-0 mt-0.5" />
                         {isAddress ? (
                           <address className="not-italic leading-relaxed">
