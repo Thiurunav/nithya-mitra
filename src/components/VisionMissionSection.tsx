@@ -27,18 +27,18 @@ export const VisionMissionSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="group relative h-[400px] sm:h-[440px] rounded-3xl overflow-hidden shadow-lg border border-[#17352F]/10 flex items-end cursor-pointer bg-[#17352F]"
+            className="group relative h-[380px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 dark:border-[#17352F]/20 flex items-end cursor-pointer bg-slate-900 select-none"
           >
-            {/* Background Image: Global NRI Family Connection */}
+            {/* Background Image */}
             <div 
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-105"
-              style={{ backgroundImage: `url('/vision-global-care.jpg')` }}
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-110"
+              style={{ backgroundImage: `url('/projects/visson.jpg')` }}
             />
-            {/* Subtle Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#17352F]/90 via-[#17352F]/40 to-transparent" />
+            {/* Dark Ambient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
 
             {/* Sliding Content Box (Zenin notch cutout architecture) */}
-            <div className="relative z-10 w-full h-[270px] sm:h-[290px] p-6 sm:p-8 bg-white text-[#17211F] rounded-tl-3xl transform translate-y-[calc(100%-76px)] sm:translate-y-[calc(100%-84px)] group-hover:translate-y-0 transition-transform duration-700 ease-in-out border-t border-l border-white/40 shadow-[0_-8px_25px_rgba(23,53,47,0.06)]">
+            <div className="relative z-10 w-full h-[260px] sm:h-[280px] p-6 sm:p-8 bg-white text-[#17211F] rounded-tl-3xl transform translate-y-[calc(100%-76px)] sm:translate-y-[calc(100%-84px)] group-hover:translate-y-0 transition-transform duration-700 ease-in-out border-t border-l border-white/20 shadow-xl">
               
               {/* Inverted Curved Notch Cutout (Top-Right of Content Box) */}
               <div 
@@ -49,17 +49,12 @@ export const VisionMissionSection: React.FC = () => {
                 }}
               />
 
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-2xl sm:text-3xl font-serif text-[#17352F] group-hover:text-[#B86F55] transition-colors">
-                  Our Vision
-                </h3>
-                <span className="text-[11px] font-mono font-medium text-[#B86F55] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#B86F55]/10 border border-[#B86F55]/20 opacity-0 group-hover:opacity-100 transition-opacity">
-                  Long-term
-                </span>
-              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold font-sans text-slate-900 mb-3 group-hover:text-[#6D28D9] transition-colors">
+                Our Vision
+              </h3>
 
-              <p className="text-xs sm:text-sm text-[#17211F]/80 font-light leading-relaxed">
-                To be the world’s most trusted eldercare bridge for NRI families — transforming physical distance from a source of constant anxiety into unconditional peace of mind, verified dignity, and dependable on-ground family care across India.
+              <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+                To emerge as a leading pioneer in software solutions and digital marketing by delivering high-quality, innovative, and reliable technology services. We are committed to integrating sustainable green practices while empowering businesses with advanced digital solutions that strengthen their market presence and drive long-term partner success.
               </p>
             </div>
           </motion.div>
@@ -70,18 +65,18 @@ export const VisionMissionSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="group relative h-[400px] sm:h-[440px] rounded-3xl overflow-hidden shadow-lg border border-[#17352F]/10 flex items-end cursor-pointer bg-[#17352F]"
+            className="group relative h-[380px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 dark:border-[#17352F]/20 flex items-end cursor-pointer bg-slate-900 select-none"
           >
-            {/* Background Image: Attentive On-Ground Doctor Coordination */}
+            {/* Background Image */}
             <div 
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-105"
-              style={{ backgroundImage: `url('/mission-ground-care.jpg')` }}
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-110"
+              style={{ backgroundImage: `url('/projects/mission.jpg')` }}
             />
-            {/* Subtle Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#17352F]/90 via-[#17352F]/40 to-transparent" />
+            {/* Dark Ambient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
 
             {/* Sliding Content Box (Zenin notch cutout architecture) */}
-            <div className="relative z-10 w-full h-[270px] sm:h-[290px] p-6 sm:p-8 bg-white text-[#17211F] rounded-tl-3xl transform translate-y-[calc(100%-76px)] sm:translate-y-[calc(100%-84px)] group-hover:translate-y-0 transition-transform duration-700 ease-in-out border-t border-l border-white/40 shadow-[0_-8px_25px_rgba(23,53,47,0.06)]">
+            <div className="relative z-10 w-full h-[260px] sm:h-[280px] p-6 sm:p-8 bg-white text-[#17211F] rounded-tl-3xl transform translate-y-[calc(100%-76px)] sm:translate-y-[calc(100%-84px)] group-hover:translate-y-0 transition-transform duration-700 ease-in-out border-t border-l border-white/20 shadow-xl">
               
               {/* Inverted Curved Notch Cutout (Top-Right of Content Box) */}
               <div 
@@ -92,17 +87,12 @@ export const VisionMissionSection: React.FC = () => {
                 }}
               />
 
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-2xl sm:text-3xl font-serif text-[#17352F] group-hover:text-[#B86F55] transition-colors">
-                  Our Mission
-                </h3>
-                <span className="text-[11px] font-mono font-medium text-[#B86F55] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#B86F55]/10 border border-[#B86F55]/20 opacity-0 group-hover:opacity-100 transition-opacity">
-                  Execution
-                </span>
-              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold font-sans text-slate-900 mb-3 group-hover:text-[#6D28D9] transition-colors">
+                Our Mission
+              </h3>
 
-              <p className="text-xs sm:text-sm text-[#17211F]/80 font-light leading-relaxed">
-                To provide compassionate, accountable family coordination in India through dedicated care leads, transparent medical reporting, accompanied hospital visits, and heartfelt companionship — caring for your parents with the exact devotion you would give yourself.
+              <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+                At Zenin Technology, our mission is to deliver high-quality software solutions and performance-driven digital marketing strategies that accelerate efficiency, innovation, and business growth. Through continuous improvement, customer-centric execution, and measurable outcomes, we set new industry benchmarks.
               </p>
             </div>
           </motion.div>
