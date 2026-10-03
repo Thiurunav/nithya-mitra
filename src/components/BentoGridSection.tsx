@@ -48,11 +48,11 @@ export const BentoGridSection: React.FC = () => {
 
             {/* Realistic iPhone Mockup Graphic */}
             <div className="relative z-10 w-full flex justify-center items-end mt-auto -mb-10 sm:-mb-14">
-              <div className="relative w-full max-w-[280px] sm:max-w-[300px] overflow-hidden rounded-t-[2.2rem] shadow-[0_20px_50px_rgba(17,36,31,0.3)] transition-transform duration-500 group-hover:-translate-y-2">
+              <div className="relative w-full max-w-[280px] sm:max-w-[300px] flex justify-center drop-shadow-[0_20px_35px_rgba(17,36,31,0.25)] transition-transform duration-500 group-hover:-translate-y-2">
                 <img
-                  src="/images/iphone_care_roadmap.jpg"
+                  src="/images/iphone_care_roadmap.png"
                   alt="Nithya Mitra On-ground Care Coordinator iPhone App"
-                  className="w-full h-auto object-cover object-top"
+                  className="w-full h-auto object-contain"
                   loading="lazy"
                 />
               </div>
@@ -91,11 +91,11 @@ export const BentoGridSection: React.FC = () => {
                 <div className="absolute w-44 h-44 rounded-full border border-[#8DA88D]/60 pointer-events-none" />
 
                 {/* Real iPhone Mockup */}
-                <div className="relative z-10 w-full max-w-[240px] sm:max-w-[260px] overflow-hidden rounded-2xl shadow-[0_16px_40px_rgba(23,53,47,0.18)] transition-transform duration-500 group-hover:scale-[1.02]">
+                <div className="relative z-10 w-full max-w-[240px] sm:max-w-[260px] flex justify-center drop-shadow-[0_16px_35px_rgba(23,53,47,0.22)] transition-transform duration-500 group-hover:scale-[1.03]">
                   <img
-                    src="/images/iphone_ground_data.jpg"
+                    src="/images/iphone_ground_data.png"
                     alt="Real-time Health and Doctor Visit Tracking iPhone UI"
-                    className="w-full h-auto object-cover"
+                    className="w-full h-auto object-contain"
                     loading="lazy"
                   />
                 </div>
