@@ -51,7 +51,7 @@
   .site-frame {
     z-index: 9999;
     pointer-events: none;
-    background-color: #17352F;
+    background-color: #FFFFFF;
     display: block;
     position: fixed;
   }
@@ -82,7 +82,7 @@
   .site-corner {
     z-index: 9998;
     pointer-events: none;
-    color: #17352F;
+    color: #FFFFFF;
     display: block;
     position: fixed;
   }
