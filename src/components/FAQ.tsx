@@ -1,88 +1,225 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+
+interface FAQItem {
+  id: string;
+  number: string;
+  title: string;
+  content: string;
+}
+
+const faqs: FAQItem[] = [
+  {
+    id: 'companionship',
+    number: '01',
+    title: 'Does Nithya Mitra help with loneliness and companionship?',
+    content:
+      'Yes. We coordinate agreed, unhurried wellbeing visits where our team sits down, listens, enjoys tea, and shares genuine conversation. However, Nithya Mitra is strictly a human support service, not a medical psychiatric or clinical counselling practice.',
+  },
+  {
+    id: 'agency-vs-coordination',
+    number: '02',
+    title: 'Are you an elder-care agency or a family coordination service?',
+    content:
+      'Parent support is our primary starting point, but our broader model is comprehensive family coordination for NRIs. In addition to visits, we handle ancestral property maintenance, hospital navigation, local errands, documents, and emergency liaison.',
+  },
+  {
+    id: 'updates',
+    number: '03',
+    title: 'How will I receive updates after a visit or errand?',
+    content:
+      'You receive structured notes, timestamped photos, and doctor briefings directly on your WhatsApp or email immediately following completion, formatted clearly for overseas family members across any timezone.',
+  },
+  {
+    id: 'medical-care',
+    number: '04',
+    title: 'Will you provide medical care yourselves?',
+    content:
+      'No, and we are deliberate about this. Where clinical treatment, surgery, or nursing is required, we coordinate vetted, licensed hospital and attendant partners, and supervise the logistics on your behalf.',
+  },
+  {
+    id: 'consultation',
+    number: '05',
+    title: 'What if I am not ready to choose a plan immediately?',
+    content:
+      'Start with our free 20-minute consultation. There is zero pressure to commit. We will discuss your family’s circumstances, answer questions honestly, and suggest what makes sense.',
+  },
+];
 
 export const FAQ: React.FC = () => {
-  const [openIdx, setOpenIdx] = useState<number | null>(0);
-
-  const faqs = [
-    {
-      q: 'Does Nithya Mitra help with loneliness and companionship?',
-      a: 'Yes. We coordinate agreed, unhurried wellbeing visits where our team sits down, listens, enjoys tea, and shares genuine conversation. However, Nithya Mitra is strictly a human support service, not a medical psychiatric or clinical counselling practice.'
-    },
-    {
-      q: 'Are you an elder-care agency or a family coordination service?',
-      a: 'Parent support is our primary starting point, but our broader model is comprehensive family coordination for NRIs. In addition to visits, we handle ancestral property maintenance, hospital navigation, local errands, documents, and emergency liaison.'
-    },
-    {
-      q: 'How will I receive updates after a visit or errand?',
-      a: 'You receive structured notes, timestamped photos, and doctor briefings directly on your WhatsApp or email immediately following completion, formatted clearly for overseas family members.'
-    },
-    {
-      q: 'Will you provide medical care yourselves?',
-      a: 'No, and we are deliberate about this. Where clinical treatment, surgery, or nursing is required, we coordinate vetted, licensed hospital and attendant partners, and supervise the logistics on your behalf.'
-    },
-    {
-      q: 'What if I am not ready to choose a plan immediately?',
-      a: 'Start with our free 20-minute consultation. There is zero pressure to purchase. We will discuss your family’s circumstances, answer questions honestly, and suggest what makes sense.'
-    }
-  ];
+  const [activeId, setActiveId] = useState<string | null>('companionship');
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <section id="faq" className="py-20 md:py-28 bg-[#F7F4ED] border-b border-[#17352F]/10">
+    <section id="faq" className="py-20 md:py-28 bg-[#F7F4ED] border-b border-[#17352F]/10 select-none">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 mb-3">
+        {/* Section Header */}
+        <div className="text-center mb-14 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#17352F]/12 bg-white/80 backdrop-blur-md text-[#17352F] text-xs font-medium mb-3 shadow-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#B86F55]">
-              COMMON QUESTIONS
-            </span>
+            <span>Common Questions</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-serif text-[#17352F]">
-            Straightforward answers.
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#17211F] tracking-tight leading-tight">
+            Straightforward <span className="italic text-[#B86F55]">answers.</span>
           </h2>
+          <p className="mt-3 text-xs sm:text-sm text-[#17211F]/70 font-light max-w-lg mx-auto">
+            Everything you need to know about our ground coordination model in Chennai.
+          </p>
         </div>
 
-        {/* Accordion List */}
-        <div className="space-y-3.5">
-          {faqs.map((item, idx) => {
-            const isOpen = openIdx === idx;
-            return (
-              <div
-                key={idx}
-                className="bg-[#FBFAF6] border border-[#17352F]/12 rounded-sm overflow-hidden"
-              >
-                <button
-                  onClick={() => setOpenIdx(isOpen ? null : idx)}
-                  className="w-full px-6 py-4.5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
-                >
-                  <span className="text-base sm:text-lg font-serif text-[#17352F]">
-                    {item.q}
-                  </span>
-                  <div
-                    className={`w-6 h-6 rounded-full border border-[#17352F]/20 flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 bg-[#17352F] text-[#F7F4ED]' : ''
-                    }`}
-                  >
-                    <ChevronDown className="w-3.5 h-3.5" />
-                  </div>
-                </button>
+        {/* Interactive Accordion */}
+        <div className="w-full space-y-0">
+          {faqs.map((item) => {
+            const isActive = activeId === item.id;
+            const isHovered = hoveredId === item.id;
 
-                <AnimatePresence>
-                  {isOpen && (
+            return (
+              <div key={item.id} className="relative">
+                <motion.button
+                  onClick={() => setActiveId(isActive ? null : item.id)}
+                  onMouseEnter={() => setHoveredId(item.id)}
+                  onMouseLeave={() => setHoveredId(null)}
+                  className="w-full group text-left cursor-pointer focus:outline-none relative py-5 sm:py-6 px-1"
+                  initial={false}
+                >
+                  <div className="flex items-center gap-4 sm:gap-6">
+                    {/* Number with animated circular highlight */}
+                    <div className="relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 shrink-0">
+                      <motion.div
+                        className="absolute inset-0 rounded-full bg-[#17352F]"
+                        initial={false}
+                        animate={{
+                          scale: isActive ? 1 : isHovered ? 0.85 : 0,
+                          opacity: isActive ? 1 : isHovered ? 0.12 : 0,
+                        }}
+                        transition={{
+                          type: 'spring',
+                          stiffness: 400,
+                          damping: 25,
+                        }}
+                      />
+                      <motion.span
+                        className="relative z-10 text-xs sm:text-sm font-mono font-medium tracking-wider"
+                        animate={{
+                          color: isActive ? '#F7F4ED' : '#17352F',
+                          opacity: isActive ? 1 : 0.6,
+                        }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {item.number}
+                      </motion.span>
+                    </div>
+
+                    {/* FAQ Title */}
+                    <motion.h3
+                      className="text-base sm:text-lg md:text-xl font-serif font-medium tracking-tight pr-2"
+                      animate={{
+                        x: isActive || isHovered ? 4 : 0,
+                        color: isActive
+                          ? '#17211F'
+                          : isHovered
+                          ? '#17352F'
+                          : '#17211F',
+                        opacity: isActive || isHovered ? 1 : 0.85,
+                      }}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 400,
+                        damping: 30,
+                      }}
+                    >
+                      {item.title}
+                    </motion.h3>
+
+                    {/* Animated Plus / Cross Indicator */}
+                    <div className="ml-auto flex items-center justify-center shrink-0">
+                      <motion.div
+                        className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center border transition-colors ${
+                          isActive
+                            ? 'border-[#17352F] bg-[#17352F] text-[#F7F4ED]'
+                            : 'border-[#17352F]/20 text-[#17352F]'
+                        }`}
+                        animate={{ rotate: isActive ? 45 : 0 }}
+                        transition={{
+                          type: 'spring',
+                          stiffness: 300,
+                          damping: 20,
+                        }}
+                      >
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          className="shrink-0"
+                        >
+                          <path
+                            d="M8 1V15M1 8H15"
+                            stroke="currentColor"
+                            strokeWidth="1.75"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                      </motion.div>
+                    </div>
+                  </div>
+
+                  {/* Base Underline */}
+                  <div className="absolute bottom-0 left-0 right-0 h-px bg-[#17352F]/10" />
+
+                  {/* Animated Progress Underline */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 h-px bg-[#17352F] origin-left"
+                    initial={{ scaleX: 0 }}
+                    animate={{
+                      scaleX: isActive ? 1 : isHovered ? 0.35 : 0,
+                    }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 300,
+                      damping: 30,
+                    }}
+                  />
+                </motion.button>
+
+                {/* Content Expand */}
+                <AnimatePresence mode="wait">
+                  {isActive && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25 }}
+                      animate={{
+                        height: 'auto',
+                        opacity: 1,
+                        transition: {
+                          height: { type: 'spring', stiffness: 300, damping: 30 },
+                          opacity: { duration: 0.2, delay: 0.08 },
+                        },
+                      }}
+                      exit={{
+                        height: 0,
+                        opacity: 0,
+                        transition: {
+                          height: { type: 'spring', stiffness: 300, damping: 30 },
+                          opacity: { duration: 0.15 },
+                        },
+                      }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-5 pt-1 text-xs sm:text-sm text-[#17211F]/80 font-light leading-relaxed border-t border-[#17352F]/5">
-                        {item.a}
-                      </div>
+                      <motion.div
+                        className="pl-13 sm:pl-16 pr-8 sm:pr-12 pb-6 pt-1 text-xs sm:text-sm text-[#17211F]/75 font-light leading-relaxed"
+                        initial={{ y: -6 }}
+                        animate={{ y: 0 }}
+                        exit={{ y: -6 }}
+                        transition={{
+                          type: 'spring',
+                          stiffness: 300,
+                          damping: 25,
+                        }}
+                      >
+                        {item.content}
+                      </motion.div>
                     </motion.div>
                   )}
                 </AnimatePresence>
