@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring, MotionValue } from 'framer-motion';
 
 interface WordItemProps {
@@ -16,10 +16,10 @@ const AnimatedWord: React.FC<WordItemProps> = ({
   progress,
   isAccent,
 }) => {
-  // Staggered scroll window per word across 0% to 80% of section scroll
-  const step = 0.80 / totalWords;
+  // Staggered scroll window per word across 0% to 75% of section scroll
+  const step = 0.75 / totalWords;
   const start = index * step;
-  const end = Math.min(start + step * 1.3, 0.86);
+  const end = Math.min(start + step * 1.35, 0.82);
 
   // Direction mixture: 0: top, 1: right, 2: down, 3: top-right, 4: down-right
   const dirPattern = index % 5;
@@ -51,29 +51,51 @@ const AnimatedWord: React.FC<WordItemProps> = ({
 
 export const ScrollRevealPhrase: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLHeadingElement>(null);
 
-  // 280vh container provides generous scroll runway
+  // Measure exact start and end pixel offsets dynamically
+  const [scrollRange, setScrollRange] = useState({ start: 400, end: -1600 });
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (textRef.current) {
+        const fullWidth = textRef.current.scrollWidth;
+        const windowWidth = window.innerWidth;
+        // Start: First word ("We") enters from the right
+        const startX = windowWidth * 0.4;
+        // End: Last word ("there.") lands right in the center of the viewport
+        const endX = windowWidth * 0.5 - fullWidth + 140;
+        setScrollRange({ start: startX, end: endX });
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
+  // 260vh container provides smooth, relaxed scroll pacing
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end'],
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 26,
+    stiffness: 85,
+    damping: 25,
     restDelta: 0.001,
   });
 
-  // Moves across until the very last word ("there.") reaches the exact center of the screen
+  // Moves across from start to end pixel coordinates cleanly across 0% to 84% scroll
   const containerX = useTransform(
     smoothProgress,
-    [0, 0.88],
-    ['60vw', 'calc(50vw - 100% + 2rem)']
+    [0, 0.84],
+    [scrollRange.start, scrollRange.end]
   );
   
-  // Only after the last word has completed and centered does it smoothly transition to the top
-  const containerY = useTransform(smoothProgress, [0.90, 1.0], ['0vh', '-35vh']);
-  const containerOpacity = useTransform(smoothProgress, [0.92, 1.0], [1, 0.1]);
+  // Only after the last word has arrived in center does it smoothly transition upwards
+  const containerY = useTransform(smoothProgress, [0.87, 1.0], ['0vh', '-35vh']);
+  const containerOpacity = useTransform(smoothProgress, [0.90, 1.0], [1, 0.1]);
 
   const words = [
     'We',
@@ -104,7 +126,7 @@ export const ScrollRevealPhrase: React.FC = () => {
   return (
     <section
       ref={containerRef}
-      className="relative h-[280vh] bg-[#F7F4ED] text-[#17211F] select-none"
+      className="relative h-[260vh] bg-[#F7F4ED] text-[#17211F] select-none"
     >
       {/* Sticky Viewport Stage */}
       <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
@@ -114,7 +136,10 @@ export const ScrollRevealPhrase: React.FC = () => {
           style={{ x: containerX, y: containerY, opacity: containerOpacity }}
           className="whitespace-nowrap flex items-center will-change-transform"
         >
-          <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-[6.5rem] font-serif font-normal text-[#17211F] tracking-tight leading-none px-6">
+          <h2
+            ref={textRef}
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-[6.5rem] font-serif font-normal text-[#17211F] tracking-tight leading-none px-6"
+          >
             {words.map((word, i) => (
               <AnimatedWord
                 key={i}
@@ -132,6 +157,7 @@ export const ScrollRevealPhrase: React.FC = () => {
     </section>
   );
 };
+
 
 
 
