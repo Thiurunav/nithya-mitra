@@ -1,6 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Eye,
+  Target,
+  Clock,
+  Calendar,
+  ShieldCheck,
+} from 'lucide-react';
 
 export const VisionMissionSection: React.FC = () => {
   return (
@@ -8,7 +15,7 @@ export const VisionMissionSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#17352F]/15 bg-white/80 backdrop-blur-md text-[#17352F] text-xs font-medium mb-4 shadow-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
             <span>Our Purpose & Direction</span>
@@ -19,172 +26,186 @@ export const VisionMissionSection: React.FC = () => {
           </h2>
         </div>
 
-        {/* 2-Column Zenin Signature Interactive S-Curve Tabbed Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+        {/* 2-Column Grid with 3D Perspective Floating Widget Cards (In Nithya Mitra Forest & Terracotta Theme) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
           
           {/* ========================================================================= */}
-          {/* Card 1: Our Vision (Zenin S-Curve Tab Architecture in Nithya Mitra Theme) */}
+          {/* Card 1: Our Vision */}
           {/* ========================================================================= */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="p-2 sm:p-2.5 bg-white rounded-3xl border border-[#17352F]/10 shadow-[0_12px_35px_rgba(23,53,47,0.06)]"
+            className="group relative rounded-[28px] p-6 sm:p-7 lg:p-8 bg-gradient-to-br from-[#0D211C] via-[#17352F] to-[#254F46] text-white overflow-hidden shadow-2xl hover:shadow-[0_24px_50px_rgba(23,53,47,0.25)] transition-all duration-500 flex flex-col justify-between cursor-pointer border border-[#B86F55]/25 hover:border-[#B86F55]/60 hover:-translate-y-1.5 min-h-[320px] sm:min-h-[340px]"
           >
-            <div className="group relative w-full aspect-[4/5] sm:aspect-[1/1] lg:aspect-[4/5] overflow-hidden rounded-2xl isolate cursor-pointer bg-[#FAF7F0]">
-              
-              {/* Fixed Background Image with Smooth Zoom */}
-              <div
-                className="absolute inset-0 w-full h-full -z-10"
-                style={{ clipPath: "polygon(0 0, 100% 0, 100% 85%, 0 85%)" }}
-              >
-                <img
-                  src="/vision-minimal-light.jpg"
-                  alt="Our Vision"
-                  className="w-full h-full object-cover transition-transform duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-108"
-                />
+            {/* Diagonal Light Beam Pattern Overlay (Terracotta & Golden Rays) */}
+            <svg
+              className="absolute inset-0 w-full h-full pointer-events-none opacity-35 group-hover:opacity-55 transition-opacity duration-700"
+              viewBox="0 0 600 300"
+              preserveAspectRatio="none"
+              fill="none"
+            >
+              <polygon points="180,0 600,0 600,300 360,300" fill="url(#greenRay1)" />
+              <polygon points="320,0 600,0 600,220" fill="url(#greenRay2)" />
+              <polygon points="450,0 600,0 600,120" fill="url(#greenRay3)" />
+              <defs>
+                <linearGradient id="greenRay1" x1="0%" y1="0%" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#ffffff" stopOpacity="0.22" />
+                  <stop offset="100%" stopColor="#ffffff" stopOpacity="0.02" />
+                </linearGradient>
+                <linearGradient id="greenRay2" x1="0%" y1="0%" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#B86F55" stopOpacity="0.35" />
+                  <stop offset="100%" stopColor="#B86F55" stopOpacity="0.0" />
+                </linearGradient>
+                <linearGradient id="greenRay3" x1="0%" y1="0%" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#E5C79E" stopOpacity="0.25" />
+                  <stop offset="100%" stopColor="#E5C79E" stopOpacity="0.0" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            {/* Top Icon Row */}
+            <div className="relative z-10 flex items-center justify-between mb-4">
+              <div className="w-11 h-11 rounded-full bg-white/12 backdrop-blur-md border border-white/20 flex items-center justify-center text-[#E5C79E] shadow-sm group-hover:scale-105 transition-transform">
+                <Eye size={20} />
+              </div>
+              <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white/90 group-hover:bg-[#B86F55] group-hover:text-white transition-all shadow-sm">
+                <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </div>
+            </div>
+
+            {/* Main Content Grid */}
+            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-12 gap-5 items-center flex-1">
+              <div className="sm:col-span-6 flex flex-col justify-center">
+                <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-[#E5C79E] mb-1 block">
+                  01 · Long-Term Vision
+                </span>
+                <h3 className="text-xl sm:text-2xl font-serif tracking-tight text-white mb-2 leading-snug group-hover:text-[#E5C79E] transition-colors">
+                  Our Vision
+                </h3>
+                <p className="text-xs sm:text-sm font-light text-white/80 leading-relaxed">
+                  Transforming geographical distance into unconditional peace of mind, verified dignity, and dependable on-ground family care across India.
+                </p>
               </div>
 
-              {/* Sliding S-Curve Text Layer (Glides up smoothly on hover) */}
-              <div className="absolute inset-x-0 bottom-0 h-[72%] flex flex-col transform transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] translate-y-[28%] group-hover:translate-y-0">
-                
-                {/* Top Tab with Number + S-Curve SVG */}
-                <div className="flex w-full h-[48px] sm:h-[56px] shrink-0 z-20">
-                  {/* Left Tab */}
-                  <div className="relative z-20 w-[28%] sm:w-[24%] h-full bg-white rounded-tl-2xl flex items-end pb-1 pl-6 sm:pl-7">
-                    <span className="text-3xl sm:text-4xl font-serif font-medium tracking-tight text-[#B86F55] translate-y-2">
-                      01
-                    </span>
+              {/* 3D Code-Driven White Theme Status Widget */}
+              <div className="sm:col-span-6 relative w-full flex items-center justify-center sm:justify-end [perspective:1000px]">
+                <div className="w-full max-w-[245px] bg-white/95 backdrop-blur-xl border border-white/80 rounded-2xl p-3.5 shadow-2xl text-[#17211F] [transform:rotateY(-16deg)_rotateX(10deg)] group-hover:[transform:rotateY(-6deg)_rotateX(4deg)_scale(1.03)] transition-all duration-500 ease-out select-none">
+                  <div className="flex items-center justify-between border-b border-[#17352F]/10 pb-2 mb-2.5">
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      <span className="text-[10px] font-bold tracking-wide uppercase text-[#17352F]">CHENNAI HUB • LIVE</span>
+                    </div>
+                    <Clock size={12} className="text-[#B86F55]" />
+                  </div>
+                  
+                  <div className="space-y-1.5 text-[10px]">
+                    <div className="bg-[#F7F4ED] border border-[#17352F]/10 rounded-lg p-1.5 flex items-center justify-between">
+                      <div>
+                        <p className="font-semibold text-[#17211F]">Karthik R., Care Lead</p>
+                        <p className="text-[9px] text-[#17211F]/60">South Chennai • Active</p>
+                      </div>
+                      <span className="bg-emerald-100 text-emerald-800 text-[9px] px-1.5 py-0.5 rounded font-semibold border border-emerald-200">On Duty</span>
+                    </div>
+                    <div className="bg-[#F7F4ED] border border-[#17352F]/10 rounded-lg p-1.5 flex items-center justify-between">
+                      <div>
+                        <p className="font-semibold text-[#17211F]">Apollo Medical Review</p>
+                        <p className="text-[9px] text-[#17211F]/60">Accompanied & Verified</p>
+                      </div>
+                      <span className="bg-[#B86F55]/15 text-[#B86F55] text-[9px] px-1.5 py-0.5 rounded font-semibold border border-[#B86F55]/30">Verified</span>
+                    </div>
                   </div>
 
-                  {/* SVG S-Curve Bridging Tab to Main Body */}
-                  <svg
-                    className="w-[60px] sm:w-[80px] h-full fill-white shrink-0"
-                    viewBox="0 0 80 56"
-                    preserveAspectRatio="none"
-                  >
-                    <path d="M0,0 C40,0 40,56 80,56 L0,56 Z" />
-                  </svg>
-
-                  <div className="flex-1 relative" />
+                  <div className="mt-2.5 pt-2 border-t border-[#17352F]/10 flex items-center justify-between text-[9px] text-[#17211F]/70">
+                    <span>Family Peace of Mind</span>
+                    <span className="font-bold text-[#17352F]">100% Guaranteed</span>
+                  </div>
                 </div>
-
-                {/* Main Body of Card */}
-                <div className="flex-1 w-full bg-white rounded-tr-2xl px-6 sm:px-8 pb-7 pt-3 flex flex-col relative z-10 -mt-[2px] shadow-2xl">
-                  {/* Concave curve at bottom-left */}
-                  <svg
-                    className="absolute -top-[12px] left-0 w-[12px] h-[12px] fill-white"
-                    viewBox="0 0 12 12"
-                    preserveAspectRatio="none"
-                  >
-                    <path d="M12,12 Q0,12 0,0 L12,0 Z" />
-                  </svg>
-
-                  {/* Animated Arrow Icon */}
-                  <div className="absolute top-2 right-4 sm:right-6 w-9 h-9 rounded-full bg-[#F7F4ED] flex items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1 group-hover:-translate-y-1">
-                    <ArrowUpRight className="w-4 h-4 text-[#B86F55]" />
-                  </div>
-
-                  <div className="mt-1 sm:mt-2 mb-2">
-                    <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-[#B86F55] block mb-0.5">
-                      Long-Term Vision
-                    </span>
-                    <h3 className="text-2xl sm:text-3xl font-serif text-[#17352F] pr-8 group-hover:text-[#B86F55] transition-colors">
-                      Our Vision
-                    </h3>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-[#17211F]/75 font-light leading-relaxed">
-                    To be the world’s most trusted eldercare bridge for NRI families — transforming physical distance from a source of constant anxiety into unconditional peace of mind, verified dignity, and dependable on-ground family care across India.
-                  </p>
-                </div>
-
               </div>
-
             </div>
           </motion.div>
 
           {/* ========================================================================= */}
-          {/* Card 2: Our Mission (Zenin S-Curve Tab Architecture in Nithya Mitra Theme) */}
+          {/* Card 2: Our Mission */}
           {/* ========================================================================= */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="p-2 sm:p-2.5 bg-white rounded-3xl border border-[#17352F]/10 shadow-[0_12px_35px_rgba(23,53,47,0.06)]"
+            className="group relative rounded-[28px] p-6 sm:p-7 lg:p-8 bg-gradient-to-br from-[#0D211C] via-[#17352F] to-[#254F46] text-white overflow-hidden shadow-2xl hover:shadow-[0_24px_50px_rgba(23,53,47,0.25)] transition-all duration-500 flex flex-col justify-between cursor-pointer border border-[#B86F55]/25 hover:border-[#B86F55]/60 hover:-translate-y-1.5 min-h-[320px] sm:min-h-[340px]"
           >
-            <div className="group relative w-full aspect-[4/5] sm:aspect-[1/1] lg:aspect-[4/5] overflow-hidden rounded-2xl isolate cursor-pointer bg-[#FAF7F0]">
-              
-              {/* Fixed Background Image with Smooth Zoom */}
-              <div
-                className="absolute inset-0 w-full h-full -z-10"
-                style={{ clipPath: "polygon(0 0, 100% 0, 100% 85%, 0 85%)" }}
-              >
-                <img
-                  src="/mission-minimal-light.jpg"
-                  alt="Our Mission"
-                  className="w-full h-full object-cover transition-transform duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-108"
-                />
+            {/* Diagonal Light Beam Pattern Overlay (Terracotta & Golden Rays) */}
+            <svg
+              className="absolute inset-0 w-full h-full pointer-events-none opacity-35 group-hover:opacity-55 transition-opacity duration-700"
+              viewBox="0 0 600 300"
+              preserveAspectRatio="none"
+              fill="none"
+            >
+              <polygon points="180,0 600,0 600,300 360,300" fill="url(#greenRay1)" />
+              <polygon points="320,0 600,0 600,220" fill="url(#greenRay2)" />
+              <polygon points="450,0 600,0 600,120" fill="url(#greenRay3)" />
+            </svg>
+
+            {/* Top Icon Row */}
+            <div className="relative z-10 flex items-center justify-between mb-4">
+              <div className="w-11 h-11 rounded-full bg-white/12 backdrop-blur-md border border-white/20 flex items-center justify-center text-[#E5C79E] shadow-sm group-hover:scale-105 transition-transform">
+                <Target size={20} />
+              </div>
+              <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white/90 group-hover:bg-[#B86F55] group-hover:text-white transition-all shadow-sm">
+                <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </div>
+            </div>
+
+            {/* Main Content Grid */}
+            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-12 gap-5 items-center flex-1">
+              <div className="sm:col-span-6 flex flex-col justify-center">
+                <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-[#E5C79E] mb-1 block">
+                  02 · Ground Execution
+                </span>
+                <h3 className="text-xl sm:text-2xl font-serif tracking-tight text-white mb-2 leading-snug group-hover:text-[#E5C79E] transition-colors">
+                  Our Mission
+                </h3>
+                <p className="text-xs sm:text-sm font-light text-white/80 leading-relaxed">
+                  Dedicated on-ground coordinators in Chennai bridging time zones, accompanied doctor visits, and heartfelt companionship for your parents.
+                </p>
               </div>
 
-              {/* Sliding S-Curve Text Layer (Glides up smoothly on hover) */}
-              <div className="absolute inset-x-0 bottom-0 h-[72%] flex flex-col transform transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] translate-y-[28%] group-hover:translate-y-0">
-                
-                {/* Top Tab with Number + S-Curve SVG */}
-                <div className="flex w-full h-[48px] sm:h-[56px] shrink-0 z-20">
-                  {/* Left Tab */}
-                  <div className="relative z-20 w-[28%] sm:w-[24%] h-full bg-white rounded-tl-2xl flex items-end pb-1 pl-6 sm:pl-7">
-                    <span className="text-3xl sm:text-4xl font-serif font-medium tracking-tight text-[#17352F] translate-y-2">
-                      02
-                    </span>
+              {/* 3D Code-Driven White Theme Status Widget */}
+              <div className="sm:col-span-6 relative w-full flex items-center justify-center sm:justify-end [perspective:1000px]">
+                <div className="w-full max-w-[245px] bg-white/95 backdrop-blur-xl border border-white/80 rounded-2xl p-3.5 shadow-2xl text-[#17211F] [transform:rotateY(-16deg)_rotateX(10deg)] group-hover:[transform:rotateY(-6deg)_rotateX(4deg)_scale(1.03)] transition-all duration-500 ease-out select-none">
+                  <div className="flex items-center justify-between border-b border-[#17352F]/10 pb-2 mb-2.5">
+                    <div className="flex items-center gap-1.5">
+                      <Calendar size={12} className="text-[#B86F55]" />
+                      <span className="text-[10px] font-bold tracking-wide uppercase text-[#17352F]">DAILY CARE TIMELINE</span>
+                    </div>
+                    <ShieldCheck size={13} className="text-emerald-600" />
+                  </div>
+                  
+                  <div className="space-y-1.5 text-[10px]">
+                    <div className="bg-[#F7F4ED] border border-[#17352F]/10 rounded-lg p-1.5 flex items-center justify-between">
+                      <div>
+                        <p className="font-semibold text-[#17211F]">Morning Vitals & Refill</p>
+                        <p className="text-[9px] text-[#17211F]/60">08:30 AM • Delivered</p>
+                      </div>
+                      <span className="bg-emerald-100 text-emerald-800 text-[9px] px-1.5 py-0.5 rounded font-semibold border border-emerald-200">Done</span>
+                    </div>
+                    <div className="bg-[#F7F4ED] border border-[#17352F]/10 rounded-lg p-1.5 flex items-center justify-between">
+                      <div>
+                        <p className="font-semibold text-[#17211F]">Evening Walk & Tea</p>
+                        <p className="text-[9px] text-[#17211F]/60">05:00 PM • Accompanied</p>
+                      </div>
+                      <span className="bg-[#B86F55]/15 text-[#B86F55] text-[9px] px-1.5 py-0.5 rounded font-semibold border border-[#B86F55]/30">Scheduled</span>
+                    </div>
                   </div>
 
-                  {/* SVG S-Curve Bridging Tab to Main Body */}
-                  <svg
-                    className="w-[60px] sm:w-[80px] h-full fill-white shrink-0"
-                    viewBox="0 0 80 56"
-                    preserveAspectRatio="none"
-                  >
-                    <path d="M0,0 C40,0 40,56 80,56 L0,56 Z" />
-                  </svg>
-
-                  <div className="flex-1 relative" />
+                  <div className="mt-2.5 pt-2 border-t border-[#17352F]/10 flex items-center justify-between text-[9px] text-[#17211F]/70">
+                    <span>Monthly Care Tasks</span>
+                    <span className="font-bold text-emerald-700">100% Completed</span>
+                  </div>
                 </div>
-
-                {/* Main Body of Card */}
-                <div className="flex-1 w-full bg-white rounded-tr-2xl px-6 sm:px-8 pb-7 pt-3 flex flex-col relative z-10 -mt-[2px] shadow-2xl">
-                  {/* Concave curve at bottom-left */}
-                  <svg
-                    className="absolute -top-[12px] left-0 w-[12px] h-[12px] fill-white"
-                    viewBox="0 0 12 12"
-                    preserveAspectRatio="none"
-                  >
-                    <path d="M12,12 Q0,12 0,0 L12,0 Z" />
-                  </svg>
-
-                  {/* Animated Arrow Icon */}
-                  <div className="absolute top-2 right-4 sm:right-6 w-9 h-9 rounded-full bg-[#F7F4ED] flex items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1 group-hover:-translate-y-1">
-                    <ArrowUpRight className="w-4 h-4 text-[#17352F]" />
-                  </div>
-
-                  <div className="mt-1 sm:mt-2 mb-2">
-                    <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-[#17352F] block mb-0.5">
-                      Ground Execution
-                    </span>
-                    <h3 className="text-2xl sm:text-3xl font-serif text-[#17352F] pr-8 group-hover:text-[#B86F55] transition-colors">
-                      Our Mission
-                    </h3>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-[#17211F]/75 font-light leading-relaxed">
-                    To provide compassionate, accountable family coordination in India through dedicated care leads, transparent medical reporting, accompanied hospital visits, and heartfelt companionship — caring for your parents with the exact devotion you would give yourself.
-                  </p>
-                </div>
-
               </div>
-
             </div>
           </motion.div>
 
