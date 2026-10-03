@@ -21,6 +21,7 @@ export const HowItWorks: React.FC = () => {
           </p>
         </div>
 
+
         {/* ========================================================================= */}
         {/* STEP 01: Initial Consultation & Needs Assessment */}
         {/* ========================================================================= */}
@@ -64,41 +65,41 @@ export const HowItWorks: React.FC = () => {
             </ul>
           </motion.div>
 
-          {/* Right Canvas Column with Step 01 Intake Card */}
+          {/* Right Canvas Column with Step 01 3D Perspective Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 flex items-center justify-center"
+            className="lg:col-span-7 flex items-center justify-center [perspective:1200px]"
           >
-            <div className="relative w-full max-w-[620px] aspect-[16/11] sm:aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(23,53,47,0.08)] border border-[#17352F]/10 flex items-center justify-center p-4 sm:p-8 bg-[#EAE5DB]/60">
+            <div className="group relative w-full max-w-[620px] aspect-[16/11] sm:aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-[0_24px_55px_rgba(23,53,47,0.09)] border border-[#17352F]/10 flex items-center justify-center p-4 sm:p-8 bg-[#EAE5DB]/60 hover:shadow-[0_30px_70px_rgba(23,53,47,0.14)] transition-all duration-500 cursor-pointer">
               
               {/* Soft Ambient Backdrop */}
               <div
-                className="absolute inset-0 bg-cover bg-center filter blur-[2px] saturate-[1.1] scale-105 opacity-60"
+                className="absolute inset-0 bg-cover bg-center filter blur-[1px] saturate-[1.1] scale-105 opacity-70 group-hover:scale-110 transition-transform duration-700"
                 style={{
                   backgroundImage:
                     'radial-gradient(ellipse at 30% 20%, #E8D399 0%, transparent 60%), radial-gradient(ellipse at 80% 80%, #9FB2A8 0%, transparent 60%), linear-gradient(135deg, #DFCEBA 0%, #C9BAA3 50%, #B2A28D 100%)',
                 }}
               />
 
-              {/* Center Floating Consultation Card */}
+              {/* 3D Tilted Center Floating Consultation Card */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative z-10 w-full max-w-[420px] sm:max-w-[460px] bg-white rounded-2xl p-5 sm:p-6 shadow-2xl border border-[#17352F]/10"
+                className="relative z-10 w-full max-w-[420px] sm:max-w-[460px] bg-white rounded-2xl p-5 sm:p-6 shadow-[0_20px_45px_rgba(23,33,31,0.18)] border border-[#17352F]/10 [transform:rotateY(-14deg)_rotateX(8deg)] group-hover:[transform:rotateY(-4deg)_rotateX(2deg)_scale(1.02)] transition-all duration-500 ease-out select-none"
               >
                 {/* Header */}
                 <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#17352F]/10">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-lg bg-[#17352F] flex items-center justify-center text-xs text-[#F7F4ED] font-serif font-bold">
+                    <div className="w-8 h-8 rounded-lg bg-[#17352F] flex items-center justify-center text-xs text-[#F7F4ED] font-serif font-bold shadow-xs">
                       NM
                     </div>
                     <div>
-                      <span className="text-xs font-semibold text-[#17211F] block">
+                      <span className="text-xs sm:text-sm font-semibold text-[#17211F] block">
                         Care Discovery Consultation
                       </span>
                       <span className="text-[10px] text-[#17211F]/50 font-mono">
@@ -106,7 +107,7 @@ export const HowItWorks: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                  <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-semibold border border-emerald-200">
+                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-semibold border border-emerald-200">
                     Confirmed
                   </span>
                 </div>
@@ -115,7 +116,7 @@ export const HowItWorks: React.FC = () => {
                 <div className="space-y-2.5 text-xs">
                   <div className="p-3 rounded-xl bg-[#F7F4ED] border border-[#17352F]/8 flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <MapPin className="w-4 h-4 text-[#B86F55]" />
+                      <MapPin className="w-4 h-4 text-[#B86F55] shrink-0" />
                       <span className="font-medium text-[#17211F]">Parent Residence: Adyar, Chennai</span>
                     </div>
                     <span className="text-[10px] text-black/40 font-mono">IST</span>
@@ -123,7 +124,7 @@ export const HowItWorks: React.FC = () => {
 
                   <div className="p-3 rounded-xl bg-white border border-[#17352F]/8 flex items-center justify-between shadow-xs">
                     <div className="flex items-center gap-2.5">
-                      <PhoneCall className="w-4 h-4 text-emerald-600" />
+                      <PhoneCall className="w-4 h-4 text-emerald-600 shrink-0" />
                       <span className="font-medium text-[#17211F]">WhatsApp Video Call with Lead Coordinator</span>
                     </div>
                     <span className="text-[10px] font-mono text-[#B86F55] font-semibold">Today</span>
@@ -152,30 +153,30 @@ export const HowItWorks: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 order-2 lg:order-1 flex items-center justify-center"
+            className="lg:col-span-7 order-2 lg:order-1 flex items-center justify-center [perspective:1200px]"
           >
-            <div className="relative w-full max-w-[620px] aspect-[16/11] sm:aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(23,53,47,0.08)] border border-[#17352F]/10 flex items-center justify-center p-4 sm:p-8 bg-[#EAE5DB]/60">
+            <div className="group relative w-full max-w-[620px] aspect-[16/11] sm:aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-[0_24px_55px_rgba(23,53,47,0.09)] border border-[#17352F]/10 flex items-center justify-center p-4 sm:p-8 bg-[#EAE5DB]/60 hover:shadow-[0_30px_70px_rgba(23,53,47,0.14)] transition-all duration-500 cursor-pointer">
               
               {/* Soft Ambient Greenish Backdrop */}
               <div
-                className="absolute inset-0 bg-cover bg-center filter blur-[2px] saturate-[1.1] scale-105 opacity-60"
+                className="absolute inset-0 bg-cover bg-center filter blur-[1px] saturate-[1.1] scale-105 opacity-70 group-hover:scale-110 transition-transform duration-700"
                 style={{
                   backgroundImage:
                     'radial-gradient(ellipse at 70% 30%, #A8C4A0 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, #7E9C7E 0%, transparent 60%), linear-gradient(135deg, #99B299 0%, #6E886E 50%, #4B634B 100%)',
                 }}
               />
 
-              {/* Center Floating Coordinator Profile Card */}
+              {/* 3D Tilted Center Floating Coordinator Profile Card */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative z-10 w-full max-w-[420px] sm:max-w-[460px] bg-white rounded-2xl p-5 sm:p-6 shadow-2xl border border-[#17352F]/10"
+                className="relative z-10 w-full max-w-[420px] sm:max-w-[460px] bg-white rounded-2xl p-5 sm:p-6 shadow-[0_20px_45px_rgba(23,33,31,0.18)] border border-[#17352F]/10 [transform:rotateY(14deg)_rotateX(8deg)] group-hover:[transform:rotateY(4deg)_rotateX(2deg)_scale(1.02)] transition-all duration-500 ease-out select-none"
               >
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-4 pb-3 border-b border-[#17352F]/10">
-                  <div className="w-10 h-10 rounded-full bg-[#17352F] text-white flex items-center justify-center font-serif font-medium text-sm shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#17352F] text-white flex items-center justify-center font-serif font-medium text-sm shrink-0 shadow-xs">
                     KR
                   </div>
                   <div className="flex-1">
@@ -301,41 +302,41 @@ export const HowItWorks: React.FC = () => {
             </ul>
           </motion.div>
 
-          {/* Right Canvas Column with Step 03 Real-Time Report Card */}
+          {/* Right Canvas Column with Step 03 Real-Time Report 3D Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 flex items-center justify-center"
+            className="lg:col-span-7 flex items-center justify-center [perspective:1200px]"
           >
-            <div className="relative w-full max-w-[620px] aspect-[16/11] sm:aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(23,53,47,0.08)] border border-[#17352F]/10 flex items-center justify-center p-4 sm:p-8 bg-[#EAE5DB]/60">
+            <div className="group relative w-full max-w-[620px] aspect-[16/11] sm:aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-[0_24px_55px_rgba(23,53,47,0.09)] border border-[#17352F]/10 flex items-center justify-center p-4 sm:p-8 bg-[#EAE5DB]/60 hover:shadow-[0_30px_70px_rgba(23,53,47,0.14)] transition-all duration-500 cursor-pointer">
               
               {/* Soft Ambient Backdrop */}
               <div
-                className="absolute inset-0 bg-cover bg-center filter blur-[2px] saturate-[1.1] scale-105 opacity-60"
+                className="absolute inset-0 bg-cover bg-center filter blur-[1px] saturate-[1.1] scale-105 opacity-70 group-hover:scale-110 transition-transform duration-700"
                 style={{
                   backgroundImage:
                     'radial-gradient(ellipse at 40% 40%, #E6C2BF 0%, transparent 60%), radial-gradient(ellipse at 80% 60%, #B8C7B4 0%, transparent 60%), linear-gradient(135deg, #D4B2AC 0%, #B0A09B 50%, #8E7F7A 100%)',
                 }}
               />
 
-              {/* Center Floating WhatsApp Verification Summary Card */}
+              {/* 3D Tilted Center Floating WhatsApp Verification Summary Card */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative z-10 w-full max-w-[420px] sm:max-w-[460px] bg-white rounded-2xl p-5 sm:p-6 shadow-2xl border border-[#17352F]/10"
+                className="relative z-10 w-full max-w-[420px] sm:max-w-[460px] bg-white rounded-2xl p-5 sm:p-6 shadow-[0_20px_45px_rgba(23,33,31,0.18)] border border-[#17352F]/10 [transform:rotateY(-14deg)_rotateX(8deg)] group-hover:[transform:rotateY(-4deg)_rotateX(2deg)_scale(1.02)] transition-all duration-500 ease-out select-none"
               >
                 {/* Header */}
                 <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#17352F]/10">
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs">
+                    <div className="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs shadow-xs">
                       <MessageSquare className="w-3.5 h-3.5" />
                     </div>
                     <div>
-                      <span className="text-xs font-semibold text-[#17211F] block">
+                      <span className="text-xs sm:text-sm font-semibold text-[#17211F] block">
                         WhatsApp Care Update
                       </span>
                       <span className="text-[10px] text-black/50 font-mono">
@@ -343,7 +344,7 @@ export const HowItWorks: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                  <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 font-semibold">
                     Live
                   </span>
                 </div>
