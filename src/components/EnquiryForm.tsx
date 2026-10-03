@@ -43,7 +43,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialPlan }) => {
   };
 
   return (
-    <section id="enquiry" className="py-20 md:py-28 bg-[#FBFAF6] border-b border-[#17352F]/10">
+    <section id="enquiry" className="py-20 md:py-28 bg-[#F7F4ED] border-b border-[#17352F]/10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">

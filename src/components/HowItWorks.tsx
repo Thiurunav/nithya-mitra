@@ -113,7 +113,7 @@ export const HowItWorks: React.FC = () => {
     <section
       id="how-it-works"
       ref={containerRef}
-      className="relative h-[300vh] bg-[#FBF9F5] text-[#17211F] select-none"
+      className="relative h-[300vh] bg-[#F7F4ED] text-[#17211F] select-none"
     >
       {/* Sticky Fullscreen Frame */}
       <div className="sticky top-0 h-screen w-full flex items-center justify-center px-6 sm:px-10 lg:px-16 overflow-hidden">

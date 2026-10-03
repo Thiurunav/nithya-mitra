@@ -5,7 +5,7 @@ import { brandImages } from '../data/assets';
 
 export const TrustAndLeadership: React.FC = () => {
   return (
-    <section id="about" className="py-20 md:py-28 bg-[#FBFAF6] border-b border-[#17352F]/10">
+    <section id="about" className="py-20 md:py-28 bg-[#F7F4ED] border-b border-[#17352F]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Founder Note & Local Presence */}
