@@ -71,9 +71,9 @@ export const HowItWorks: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 flex items-center justify-center [perspective:1200px]"
+            className="lg:col-span-7 flex items-center justify-center card-perspective-container"
           >
-            <div className="group relative w-full max-w-[620px] aspect-[16/11] sm:aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-[0_24px_55px_rgba(23,53,47,0.09)] border border-[#17352F]/10 flex items-center justify-center p-4 sm:p-8 bg-[#EAE5DB]/60 hover:shadow-[0_30px_70px_rgba(23,53,47,0.14)] transition-all duration-500 cursor-pointer">
+            <div className="group relative w-full max-w-[620px] aspect-[16/11] sm:aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-[0_24px_55px_rgba(23,53,47,0.09)] border border-[#17352F]/10 flex items-center justify-center p-4 sm:p-8 bg-[#EAE5DB]/60 hover:shadow-[0_30px_70px_rgba(23,53,47,0.14)] transition-all duration-500 cursor-pointer card-perspective-container">
               
               {/* Soft Ambient Backdrop */}
               <div
@@ -85,13 +85,7 @@ export const HowItWorks: React.FC = () => {
               />
 
               {/* 3D Tilted Center Floating Consultation Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative z-10 w-full max-w-[420px] sm:max-w-[460px] bg-white rounded-2xl p-5 sm:p-6 shadow-[0_20px_45px_rgba(23,33,31,0.18)] border border-[#17352F]/10 [transform:rotateY(-14deg)_rotateX(8deg)] group-hover:[transform:rotateY(-4deg)_rotateX(2deg)_scale(1.02)] transition-all duration-500 ease-out select-none"
-              >
+              <div className="relative z-10 w-full max-w-[420px] sm:max-w-[460px] bg-white rounded-2xl p-5 sm:p-6 border border-[#17352F]/10 card-3d-left select-none">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#17352F]/10">
                   <div className="flex items-center gap-2.5">
@@ -135,7 +129,7 @@ export const HowItWorks: React.FC = () => {
                     <span>Confidential health details protected under strict privacy policy</span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
             </div>
           </motion.div>
@@ -153,9 +147,9 @@ export const HowItWorks: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 order-2 lg:order-1 flex items-center justify-center [perspective:1200px]"
+            className="lg:col-span-7 order-2 lg:order-1 flex items-center justify-center card-perspective-container"
           >
-            <div className="group relative w-full max-w-[620px] aspect-[16/11] sm:aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-[0_24px_55px_rgba(23,53,47,0.09)] border border-[#17352F]/10 flex items-center justify-center p-4 sm:p-8 bg-[#EAE5DB]/60 hover:shadow-[0_30px_70px_rgba(23,53,47,0.14)] transition-all duration-500 cursor-pointer">
+            <div className="group relative w-full max-w-[620px] aspect-[16/11] sm:aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-[0_24px_55px_rgba(23,53,47,0.09)] border border-[#17352F]/10 flex items-center justify-center p-4 sm:p-8 bg-[#EAE5DB]/60 hover:shadow-[0_30px_70px_rgba(23,53,47,0.14)] transition-all duration-500 cursor-pointer card-perspective-container">
               
               {/* Soft Ambient Greenish Backdrop */}
               <div
@@ -167,13 +161,7 @@ export const HowItWorks: React.FC = () => {
               />
 
               {/* 3D Tilted Center Floating Coordinator Profile Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative z-10 w-full max-w-[420px] sm:max-w-[460px] bg-white rounded-2xl p-5 sm:p-6 shadow-[0_20px_45px_rgba(23,33,31,0.18)] border border-[#17352F]/10 [transform:rotateY(14deg)_rotateX(8deg)] group-hover:[transform:rotateY(4deg)_rotateX(2deg)_scale(1.02)] transition-all duration-500 ease-out select-none"
-              >
+              <div className="relative z-10 w-full max-w-[420px] sm:max-w-[460px] bg-white rounded-2xl p-5 sm:p-6 border border-[#17352F]/10 card-3d-right select-none">
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-4 pb-3 border-b border-[#17352F]/10">
                   <div className="w-10 h-10 rounded-full bg-[#17352F] text-white flex items-center justify-center font-serif font-medium text-sm shrink-0 shadow-xs">
@@ -214,7 +202,7 @@ export const HowItWorks: React.FC = () => {
                     <span className="text-[10px] font-mono text-[#B86F55] font-semibold">Active</span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
             </div>
           </motion.div>
@@ -308,9 +296,9 @@ export const HowItWorks: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 flex items-center justify-center [perspective:1200px]"
+            className="lg:col-span-7 flex items-center justify-center card-perspective-container"
           >
-            <div className="group relative w-full max-w-[620px] aspect-[16/11] sm:aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-[0_24px_55px_rgba(23,53,47,0.09)] border border-[#17352F]/10 flex items-center justify-center p-4 sm:p-8 bg-[#EAE5DB]/60 hover:shadow-[0_30px_70px_rgba(23,53,47,0.14)] transition-all duration-500 cursor-pointer">
+            <div className="group relative w-full max-w-[620px] aspect-[16/11] sm:aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-[0_24px_55px_rgba(23,53,47,0.09)] border border-[#17352F]/10 flex items-center justify-center p-4 sm:p-8 bg-[#EAE5DB]/60 hover:shadow-[0_30px_70px_rgba(23,53,47,0.14)] transition-all duration-500 cursor-pointer card-perspective-container">
               
               {/* Soft Ambient Backdrop */}
               <div
@@ -322,13 +310,7 @@ export const HowItWorks: React.FC = () => {
               />
 
               {/* 3D Tilted Center Floating WhatsApp Verification Summary Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative z-10 w-full max-w-[420px] sm:max-w-[460px] bg-white rounded-2xl p-5 sm:p-6 shadow-[0_20px_45px_rgba(23,33,31,0.18)] border border-[#17352F]/10 [transform:rotateY(-14deg)_rotateX(8deg)] group-hover:[transform:rotateY(-4deg)_rotateX(2deg)_scale(1.02)] transition-all duration-500 ease-out select-none"
-              >
+              <div className="relative z-10 w-full max-w-[420px] sm:max-w-[460px] bg-white rounded-2xl p-5 sm:p-6 border border-[#17352F]/10 card-3d-left select-none">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#17352F]/10">
                   <div className="flex items-center gap-2">
@@ -375,7 +357,7 @@ export const HowItWorks: React.FC = () => {
                     <span className="text-[10px] font-mono text-black/40">Delivered</span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
             </div>
           </motion.div>

@@ -90,8 +90,8 @@ export const VisionMissionSection: React.FC = () => {
               </div>
 
               {/* 3D Code-Driven White Theme Status Widget */}
-              <div className="sm:col-span-6 relative w-full flex items-center justify-center sm:justify-end [perspective:1000px]">
-                <div className="w-full max-w-[245px] bg-white/95 backdrop-blur-xl border border-white/80 rounded-2xl p-3.5 shadow-2xl text-[#17211F] [transform:rotateY(-16deg)_rotateX(10deg)] group-hover:[transform:rotateY(-6deg)_rotateX(4deg)_scale(1.03)] transition-all duration-500 ease-out select-none">
+              <div className="sm:col-span-6 relative w-full flex items-center justify-center sm:justify-end card-perspective-container">
+                <div className="w-full max-w-[245px] bg-white/95 backdrop-blur-xl border border-white/80 rounded-2xl p-3.5 text-[#17211F] card-3d-left select-none">
                   <div className="flex items-center justify-between border-b border-[#17352F]/10 pb-2 mb-2.5">
                     <div className="flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -173,8 +173,8 @@ export const VisionMissionSection: React.FC = () => {
               </div>
 
               {/* 3D Code-Driven White Theme Status Widget */}
-              <div className="sm:col-span-6 relative w-full flex items-center justify-center sm:justify-end [perspective:1000px]">
-                <div className="w-full max-w-[245px] bg-white/95 backdrop-blur-xl border border-white/80 rounded-2xl p-3.5 shadow-2xl text-[#17211F] [transform:rotateY(-16deg)_rotateX(10deg)] group-hover:[transform:rotateY(-6deg)_rotateX(4deg)_scale(1.03)] transition-all duration-500 ease-out select-none">
+              <div className="sm:col-span-6 relative w-full flex items-center justify-center sm:justify-end card-perspective-container">
+                <div className="w-full max-w-[245px] bg-white/95 backdrop-blur-xl border border-white/80 rounded-2xl p-3.5 text-[#17211F] card-3d-left select-none">
                   <div className="flex items-center justify-between border-b border-[#17352F]/10 pb-2 mb-2.5">
                     <div className="flex items-center gap-1.5">
                       <Calendar size={12} className="text-[#B86F55]" />
