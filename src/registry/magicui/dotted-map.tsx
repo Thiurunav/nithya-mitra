@@ -9,14 +9,12 @@ export interface DottedMapProps {
   className?: string;
 }
 
-interface LocationHub {
+interface SinglePin {
   name: string;
-  x: number;
-  y: number;
-  labelX: number;
-  labelY: number;
-  radius: number;
+  lat: number;
+  lng: number;
   isHub?: boolean;
+  labelOffset?: { dx: number; dy: number };
 }
 
 export const DottedMap: React.FC<DottedMapProps> = ({
@@ -30,51 +28,37 @@ export const DottedMap: React.FC<DottedMapProps> = ({
     return new MapClass({ height: 50, grid });
   }, [grid]);
 
-  // Exact NRI Hubs & Operation Center in India
-  const locations: LocationHub[] = useMemo(() => [
-    { name: 'USA', x: 24.5, y: 21.5, labelX: 24.5, labelY: 14.0, radius: 5.2 },
-    { name: 'Canada', x: 31.5, y: 17.5, labelX: 31.5, labelY: 10.5, radius: 2.8 },
-    { name: 'UK', x: 59.0, y: 14.5, labelX: 59.0, labelY: 8.5, radius: 2.6 },
-    { name: 'UAE', x: 79.0, y: 26.5, labelX: 79.0, labelY: 21.0, radius: 2.5 },
-    { name: 'India (Hub)', x: 87.5, y: 31.5, labelX: 87.5, labelY: 25.0, radius: 3.6, isHub: true },
-    { name: 'Singapore', x: 96.0, y: 35.5, labelX: 96.0, labelY: 41.5, radius: 2.0 },
-    { name: 'Australia', x: 113.5, y: 48.5, labelX: 113.5, labelY: 43.0, radius: 3.2 },
-  ], []);
-
-  // Compute all points and classify active location dots
-  const processedPoints = useMemo(() => {
+  // Base Map Background Dots
+  const svgPoints = useMemo(() => {
     try {
-      const rawPoints = mapInstance.getPoints();
-      return rawPoints.map((pt: any) => {
-        let matchedLocation: LocationHub | null = null;
-        let minRatio = Infinity;
-
-        for (const loc of locations) {
-          const dist = Math.hypot(pt.x - loc.x, pt.y - loc.y);
-          if (dist <= loc.radius) {
-            const ratio = dist / loc.radius;
-            if (ratio < minRatio) {
-              minRatio = ratio;
-              matchedLocation = loc;
-            }
-          }
-        }
-
-        const isLocationDot = matchedLocation !== null;
-        const intensity = isLocationDot ? Math.max(0, 1 - minRatio) : 0;
-
-        return {
-          x: pt.x,
-          y: pt.y,
-          isLocationDot,
-          intensity,
-          isHub: matchedLocation?.isHub,
-        };
-      });
+      return mapInstance.getPoints();
     } catch {
       return [];
     }
-  }, [mapInstance, locations]);
+  }, [mapInstance]);
+
+  // Single precise pin per country / location
+  const singlePins: SinglePin[] = useMemo(() => [
+    { name: 'USA', lat: 37.0902, lng: -95.7129, labelOffset: { dx: 0, dy: -1.6 } },
+    { name: 'Canada', lat: 56.1304, lng: -106.3468, labelOffset: { dx: 0, dy: -1.6 } },
+    { name: 'UK', lat: 55.3781, lng: -3.4360, labelOffset: { dx: 0, dy: -1.6 } },
+    { name: 'UAE', lat: 23.4241, lng: 53.8478, labelOffset: { dx: 0, dy: -1.6 } },
+    { name: 'India (Hub)', lat: 13.0827, lng: 80.2707, isHub: true, labelOffset: { dx: 0, dy: 2.5 } },
+    { name: 'Singapore', lat: 1.3521, lng: 103.8198, labelOffset: { dx: 0, dy: -1.6 } },
+    { name: 'Australia', lat: -25.2744, lng: 133.7751, labelOffset: { dx: 0, dy: 2.5 } },
+  ], []);
+
+  // Compute exact { x, y } projection for each pin
+  const mappedPins = useMemo(() => {
+    return singlePins.map((pin) => {
+      const pt = mapInstance.getPin({ lat: pin.lat, lng: pin.lng });
+      return {
+        ...pin,
+        x: pt.x,
+        y: pt.y,
+      };
+    });
+  }, [singlePins, mapInstance]);
 
   return (
     <div className={`relative w-full flex items-center justify-center ${className}`}>
@@ -84,63 +68,54 @@ export const DottedMap: React.FC<DottedMapProps> = ({
         preserveAspectRatio="xMidYMid meet"
         style={{ overflow: 'visible' }}
       >
-        {/* Base Map Dots (Clean 20% visible opacity — +5% darker as requested) */}
+        {/* Base Map Dots (+5% darker, uniform 20% opacity) */}
         <g opacity="0.22">
-          {processedPoints.map((pt: any, idx: number) => {
-            if (!pt.isLocationDot) {
-              return (
-                <circle
-                  key={idx}
-                  cx={pt.x}
-                  cy={pt.y}
-                  r={dotRadius}
-                  fill={dotColor}
-                />
-              );
-            }
-            return null;
-          })}
-        </g>
-
-        {/* Highlighted Country / Diaspora Hub Dots */}
-        <g className="location-dots">
-          {processedPoints.map((pt: any, idx: number) => {
-            if (pt.isLocationDot && pt.intensity > 0.15) {
-              const r = dotRadius * (1.5 + pt.intensity * 1.3);
-              const color = pt.isHub ? '#B86F55' : '#17211F';
-
-              return (
-                <circle
-                  key={idx}
-                  cx={pt.x}
-                  cy={pt.y}
-                  r={r}
-                  fill={color}
-                  opacity={pt.isHub ? 0.98 : 0.92}
-                />
-              );
-            }
-            return null;
-          })}
-        </g>
-
-        {/* Minimal Country Text Labels */}
-        <g className="country-labels">
-          {locations.map((loc) => (
-            <text
-              key={loc.name}
-              x={loc.labelX}
-              y={loc.labelY}
-              textAnchor="middle"
-              fontSize={loc.isHub ? '1.45' : '1.25'}
-              fontFamily="system-ui, -apple-system, sans-serif"
-              fontWeight={loc.isHub ? '700' : '600'}
-              fill={loc.isHub ? '#B86F55' : '#17211F'}
-              className="select-none tracking-wide"
-            >
-              {loc.name}
-            </text>
+          {svgPoints.map((pt: any, idx: number) => (
+            <circle
+              key={idx}
+              cx={pt.x}
+              cy={pt.y}
+              r={dotRadius}
+              fill={dotColor}
+            />
           ))}
+        </g>
+
+        {/* Single Pin Marks & Country Labels */}
+        <g className="single-pins-layer">
+          {mappedPins.map((pin) => {
+            const isHub = pin.isHub;
+            const dx = pin.labelOffset?.dx || 0;
+            const dy = pin.labelOffset?.dy || (isHub ? 2.5 : -1.6);
+
+            return (
+              <g key={pin.name}>
+                {/* Single Location Mark Dot */}
+                <circle
+                  cx={pin.x}
+                  cy={pin.y}
+                  r={isHub ? 0.9 : 0.7}
+                  fill={isHub ? '#B86F55' : '#17352F'}
+                  stroke="#FFFFFF"
+                  strokeWidth="0.25"
+                />
+
+                {/* Country / Area Name */}
+                <text
+                  x={pin.x + dx}
+                  y={pin.y + dy}
+                  textAnchor="middle"
+                  fontSize={isHub ? '1.3' : '1.1'}
+                  fontFamily="system-ui, -apple-system, sans-serif"
+                  fontWeight={isHub ? '700' : '600'}
+                  fill={isHub ? '#B86F55' : '#17211F'}
+                  className="select-none tracking-wide"
+                >
+                  {pin.name}
+                </text>
+              </g>
+            );
+          })}
         </g>
       </svg>
     </div>
