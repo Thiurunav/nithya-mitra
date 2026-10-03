@@ -23,11 +23,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Smooth scroll parallax
+  // Smooth scroll-driven dynamic curve & parallax
   const { scrollY } = useScroll();
-  const bgScrollY = useTransform(scrollY, [0, 800], [0, 120]);
-  const contentScrollY = useTransform(scrollY, [0, 600], [0, 50]);
-  const contentOpacity = useTransform(scrollY, [0, 500], [1, 0.3]);
+  const bgScrollY = useTransform(scrollY, [0, 800], [0, 80]);
+  const contentScrollY = useTransform(scrollY, [0, 600], [0, 40]);
+  const contentOpacity = useTransform(scrollY, [0, 450], [1, 0.2]);
+
+  // Dynamic bottom border curve: 0px at rest (scrollY = 0), curves smoothly to 48px as user scrolls
+  const bottomRadius = useTransform(scrollY, [0, 300], [0, 48]);
+  // Dynamic scale: 1.0 (full-screen flush) at rest, subtly contracts to 0.985 on scroll
+  const heroScale = useTransform(scrollY, [0, 350], [1, 0.985]);
 
   const slides: CarouselSlide[] = [
     {
@@ -133,12 +138,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={() => setIsPaused(true)}
-      className="relative isolate min-h-[90vh] md:min-h-screen flex items-center pt-28 sm:pt-36 pb-20 sm:pb-28 overflow-hidden rounded-b-[2.5rem] sm:rounded-b-[3.5rem] md:rounded-b-[4.5rem] border-b border-[#17352F]/15 cursor-default select-none shadow-[0_25px_60px_rgba(23,53,47,0.12)]"
+      className="relative isolate min-h-[92vh] md:min-h-screen flex items-center pt-28 sm:pt-36 min-[850px]:pt-40 pb-16 sm:pb-20 overflow-hidden border-b border-[#17352F]/15 cursor-default select-none bg-[#F7F4ED]"
     >
-      {/* FULL-SCREEN HERO BACKGROUND CAROUSEL WITH SCROLL PARALLAX & SOFT CURVED BOTTOM */}
+      {/* FULL-SCREEN HERO BACKGROUND CAROUSEL WITH DYNAMIC SCROLL CURVE */}
       <motion.div
-        style={{ y: bgScrollY }}
-        className="absolute inset-0 z-0 overflow-hidden rounded-b-[2.5rem] sm:rounded-b-[3.5rem] md:rounded-b-[4.5rem] bg-[#1A1816] will-change-transform shadow-[0_20px_50px_rgba(0,0,0,0.35)]"
+        style={{
+          y: bgScrollY,
+          scale: heroScale,
+          borderBottomLeftRadius: bottomRadius,
+          borderBottomRightRadius: bottomRadius,
+        }}
+        className="absolute inset-0 z-0 overflow-hidden bg-[#1A1816] will-change-transform shadow-[0_20px_50px_rgba(0,0,0,0.35)]"
       >
         
         <AnimatePresence mode="wait">
@@ -148,7 +158,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
             animate={{ opacity: 1, scale: 1.06 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-0 w-full h-full rounded-b-[2.5rem] sm:rounded-b-[3.5rem] md:rounded-b-[4.5rem] overflow-hidden"
+            style={{
+              borderBottomLeftRadius: bottomRadius,
+              borderBottomRightRadius: bottomRadius,
+            }}
+            className="absolute inset-0 w-full h-full overflow-hidden"
           >
             {/* Parallax Image that glides in the OPPOSITE direction on hover */}
             <motion.img
