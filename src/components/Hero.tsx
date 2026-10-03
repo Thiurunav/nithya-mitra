@@ -1,280 +1,244 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { ArrowDownRight, ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { ArrowDownRight, Play } from 'lucide-react';
 
 interface HeroProps {
   onOpenEnquiry?: () => void;
 }
 
-interface CarouselSlide {
-  id: string;
-  image: string;
-  alt: string;
-  tag: string;
-  focusPosition: string;
-}
-
 export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
-  const slides: CarouselSlide[] = [
-    {
-      id: 'slide-1',
-      image: '/nithya-mitra-hero-tablet.jpg',
-      alt: 'Elderly South Indian couple sitting on sofa with tablet video calling family with Nithya Mitra coordinator in branded green polo',
-      tag: '01 · Dedicated Family Coordination & Video Connection',
-      focusPosition: 'object-[75%_center] md:object-[68%_center]'
-    },
-    {
-      id: 'slide-2',
-      image: '/nithya-mitra-hero-walk.jpg',
-      alt: 'Elderly grandmother gently assisted on morning garden walk in Chennai by Nithya Mitra care coordinator in official branded polo',
-      tag: '02 · Assisted Garden Walking & Mobility Support',
-      focusPosition: 'object-[70%_center] md:object-[62%_center]'
-    },
-    {
-      id: 'slide-3',
-      image: '/nithya-mitra-hero-clinic.jpg',
-      alt: 'Elderly father accompanied to healthcare clinic by Nithya Mitra care coordinator in official branded polo',
-      tag: '03 · Healthcare & Doctor Appointment Accompaniment',
-      focusPosition: 'object-[72%_center] md:object-[65%_center]'
-    },
-    {
-      id: 'slide-4',
-      image: '/nithya-mitra-hero-elderly.jpg',
-      alt: 'Elderly South Indian couple sharing morning filter coffee and reading newspaper in peace at home in Chennai',
-      tag: '04 · Dignified Living & Wellbeing at Home',
-      focusPosition: 'object-[75%_center] md:object-[68%_center]'
-    }
-  ];
+  // Scroll tracking across the pinned hero container (200vh height)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
 
-  // Auto-advance carousel every 6 seconds
-  useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, [isPaused, slides.length]);
+  // Buttery smooth spring physics for high framerate scrolling
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 140,
+    damping: 28,
+    restDelta: 0.001,
+  });
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
+  // 1. Hero text & overlay controls fade out during the initial scroll (0 -> 0.25)
+  const heroTextOpacity = useTransform(smoothProgress, [0, 0.22], [1, 0]);
+  const heroTextY = useTransform(smoothProgress, [0, 0.22], [0, -35]);
+  const heroPointerEvents = useTransform(smoothProgress, (p) => (p > 0.2 ? 'none' : 'auto'));
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+  // 2. Center card shrinks down from prominent hero focal into triptych center card (0 -> 0.6)
+  const centerScale = useTransform(smoothProgress, [0, 0.35, 0.65], [1.02, 0.92, 0.96]);
+  const centerBorderRadius = useTransform(smoothProgress, [0, 0.3], [16, 28]);
+  const cardsClusterY = useTransform(smoothProgress, [0.4, 0.85], [0, -30]);
 
-  // Mouse coordinate values normalized between -0.5 and +0.5
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  // 3. Left card slides out from behind center card and tilts counter-clockwise (0.2 -> 0.65)
+  const leftX = useTransform(smoothProgress, [0.2, 0.65], [0, -320]);
+  const leftRotate = useTransform(smoothProgress, [0.2, 0.65], [0, -5]);
+  const leftOpacity = useTransform(smoothProgress, [0.2, 0.45], [0, 1]);
+  const leftScale = useTransform(smoothProgress, [0.2, 0.65], [0.85, 0.88]);
 
-  // Spring physics for smooth organic deceleration
-  const springConfig = { damping: 28, stiffness: 220, mass: 0.6 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
+  // 4. Right card slides out from behind center card and tilts clockwise (0.2 -> 0.65)
+  const rightX = useTransform(smoothProgress, [0.2, 0.65], [0, 320]);
+  const rightRotate = useTransform(smoothProgress, [0.2, 0.65], [0, 5]);
+  const rightOpacity = useTransform(smoothProgress, [0.2, 0.45], [0, 1]);
+  const rightScale = useTransform(smoothProgress, [0.2, 0.65], [0.85, 0.88]);
 
-  // OPPOSITE DIRECTION minute parallax:
-  // When cursor moves right (+0.5), image shifts left (-20px).
-  // When cursor moves down (+0.5), image shifts up (-16px).
-  const imageTranslateX = useTransform(smoothX, [-0.5, 0.5], [20, -20]);
-  const imageTranslateY = useTransform(smoothY, [-0.5, 0.5], [16, -16]);
+  // 5. Editorial narrative text fades in below the triptych (0.5 -> 0.85)
+  const editorialOpacity = useTransform(smoothProgress, [0.55, 0.82], [0, 1]);
+  const editorialY = useTransform(smoothProgress, [0.55, 0.82], [30, 0]);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
-
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
+  const scrollToServices = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    const el = document.getElementById('services');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToEnquiry = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    if (onOpenEnquiry) {
+      onOpenEnquiry();
+    } else {
+      const el = document.getElementById('enquiry');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section
+    <div
       ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onMouseEnter={() => setIsPaused(true)}
-      className="relative isolate min-h-[90vh] md:min-h-screen flex items-center pt-28 sm:pt-36 min-[850px]:pt-40 pb-16 sm:pb-20 overflow-hidden border-b border-[#17352F]/15 cursor-default select-none"
+      className="relative h-[220vh] bg-[#F7F4ED] text-[#17211F]"
     >
-      {/* FULL-SCREEN HERO BACKGROUND CAROUSEL */}
-      <div className="absolute inset-0 min-[850px]:inset-2.5 z-0 overflow-hidden rounded-br-4xl rounded-bl-4xl bg-[#1A1816]">
+      {/* Sticky Fullscreen Frame */}
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 select-none">
         
-        <AnimatePresence mode="wait">
+        {/* Main Triptych Cluster */}
+        <motion.div
+          style={{ y: cardsClusterY }}
+          className="relative w-full max-w-5xl flex items-center justify-center h-[340px] sm:h-[420px] md:h-[480px] lg:h-[520px]"
+        >
+          
+          {/* Left Card: Health & Vitals Care (Slides out to the left) */}
           <motion.div
-            key={slides[currentSlide].id}
-            initial={{ opacity: 0, scale: 1.04 }}
-            animate={{ opacity: 1, scale: 1.06 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-0 w-full h-full"
+            style={{
+              x: leftX,
+              rotate: leftRotate,
+              opacity: leftOpacity,
+              scale: leftScale,
+            }}
+            className="absolute z-10 w-[240px] sm:w-[320px] md:w-[390px] lg:w-[440px] aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_16px_40px_rgba(23,53,47,0.14)] border border-[#17352F]/10 bg-white pointer-events-auto cursor-pointer"
+            whileHover={{ scale: 0.92, rotate: -3 }}
+            transition={{ duration: 0.25 }}
+            onClick={scrollToServices}
           >
-            {/* Parallax Image that glides in the OPPOSITE direction on hover */}
-            <motion.img
-              src={slides[currentSlide].image}
-              alt={slides[currentSlide].alt}
-              style={{
-                x: imageTranslateX,
-                y: imageTranslateY,
-              }}
-              className={`w-full h-full object-cover ${slides[currentSlide].focusPosition} filter saturate-[1.03] contrast-[1.03] will-change-transform`}
+            <img
+              src="/triptych-care-vitals.jpg"
+              alt="Nithya Mitra Care Coordinator checking vitals with gentle warmth for elderly mother at home in Chennai"
+              className="w-full h-full object-cover object-center filter saturate-[1.02]"
               loading="eager"
             />
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Subtle Directional Scrim for crisp text contrast on left while keeping parents 100% natural on right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/35 via-45% to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
-      </div>
-
-      {/* Main Content Container: Clean Minimal Typography */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="max-w-xl flex flex-col items-start text-left">
-          
-          {/* Eyebrow Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-black/30 backdrop-blur-md text-[#F7F4ED] text-xs font-medium mb-5 tracking-wide shadow-sm"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
-            <span>Now Supporting NRI Families</span>
-            <span className="text-[#D8C8B3]">✦</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+              <span className="text-white text-xs font-medium tracking-wide">
+                Healthcare & Doctor Accompaniment
+              </span>
+            </div>
           </motion.div>
 
-          {/* Compact 2-Line Headline */}
-          <h1 className="text-3xl sm:text-4xl lg:text-[3.25rem] xl:text-[3.5rem] font-semibold tracking-tight leading-[1.14] mb-7 text-[#F7F4ED] drop-shadow-sm">
-            <motion.span
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="block font-sans"
-            >
-              You Built Abroad
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="block font-sans text-[#F7F4ED] mt-1"
-            >
-              Protect Home with{' '}
-              <span className="italic font-serif text-[#D8C8B3] font-normal underline decoration-[#B86F55]/60 underline-offset-8">
-                Certainty
-              </span>
-            </motion.span>
-          </h1>
-
-          {/* Minimal Action Buttons Row (Free Consultation + How It Works) */}
+          {/* Center Card: The Hero Family Photo (Scales down, holds hero typography initially) */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center gap-4"
+            style={{
+              scale: centerScale,
+              borderRadius: centerBorderRadius,
+            }}
+            className="relative z-20 w-[300px] sm:w-[420px] md:w-[500px] lg:w-[580px] aspect-[4/3] overflow-hidden shadow-[0_24px_60px_rgba(23,53,47,0.22)] border-2 border-white/80 bg-[#1A1816] pointer-events-auto"
           >
-            {/* Signature Dual-Pill CTA Button */}
-            <button
-              onClick={onOpenEnquiry || (() => scrollTo('enquiry'))}
-              type="button"
-              className="group relative cursor-pointer inline-flex items-center shadow-2xl transition-all duration-300 focus:outline-none"
-            >
-              <span className="absolute right-0 inset-y-0 w-[calc(100%-1.75rem)] rounded-xl bg-[#B86F55] transition-colors duration-300 group-hover:bg-[#9E5B44]" />
-              <span className="relative z-10 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-[#0E2420] text-[#F7F4ED] font-medium text-xs sm:text-sm tracking-wide border border-white/20">
-                Free Consultation
-              </span>
-              <span className="relative -left-px z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center text-[#F7F4ED] bg-[#B86F55] transition-colors duration-300 group-hover:bg-[#9E5B44]">
-                <ArrowDownRight className="w-4 h-4 transition-transform duration-300 group-hover:-rotate-45" />
-              </span>
-            </button>
+            {/* Center Photo */}
+            <img
+              src="/triptych-family-sofa.jpg"
+              alt="Multi-generational South Indian family gathered in Chennai living room laughing joyfully together"
+              className="w-full h-full object-cover object-center filter saturate-[1.04]"
+              loading="eager"
+            />
 
-            {/* Video / How It Works Pill Button */}
-            <button
-              onClick={() => scrollTo('how-it-works')}
-              type="button"
-              className="inline-flex items-center gap-2.5 px-5 py-3 sm:py-3.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#F7F4ED] border border-white/20 text-xs sm:text-sm font-medium transition-colors cursor-pointer group"
+            {/* Subtle Hero Scrim for text readability */}
+            <motion.div
+              style={{ opacity: heroTextOpacity }}
+              className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20 pointer-events-none"
+            />
+
+            {/* Initial Hero Typography Overlay */}
+            <motion.div
+              style={{
+                opacity: heroTextOpacity,
+                y: heroTextY,
+                pointerEvents: heroPointerEvents as any,
+              }}
+              className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 md:p-10 text-center items-center text-white"
             >
-              <div className="w-6 h-6 rounded-full bg-[#B86F55] flex items-center justify-center text-white transition-transform duration-200 group-hover:scale-110">
-                <Play className="w-3 h-3 fill-current ml-0.5" />
+              {/* Eyebrow */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/25 bg-black/40 backdrop-blur-md text-[#F7F4ED] text-[11px] sm:text-xs font-medium mb-3 tracking-wide shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
+                <span>NRI Family Care · Chennai</span>
+                <span className="text-[#D8C8B3]">✦</span>
               </div>
-              <span>How It Works</span>
-            </button>
+
+              {/* Headline */}
+              <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] font-normal leading-[1.18] text-[#FBFAF6] max-w-lg drop-shadow-md mb-5 sm:mb-6">
+                Family coordination made for{' '}
+                <span className="italic text-[#D8C8B3]">real life</span>
+              </h1>
+
+              {/* Action Buttons Row */}
+              <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+                {/* Book Consultation Button */}
+                <button
+                  onClick={() => scrollToEnquiry()}
+                  type="button"
+                  className="group relative cursor-pointer inline-flex items-center shadow-lg transition-all duration-200 focus:outline-none"
+                >
+                  <span className="absolute right-0 inset-y-0 w-[calc(100%-1.25rem)] rounded-xl bg-[#B86F55] transition-colors duration-200 group-hover:bg-[#9E5B44]" />
+                  <span className="relative z-10 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-[#0E2420] text-[#F7F4ED] font-medium text-xs tracking-wide border border-white/20">
+                    Free Consultation
+                  </span>
+                  <span className="relative -left-px z-10 w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center text-[#F7F4ED] bg-[#B86F55] transition-colors duration-200 group-hover:bg-[#9E5B44]">
+                    <ArrowDownRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-rotate-45" />
+                  </span>
+                </button>
+
+                {/* Explore Services Button */}
+                <button
+                  onClick={() => scrollToServices()}
+                  type="button"
+                  className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/90 hover:bg-white text-[#17211F] text-xs font-semibold shadow-md transition-all cursor-pointer"
+                >
+                  <Play className="w-3 h-3 fill-current text-[#17352F]" />
+                  <span>Explore Services</span>
+                </button>
+              </div>
+            </motion.div>
           </motion.div>
 
-        </div>
-      </div>
+          {/* Right Card: Outdoor Walk Companion (Slides out to the right) */}
+          <motion.div
+            style={{
+              x: rightX,
+              rotate: rightRotate,
+              opacity: rightOpacity,
+              scale: rightScale,
+            }}
+            className="absolute z-10 w-[240px] sm:w-[320px] md:w-[390px] lg:w-[440px] aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_16px_40px_rgba(23,53,47,0.14)] border border-[#17352F]/10 bg-white pointer-events-auto cursor-pointer"
+            whileHover={{ scale: 0.92, rotate: 3 }}
+            transition={{ duration: 0.25 }}
+            onClick={scrollToServices}
+          >
+            <img
+              src="/triptych-park-walk.jpg"
+              alt="Senior father walking actively with smiling care coordinator in lush green Chennai park"
+              className="w-full h-full object-cover object-center filter saturate-[1.02]"
+              loading="eager"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+              <span className="text-white text-xs font-medium tracking-wide">
+                Companionship & Vitality Support
+              </span>
+            </div>
+          </motion.div>
 
-      {/* Bottom Carousel Controls & Active Slide Tag */}
-      <div className="absolute bottom-6 left-4 sm:left-8 right-4 sm:right-8 z-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pointer-events-none">
-        
-        {/* Active Scene Caption Pill */}
-        <motion.div
-          key={slides[currentSlide].tag}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 bg-black/45 backdrop-blur-md text-[#F7F4ED] py-1.5 px-4 rounded-full border border-white/20 text-xs pointer-events-auto shadow-md"
-        >
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="font-light tracking-wide text-[11px] sm:text-xs">
-            {slides[currentSlide].tag}
-          </span>
         </motion.div>
 
-        {/* Carousel Pagination Dots & Nav Arrows */}
-        <div className="flex items-center gap-3 self-end sm:self-auto bg-black/45 backdrop-blur-md py-1.5 px-3 rounded-full border border-white/20 pointer-events-auto shadow-md">
-          {/* Prev Button */}
-          <button
-            onClick={prevSlide}
-            aria-label="Previous Slide"
-            className="w-7 h-7 rounded-full flex items-center justify-center text-[#F7F4ED]/80 hover:text-white hover:bg-white/15 transition-colors focus:outline-none cursor-pointer"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
+        {/* Editorial Text Statement Beneath the Fanned Triptych */}
+        <motion.div
+          style={{
+            opacity: editorialOpacity,
+            y: editorialY,
+          }}
+          className="max-w-3xl mx-auto text-center mt-6 sm:mt-8 px-4"
+        >
+          <p className="text-base sm:text-xl md:text-2xl font-serif text-[#17211F] leading-[1.5] font-normal">
+            Most eldercare services stop at a monthly phone call and call it a day.{' '}
+            <span className="font-sans font-medium text-[#17352F]">Nithya Mitra</span> goes all in with dedicated ground coordinators in Chennai, accompanied hospital visits, emergency response, and proactive family updates built for real NRI peace of mind.
+          </p>
 
-          {/* Slide Progress Indicators */}
-          <div className="flex items-center gap-1.5">
-            {slides.map((s, idx) => (
-              <button
-                key={s.id}
-                onClick={() => setCurrentSlide(idx)}
-                aria-label={`Go to slide ${idx + 1}`}
-                className="relative h-1.5 rounded-full overflow-hidden transition-all duration-300 focus:outline-none cursor-pointer"
-                style={{
-                  width: currentSlide === idx ? '28px' : '8px',
-                  backgroundColor: currentSlide === idx ? '#B86F55' : 'rgba(255, 255, 255, 0.35)'
-                }}
-              />
-            ))}
+          <div className="mt-4 sm:mt-5 flex items-center justify-center gap-2 text-xs sm:text-sm text-[#17211F]/70">
+            <span>Have specific questions about your parents in Chennai?</span>
+            <button
+              onClick={() => scrollToServices()}
+              className="text-[#17352F] font-semibold underline underline-offset-4 decoration-[#B86F55] hover:text-[#B86F55] transition-colors cursor-pointer"
+            >
+              Explore our services
+            </button>
+            <span>or</span>
+            <button
+              onClick={() => scrollToEnquiry()}
+              className="text-[#B86F55] font-semibold underline underline-offset-4 decoration-[#B86F55] hover:text-[#9E5B44] transition-colors cursor-pointer"
+            >
+              schedule a free consultation
+            </button>
+            <span>.</span>
           </div>
-
-          {/* Next Button */}
-          <button
-            onClick={nextSlide}
-            aria-label="Next Slide"
-            className="w-7 h-7 rounded-full flex items-center justify-center text-[#F7F4ED]/80 hover:text-white hover:bg-white/15 transition-colors focus:outline-none cursor-pointer"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
+        </motion.div>
 
       </div>
-
-    </section>
+    </div>
   );
 };

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
-import { FamilyTransitionSection } from '../components/FamilyTransitionSection';
 import { ServicesSection } from '../components/ServicesSection';
 import { HowItWorks } from '../components/HowItWorks';
 import { GroundTeamSection } from '../components/GroundTeamSection';
@@ -31,11 +30,8 @@ export const Home: React.FC = () => {
       <Navbar onOpenEnquiry={() => scrollToEnquiry()} />
 
       <main>
-        {/* Hero Section */}
+        {/* Hero Section with Oscar Health Scroll-Driven Triptych & Editorial Transition */}
         <Hero onOpenEnquiry={() => scrollToEnquiry()} />
-
-        {/* Smooth Scroll Curved Triptych Transition (Oscar Health style) */}
-        <FamilyTransitionSection onOpenEnquiry={() => scrollToEnquiry()} />
 
         {/* 6 Core Coordination Pillars */}
         <ServicesSection
