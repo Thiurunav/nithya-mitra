@@ -42,7 +42,7 @@ export const Home: React.FC = () => {
         />
 
         {/* Global NRI Working Grid with MagicUI DottedMap */}
-        <GlobalReachSection onOpenEnquiry={() => scrollToEnquiry()} />
+        <GlobalReachSection />
 
         {/* 3-Step Simple System */}
         <HowItWorks />
