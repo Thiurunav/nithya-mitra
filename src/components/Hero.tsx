@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { ArrowDownRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowDownRight, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 
 interface HeroProps {
   onOpenEnquiry?: () => void;
@@ -22,30 +22,30 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
   const slides: CarouselSlide[] = [
     {
       id: 'slide-1',
-      image: '/nithya-mitra-hero-elderly.jpg',
-      alt: 'Elderly South Indian couple sharing morning filter coffee and reading newspaper at home in Chennai',
-      tag: '01 · Morning Wellbeing & Peace at Home',
+      image: '/nithya-mitra-hero-tablet.jpg',
+      alt: 'Elderly South Indian couple sitting on sofa with tablet video calling family with Nithya Mitra coordinator in branded green polo',
+      tag: '01 · Dedicated Family Coordination & Video Connection',
       focusPosition: 'object-[75%_center] md:object-[68%_center]'
     },
     {
       id: 'slide-2',
       image: '/nithya-mitra-hero-walk.jpg',
-      alt: 'Elderly grandmother gently assisted on morning garden walk in Chennai by Nithya Mitra care coordinator',
-      tag: '02 · Assisted Walking & Garden Mobility',
+      alt: 'Elderly grandmother gently assisted on morning garden walk in Chennai by Nithya Mitra care coordinator in official branded polo',
+      tag: '02 · Assisted Garden Walking & Mobility Support',
       focusPosition: 'object-[70%_center] md:object-[62%_center]'
     },
     {
       id: 'slide-3',
       image: '/nithya-mitra-hero-clinic.jpg',
-      alt: 'Elderly father accompanied to healthcare clinic by dedicated Nithya Mitra care coordinator',
-      tag: '03 · Healthcare & Doctor Accompaniment',
+      alt: 'Elderly father accompanied to healthcare clinic by Nithya Mitra care coordinator in official branded polo',
+      tag: '03 · Healthcare & Doctor Appointment Accompaniment',
       focusPosition: 'object-[72%_center] md:object-[65%_center]'
     },
     {
       id: 'slide-4',
-      image: '/vayosh-hero-story.jpg',
-      alt: 'Elderly parents at home connecting on live video call with NRI family abroad assisted by care lead',
-      tag: '04 · Live NRI Family Connection',
+      image: '/nithya-mitra-hero-elderly.jpg',
+      alt: 'Elderly South Indian couple sharing morning filter coffee and reading newspaper in peace at home in Chennai',
+      tag: '04 · Dignified Living & Wellbeing at Home',
       focusPosition: 'object-[75%_center] md:object-[68%_center]'
     }
   ];
@@ -116,9 +116,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
           <motion.div
             key={slides[currentSlide].id}
             initial={{ opacity: 0, scale: 1.04 }}
-            animate={{ opacity: 1, scale: 1.08 }}
+            animate={{ opacity: 1, scale: 1.06 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0 w-full h-full"
           >
             {/* Parallax Image that glides in the OPPOSITE direction on hover */}
@@ -129,7 +129,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
                 x: imageTranslateX,
                 y: imageTranslateY,
               }}
-              className={`w-full h-full object-cover ${slides[currentSlide].focusPosition} filter saturate-[1.02] contrast-[1.03] will-change-transform`}
+              className={`w-full h-full object-cover ${slides[currentSlide].focusPosition} filter saturate-[1.03] contrast-[1.03] will-change-transform`}
               loading="eager"
             />
           </motion.div>
@@ -180,12 +180,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
             </motion.span>
           </h1>
 
-          {/* Minimal Signature Dual-Pill CTA Button */}
+          {/* Minimal Action Buttons Row (Free Consultation + How It Works) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-wrap items-center gap-4"
           >
+            {/* Signature Dual-Pill CTA Button */}
             <button
               onClick={onOpenEnquiry || (() => scrollTo('enquiry'))}
               type="button"
@@ -198,6 +200,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
               <span className="relative -left-px z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center text-[#F7F4ED] bg-[#B86F55] transition-colors duration-300 group-hover:bg-[#9E5B44]">
                 <ArrowDownRight className="w-4 h-4 transition-transform duration-300 group-hover:-rotate-45" />
               </span>
+            </button>
+
+            {/* Video / How It Works Pill Button */}
+            <button
+              onClick={() => scrollTo('how-it-works')}
+              type="button"
+              className="inline-flex items-center gap-2.5 px-5 py-3 sm:py-3.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#F7F4ED] border border-white/20 text-xs sm:text-sm font-medium transition-colors cursor-pointer group"
+            >
+              <div className="w-6 h-6 rounded-full bg-[#B86F55] flex items-center justify-center text-white transition-transform duration-200 group-hover:scale-110">
+                <Play className="w-3 h-3 fill-current ml-0.5" />
+              </div>
+              <span>How It Works</span>
             </button>
           </motion.div>
 
@@ -214,7 +228,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 bg-black/40 backdrop-blur-md text-[#F7F4ED] py-1.5 px-3.5 rounded-full border border-white/15 text-xs pointer-events-auto"
+          className="inline-flex items-center gap-2 bg-black/45 backdrop-blur-md text-[#F7F4ED] py-1.5 px-4 rounded-full border border-white/20 text-xs pointer-events-auto shadow-md"
         >
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           <span className="font-light tracking-wide text-[11px] sm:text-xs">
@@ -223,7 +237,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
         </motion.div>
 
         {/* Carousel Pagination Dots & Nav Arrows */}
-        <div className="flex items-center gap-3 self-end sm:self-auto bg-black/40 backdrop-blur-md py-1.5 px-3 rounded-full border border-white/15 pointer-events-auto">
+        <div className="flex items-center gap-3 self-end sm:self-auto bg-black/45 backdrop-blur-md py-1.5 px-3 rounded-full border border-white/20 pointer-events-auto shadow-md">
           {/* Prev Button */}
           <button
             onClick={prevSlide}
@@ -243,7 +257,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
                 className="relative h-1.5 rounded-full overflow-hidden transition-all duration-300 focus:outline-none cursor-pointer"
                 style={{
                   width: currentSlide === idx ? '28px' : '8px',
-                  backgroundColor: currentSlide === idx ? '#B86F55' : 'rgba(255, 255, 255, 0.3)'
+                  backgroundColor: currentSlide === idx ? '#B86F55' : 'rgba(255, 255, 255, 0.35)'
                 }}
               />
             ))}
