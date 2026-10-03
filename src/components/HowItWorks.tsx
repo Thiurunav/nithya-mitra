@@ -50,34 +50,28 @@ export const HowItWorks: React.FC = () => {
   }, [smoothProgress]);
 
   // Card 1 transforms
-  const card1Y = useTransform(smoothProgress, [0, 0.33, 0.66], [0, 0, -18]);
-  const card1Scale = useTransform(smoothProgress, [0, 0.33, 0.66], [1, 1, 0.94]);
+  const card1Y = useTransform(smoothProgress, [0, 0.35], [0, 0]);
+  const card1Opacity = useTransform(smoothProgress, [0.30, 0.48], [1, 0]);
 
   // Card 2 transforms
   const card2Y = useTransform(
     smoothProgress,
-    [0.15, 0.38, 0.66, 0.92],
-    ['60vh', '0vh', '0vh', '-14px']
+    [0.15, 0.42, 0.65, 0.82],
+    ['60vh', '0vh', '0vh', '0vh']
   );
-  const card2Scale = useTransform(
+  const card2Opacity = useTransform(
     smoothProgress,
-    [0.15, 0.38, 0.66, 0.92],
-    [0.92, 1, 1, 0.96]
+    [0.15, 0.30, 0.65, 0.80],
+    [0, 1, 1, 0]
   );
-  const card2Opacity = useTransform(smoothProgress, [0.12, 0.25], [0.4, 1]);
 
   // Card 3 transforms
   const card3Y = useTransform(
     smoothProgress,
-    [0.48, 0.72],
+    [0.50, 0.75],
     ['60vh', '0vh']
   );
-  const card3Scale = useTransform(
-    smoothProgress,
-    [0.48, 0.72],
-    [0.92, 1]
-  );
-  const card3Opacity = useTransform(smoothProgress, [0.44, 0.58], [0.4, 1]);
+  const card3Opacity = useTransform(smoothProgress, [0.48, 0.62], [0, 1]);
 
   const steps: StepData[] = [
     {
@@ -156,25 +150,13 @@ export const HowItWorks: React.FC = () => {
           {/* Right Column: Lassie-Style Large Rounded Card with Motion Blur & Modal */}
           <div className="lg:col-span-8 relative w-full flex items-center justify-center min-h-[400px] sm:min-h-[480px]">
             
-            {/* Background Peeking Bottom Layer 3 Rim */}
-            <div
-              className="absolute w-full max-w-[620px] aspect-[16/10.5] rounded-[3rem] bg-[#8FA395] translate-y-7 scale-[0.88] opacity-60 transition-all duration-300 pointer-events-none"
-              style={{ zIndex: 1 }}
-            />
-
-            {/* Background Peeking Bottom Layer 2 Rim */}
-            <div
-              className="absolute w-full max-w-[640px] aspect-[16/10.5] rounded-[3rem] bg-[#5F7A6A] translate-y-3.5 scale-[0.94] opacity-80 transition-all duration-300 pointer-events-none"
-              style={{ zIndex: 2 }}
-            />
-
             {/* ================================================================= */}
             {/* CARD 1 (Step 01) */}
             {/* ================================================================= */}
             <motion.div
               style={{
                 y: card1Y,
-                scale: card1Scale,
+                opacity: card1Opacity,
                 zIndex: 10,
               }}
               className="absolute w-full max-w-[660px] aspect-[16/10.5] rounded-[3rem] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.12)] border border-black/5 flex items-center justify-center p-6 sm:p-8 will-change-transform bg-[#DCD4C7]"
@@ -244,7 +226,6 @@ export const HowItWorks: React.FC = () => {
             <motion.div
               style={{
                 y: card2Y,
-                scale: card2Scale,
                 opacity: card2Opacity,
                 zIndex: 20,
               }}
@@ -315,7 +296,6 @@ export const HowItWorks: React.FC = () => {
             <motion.div
               style={{
                 y: card3Y,
-                scale: card3Scale,
                 opacity: card3Opacity,
                 zIndex: 30,
               }}
