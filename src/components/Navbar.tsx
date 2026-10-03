@@ -25,7 +25,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
   const navLinks = [
     { label: 'Services', href: '#services' },
     { label: 'How It Works', href: '#how-it-works' },
-    { label: 'Plans', href: '#plans' },
     { label: 'About', href: '#about' },
     { label: 'Stories & Trust', href: '#trust' },
     { label: 'FAQ', href: '#faq' },
@@ -61,7 +60,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
   };
 
   return (
-    <header className="fixed z-[9990] top-0 min-[850px]:top-3.5 left-1/2 -translate-x-1/2 w-full min-[850px]:max-w-3xl max-[1200px]:max-w-2xl bg-white/95 backdrop-blur-md text-[#17211F] shadow-[0_4px_25px_rgba(0,0,0,0.12)] min-[850px]:rounded-full border min-[850px]:border-black/10 border-b border-black/8 transition-all duration-300">
+    <header className="fixed z-[9990] top-0 min-[850px]:top-2 left-1/2 -translate-x-1/2 w-full min-[850px]:max-w-3xl max-[1200px]:max-w-2xl bg-white text-[#17211F] shadow-[0_4px_20px_rgba(0,0,0,0.06)] min-[850px]:rounded-b-2xl border-b min-[850px]:border-x border-black/6 transition-all duration-300">
       <div className="h-11 min-[850px]:h-13 flex items-center justify-between px-3.5 sm:px-4">
         
         {/* Brandmark / Logo */}

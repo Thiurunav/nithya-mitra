@@ -4,8 +4,6 @@ import { Hero } from '../components/Hero';
 import { ServicesSection } from '../components/ServicesSection';
 import { GlobalReachSection } from '../components/GlobalReachSection';
 import { HowItWorks } from '../components/HowItWorks';
-import { GroundTeamSection } from '../components/GroundTeamSection';
-import { SupportPlans } from '../components/SupportPlans';
 import { TrustAndLeadership } from '../components/TrustAndLeadership';
 import { VisionMissionSection } from '../components/VisionMissionSection';
 import { FAQ } from '../components/FAQ';
@@ -47,12 +45,6 @@ export const Home: React.FC = () => {
 
         {/* 3-Step Simple System */}
         <HowItWorks />
-
-        {/* Ground Team in Matching Uniform: "The people looking after home when you are not here" */}
-        <GroundTeamSection />
-
-        {/* 3 Support Plans */}
-        <SupportPlans onSelectPlan={(planId) => scrollToEnquiry(planId)} />
 
         {/* Trust, Chennai Roots & Leadership */}
         <TrustAndLeadership />
