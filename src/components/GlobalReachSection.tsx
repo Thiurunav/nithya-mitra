@@ -68,13 +68,13 @@ export const GlobalReachSection: React.FC = () => {
       {/* Sticky Viewport Frame (100vh) */}
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 select-none">
         
-        {/* Centered Title with generous breathing room */}
+        {/* Centered Title with generous breathing room below top navbar */}
         <motion.div
           style={{
             opacity: titleOpacity,
             y: titleY,
           }}
-          className="absolute top-10 sm:top-14 z-20 text-center pointer-events-none"
+          className="absolute top-24 sm:top-28 lg:top-32 z-20 text-center pointer-events-none"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-serif font-normal text-[#17211F] leading-[1.2] tracking-tight">
             Trusted by NRI families
@@ -83,7 +83,7 @@ export const GlobalReachSection: React.FC = () => {
         </motion.div>
 
         {/* Interactive Layout Stage (Positioned with generous top padding to prevent any overlap with title) */}
-        <div className="relative w-full max-w-7xl mx-auto flex items-center justify-center pt-16 sm:pt-20 lg:pt-24 mt-4 sm:mt-6">
+        <div className="relative w-full max-w-7xl mx-auto flex items-center justify-center pt-24 sm:pt-28 lg:pt-32 mt-6 sm:mt-8">
           
           {/* DOTTED MAP (Animates: Right -> Big Center Plateau -> Left) */}
           <motion.div

@@ -7,6 +7,7 @@ import { HowItWorks } from '../components/HowItWorks';
 import { GroundTeamSection } from '../components/GroundTeamSection';
 import { SupportPlans } from '../components/SupportPlans';
 import { TrustAndLeadership } from '../components/TrustAndLeadership';
+import { VisionMissionSection } from '../components/VisionMissionSection';
 import { FAQ } from '../components/FAQ';
 import { EnquiryForm } from '../components/EnquiryForm';
 import { FinalCTA } from '../components/FinalCTA';
@@ -55,6 +56,9 @@ export const Home: React.FC = () => {
 
         {/* Trust, Chennai Roots & Leadership */}
         <TrustAndLeadership />
+
+        {/* Vision & Mission Interactive Sliding Notch Cards (From Zenin architecture) */}
+        <VisionMissionSection />
 
         {/* 5 Essential FAQs */}
         <FAQ />
