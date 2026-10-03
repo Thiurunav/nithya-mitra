@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ArrowUpRight, Sparkles } from 'lucide-react';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 import { servicesData } from '../data/services';
 import { ServiceDetailDrawer } from './ServiceDetailDrawer';
 import type { ServiceItem } from '../types';
@@ -10,237 +10,212 @@ interface ServicesSectionProps {
 }
 
 export const ServicesSection: React.FC<ServicesSectionProps> = ({
-  onSelectServiceForEnquiry
+  onSelectServiceForEnquiry,
 }) => {
-  const [activeIdx, setActiveIdx] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
 
-  const services = [
+  // 320vh vertical scroll container for horizontal translation
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 26,
+    restDelta: 0.001,
+  });
+
+  const serviceCards = [
     {
-      num: '01',
-      title: 'Family & Parent Wellbeing',
-      shortDesc: 'Regular, unhurried in-person visits over tea, companionship, welfare checks, and pantry or prescription replenishments.',
-      tags: ['Scheduled Visits', 'Companion Walk', 'Welfare Check'],
-      fullService: servicesData[0]
+      id: '01',
+      title: 'Gain full healthcare visibility',
+      desc: 'Doctor appointments, hospital navigation, and structured post-consultation reports sent directly to you abroad.',
+      image: '/vayosh-service-healthcare.jpg',
+      stat: '100%',
+      statLabel: 'Accompanied doctor checkups with digital physician notes',
+      fullService: servicesData[1],
     },
     {
-      num: '02',
-      title: 'Healthcare Accompaniment',
-      shortDesc: 'Doctor appointments, hospital navigation, diagnostics liaison, and structured post-consultation reports sent to you abroad.',
-      tags: ['Clinic Escort', 'Report Archiving', 'Prescription Refills'],
-      fullService: servicesData[1]
+      id: '02',
+      title: 'Regular companionship & dignity',
+      desc: 'Unhurried in-person visits over tea, companion walking, grocery replenishment, and gentle welfare checks.',
+      image: '/vayosh-companionship.jpg',
+      stat: '2-4x',
+      statLabel: 'Scheduled weekly visits by verified local coordinators',
+      fullService: servicesData[0],
     },
     {
-      num: '03',
-      title: 'Home & Property Upkeep',
-      shortDesc: 'Supervised physical presence for electrical, AC, waterproofing or masonry repairs, plus ancestral property inspections.',
-      tags: ['Supervised Repairs', 'Photo Proof', 'Property Walkthroughs'],
-      fullService: servicesData[2]
+      id: '03',
+      title: 'Immediate emergency response',
+      desc: 'Calm, verified ground presence for midnight hospital triage liaison, ambulance dispatch, and live family updates.',
+      image: '/vayosh-service-emergency.jpg',
+      stat: '<15m',
+      statLabel: 'Average coordinator mobilization time in emergency',
+      fullService: servicesData[5],
     },
     {
-      num: '04',
-      title: 'Documents & Local Errands',
-      shortDesc: 'Managing Indian paperwork that cannot wait: digital life certificates (Jeevan Pramaan), bank visits, and notary coordination.',
-      tags: ['Life Certificate', 'Bank Formalities', 'Courier Dispatch'],
-      fullService: servicesData[4]
+      id: '04',
+      title: 'Supervised property upkeep',
+      desc: 'Supervised physical presence for AC, electrical, masonry, or plumbing repairs with timestamped photo verification.',
+      image: '/vayosh-service-property.jpg',
+      stat: '0',
+      statLabel: 'Unsupervised contractor visits to your parents’ home',
+      fullService: servicesData[2],
     },
     {
-      num: '05',
-      title: 'Emergency Coordination',
-      shortDesc: 'A calm, reliable coordinator on the ground for midnight ambulance dispatch, hospital triage liaison, and continuous family updates.',
-      tags: ['24/7 Response', 'Hospital Admission', 'Real-Time Updates'],
-      fullService: servicesData[5]
+      id: '05',
+      title: 'Indian paperwork without travel',
+      desc: 'Digital life certificates (Jeevan Pramaan), banking coordination, notarization, and courier formalities in India.',
+      image: '/vayosh-service-documents.jpg',
+      stat: '100%',
+      statLabel: 'Legal & government documentation tracked digitally',
+      fullService: servicesData[4],
     },
     {
-      num: '06',
-      title: 'Specialist Partner Network',
-      shortDesc: 'Liaison with vetted geriatric homecare attendants, licensed neuro/ortho physiotherapists, and medical equipment rentals.',
-      tags: ['Home Attendants', 'Physiotherapy', 'Mobility Equipment'],
-      fullService: servicesData[8]
-    }
+      id: '06',
+      title: 'Specialist geriatric care network',
+      desc: 'Liaison with vetted geriatric home attendants, licensed physiotherapists, and medical equipment rentals.',
+      image: '/vayosh-service-specialist.jpg',
+      stat: '10+',
+      statLabel: 'Years average healthcare partner vetting threshold',
+      fullService: servicesData[8],
+    },
   ];
 
-  const currentService = services[activeIdx];
+  // Horizontal translation range: scrolls all cards smoothly across the viewport
+  const totalCards = serviceCards.length;
+  // Translate from 0% to approximately -( (totalCards - 1.2) * 440px )
+  const horizontalX = useTransform(
+    smoothProgress,
+    [0, 1],
+    ['0px', `-${(totalCards - 1.4) * 440}px`]
+  );
+
+  // Update active card index based on scroll position
+  useEffect(() => {
+    return smoothProgress.on('change', (latest) => {
+      const idx = Math.min(
+        totalCards - 1,
+        Math.floor(latest * totalCards)
+      );
+      setActiveCardIndex(idx);
+    });
+  }, [smoothProgress, totalCards]);
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-[#F7F4ED] border-b border-[#17352F]/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="services"
+      ref={containerRef}
+      className="relative h-[320vh] bg-[#F7F4ED] text-[#17211F]"
+    >
+      {/* Sticky Viewport Frame (100vh) */}
+      <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden px-6 sm:px-12 lg:px-16 select-none">
         
-        {/* Header */}
-        <div className="max-w-3xl mb-16 md:mb-20">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#B86F55]">
-              COORDINATION DIRECTORY
-            </span>
+        <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14">
+          
+          {/* Left Column: Fixed Minimal Editorial Header & Metric (Inspired by Reference) */}
+          <div className="w-full lg:w-[32%] xl:w-[28%] shrink-0 flex flex-col justify-between h-[480px] py-4">
+            
+            {/* Top Heading */}
+            <div>
+              <div className="inline-flex items-center gap-2 mb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#B86F55]">
+                  CORE PILLARS
+                </span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-serif font-normal text-[#17211F] leading-[1.18] tracking-tight">
+                The rules of
+                <span className="block italic text-[#17352F]">family care,</span>
+                <span className="block">rewritten</span>
+              </h2>
+            </div>
+
+            {/* Dynamic Metric Display */}
+            <div className="my-auto py-6">
+              <span className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#17211F] font-normal leading-none block">
+                {serviceCards[activeCardIndex].stat}
+              </span>
+              <p className="mt-2 text-xs sm:text-sm text-[#17211F]/70 font-light max-w-[220px] leading-relaxed">
+                {serviceCards[activeCardIndex].statLabel}
+              </p>
+            </div>
+
+            {/* Bottom Minimal Progress Indicator Dots (· · ▬ · ·) */}
+            <div className="flex items-center gap-2">
+              {serviceCards.map((_, idx) => (
+                <div
+                  key={idx}
+                  className="h-1 rounded-full transition-all duration-300"
+                  style={{
+                    width: activeCardIndex === idx ? '24px' : '6px',
+                    backgroundColor: activeCardIndex === idx ? '#17211F' : 'rgba(23, 53, 47, 0.2)',
+                  }}
+                />
+              ))}
+            </div>
+
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-medium leading-[1.12] text-[#17211F] tracking-tight">
-            <span className="block font-sans font-normal text-[#17211F]">
-              One trusted point of contact
-            </span>
-            <span className="block font-serif italic font-medium text-[#17352F] mt-1 sm:mt-2">
-              for home in India.
-            </span>
-          </h2>
-
-          <p className="mt-4 text-base sm:text-lg text-[#68716D] font-light max-w-xl">
-            Select a service to review how Nithya Mitra coordinates on the ground and remains accountable.
-          </p>
-        </div>
-
-        {/* Master-Detail Editorial Layout (No Generic Cards!) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          
-          {/* Left Column: Dynamic Visual Showcase (5 Cols - Sticky on Desktop) */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28">
-            <div className="relative rounded-sm overflow-hidden border border-[#17352F]/15 bg-[#EAE5DB] shadow-lg">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentService.num}
-                  initial={{ opacity: 0, scale: 1.02 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.35 }}
-                  className="relative h-[420px] sm:h-[490px] w-full"
+          {/* Right Column: Horizontal Scrolling Cards Track */}
+          <div className="w-full lg:w-[68%] xl:w-[72%] overflow-hidden">
+            <motion.div
+              style={{ x: horizontalX }}
+              className="flex items-center gap-6 sm:gap-8 will-change-transform py-4"
+            >
+              {serviceCards.map((card, idx) => (
+                <div
+                  key={card.id}
+                  onClick={() => setSelectedService(card.fullService)}
+                  className="w-[340px] sm:w-[400px] h-[480px] shrink-0 rounded-3xl bg-white border border-[#17352F]/10 shadow-[0_12px_40px_rgba(23,53,47,0.06)] p-7 sm:p-8 flex flex-col justify-between group cursor-pointer hover:shadow-xl hover:border-[#17352F]/25 transition-all"
                 >
-                  <img
-                    src={currentService.fullService.image}
-                    alt={currentService.title}
-                    className="w-full h-full object-cover object-top filter saturate-[0.98] contrast-[1.02]"
-                  />
-                  
-                  {/* Subtle Gradient & Context Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#17352F]/95 via-[#17352F]/45 via-45% to-transparent flex flex-col justify-end p-6 sm:p-7 text-[#F7F4ED]">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-[#B86F55] font-semibold bg-[#17352F]/60 px-2 py-0.5 rounded-xs backdrop-blur-xs">
-                        Service {currentService.num} of 06
-                      </span>
-                      <span className="text-[11px] font-mono text-[#D8C8B3]">
-                        Chennai Ground Hub
-                      </span>
-                    </div>
-
-                    <h4 className="text-2xl font-serif text-[#FBFAF6] mb-2">
-                      {currentService.title}
-                    </h4>
-
-                    <p className="text-xs text-[#F7F4ED]/80 font-light leading-relaxed mb-4 line-clamp-2">
-                      {currentService.shortDesc}
-                    </p>
-
-                    <div className="flex items-center gap-3">
-                      <button
-                        onClick={() => setSelectedService(currentService.fullService)}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#F7F4ED] hover:bg-white text-[#17352F] text-xs uppercase tracking-wider font-semibold rounded-sm transition-colors cursor-pointer"
-                      >
-                        <span>Full Scope</span>
-                        <ArrowUpRight className="w-3.5 h-3.5 text-[#B86F55]" />
-                      </button>
-
-                      <button
-                        onClick={() => onSelectServiceForEnquiry(currentService.title)}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 border border-[#D8C8B3]/40 text-[#F7F4ED] hover:bg-[#21463F] text-xs uppercase tracking-wider font-medium rounded-sm transition-colors cursor-pointer"
-                      >
-                        <span>Consult on this</span>
-                      </button>
+                  {/* Card Visual Graphic / Photo */}
+                  <div className="w-full h-[220px] rounded-2xl overflow-hidden bg-[#F7F4ED] relative border border-[#17352F]/8 flex items-center justify-center">
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="w-full h-full object-cover filter saturate-[0.98] transition-transform duration-700 ease-out group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-xs flex items-center justify-center text-[#17352F] shadow-xs group-hover:bg-[#17352F] group-hover:text-white transition-colors">
+                      <ArrowUpRight className="w-4 h-4 text-[#B86F55] group-hover:text-white transition-colors" />
                     </div>
                   </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
 
-            {/* Quick Helper Note */}
-            <div className="mt-4 flex items-center gap-2 text-xs text-[#68716D]">
-              <Sparkles className="w-3.5 h-3.5 text-[#B86F55]" />
-              <span>Hover or tap any service on the right to preview on-ground coordination.</span>
-            </div>
-          </div>
+                  {/* Card Content Details */}
+                  <div className="pt-4">
+                    <h3 className="font-serif text-xl sm:text-2xl text-[#17211F] font-medium leading-snug mb-2 group-hover:text-[#17352F] transition-colors">
+                      {card.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#17211F]/70 font-light leading-relaxed line-clamp-3">
+                      {card.desc}
+                    </p>
+                  </div>
 
-          {/* Right Column: Editorial Service Index List (7 Cols) */}
-          <div className="lg:col-span-7 divide-y divide-[#17352F]/15 border-y border-[#17352F]/15">
-            {services.map((item, idx) => {
-              const isActive = activeIdx === idx;
-              return (
-                <div
-                  key={item.num}
-                  onMouseEnter={() => setActiveIdx(idx)}
-                  onClick={() => {
-                    setActiveIdx(idx);
-                    setSelectedService(item.fullService);
-                  }}
-                  role="button"
-                  tabIndex={0}
-                  className={`py-6 sm:py-7 px-4 sm:px-6 transition-all duration-300 cursor-pointer select-none group relative ${
-                    isActive
-                      ? 'bg-[#FBFAF6] shadow-[0_4px_20px_rgba(23,53,47,0.05)] pl-6 sm:pl-8'
-                      : 'hover:bg-[#FBFAF6]/60'
-                  }`}
-                >
-                  {/* Active Indicator Bar */}
-                  <span
-                    className={`absolute left-0 top-0 bottom-0 w-1 bg-[#B86F55] transition-transform duration-300 origin-top ${
-                      isActive ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0'
-                    }`}
-                  />
-
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex items-start gap-5 sm:gap-6">
-                      <span className={`font-mono text-sm font-semibold tracking-wider pt-1 transition-colors ${
-                        isActive ? 'text-[#B86F55]' : 'text-[#68716D] group-hover:text-[#17352F]'
-                      }`}>
-                        {item.num}
-                      </span>
-
-                      <div>
-                        <h3 className={`text-xl sm:text-2xl font-serif transition-colors ${
-                          isActive ? 'text-[#17352F] font-medium' : 'text-[#17211F] group-hover:text-[#B86F55]'
-                        }`}>
-                          {item.title}
-                        </h3>
-
-                        <p className="mt-2 text-xs sm:text-sm text-[#17211F]/75 font-light leading-relaxed max-w-xl">
-                          {item.shortDesc}
-                        </p>
-
-                        {/* Scope Chips */}
-                        <div className="mt-3.5 flex flex-wrap gap-2">
-                          {item.tags.map((tag, tIdx) => (
-                            <span
-                              key={tIdx}
-                              className={`text-[11px] px-2.5 py-0.5 rounded-sm font-mono transition-colors ${
-                                isActive
-                                  ? 'bg-[#17352F] text-[#F7F4ED]'
-                                  : 'bg-[#EAE5DB]/70 text-[#17211F]/70 group-hover:bg-[#EAE5DB]'
-                              }`}
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="pt-2 shrink-0">
-                      <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all ${
-                        isActive
-                          ? 'border-[#17352F] bg-[#17352F] text-[#F7F4ED] translate-x-1'
-                          : 'border-[#17352F]/20 text-[#17352F] group-hover:border-[#17352F]'
-                      }`}>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </div>
-                    </div>
+                  {/* Action Link Footer */}
+                  <div className="pt-3 border-t border-black/5 flex items-center justify-between text-xs">
+                    <span className="font-mono text-[#B86F55] font-semibold text-[11px]">
+                      0{idx + 1} · Service Scope
+                    </span>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onSelectServiceForEnquiry(card.title);
+                      }}
+                      className="text-[#17352F] font-semibold hover:underline underline-offset-4 cursor-pointer"
+                    >
+                      Enquire →
+                    </button>
                   </div>
                 </div>
-              );
-            })}
+              ))}
+            </motion.div>
           </div>
 
-        </div>
-
-        {/* Accountability Disclaimer */}
-        <div className="mt-12 text-center text-xs text-[#68716D] font-light max-w-2xl mx-auto">
-          Nithya Mitra acts as your local coordinator and remains accountable for the journey. We do not claim to provide medical treatments or licensed trade works directly.
         </div>
 
       </div>
