@@ -1,14 +1,71 @@
-import React, { useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { ArrowDownRight } from 'lucide-react';
-import { brandImages } from '../data/assets';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { ArrowDownRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface HeroProps {
   onOpenEnquiry?: () => void;
 }
 
+interface CarouselSlide {
+  id: string;
+  image: string;
+  alt: string;
+  tag: string;
+  focusPosition: string;
+}
+
 export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const slides: CarouselSlide[] = [
+    {
+      id: 'slide-1',
+      image: '/nithya-mitra-hero-elderly.jpg',
+      alt: 'Elderly South Indian couple sharing morning filter coffee and reading newspaper at home in Chennai',
+      tag: '01 · Morning Wellbeing & Peace at Home',
+      focusPosition: 'object-[75%_center] md:object-[68%_center]'
+    },
+    {
+      id: 'slide-2',
+      image: '/nithya-mitra-hero-walk.jpg',
+      alt: 'Elderly grandmother gently assisted on morning garden walk in Chennai by Nithya Mitra care coordinator',
+      tag: '02 · Assisted Walking & Garden Mobility',
+      focusPosition: 'object-[70%_center] md:object-[62%_center]'
+    },
+    {
+      id: 'slide-3',
+      image: '/nithya-mitra-hero-clinic.jpg',
+      alt: 'Elderly father accompanied to healthcare clinic by dedicated Nithya Mitra care coordinator',
+      tag: '03 · Healthcare & Doctor Accompaniment',
+      focusPosition: 'object-[72%_center] md:object-[65%_center]'
+    },
+    {
+      id: 'slide-4',
+      image: '/vayosh-hero-story.jpg',
+      alt: 'Elderly parents at home connecting on live video call with NRI family abroad assisted by care lead',
+      tag: '04 · Live NRI Family Connection',
+      focusPosition: 'object-[75%_center] md:object-[68%_center]'
+    }
+  ];
+
+  // Auto-advance carousel every 6 seconds
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [isPaused, slides.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
 
   // Mouse coordinate values normalized between -0.5 and +0.5
   const mouseX = useMotionValue(0);
@@ -49,32 +106,42 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => setIsPaused(true)}
       className="relative isolate min-h-[90vh] md:min-h-screen flex items-center pt-28 sm:pt-36 min-[850px]:pt-40 pb-16 sm:pb-20 overflow-hidden border-b border-[#17352F]/15 cursor-default select-none"
     >
-      {/* CINEMATIC HERO BACKGROUND (Full Natural Tones, NO White Shade) */}
+      {/* FULL-SCREEN HERO BACKGROUND CAROUSEL */}
       <div className="absolute inset-0 min-[850px]:inset-2.5 z-0 overflow-hidden rounded-br-4xl rounded-bl-4xl bg-[#1A1816]">
         
-        {/* Parallax Image that glides in the OPPOSITE direction on hover */}
-        <motion.img
-          src={brandImages.hero.src}
-          alt={brandImages.hero.alt}
-          style={{
-            x: imageTranslateX,
-            y: imageTranslateY,
-            scale: 1.08,
-          }}
-          className="w-full h-full object-cover object-[75%_center] md:object-[68%_center] filter saturate-[1.02] contrast-[1.04] will-change-transform"
-          loading="eager"
-          fetchPriority="high"
-        />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={slides[currentSlide].id}
+            initial={{ opacity: 0, scale: 1.04 }}
+            animate={{ opacity: 1, scale: 1.08 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inset-0 w-full h-full"
+          >
+            {/* Parallax Image that glides in the OPPOSITE direction on hover */}
+            <motion.img
+              src={slides[currentSlide].image}
+              alt={slides[currentSlide].alt}
+              style={{
+                x: imageTranslateX,
+                y: imageTranslateY,
+              }}
+              className={`w-full h-full object-cover ${slides[currentSlide].focusPosition} filter saturate-[1.02] contrast-[1.03] will-change-transform`}
+              loading="eager"
+            />
+          </motion.div>
+        </AnimatePresence>
 
-        {/* Subtle Dark Vignette on Left for Crisp Ivory Text Readability (Parents on Right remain 100% untouched) */}
+        {/* Subtle Directional Scrim for crisp text contrast on left while keeping parents 100% natural on right */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/35 via-45% to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
       </div>
 
-      {/* Main Content Container: Clean, Minimal, Proportionate Typography */}
+      {/* Main Content Container: Clean Minimal Typography */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-xl flex flex-col items-start text-left">
           
@@ -90,7 +157,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
             <span className="text-[#D8C8B3]">✦</span>
           </motion.div>
 
-          {/* Compact, High-Impact 2-Line Headline (Proportionate, Not Too Big) */}
+          {/* Compact 2-Line Headline */}
           <h1 className="text-3xl sm:text-4xl lg:text-[3.25rem] xl:text-[3.5rem] font-semibold tracking-tight leading-[1.14] mb-7 text-[#F7F4ED] drop-shadow-sm">
             <motion.span
               initial={{ opacity: 0, y: 16 }}
@@ -135,6 +202,63 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
           </motion.div>
 
         </div>
+      </div>
+
+      {/* Bottom Carousel Controls & Active Slide Tag */}
+      <div className="absolute bottom-6 left-4 sm:left-8 right-4 sm:right-8 z-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pointer-events-none">
+        
+        {/* Active Scene Caption Pill */}
+        <motion.div
+          key={slides[currentSlide].tag}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="inline-flex items-center gap-2 bg-black/40 backdrop-blur-md text-[#F7F4ED] py-1.5 px-3.5 rounded-full border border-white/15 text-xs pointer-events-auto"
+        >
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="font-light tracking-wide text-[11px] sm:text-xs">
+            {slides[currentSlide].tag}
+          </span>
+        </motion.div>
+
+        {/* Carousel Pagination Dots & Nav Arrows */}
+        <div className="flex items-center gap-3 self-end sm:self-auto bg-black/40 backdrop-blur-md py-1.5 px-3 rounded-full border border-white/15 pointer-events-auto">
+          {/* Prev Button */}
+          <button
+            onClick={prevSlide}
+            aria-label="Previous Slide"
+            className="w-7 h-7 rounded-full flex items-center justify-center text-[#F7F4ED]/80 hover:text-white hover:bg-white/15 transition-colors focus:outline-none cursor-pointer"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+
+          {/* Slide Progress Indicators */}
+          <div className="flex items-center gap-1.5">
+            {slides.map((s, idx) => (
+              <button
+                key={s.id}
+                onClick={() => setCurrentSlide(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+                className="relative h-1.5 rounded-full overflow-hidden transition-all duration-300 focus:outline-none cursor-pointer"
+                style={{
+                  width: currentSlide === idx ? '28px' : '8px',
+                  backgroundColor: currentSlide === idx ? '#B86F55' : 'rgba(255, 255, 255, 0.3)'
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Next Button */}
+          <button
+            onClick={nextSlide}
+            aria-label="Next Slide"
+            className="w-7 h-7 rounded-full flex items-center justify-center text-[#F7F4ED]/80 hover:text-white hover:bg-white/15 transition-colors focus:outline-none cursor-pointer"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+
       </div>
 
     </section>
