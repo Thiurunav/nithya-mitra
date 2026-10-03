@@ -16,10 +16,10 @@ const AnimatedWord: React.FC<WordItemProps> = ({
   progress,
   isAccent,
 }) => {
-  // Staggered scroll window per word across 0% to 72% of section scroll
-  const step = 0.72 / totalWords;
+  // Staggered scroll window per word across 0% to 80% of section scroll
+  const step = 0.80 / totalWords;
   const start = index * step;
-  const end = Math.min(start + step * 1.35, 0.78);
+  const end = Math.min(start + step * 1.3, 0.86);
 
   // Direction mixture: 0: top, 1: right, 2: down, 3: top-right, 4: down-right
   const dirPattern = index % 5;
@@ -52,7 +52,7 @@ const AnimatedWord: React.FC<WordItemProps> = ({
 export const ScrollRevealPhrase: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // 260vh container provides unhurried, deliberate scroll runway for all words
+  // 280vh container provides generous scroll runway
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end'],
@@ -64,12 +64,16 @@ export const ScrollRevealPhrase: React.FC = () => {
     restDelta: 0.001,
   });
 
-  // Overall phrase moves right-to-left across the full width and completes by 82% scroll
-  const containerX = useTransform(smoothProgress, [0, 0.82], ['35vw', '-145vw']);
+  // Moves across until the very last word ("there.") reaches the exact center of the screen
+  const containerX = useTransform(
+    smoothProgress,
+    [0, 0.88],
+    ['60vw', 'calc(50vw - 100% + 2rem)']
+  );
   
-  // Once the entire sentence has completed, it glides upwards to transition seamlessly to the next section
-  const containerY = useTransform(smoothProgress, [0.85, 1.0], ['0vh', '-35vh']);
-  const containerOpacity = useTransform(smoothProgress, [0.88, 1.0], [1, 0.1]);
+  // Only after the last word has completed and centered does it smoothly transition to the top
+  const containerY = useTransform(smoothProgress, [0.90, 1.0], ['0vh', '-35vh']);
+  const containerOpacity = useTransform(smoothProgress, [0.92, 1.0], [1, 0.1]);
 
   const words = [
     'We',
@@ -100,7 +104,7 @@ export const ScrollRevealPhrase: React.FC = () => {
   return (
     <section
       ref={containerRef}
-      className="relative h-[260vh] bg-[#F7F4ED] text-[#17211F] select-none"
+      className="relative h-[280vh] bg-[#F7F4ED] text-[#17211F] select-none"
     >
       {/* Sticky Viewport Stage */}
       <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
@@ -128,6 +132,7 @@ export const ScrollRevealPhrase: React.FC = () => {
     </section>
   );
 };
+
 
 
 
