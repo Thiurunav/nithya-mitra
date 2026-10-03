@@ -19,34 +19,34 @@ export const GlobalReachSection: React.FC = () => {
     restDelta: 0.001,
   });
 
-  // 1. Text Vertical Position & Scale (No fade-in, solid text gliding up smoothly from bottom):
-  // Starts down ('55vh') -> Glides to center ('0vh') -> Shrinks and glides up ('-80px')
+  // 1. Text Vertical Position & Scale:
+  // Starts lower ('35vh') -> Center spotlight ('16vh') -> Rests gracefully at top header spot ('0vh')
   const titleY = useTransform(
     smoothProgress,
-    [0, 0.32, 0.70],
-    ['55vh', '0vh', '-80px']
+    [0, 0.28, 0.65],
+    ['35vh', '16vh', '0vh']
   );
   const titleScale = useTransform(
     smoothProgress,
-    [0, 0.32, 0.70],
-    [1.22, 1.22, 0.88]
+    [0, 0.28, 0.65],
+    [1.18, 1.18, 0.92]
   );
 
   // 2. Map Vertical Position, Scale & Opacity:
   // Rises smoothly from down below into the center as the text shrinks
   const mapY = useTransform(
     smoothProgress,
-    [0.26, 0.72],
-    ['65vh', '0vh']
+    [0.22, 0.68],
+    ['55vh', '0vh']
   );
   const mapScale = useTransform(
     smoothProgress,
-    [0.26, 0.72],
+    [0.22, 0.68],
     [0.85, 1.05]
   );
   const mapOpacity = useTransform(
     smoothProgress,
-    [0.26, 0.50],
+    [0.22, 0.48],
     [0.2, 1]
   );
 
@@ -65,9 +65,9 @@ export const GlobalReachSection: React.FC = () => {
       className="relative h-[250vh] bg-[#F7F4ED] text-[#17211F]"
     >
       {/* Sticky Viewport Frame (100vh) */}
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 select-none">
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-start pt-24 sm:pt-28 lg:pt-32 pb-8 overflow-hidden px-4 sm:px-6 lg:px-8 select-none">
         
-        {/* Animated Header: Glides smoothly from bottom to center, then shrinks and glides up */}
+        {/* Animated Header: Glides smoothly from bottom to center, then shrinks and glides to top */}
         <motion.div
           style={{
             y: titleY,
