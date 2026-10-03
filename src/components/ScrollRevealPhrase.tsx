@@ -74,15 +74,15 @@ export const ScrollRevealPhrase: React.FC = () => {
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
-  // 260vh container provides smooth, relaxed scroll pacing
+  // 420vh container provides a slower, unhurried, luxurious scroll pacing
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end'],
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 85,
-    damping: 25,
+    stiffness: 65,
+    damping: 28,
     restDelta: 0.001,
   });
 
@@ -92,7 +92,7 @@ export const ScrollRevealPhrase: React.FC = () => {
     [0, 0.84],
     [scrollRange.start, scrollRange.end]
   );
-  
+
   // Only after the last word has arrived in center does it smoothly transition upwards
   const containerY = useTransform(smoothProgress, [0.87, 1.0], ['0vh', '-35vh']);
   const containerOpacity = useTransform(smoothProgress, [0.90, 1.0], [1, 0.1]);
@@ -112,7 +112,6 @@ export const ScrollRevealPhrase: React.FC = () => {
     'respect',
     '&',
     'presence',
-    '—',
     'as',
     'if',
     'you',
@@ -121,16 +120,16 @@ export const ScrollRevealPhrase: React.FC = () => {
     'there.',
   ];
 
-  const accentWords = ['parents', 'devotion,', 'presence', '—', 'right', 'there.'];
+  const accentWords = ['parents', 'devotion,', 'presence', 'right', 'there.'];
 
   return (
     <section
       ref={containerRef}
-      className="relative h-[260vh] bg-[#F7F4ED] text-[#17211F] select-none"
+      className="relative h-[420vh] bg-[#F7F4ED] text-[#17211F] select-none"
     >
       {/* Sticky Viewport Stage */}
       <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
-        
+
         {/* Giant Right-to-Left Gliding Typography with Mixed Direction Word Entrances */}
         <motion.div
           style={{ x: containerX, y: containerY, opacity: containerOpacity }}
