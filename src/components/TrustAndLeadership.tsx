@@ -1,33 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Eye, Network, MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { brandImages } from '../data/assets';
 
 export const TrustAndLeadership: React.FC = () => {
-  const commitments = [
-    {
-      icon: ShieldCheck,
-      title: 'One Accountable Coordinator',
-      desc: 'You deal with one dedicated family care lead in India, not a fragmented list of unknown handymen or clinic clerks.'
-    },
-    {
-      icon: Eye,
-      title: 'Proof in Writing & Photos',
-      desc: 'Every visit, repair, and doctor interaction is documented with photos, receipts, and a summary sent straight to your WhatsApp.'
-    },
-    {
-      icon: Network,
-      title: 'Vetted Specialist Network',
-      desc: 'When specialized medicine, physiotherapy, or nursing is required, we coordinate vetted, licensed partners and supervise execution.'
-    }
-  ];
-
   return (
     <section id="about" className="py-20 md:py-28 bg-[#FBFAF6] border-b border-[#17352F]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top Split: Founder Note & Local Presence */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center mb-16 pb-16 border-b border-[#17352F]/10">
+        {/* Founder Note & Local Presence */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* Left: Founder Portrait */}
           <motion.div
@@ -80,33 +62,6 @@ export const TrustAndLeadership: React.FC = () => {
             </div>
           </div>
 
-        </div>
-
-        {/* Bottom: 3 Core Commitments */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {commitments.map((c, idx) => {
-            const Icon = c.icon;
-            return (
-              <motion.div
-                key={c.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.08 * idx }}
-                className="bg-[#F7F4ED] p-7 rounded-sm border border-[#17352F]/10 hover:border-[#17352F]/25 transition-all"
-              >
-                <div className="w-9 h-9 rounded-sm bg-[#17352F] text-[#D8C8B3] flex items-center justify-center mb-4">
-                  <Icon className="w-4 h-4" />
-                </div>
-                <h3 className="text-lg font-serif text-[#17352F] mb-2">
-                  {c.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-[#68716D] font-light leading-relaxed">
-                  {c.desc}
-                </p>
-              </motion.div>
-            );
-          })}
         </div>
 
       </div>
