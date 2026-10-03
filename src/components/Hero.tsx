@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ArrowDownRight, ShieldCheck, Clock, Video } from 'lucide-react';
 import { brandImages } from '../data/assets';
 
@@ -8,13 +8,52 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Mouse coordinate values normalized between -0.5 and +0.5
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Spring physics for butter-smooth organic deceleration and return
+  const springConfig = { damping: 28, stiffness: 220, mass: 0.6 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  // OPPOSITE DIRECTION minute parallax:
+  // When cursor moves right (+0.5), image shifts left (-20px).
+  // When cursor moves down (+0.5), image shifts up (-16px).
+  const imageTranslateX = useTransform(smoothX, [-0.5, 0.5], [20, -20]);
+  const imageTranslateY = useTransform(smoothY, [-0.5, 0.5], [16, -16]);
+
+  // Subtle 3D perspective tilt
+  const cardRotateX = useTransform(smoothY, [-0.5, 0.5], [3, -3]);
+  const cardRotateY = useTransform(smoothX, [-0.5, 0.5], [-3, 3]);
+
+  // Foreground floating badges slight forward depth offset
+  const badgeTranslateX = useTransform(smoothX, [-0.5, 0.5], [-8, 8]);
+  const badgeTranslateY = useTransform(smoothY, [-0.5, 0.5], [-6, 6]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section className="relative flex flex-col items-center pt-32 sm:pt-40 md:pt-48 pb-16 md:pb-24 overflow-hidden border-b border-[#17352F]/10">
+    <section className="relative flex flex-col items-center pt-28 sm:pt-36 min-[850px]:pt-40 pb-16 md:pb-24 overflow-hidden border-b border-[#17352F]/10">
       
       {/* Background with warm ambient glow in our project colors (Forest Green & Terracotta) */}
       <div
@@ -114,43 +153,79 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
 
       </div>
 
-      {/* Elderly Showcase (Inspiration Perspective Frame below Hero CTA) */}
+      {/* Elderly Showcase with Minute Opposite-Direction Parallax Hover */}
       <motion.div
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         initial={{ opacity: 0, y: 35 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16"
+        style={{
+          perspective: 1200,
+        }}
+        className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16 cursor-pointer"
       >
-        <div className="relative rounded-2xl overflow-hidden border border-[#17352F]/15 shadow-2xl bg-[#FBFAF6] [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)] group">
+        <motion.div
+          style={{
+            rotateX: cardRotateX,
+            rotateY: cardRotateY,
+            transformStyle: 'preserve-3d',
+          }}
+          className="relative rounded-2xl overflow-hidden border border-[#17352F]/15 shadow-2xl bg-[#FBFAF6] [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)] transition-shadow duration-500 hover:shadow-[0_25px_60px_rgba(23,53,47,0.18)]"
+        >
           
-          {/* Authentic Elderly Parents + Ground Coordinator Story Image */}
+          {/* Authentic Elderly Parents + Ground Coordinator Story Image (Moving in Opposite Direction) */}
           <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden bg-[#EAE5DB]">
-            <img
+            <motion.img
+              style={{
+                x: imageTranslateX,
+                y: imageTranslateY,
+                scale: 1.08, // Generous scale to prevent any edge clipping during opposite motion
+              }}
               src={brandImages.hero.src}
               alt="Elderly Indian parents in Chennai supported at home by Nithya Mitra coordinator with NRI son on video call"
-              className="w-full h-full object-cover object-center filter saturate-[0.98] contrast-[1.02] transition-transform duration-700 ease-out group-hover:scale-[1.01]"
+              className="w-full h-full object-cover object-center filter saturate-[0.98] contrast-[1.02] will-change-transform"
               loading="eager"
               fetchPriority="high"
             />
             
-            {/* Top Left Floating Pill: Live Ground Status */}
-            <div className="absolute top-4 left-4 bg-[#17352F]/90 backdrop-blur-md text-[#F7F4ED] px-3.5 py-1.5 rounded-xl border border-white/15 shadow-md flex items-center gap-2">
+            {/* Top Left Floating Pill: Live Ground Status (with subtle depth shift) */}
+            <motion.div
+              style={{
+                x: badgeTranslateX,
+                y: badgeTranslateY,
+              }}
+              className="absolute top-4 left-4 bg-[#17352F]/90 backdrop-blur-md text-[#F7F4ED] px-3.5 py-1.5 rounded-xl border border-white/15 shadow-md flex items-center gap-2 will-change-transform pointer-events-none"
+            >
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-[11px] font-mono uppercase tracking-wider font-medium">
                 Live Ground Hub · Chennai, India
               </span>
-            </div>
+            </motion.div>
 
-            {/* Top Right Floating Pill: Timezone Connection */}
-            <div className="absolute top-4 right-4 hidden sm:flex items-center gap-2 bg-white/90 backdrop-blur-md text-[#17211F] px-3.5 py-1.5 rounded-xl border border-black/10 shadow-md">
+            {/* Top Right Floating Pill: Timezone Connection (with subtle depth shift) */}
+            <motion.div
+              style={{
+                x: badgeTranslateX,
+                y: badgeTranslateY,
+              }}
+              className="absolute top-4 right-4 hidden sm:flex items-center gap-2 bg-white/90 backdrop-blur-md text-[#17211F] px-3.5 py-1.5 rounded-xl border border-black/10 shadow-md will-change-transform pointer-events-none"
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
               <span className="text-[11px] font-mono uppercase tracking-wider text-[#17211F] font-medium">
                 USA · UK · Worldwide ↔ India
               </span>
-            </div>
+            </motion.div>
 
             {/* Bottom Caption Overlay */}
-            <div className="absolute bottom-6 left-6 right-6 hidden md:flex items-center justify-between bg-[#17352F]/85 backdrop-blur-md text-[#F7F4ED] p-3.5 px-5 rounded-xl border border-white/10 shadow-lg">
+            <motion.div
+              style={{
+                x: badgeTranslateX,
+                y: badgeTranslateY,
+              }}
+              className="absolute bottom-6 left-6 right-6 hidden md:flex items-center justify-between bg-[#17352F]/85 backdrop-blur-md text-[#F7F4ED] p-3.5 px-5 rounded-xl border border-white/10 shadow-lg will-change-transform pointer-events-none"
+            >
               <div className="flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center font-serif text-sm font-semibold text-[#D8C8B3]">
                   NM
@@ -168,11 +243,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
               <span className="text-[11px] font-mono uppercase tracking-wider text-[#D8C8B3] bg-white/10 px-3 py-1 rounded-lg">
                 100% Verified Presence
               </span>
-            </div>
+            </motion.div>
 
           </div>
 
-        </div>
+        </motion.div>
       </motion.div>
 
     </section>
