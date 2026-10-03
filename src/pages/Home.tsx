@@ -11,7 +11,6 @@ import { FAQ } from '../components/FAQ';
 import { EnquiryForm } from '../components/EnquiryForm';
 import { FinalCTA } from '../components/FinalCTA';
 import { Footer } from '../components/Footer';
-import { WhatsAppFloating } from '../components/WhatsAppFloating';
 
 export const Home: React.FC = () => {
   const [selectedPlan, setSelectedPlan] = useState<string | undefined>(undefined);
@@ -72,9 +71,6 @@ export const Home: React.FC = () => {
 
       {/* Footer */}
       <Footer />
-
-      {/* Floating WhatsApp pill on desktop + mobile action bar */}
-      <WhatsAppFloating onOpenEnquiry={() => scrollToEnquiry()} />
     </div>
   );
 };
