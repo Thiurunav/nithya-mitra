@@ -5,6 +5,7 @@ import { ServicesSection } from '../components/ServicesSection';
 import { GlobalReachSection } from '../components/GlobalReachSection';
 import { ScrollRevealPhrase } from '../components/ScrollRevealPhrase';
 import { HowItWorks } from '../components/HowItWorks';
+import { BentoGridSection } from '../components/BentoGridSection';
 import { TrustAndLeadership } from '../components/TrustAndLeadership';
 import { VisionMissionSection } from '../components/VisionMissionSection';
 import { FAQ } from '../components/FAQ';
@@ -49,6 +50,9 @@ export const Home: React.FC = () => {
 
         {/* 3-Step Simple System */}
         <HowItWorks />
+
+        {/* Feature Bento Grid (Reference Layout with Phone Mockup & Status Badges) */}
+        <BentoGridSection />
 
         {/* Trust, Chennai Roots & Leadership */}
         <TrustAndLeadership />

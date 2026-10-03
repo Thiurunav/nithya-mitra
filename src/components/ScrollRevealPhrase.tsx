@@ -81,8 +81,8 @@ export const ScrollRevealPhrase: React.FC = () => {
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 65,
-    damping: 28,
+    stiffness: 55,
+    damping: 40,
     restDelta: 0.001,
   });
 
