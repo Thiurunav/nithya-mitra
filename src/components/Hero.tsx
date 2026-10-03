@@ -133,12 +133,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={() => setIsPaused(true)}
-      className="relative isolate min-h-[90vh] md:min-h-screen flex items-center pt-28 sm:pt-36 min-[850px]:pt-40 pb-20 sm:pb-28 overflow-hidden rounded-b-[2.5rem] sm:rounded-b-[3.5rem] md:rounded-b-[4rem] border-b border-[#17352F]/15 cursor-default select-none shadow-[0_20px_50px_rgba(23,53,47,0.1)]"
+      className="relative isolate min-h-[90vh] md:min-h-screen flex items-center pt-28 sm:pt-36 pb-20 sm:pb-28 overflow-hidden rounded-b-[2.5rem] sm:rounded-b-[3.5rem] md:rounded-b-[4.5rem] border-b border-[#17352F]/15 cursor-default select-none shadow-[0_25px_60px_rgba(23,53,47,0.12)]"
     >
       {/* FULL-SCREEN HERO BACKGROUND CAROUSEL WITH SCROLL PARALLAX & SOFT CURVED BOTTOM */}
       <motion.div
         style={{ y: bgScrollY }}
-        className="absolute inset-0 min-[850px]:inset-2.5 z-0 overflow-hidden rounded-b-[2.5rem] sm:rounded-b-[3.5rem] md:rounded-b-[4rem] bg-[#1A1816] will-change-transform shadow-[0_20px_50px_rgba(0,0,0,0.35)]"
+        className="absolute inset-0 z-0 overflow-hidden rounded-b-[2.5rem] sm:rounded-b-[3.5rem] md:rounded-b-[4.5rem] bg-[#1A1816] will-change-transform shadow-[0_20px_50px_rgba(0,0,0,0.35)]"
       >
         
         <AnimatePresence mode="wait">
@@ -148,7 +148,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
             animate={{ opacity: 1, scale: 1.06 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-0 w-full h-full rounded-b-[2.5rem] sm:rounded-b-[3.5rem] md:rounded-b-[4rem] overflow-hidden"
+            className="absolute inset-0 w-full h-full rounded-b-[2.5rem] sm:rounded-b-[3.5rem] md:rounded-b-[4.5rem] overflow-hidden"
           >
             {/* Parallax Image that glides in the OPPOSITE direction on hover */}
             <motion.img
