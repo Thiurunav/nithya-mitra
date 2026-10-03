@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
 import { ServicesSection } from '../components/ServicesSection';
+import { GlobalReachSection } from '../components/GlobalReachSection';
 import { HowItWorks } from '../components/HowItWorks';
 import { GroundTeamSection } from '../components/GroundTeamSection';
 import { SupportPlans } from '../components/SupportPlans';
@@ -39,6 +40,9 @@ export const Home: React.FC = () => {
             scrollToEnquiry(undefined, serviceTitle)
           }
         />
+
+        {/* Global NRI Working Grid with MagicUI DottedMap */}
+        <GlobalReachSection onOpenEnquiry={() => scrollToEnquiry()} />
 
         {/* 3-Step Simple System */}
         <HowItWorks />
