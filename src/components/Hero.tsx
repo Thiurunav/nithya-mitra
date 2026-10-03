@@ -11,6 +11,10 @@ interface CarouselSlide {
   image: string;
   alt: string;
   tag: string;
+  eyebrow: string;
+  headlineLine1: string;
+  headlineLine2Prefix: string;
+  headlineEmphasis: string;
   focusPosition: string;
 }
 
@@ -31,6 +35,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       image: '/nithya-mitra-hero-tablet.jpg',
       alt: 'Elderly South Indian couple sitting on sofa with tablet video calling family with Nithya Mitra coordinator in branded green polo',
       tag: '01 · Dedicated Family Coordination & Video Connection',
+      eyebrow: 'Now Supporting NRI Families',
+      headlineLine1: 'You Built Abroad',
+      headlineLine2Prefix: 'Protect Home with ',
+      headlineEmphasis: 'Certainty',
       focusPosition: 'object-[75%_center] md:object-[68%_center]'
     },
     {
@@ -38,6 +46,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       image: '/nithya-mitra-hero-walk.jpg',
       alt: 'Elderly grandmother gently assisted on morning garden walk in Chennai by Nithya Mitra care coordinator in official branded polo',
       tag: '02 · Assisted Garden Walking & Mobility Support',
+      eyebrow: 'Assisted Daily Living & Mobility',
+      headlineLine1: 'Every Morning Walk',
+      headlineLine2Prefix: 'Cherished with ',
+      headlineEmphasis: 'Gentle Dignity',
       focusPosition: 'object-[70%_center] md:object-[62%_center]'
     },
     {
@@ -45,6 +57,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       image: '/nithya-mitra-hero-clinic.jpg',
       alt: 'Elderly father accompanied to healthcare clinic by Nithya Mitra care coordinator in official branded polo',
       tag: '03 · Healthcare & Doctor Appointment Accompaniment',
+      eyebrow: 'Healthcare & Hospital Support',
+      headlineLine1: 'Doctor Appointments',
+      headlineLine2Prefix: 'Accompanied with ',
+      headlineEmphasis: 'Devotion',
       focusPosition: 'object-[72%_center] md:object-[65%_center]'
     },
     {
@@ -52,6 +68,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       image: '/nithya-mitra-hero-elderly.jpg',
       alt: 'Elderly South Indian couple sharing morning filter coffee and reading newspaper in peace at home in Chennai',
       tag: '04 · Dignified Living & Wellbeing at Home',
+      eyebrow: 'Dignified Living in Chennai',
+      headlineLine1: 'Complete Peace of Mind',
+      headlineLine2Prefix: 'For Your Parents with ',
+      headlineEmphasis: 'Unconditional Care',
       focusPosition: 'object-[75%_center] md:object-[68%_center]'
     }
   ];
@@ -157,40 +177,36 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       >
         <div className="max-w-xl flex flex-col items-start text-left">
           
-          {/* Eyebrow Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-black/30 backdrop-blur-md text-[#F7F4ED] text-xs font-medium mb-5 tracking-wide shadow-sm"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
-            <span>Now Supporting NRI Families</span>
-            <span className="text-[#D8C8B3]">✦</span>
-          </motion.div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={slides[currentSlide].id}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col items-start text-left"
+            >
+              {/* Eyebrow Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-black/30 backdrop-blur-md text-[#F7F4ED] text-xs font-medium mb-5 tracking-wide shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
+                <span>{slides[currentSlide].eyebrow}</span>
+                <span className="text-[#D8C8B3]">✦</span>
+              </div>
 
-          {/* Compact 2-Line Headline */}
-          <h1 className="text-3xl sm:text-4xl lg:text-[3.25rem] xl:text-[3.5rem] font-semibold tracking-tight leading-[1.14] mb-7 text-[#F7F4ED] drop-shadow-sm">
-            <motion.span
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="block font-sans"
-            >
-              You Built Abroad
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="block font-sans text-[#F7F4ED] mt-1"
-            >
-              Protect Home with{' '}
-              <span className="italic font-serif text-[#D8C8B3] font-normal underline decoration-[#B86F55]/60 underline-offset-8">
-                Certainty
-              </span>
-            </motion.span>
-          </h1>
+              {/* Dynamic Compact 2-Line Headline for Each Scene */}
+              <h1 className="text-3xl sm:text-4xl lg:text-[3.25rem] xl:text-[3.5rem] font-semibold tracking-tight leading-[1.14] mb-7 text-[#F7F4ED] drop-shadow-sm">
+                <span className="block font-sans">
+                  {slides[currentSlide].headlineLine1}
+                </span>
+                <span className="block font-sans text-[#F7F4ED] mt-1">
+                  {slides[currentSlide].headlineLine2Prefix}
+                  <span className="italic font-serif text-[#D8C8B3] font-normal underline decoration-[#B86F55]/60 underline-offset-8">
+                    {slides[currentSlide].headlineEmphasis}
+                  </span>
+                </span>
+              </h1>
+            </motion.div>
+          </AnimatePresence>
 
           {/* Minimal Action Buttons Row (Free Consultation + How It Works) */}
           <motion.div
