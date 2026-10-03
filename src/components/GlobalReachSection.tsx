@@ -6,32 +6,54 @@ import { ArrowDownRight, MapPin, Clock } from 'lucide-react';
 export const GlobalReachSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // 260vh scroll container for smooth, tactile horizontal scroll sequence
+  // 300vh scroll container for spacious 3-stage scroll sequence:
+  // 1. Enter from absolute right
+  // 2. Firm center rest plateau (large & centered)
+  // 3. Move to left with right-side content reveal
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end'],
   });
 
-  // Spring physics for responsive scroll feel
+  // Smooth responsive spring physics
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 120,
     damping: 26,
     restDelta: 0.001,
   });
 
-  // Map X-position: starts from the absolute right ('80vw'), glides to center ('0%'), then moves left ('-24%')
-  const mapX = useTransform(smoothProgress, [0, 0.32, 0.68], ['80vw', '0%', '-24%']);
+  // Map X-Position:
+  // 0.00 -> 0.22 : Slides from '80vw' (absolute right) into '0%' (Center)
+  // 0.22 -> 0.54 : REMAINS FIRMLY LOCKED AT '0%' (Center Rest Plateau)
+  // 0.54 -> 0.82 : Glides from '0%' to '-26%' (Left Split Position)
+  const mapX = useTransform(
+    smoothProgress,
+    [0, 0.22, 0.54, 0.82],
+    ['80vw', '0%', '0%', '-26%']
+  );
+
+  // Map Scale:
+  // Starts at 1.0, enlarges to 1.16 in the center for a prominent view, then scales to 0.88 on the left
+  const mapScale = useTransform(
+    smoothProgress,
+    [0, 0.22, 0.54, 0.82],
+    [0.95, 1.16, 1.16, 0.88]
+  );
+
   const mapOpacity = useTransform(smoothProgress, [0, 0.12], [0.3, 1]);
-  const mapScale = useTransform(smoothProgress, [0, 0.32, 0.68], [0.95, 1, 0.92]);
 
-  // Phase 1 (0 -> 0.35): Top Title "Trusted by NRI families worldwide"
-  const titleOpacity = useTransform(smoothProgress, [0, 0.12, 0.34, 0.44], [0, 1, 1, 0]);
-  const titleY = useTransform(smoothProgress, [0.34, 0.44], [0, -25]);
+  // Phase 1 & 2: Centered Title visible during entrance and center plateau, fades as map moves left
+  const titleOpacity = useTransform(
+    smoothProgress,
+    [0, 0.12, 0.52, 0.62],
+    [0, 1, 1, 0]
+  );
+  const titleY = useTransform(smoothProgress, [0.52, 0.62], [0, -25]);
 
-  // Phase 2 (0.35 -> 0.75): Right content card glides in from the RIGHT
-  const contentOpacity = useTransform(smoothProgress, [0.42, 0.68], [0, 1]);
-  const contentX = useTransform(smoothProgress, [0.42, 0.68], [60, 0]);
-  const contentPointerEvents = useTransform(smoothProgress, (p) => (p > 0.38 ? 'auto' : 'none'));
+  // Phase 3: Right content card emerges only after the center rest plateau
+  const contentOpacity = useTransform(smoothProgress, [0.56, 0.78], [0, 1]);
+  const contentX = useTransform(smoothProgress, [0.56, 0.78], [60, 0]);
+  const contentPointerEvents = useTransform(smoothProgress, (p) => (p > 0.54 ? 'auto' : 'none'));
 
   const scrollToEnquiry = () => {
     const el = document.getElementById('enquiry');
@@ -41,20 +63,20 @@ export const GlobalReachSection: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="relative h-[260vh] bg-[#F7F4ED] text-[#17211F]"
+      className="relative h-[300vh] bg-[#F7F4ED] text-[#17211F]"
     >
       {/* Sticky Viewport Frame (100vh) */}
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 select-none">
         
-        {/* Phase 1: Centered Title (dissolves as map shifts to the left) */}
+        {/* Centered Title (Firmly visible while map is large & centered) */}
         <motion.div
           style={{
             opacity: titleOpacity,
             y: titleY,
           }}
-          className="absolute top-16 sm:top-20 z-20 text-center pointer-events-none"
+          className="absolute top-14 sm:top-18 z-20 text-center pointer-events-none"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-serif font-normal text-[#17211F] leading-[1.2] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-serif font-normal text-[#17211F] leading-[1.2] tracking-tight">
             Trusted by NRI families
             <span className="block">worldwide</span>
           </h2>
@@ -63,14 +85,14 @@ export const GlobalReachSection: React.FC = () => {
         {/* Interactive Layout Stage */}
         <div className="relative w-full max-w-7xl mx-auto flex items-center justify-center">
           
-          {/* DOTTED MAP (Animates from Absolute Right -> Center -> Left on Scroll) */}
+          {/* DOTTED MAP (Animates: Right -> Big Center Plateau -> Left) */}
           <motion.div
             style={{
               x: mapX,
               opacity: mapOpacity,
               scale: mapScale,
             }}
-            className="w-full max-w-4xl flex items-center justify-center will-change-transform"
+            className="w-full max-w-5xl flex items-center justify-center will-change-transform"
           >
             <DottedMap dotRadius={0.22} dotColor="#17352F" />
           </motion.div>
