@@ -1,12 +1,9 @@
 import React from 'react';
 import { DottedMap } from '@/registry/magicui/dotted-map';
-import type { MapPoint, ConnectionRoute } from '@/registry/magicui/dotted-map';
+import type { MapPoint } from '@/registry/magicui/dotted-map';
 
 export const GlobalReachSection: React.FC = () => {
-  // Hub: Chennai, India
-  const chennaiHub = { lat: 13.0827, lng: 80.2707, label: 'Chennai (Hub)' };
-
-  // Key NRI diaspora cities
+  // Key NRI diaspora cities & Chennai Hub
   const mapPoints: MapPoint[] = [
     { lat: 13.0827, lng: 80.2707, label: 'Chennai', country: 'India', isHub: true },
     { lat: 37.7749, lng: -122.4194, label: 'USA', country: 'USA' },
@@ -15,16 +12,6 @@ export const GlobalReachSection: React.FC = () => {
     { lat: 25.2048, lng: 55.2708, label: 'UAE', country: 'UAE' },
     { lat: 1.3521, lng: 103.8198, label: 'SG', country: 'Singapore' },
     { lat: -33.8688, lng: 151.2093, label: 'AUS', country: 'Australia' },
-  ];
-
-  // Active Connection Routes converging onto Chennai
-  const mapRoutes: ConnectionRoute[] = [
-    { from: { lat: 37.7749, lng: -122.4194, label: 'USA' }, to: chennaiHub },
-    { from: { lat: 40.7128, lng: -74.0060, label: 'NYC' }, to: chennaiHub },
-    { from: { lat: 51.5074, lng: -0.1278, label: 'UK' }, to: chennaiHub },
-    { from: { lat: 25.2048, lng: 55.2708, label: 'UAE' }, to: chennaiHub },
-    { from: { lat: 1.3521, lng: 103.8198, label: 'SG' }, to: chennaiHub },
-    { from: { lat: -33.8688, lng: 151.2093, label: 'AUS' }, to: chennaiHub },
   ];
 
   return (
@@ -48,7 +35,6 @@ export const GlobalReachSection: React.FC = () => {
             dotRadius={0.18}
             dotColor="#17352F"
             points={mapPoints}
-            routes={mapRoutes}
           />
         </div>
 
