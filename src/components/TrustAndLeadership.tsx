@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin } from 'lucide-react';
+import { MapPin, Check } from 'lucide-react';
 import { brandImages } from '../data/assets';
 
 export const TrustAndLeadership: React.FC = () => {
@@ -19,7 +19,7 @@ export const TrustAndLeadership: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-5"
           >
-            <div className="relative rounded-sm overflow-hidden border border-[#17352F]/15 bg-[#EAE5DB] shadow-md max-w-sm mx-auto lg:max-w-none">
+            <div className="relative rounded-2xl overflow-hidden border border-[#17352F]/15 bg-[#EAE5DB] shadow-md max-w-sm mx-auto lg:max-w-none">
               <img
                 src={brandImages.founder.src}
                 alt="Kumaresan, Founder & Managing Director"
@@ -36,22 +36,42 @@ export const TrustAndLeadership: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Right: Straightforward Founder Philosophy */}
+          {/* Right: Minimal & Straight to the Point Founder Statement */}
           <div className="lg:col-span-7">
-            <h2 className="text-3xl sm:text-4xl font-serif text-[#17352F] leading-tight mb-5">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#17352F] leading-tight mb-5">
               Built on personal accountability.
             </h2>
 
-            <div className="space-y-4 text-sm sm:text-base text-[#17211F]/80 font-light leading-relaxed">
-              <p>
-                Every NRI knows the silent anxiety of distance. You build an inspiring life in Dallas, London, Toronto, or Sydney — but home is still where your parents live.
-              </p>
-              <p className="font-serif italic text-lg text-[#17352F] border-l-2 border-[#B86F55] pl-4 py-0.5">
-                "We did not build Nithya Mitra to be an impersonal software app. We built it to be a dependable, caring extension of yourself in India."
-              </p>
-              <p>
-                Whether it is sharing unhurried tea and conversation, escorting a parent to an orthopaedic review, or being the first calm voice on the ground in an emergency — Nithya Mitra exists so you never feel helpless from afar.
-              </p>
+            <p className="font-serif italic text-lg sm:text-xl text-[#17352F] border-l-2 border-[#B86F55] pl-4 py-1 mb-5 leading-relaxed">
+              “We did not build Nithya Mitra to be an impersonal software app. We built it to be a dependable, caring extension of yourself for your parents in India.”
+            </p>
+
+            <p className="text-sm sm:text-base text-[#17211F]/80 font-light leading-relaxed mb-6">
+              From unhurried tea visits and hospital doctor escorts to immediate crisis response — we provide direct, on-ground presence in Chennai so you never feel helpless from afar.
+            </p>
+
+            {/* 3 Direct Commitments */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-[#17352F]/10 text-xs text-[#17211F] font-medium">
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-full bg-[#17352F] text-[#F7F4ED] flex items-center justify-center shrink-0">
+                  <Check className="w-2.5 h-2.5" />
+                </div>
+                <span>Direct on-ground team</span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-full bg-[#17352F] text-[#F7F4ED] flex items-center justify-center shrink-0">
+                  <Check className="w-2.5 h-2.5" />
+                </div>
+                <span>Same-day visit reports</span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-full bg-[#17352F] text-[#F7F4ED] flex items-center justify-center shrink-0">
+                  <Check className="w-2.5 h-2.5" />
+                </div>
+                <span>Zero sales pressure</span>
+              </div>
             </div>
           </div>
 
