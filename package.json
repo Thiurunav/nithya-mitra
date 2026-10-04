@@ -17,6 +17,7 @@
     "dotted-map": "^3.1.0",
     "framer-motion": "^13.4.6",
     "lucide-react": "^1.49.0",
+    "nodemailer": "^10.0.14",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-hook-form": "^7.89.0",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.13.3",
+    "@types/nodemailer": "^8.0.2",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",

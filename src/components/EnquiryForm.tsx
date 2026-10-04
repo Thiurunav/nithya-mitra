@@ -16,6 +16,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialPlan }) => {
   const [interest, setInterest] = useState('Parent Wellbeing & Visits');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const interestOptions = [
     'Parent Wellbeing & Visits',
@@ -25,21 +26,50 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialPlan }) => {
     'Comprehensive Family Support'
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!fullName || !whatsapp || !email || !cityInIndia) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      confetti({
-        particleCount: 50,
-        spread: 60,
-        origin: { y: 0.65 },
-        colors: ['#17352F', '#B86F55', '#D8C8B3']
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName,
+          whatsapp,
+          email,
+          cityInIndia,
+          interest,
+          notes: initialPlan ? `Interested Plan: Nithya Mitra ${initialPlan}` : ''
+        }),
       });
-    }, 900);
+
+      const data = await response.json().catch(() => null);
+
+      if (response.ok && data?.success) {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+        confetti({
+          particleCount: 50,
+          spread: 60,
+          origin: { y: 0.65 },
+          colors: ['#17352F', '#B86F55', '#D8C8B3']
+        });
+      } else {
+        // Show helpful error message with fallback to WhatsApp
+        setIsSubmitting(false);
+        setErrorMessage(data?.error || 'Unable to transmit request right now. You can reach us directly on WhatsApp.');
+      }
+    } catch (err) {
+      console.error('Submission network error:', err);
+      setIsSubmitting(false);
+      setErrorMessage('Network connection error. Please connect with us directly on WhatsApp below.');
+    }
   };
 
   return (
@@ -55,7 +85,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialPlan }) => {
             </h2>
 
             <p className="text-sm sm:text-base text-[#68716D] font-light leading-relaxed mb-6">
-              A 20-minute discussion over WhatsApp or Zoom. Zero obligation, zero sales pressure — just honest local guidance.
+              A 20 minute discussion over WhatsApp or Zoom. Zero obligation, zero sales pressure · just honest local guidance.
             </p>
 
             <div className="space-y-3 mb-8 text-xs text-[#17211F]/80">
@@ -198,6 +228,23 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialPlan }) => {
                     ))}
                   </div>
                 </div>
+
+                {errorMessage && (
+                  <div className="p-3 bg-[#B86F55]/10 border border-[#B86F55]/30 rounded-sm text-xs text-[#17211F] space-y-1">
+                    <p className="font-medium text-[#B86F55]">{errorMessage}</p>
+                    <p className="text-[11px] text-[#68716D]">
+                      Prefer instant assistance? Connect with our Chennai team directly on{' '}
+                      <a
+                        href="https://wa.me/919789066588?text=Hi%20Nithya%20Mitra%2C%20I%20would%20like%20to%20request%20a%20consultation."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline font-semibold text-[#17352F]"
+                      >
+                        WhatsApp: +91 97890 66588
+                      </a>
+                    </p>
+                  </div>
+                )}
 
                 <div className="pt-2">
                   <motion.button
