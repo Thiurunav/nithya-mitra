@@ -33,7 +33,7 @@ export default async function handler(req: ExtendedRequest, res: ExtendedRespons
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    const smtpHost = process.env.SMTP_HOST || 'smtp.titan.email';
+    const smtpHost = process.env.SMTP_HOST || 'smtpout.secureserver.net';
     const smtpPort = parseInt(process.env.SMTP_PORT || '465', 10);
     const smtpUser = process.env.SMTP_USER || 'info@nithyamitra.com';
     const smtpPass = process.env.SMTP_PASS;
