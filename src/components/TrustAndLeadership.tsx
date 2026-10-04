@@ -39,7 +39,7 @@ export const TrustAndLeadership: React.FC = () => {
           {/* Right: Minimal & Straight to the Point Founder Statement */}
           <div className="lg:col-span-7">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#17352F] leading-tight mb-5">
-              Built on personal accountability.
+              The face behind <span className="italic text-[#B86F55]">everything.</span>
             </h2>
 
             <p className="font-serif italic text-lg sm:text-xl text-[#17352F] border-l-2 border-[#B86F55] pl-4 py-1 mb-5 leading-relaxed">
