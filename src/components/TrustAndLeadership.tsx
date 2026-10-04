@@ -22,36 +22,46 @@ export const TrustAndLeadership: React.FC = () => {
             <div className="relative rounded-2xl overflow-hidden border border-[#17352F]/15 bg-[#EAE5DB] shadow-md max-w-sm mx-auto lg:max-w-none">
               <img
                 src={brandImages.founder.src}
-                alt="Kumaresan, Founder & Managing Director"
+                alt="Kumaresan R., Founder & Managing Director"
                 className="w-full h-[360px] sm:h-[400px] object-cover object-top filter saturate-[0.98]"
                 loading="lazy"
               />
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#17352F]/90 via-[#17352F]/60 to-transparent p-5 text-[#F7F4ED]">
-                <p className="font-serif text-lg font-medium">Kumaresan</p>
+                <p className="font-serif text-lg font-medium">Kumaresan R.</p>
                 <div className="flex items-center gap-1.5 text-xs text-[#D8C8B3] mt-0.5">
                   <MapPin className="w-3.5 h-3.5 text-[#B86F55]" />
-                  <span>Founder & Managing Director · Chennai, Tamil Nadu</span>
+                  <span>Founder & Managing Director, Chennai Hub</span>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Right: Minimal & Straight to the Point Founder Statement */}
+          {/* Right: Authentic & Impactful Founder Statement */}
           <div className="lg:col-span-7">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#17352F] leading-tight mb-5">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#17352F] leading-tight mb-6">
               The face behind <span className="italic text-[#B86F55]">everything.</span>
             </h2>
 
-            <p className="font-serif italic text-lg sm:text-xl text-[#17352F] border-l-2 border-[#B86F55] pl-4 py-1 mb-5 leading-relaxed">
-              “We did not build Nithya Mitra to be an impersonal software app. We built it to be a dependable, caring extension of yourself for your parents in India.”
+            <blockquote className="font-serif italic text-lg sm:text-xl text-[#17352F] border-l-2 border-[#B86F55] pl-4 py-1 mb-5 leading-relaxed">
+              “Distance should never mean helplessness. When your parents need a doctor escort, a companion over tea, or urgent help at midnight, our family steps in as yours.”
+            </blockquote>
+
+            <p className="text-sm sm:text-base text-[#17211F]/85 font-light leading-relaxed mb-6">
+              Real care cannot be solved by an app alone. It takes trustworthy human presence on the ground in Chennai, complete transparency, and personal responsibility for every single family we support.
             </p>
 
-            <p className="text-sm sm:text-base text-[#17211F]/80 font-light leading-relaxed mb-6">
-              From unhurried tea visits and hospital doctor escorts to immediate crisis response — we provide direct, on-ground presence in Chennai so you never feel helpless from afar.
-            </p>
+            {/* Founder Signature Attribution */}
+            <div className="mb-7">
+              <p className="font-serif text-base font-semibold text-[#17352F]">
+                Kumaresan R.
+              </p>
+              <p className="text-xs text-[#68716D] font-mono">
+                Founder & Managing Director, Nithya Mitra
+              </p>
+            </div>
 
             {/* 3 Direct Commitments */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-[#17352F]/10 text-xs text-[#17211F] font-medium">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-5 border-t border-[#17352F]/10 text-xs text-[#17211F] font-medium">
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 rounded-full bg-[#17352F] text-[#F7F4ED] flex items-center justify-center shrink-0">
                   <Check className="w-2.5 h-2.5" />
@@ -63,14 +73,14 @@ export const TrustAndLeadership: React.FC = () => {
                 <div className="w-4 h-4 rounded-full bg-[#17352F] text-[#F7F4ED] flex items-center justify-center shrink-0">
                   <Check className="w-2.5 h-2.5" />
                 </div>
-                <span>Same-day visit reports</span>
+                <span>Same day visit notes</span>
               </div>
 
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 rounded-full bg-[#17352F] text-[#F7F4ED] flex items-center justify-center shrink-0">
                   <Check className="w-2.5 h-2.5" />
                 </div>
-                <span>Zero sales pressure</span>
+                <span>24/7 direct hotline</span>
               </div>
             </div>
           </div>
