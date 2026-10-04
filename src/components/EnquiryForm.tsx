@@ -42,7 +42,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialPlan }) => {
       notes: initialPlan ? `Interested Plan: Nithya Mitra ${initialPlan}` : ''
     };
 
-    // Instant, delightful UI transition (under 300ms)
+    // Show submitted state after exactly 1 second
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
@@ -52,7 +52,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialPlan }) => {
         origin: { y: 0.65 },
         colors: ['#17352F', '#B86F55', '#D8C8B3']
       });
-    }, 260);
+    }, 1000);
 
     // Asynchronously transmit to SMTP backend without blocking the user
     fetch('/api/contact', {
