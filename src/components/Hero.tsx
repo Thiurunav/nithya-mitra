@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowDownRight, ChevronLeft, ChevronRight, Play, Check } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion';
+import { ArrowDownRight, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 
 interface HeroProps {
   onOpenEnquiry?: () => void;
@@ -10,75 +10,83 @@ interface CarouselSlide {
   id: string;
   image: string;
   alt: string;
-  sceneName: string;
+  tag: string;
+  eyebrow: string;
   headlineLine1: string;
   headlineLine2Prefix: string;
   headlineEmphasis: string;
-  description: string;
   focusPosition: string;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+
+  // Smooth scroll-driven dynamic curve & parallax
+  const { scrollY } = useScroll();
+  const bgScrollY = useTransform(scrollY, [0, 800], [0, 80]);
+  const contentScrollY = useTransform(scrollY, [0, 600], [0, 40]);
+  const contentOpacity = useTransform(scrollY, [0, 450], [1, 0.2]);
+
+  // Dynamic bottom border curve: 0px at rest (scrollY = 0), curves smoothly to 48px as user scrolls
+  const bottomRadius = useTransform(scrollY, [0, 300], [0, 48]);
+  // Dynamic scale: 1.0 (full-screen flush) at rest, subtly contracts to 0.985 on scroll
+  const heroScale = useTransform(scrollY, [0, 350], [1, 0.985]);
 
   const slides: CarouselSlide[] = [
     {
       id: 'slide-1',
-      image: '/nithya-mitra-hero-elderly.jpg',
-      alt: 'Elderly South Indian couple sharing morning filter coffee and reading newspaper in peace at home in Chennai',
-      sceneName: 'Home Wellbeing · Chennai',
-      headlineLine1: 'You built abroad.',
-      headlineLine2Prefix: 'Protect home with ',
-      headlineEmphasis: 'devotion.',
-      description:
-        'Dedicated on-ground coordinators in Chennai looking after your aging parents with the same warmth, dignity, and presence you would give them yourself.',
-      focusPosition: 'object-[65%_center]'
+      image: '/nithya-mitra-hero-tablet-enhanced.jpg',
+      alt: 'Elderly South Indian couple sitting on sofa with tablet video calling family with Nithya Mitra coordinator in branded green polo',
+      tag: '01 · Dedicated Family Coordination & Video Connection',
+      eyebrow: 'Now Supporting NRI Families',
+      headlineLine1: 'You Built Abroad',
+      headlineLine2Prefix: 'Protect Home with ',
+      headlineEmphasis: 'Certainty',
+      focusPosition: 'object-[75%_center] md:object-[68%_center]'
     },
     {
       id: 'slide-2',
-      image: '/nithya-mitra-hero-tablet.jpg',
-      alt: 'Elderly South Indian couple video calling their children with on-ground coordinator support',
-      sceneName: 'Family Video Connection',
-      headlineLine1: 'Stay close,',
-      headlineLine2Prefix: 'across every ',
-      headlineEmphasis: 'timezone.',
-      description:
-        'Live WhatsApp updates, verified physician reports, and video catchups that make thousands of miles feel like a door down the street.',
-      focusPosition: 'object-[68%_center]'
+      image: '/nithya-mitra-hero-walk-enhanced.jpg',
+      alt: 'Elderly grandmother gently assisted on morning garden walk in Chennai by Nithya Mitra care coordinator in official branded polo',
+      tag: '02 · Assisted Garden Walking & Mobility Support',
+      eyebrow: 'Assisted Daily Living & Mobility',
+      headlineLine1: 'Every Morning Walk',
+      headlineLine2Prefix: 'Cherished with ',
+      headlineEmphasis: 'Gentle Dignity',
+      focusPosition: 'object-[70%_center] md:object-[62%_center]'
     },
     {
       id: 'slide-3',
-      image: '/nithya-mitra-hero-walk.jpg',
-      alt: 'Elderly mother assisted on morning garden walk in Chennai by Nithya Mitra care coordinator',
-      sceneName: 'Assisted Mobility & Companionship',
-      headlineLine1: 'Every morning walk,',
-      headlineLine2Prefix: 'honored with ',
-      headlineEmphasis: 'gentle care.',
-      description:
-        'Regular in-person tea visits, companion walks, grocery replenishment, and dependable domestic stewardship in your parents’ own neighborhood.',
-      focusPosition: 'object-[60%_center]'
+      image: '/nithya-mitra-hero-clinic-enhanced.jpg',
+      alt: 'Elderly father accompanied to healthcare clinic by Nithya Mitra care coordinator in official branded polo',
+      tag: '03 · Healthcare & Doctor Appointment Accompaniment',
+      eyebrow: 'Healthcare & Hospital Support',
+      headlineLine1: 'Doctor Appointments',
+      headlineLine2Prefix: 'Accompanied with ',
+      headlineEmphasis: 'Devotion',
+      focusPosition: 'object-[72%_center] md:object-[65%_center]'
     },
     {
       id: 'slide-4',
-      image: '/nithya-mitra-hero-clinic.jpg',
-      alt: 'Elderly father accompanied to healthcare clinic by Nithya Mitra care coordinator',
-      sceneName: 'Hospital Escort & Vitals',
-      headlineLine1: 'Doctor appointments,',
-      headlineLine2Prefix: 'accompanied with ',
-      headlineEmphasis: 'certainty.',
-      description:
-        'Doorstep pickup, priority triage at Apollo and Kauvery, direct doctor briefings, and same-day medication delivery to your parents’ doorstep.',
-      focusPosition: 'object-[65%_center]'
+      image: '/nithya-mitra-hero-elderly-enhanced.jpg',
+      alt: 'Elderly South Indian couple sharing morning filter coffee and reading newspaper in peace at home in Chennai',
+      tag: '04 · Dignified Living & Wellbeing at Home',
+      eyebrow: 'Dignified Living in Chennai',
+      headlineLine1: 'Complete Peace of Mind',
+      headlineLine2Prefix: 'For Your Parents with ',
+      headlineEmphasis: 'Unconditional Care',
+      focusPosition: 'object-[75%_center] md:object-[68%_center]'
     }
   ];
 
-  // Auto-advance carousel every 7 seconds
+  // Auto-advance carousel every 6 seconds
   useEffect(() => {
     if (isPaused) return;
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 7000);
+    }, 6000);
     return () => clearInterval(timer);
   }, [isPaused, slides.length]);
 
@@ -90,6 +98,35 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
+  // Mouse coordinate values normalized between -0.5 and +0.5
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Spring physics for smooth organic deceleration
+  const springConfig = { damping: 28, stiffness: 220, mass: 0.6 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  // OPPOSITE DIRECTION minute parallax:
+  // When cursor moves right (+0.5), image shifts left (-20px).
+  // When cursor moves down (+0.5), image shifts up (-16px).
+  const imageTranslateX = useTransform(smoothX, [-0.5, 0.5], [20, -20]);
+  const imageTranslateY = useTransform(smoothY, [-0.5, 0.5], [16, -16]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -97,178 +134,181 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
 
   return (
     <section
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      className="relative min-h-[90vh] lg:min-h-screen bg-[#F7F4ED] text-[#17211F] pt-28 sm:pt-36 lg:pt-40 pb-16 lg:pb-20 overflow-hidden border-b border-[#17352F]/10 select-none flex items-center"
+      className="relative isolate min-h-[92vh] md:min-h-screen flex items-center pt-28 sm:pt-36 min-[850px]:pt-40 pb-16 sm:pb-20 overflow-hidden border-b border-[#17352F]/15 cursor-default select-none bg-[#F7F4ED]"
     >
-      {/* 
-        ========================================================================
-        STATELESS, UNBOXED HERO IMAGE LAYER
-        Bleeds organically from right to left with a soft, natural gradient dissolve.
-        No box container. No border. No card frames. No drop-shadow box.
-        ========================================================================
-      */}
-      <div className="absolute inset-y-0 right-0 w-full lg:w-[62%] xl:w-[65%] z-0 pointer-events-none overflow-hidden">
+      {/* FULL-SCREEN HERO BACKGROUND CAROUSEL WITH DYNAMIC SCROLL CURVE */}
+      <motion.div
+        style={{
+          y: bgScrollY,
+          scale: heroScale,
+          borderBottomLeftRadius: bottomRadius,
+          borderBottomRightRadius: bottomRadius,
+        }}
+        className="absolute inset-0 z-0 overflow-hidden bg-[#1A1816] will-change-transform shadow-[0_20px_50px_rgba(0,0,0,0.35)]"
+      >
+        
         <AnimatePresence mode="wait">
           <motion.div
             key={slides[currentSlide].id}
-            initial={{ opacity: 0, scale: 1.04 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.6 } }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-0 w-full h-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              borderBottomLeftRadius: bottomRadius,
+              borderBottomRightRadius: bottomRadius,
+            }}
+            className="absolute inset-0 w-full h-full overflow-hidden"
           >
-            <img
+            {/* Parallax Image with sharp contrast and natural crispness */}
+            <motion.img
               src={slides[currentSlide].image}
               alt={slides[currentSlide].alt}
-              className={`w-full h-full object-cover ${slides[currentSlide].focusPosition} filter saturate-[1.04] brightness-[0.98]`}
+              style={{
+                x: imageTranslateX,
+                y: imageTranslateY,
+              }}
+              className={`w-full h-full object-cover ${slides[currentSlide].focusPosition} filter contrast-[1.08] brightness-[0.98] saturate-[1.05] will-change-transform`}
               loading="eager"
             />
           </motion.div>
         </AnimatePresence>
 
-        {/* 
-          Soft editorial gradient dissolve into the #F7F4ED canvas:
-          Blends the image directly into the background without any visible border or box boundary.
-        */}
-        <div className="absolute inset-y-0 left-0 w-32 sm:w-56 lg:w-72 bg-gradient-to-r from-[#F7F4ED] via-[#F7F4ED]/80 to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#F7F4ED] via-[#F7F4ED]/60 to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#F7F4ED] via-[#F7F4ED]/80 to-transparent pointer-events-none" />
-        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-[#F7F4ED]/90 via-[#F7F4ED]/30 to-transparent pointer-events-none" />
-      </div>
+        {/* Editorial Luxury Color Mask: Rich Forest Green & Charcoal Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#081714]/92 via-[#0E2420]/65 via-50% to-[#17352F]/25 pointer-events-none" />
+        <div className="absolute inset-0 bg-[#0E2420]/20 mix-blend-multiply pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#081714]/60 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#081714]/80 via-[#081714]/30 to-transparent pointer-events-none" />
+      </motion.div>
 
-      {/* 
-        ========================================================================
-        EDITORIAL CONTENT LAYER (LEFT-ALIGNED ON CLEAN CANVAS)
-        ========================================================================
-      */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="max-w-2xl lg:max-w-xl xl:max-w-2xl flex flex-col items-start text-left">
+      {/* Main Content Container: Clean Minimal Typography with gentle Scroll Parallax */}
+      <motion.div
+        style={{ y: contentScrollY, opacity: contentOpacity }}
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full"
+      >
+        <div className="max-w-xl flex flex-col items-start text-left">
           
-          {/* Dynamic Headline with Smooth Text Transition */}
           <AnimatePresence mode="wait">
             <motion.div
               key={slides[currentSlide].id}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.45 }}
-              className="w-full"
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col items-start text-left"
             >
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-serif font-normal text-[#17352F] tracking-tight leading-[1.08] mb-5">
-                <span className="block">{slides[currentSlide].headlineLine1}</span>
-                <span className="block mt-1">
+              {/* Dynamic Compact 2-Line Headline for Each Scene */}
+              <h1 className="text-3xl sm:text-4xl lg:text-[3.25rem] xl:text-[3.5rem] font-semibold tracking-tight leading-[1.14] mb-7 text-[#F7F4ED] drop-shadow-sm">
+                <span className="block font-sans">
+                  {slides[currentSlide].headlineLine1}
+                </span>
+                <span className="block font-sans text-[#F7F4ED] mt-1">
                   {slides[currentSlide].headlineLine2Prefix}
-                  <span className="italic text-[#B86F55]">
+                  <span className="italic font-serif text-[#D8C8B3] font-normal underline decoration-[#B86F55]/60 underline-offset-8">
                     {slides[currentSlide].headlineEmphasis}
                   </span>
                 </span>
               </h1>
-
-              <p className="text-sm sm:text-base lg:text-lg text-[#17211F]/80 font-light leading-relaxed max-w-xl mb-8">
-                {slides[currentSlide].description}
-              </p>
             </motion.div>
           </AnimatePresence>
 
-          {/* Action Buttons Row */}
-          <div className="flex flex-wrap items-center gap-4 mb-10">
-            {/* Signature Consultation Button */}
+          {/* Minimal Action Buttons Row (Free Consultation + How It Works) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-wrap items-center gap-4"
+          >
+            {/* Signature Dual-Pill CTA Button */}
             <button
               onClick={onOpenEnquiry || (() => scrollTo('enquiry'))}
               type="button"
-              className="group relative cursor-pointer inline-flex items-center shadow-md hover:shadow-xl transition-all duration-300 focus:outline-none"
+              className="group relative cursor-pointer inline-flex items-center shadow-2xl transition-all duration-300 focus:outline-none"
             >
               <span className="absolute right-0 inset-y-0 w-[calc(100%-1.75rem)] rounded-xl bg-[#B86F55] transition-colors duration-300 group-hover:bg-[#9E5B44]" />
-              <span className="relative z-10 px-6 sm:px-7 py-3.5 rounded-xl bg-[#17352F] text-[#F7F4ED] font-medium text-xs sm:text-sm tracking-wide">
-                Free Family Consultation
+              <span className="relative z-10 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-[#0E2420] text-[#F7F4ED] font-medium text-xs sm:text-sm tracking-wide border border-white/20">
+                Free Consultation
               </span>
-              <span className="relative -left-px z-10 w-11 h-11 rounded-xl flex items-center justify-center text-[#F7F4ED] bg-[#B86F55] transition-colors duration-300 group-hover:bg-[#9E5B44]">
+              <span className="relative -left-px z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center text-[#F7F4ED] bg-[#B86F55] transition-colors duration-300 group-hover:bg-[#9E5B44]">
                 <ArrowDownRight className="w-4 h-4 transition-transform duration-300 group-hover:-rotate-45" />
               </span>
             </button>
 
-            {/* How It Works Button */}
+            {/* Video / How It Works Pill Button */}
             <button
               onClick={() => scrollTo('how-it-works')}
               type="button"
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-white/80 hover:bg-white text-[#17352F] border border-[#17352F]/15 text-xs sm:text-sm font-medium transition-all shadow-2xs hover:shadow-xs cursor-pointer group"
+              className="inline-flex items-center gap-2.5 px-5 py-3 sm:py-3.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#F7F4ED] border border-white/20 text-xs sm:text-sm font-medium transition-colors cursor-pointer group"
             >
-              <div className="w-5 h-5 rounded-full bg-[#17352F] text-[#F7F4ED] flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
-                <Play className="w-2.5 h-2.5 fill-current ml-0.5" />
+              <div className="w-6 h-6 rounded-full bg-[#B86F55] flex items-center justify-center text-white transition-transform duration-200 group-hover:scale-110">
+                <Play className="w-3 h-3 fill-current ml-0.5" />
               </div>
               <span>How It Works</span>
             </button>
-          </div>
-
-          {/* Minimal 3-Point Ground Proofs */}
-          <div className="flex flex-wrap items-center gap-y-2 gap-x-5 text-xs text-[#17211F]/75 font-medium pt-4 border-t border-[#17352F]/10">
-            <div className="flex items-center gap-1.5">
-              <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
-              <span>Dedicated Chennai Team</span>
-            </div>
-            <span>·</span>
-            <div className="flex items-center gap-1.5">
-              <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
-              <span>Same-Day WhatsApp Notes</span>
-            </div>
-            <span>·</span>
-            <div className="flex items-center gap-1.5">
-              <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
-              <span>Apollo & Kauvery Liaison</span>
-            </div>
-          </div>
+          </motion.div>
 
         </div>
-      </div>
+      </motion.div>
 
-      {/* 
-        ========================================================================
-        STATELESS FLOATING SCENE NAVIGATOR (Discreetly at Bottom Right)
-        ========================================================================
-      */}
-      <div className="absolute bottom-6 sm:bottom-8 right-4 sm:right-8 z-20 flex items-center gap-3">
-        {/* Active Scene Name */}
-        <div className="hidden sm:flex items-center gap-2 bg-white/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#17352F]/10 text-xs text-[#17211F] shadow-xs">
-          <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
-          <span className="font-mono text-[11px] font-medium tracking-tight">
-            {slides[currentSlide].sceneName}
+      {/* Bottom Carousel Controls & Active Slide Tag */}
+      <div className="absolute bottom-8 sm:bottom-10 left-4 sm:left-8 right-4 sm:right-8 z-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pointer-events-none">
+        
+        {/* Active Scene Caption Pill */}
+        <motion.div
+          key={slides[currentSlide].tag}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="inline-flex items-center gap-2 bg-black/45 backdrop-blur-md text-[#F7F4ED] py-1.5 px-4 rounded-full border border-white/20 text-xs pointer-events-auto shadow-md"
+        >
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="font-light tracking-wide text-[11px] sm:text-xs">
+            {slides[currentSlide].tag}
           </span>
-        </div>
+        </motion.div>
 
-        {/* Carousel Prev/Next & Dots */}
-        <div className="flex items-center gap-2 bg-white/85 backdrop-blur-md py-1.5 px-3 rounded-full border border-[#17352F]/12 shadow-xs">
+        {/* Carousel Pagination Dots & Nav Arrows */}
+        <div className="flex items-center gap-3 self-end sm:self-auto bg-black/45 backdrop-blur-md py-1.5 px-3 rounded-full border border-white/20 pointer-events-auto shadow-md">
+          {/* Prev Button */}
           <button
             onClick={prevSlide}
             aria-label="Previous Slide"
-            className="w-6 h-6 rounded-full flex items-center justify-center text-[#17352F] hover:bg-[#17352F]/10 transition-colors focus:outline-none cursor-pointer"
+            className="w-7 h-7 rounded-full flex items-center justify-center text-[#F7F4ED]/80 hover:text-white hover:bg-white/15 transition-colors focus:outline-none cursor-pointer"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
 
-          <div className="flex items-center gap-1.5 px-1">
+          {/* Slide Progress Indicators */}
+          <div className="flex items-center gap-1.5">
             {slides.map((s, idx) => (
               <button
                 key={s.id}
                 onClick={() => setCurrentSlide(idx)}
                 aria-label={`Go to slide ${idx + 1}`}
-                className="relative h-1.5 rounded-full transition-all duration-300 focus:outline-none cursor-pointer"
+                className="relative h-1.5 rounded-full overflow-hidden transition-all duration-300 focus:outline-none cursor-pointer"
                 style={{
-                  width: currentSlide === idx ? '22px' : '6px',
-                  backgroundColor: currentSlide === idx ? '#B86F55' : 'rgba(23, 53, 47, 0.25)'
+                  width: currentSlide === idx ? '28px' : '8px',
+                  backgroundColor: currentSlide === idx ? '#B86F55' : 'rgba(255, 255, 255, 0.35)'
                 }}
               />
             ))}
           </div>
 
+          {/* Next Button */}
           <button
             onClick={nextSlide}
             aria-label="Next Slide"
-            className="w-6 h-6 rounded-full flex items-center justify-center text-[#17352F] hover:bg-[#17352F]/10 transition-colors focus:outline-none cursor-pointer"
+            className="w-7 h-7 rounded-full flex items-center justify-center text-[#F7F4ED]/80 hover:text-white hover:bg-white/15 transition-colors focus:outline-none cursor-pointer"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
+
       </div>
 
     </section>
