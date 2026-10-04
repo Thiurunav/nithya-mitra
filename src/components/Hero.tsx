@@ -37,9 +37,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
   const slides: CarouselSlide[] = [
     {
       id: 'slide-1',
-      image: '/nithya-mitra-hero-tablet-enhanced.jpg',
+      image: '/nithya-mitra-hero-elderly.jpg',
+      alt: 'Elderly South Indian couple sharing morning filter coffee and reading newspaper in peace at home in Chennai',
+      tag: '01 · Dignified Living & Wellbeing at Home',
+      eyebrow: 'Dignified Living in Chennai',
+      headlineLine1: 'Complete Peace of Mind',
+      headlineLine2Prefix: 'For Your Parents with ',
+      headlineEmphasis: 'Unconditional Care',
+      focusPosition: 'object-[75%_center] md:object-[68%_center]'
+    },
+    {
+      id: 'slide-2',
+      image: '/nithya-mitra-hero-tablet.jpg',
       alt: 'Elderly South Indian couple sitting on sofa with tablet video calling family with Nithya Mitra coordinator in branded green polo',
-      tag: '01 · Dedicated Family Coordination & Video Connection',
+      tag: '02 · Dedicated Family Coordination & Video Connection',
       eyebrow: 'Now Supporting NRI Families',
       headlineLine1: 'You Built Abroad',
       headlineLine2Prefix: 'Protect Home with ',
@@ -47,10 +58,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       focusPosition: 'object-[75%_center] md:object-[68%_center]'
     },
     {
-      id: 'slide-2',
-      image: '/nithya-mitra-hero-walk-enhanced.jpg',
+      id: 'slide-3',
+      image: '/nithya-mitra-hero-walk.jpg',
       alt: 'Elderly grandmother gently assisted on morning garden walk in Chennai by Nithya Mitra care coordinator in official branded polo',
-      tag: '02 · Assisted Garden Walking & Mobility Support',
+      tag: '03 · Assisted Garden Walking & Mobility Support',
       eyebrow: 'Assisted Daily Living & Mobility',
       headlineLine1: 'Every Morning Walk',
       headlineLine2Prefix: 'Cherished with ',
@@ -58,26 +69,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       focusPosition: 'object-[70%_center] md:object-[62%_center]'
     },
     {
-      id: 'slide-3',
-      image: '/nithya-mitra-hero-clinic-enhanced.jpg',
+      id: 'slide-4',
+      image: '/nithya-mitra-hero-clinic.jpg',
       alt: 'Elderly father accompanied to healthcare clinic by Nithya Mitra care coordinator in official branded polo',
-      tag: '03 · Healthcare & Doctor Appointment Accompaniment',
+      tag: '04 · Healthcare & Doctor Appointment Accompaniment',
       eyebrow: 'Healthcare & Hospital Support',
       headlineLine1: 'Doctor Appointments',
       headlineLine2Prefix: 'Accompanied with ',
       headlineEmphasis: 'Devotion',
       focusPosition: 'object-[72%_center] md:object-[65%_center]'
-    },
-    {
-      id: 'slide-4',
-      image: '/nithya-mitra-hero-elderly-enhanced.jpg',
-      alt: 'Elderly South Indian couple sharing morning filter coffee and reading newspaper in peace at home in Chennai',
-      tag: '04 · Dignified Living & Wellbeing at Home',
-      eyebrow: 'Dignified Living in Chennai',
-      headlineLine1: 'Complete Peace of Mind',
-      headlineLine2Prefix: 'For Your Parents with ',
-      headlineEmphasis: 'Unconditional Care',
-      focusPosition: 'object-[75%_center] md:object-[68%_center]'
     }
   ];
 
@@ -154,8 +154,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
         <AnimatePresence mode="wait">
           <motion.div
             key={slides[currentSlide].id}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, scale: 1.04 }}
+            animate={{ opacity: 1, scale: 1.06 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             style={{
@@ -164,7 +164,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
             }}
             className="absolute inset-0 w-full h-full overflow-hidden"
           >
-            {/* Parallax Image with sharp contrast and natural crispness */}
+            {/* Parallax Image that glides in the OPPOSITE direction on hover */}
             <motion.img
               src={slides[currentSlide].image}
               alt={slides[currentSlide].alt}
@@ -172,17 +172,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
                 x: imageTranslateX,
                 y: imageTranslateY,
               }}
-              className={`w-full h-full object-cover ${slides[currentSlide].focusPosition} filter contrast-[1.08] brightness-[0.98] saturate-[1.05] will-change-transform`}
+              className={`w-full h-full object-cover ${slides[currentSlide].focusPosition} filter saturate-[1.03] contrast-[1.03] will-change-transform`}
               loading="eager"
             />
           </motion.div>
         </AnimatePresence>
 
-        {/* Editorial Luxury Color Mask: Rich Forest Green & Charcoal Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#081714]/92 via-[#0E2420]/65 via-50% to-[#17352F]/25 pointer-events-none" />
-        <div className="absolute inset-0 bg-[#0E2420]/20 mix-blend-multiply pointer-events-none" />
-        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#081714]/60 to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#081714]/80 via-[#081714]/30 to-transparent pointer-events-none" />
+        {/* Subtle Directional Scrim for crisp text contrast on left while keeping parents 100% natural on right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/35 via-45% to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
       </motion.div>
 
       {/* Main Content Container: Clean Minimal Typography with gentle Scroll Parallax */}
