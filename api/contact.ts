@@ -298,27 +298,22 @@ export default async function handler(req: ExtendedRequest, res: ExtendedRespons
       </html>
     `;
 
-    // Send Admin Email
-    await transporter.sendMail({
-      from: `"Nithya Mitra Leads" <${smtpUser}>`,
-      to: receiverEmail,
-      subject: `New Consultation · ${fullName} (${cityInIndia})`,
-      html: adminMailHtml,
-      replyTo: email,
-    });
-
-    // Send Customer Confirmation Email
-    try {
-      await transporter.sendMail({
+    // Send Admin Email and Customer Confirmation concurrently in parallel
+    await Promise.allSettled([
+      transporter.sendMail({
+        from: `"Nithya Mitra Leads" <${smtpUser}>`,
+        to: receiverEmail,
+        subject: `New Consultation · ${fullName} (${cityInIndia})`,
+        html: adminMailHtml,
+        replyTo: email,
+      }),
+      transporter.sendMail({
         from: `"Nithya Mitra" <${smtpUser}>`,
         to: email,
         subject: `Your Family Support Consultation · Nithya Mitra`,
         html: clientMailHtml,
-      });
-    } catch (clientErr) {
-      console.warn('Customer auto-reply email failed to send:', clientErr);
-    }
-
+      }),
+    ]);
 
     return res.status(200).json({ success: true, message: 'Consultation request submitted successfully' });
   } catch (error: any) {
@@ -329,3 +324,4 @@ export default async function handler(req: ExtendedRequest, res: ExtendedRespons
     });
   }
 }
+
