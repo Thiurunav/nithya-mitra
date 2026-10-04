@@ -27,13 +27,6 @@ export const PrivacyPolicy: React.FC = () => {
 
           {/* Header */}
           <div className="border-b border-[#17352F]/15 pb-8 mb-12">
-            <div className="inline-flex items-center gap-2 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#B86F55]">
-                LEGAL & DATA PROTECTION
-              </span>
-            </div>
-
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17352F] leading-tight">
               Privacy Policy
             </h1>

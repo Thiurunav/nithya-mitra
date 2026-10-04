@@ -16,11 +16,6 @@ export const VisionMissionSection: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#17352F]/15 bg-white/80 backdrop-blur-md text-[#17352F] text-xs font-medium mb-4 shadow-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
-            <span>Our Purpose & Direction</span>
-          </div>
-          
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal tracking-tight text-[#17211F] leading-tight">
             Vision & <span className="italic text-[#B86F55]">Mission</span>
           </h2>

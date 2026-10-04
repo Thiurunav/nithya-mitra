@@ -33,18 +33,6 @@ export const TrustSection: React.FC = () => {
         
         {/* Header */}
         <div className="max-w-3xl mb-16 md:mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 mb-4"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#B86F55]">
-              OUR TRUST SYSTEM
-            </span>
-          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 16 }}

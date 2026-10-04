@@ -55,12 +55,7 @@ export const FAQ: React.FC = () => {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center mb-14 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#17352F]/12 bg-white/80 backdrop-blur-md text-[#17352F] text-xs font-medium mb-3 shadow-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
-            <span>Common Questions</span>
-          </div>
-
+        <div className="text-center mb-12 sm:mb-14">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#17211F] tracking-tight leading-tight">
             Straightforward <span className="italic text-[#B86F55]">answers.</span>
           </h2>

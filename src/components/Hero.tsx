@@ -200,13 +200,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col items-start text-left"
             >
-              {/* Eyebrow Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-black/30 backdrop-blur-md text-[#F7F4ED] text-xs font-medium mb-5 tracking-wide shadow-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
-                <span>{slides[currentSlide].eyebrow}</span>
-                <span className="text-[#D8C8B3]">✦</span>
-              </div>
-
               {/* Dynamic Compact 2-Line Headline for Each Scene */}
               <h1 className="text-3xl sm:text-4xl lg:text-[3.25rem] xl:text-[3.5rem] font-semibold tracking-tight leading-[1.14] mb-7 text-[#F7F4ED] drop-shadow-sm">
                 <span className="block font-sans">

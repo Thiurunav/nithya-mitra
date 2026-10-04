@@ -38,13 +38,6 @@ export const TrustAndLeadership: React.FC = () => {
 
           {/* Right: Straightforward Founder Philosophy */}
           <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#B86F55]">
-                WHY NITHYA MITRA
-              </span>
-            </div>
-
             <h2 className="text-3xl sm:text-4xl font-serif text-[#17352F] leading-tight mb-5">
               Built on personal accountability.
             </h2>

@@ -13,10 +13,6 @@ export const BentoGridSection: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#17352F]/12 bg-white/80 backdrop-blur-md text-[#17352F] text-xs font-medium mb-3 shadow-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
-            <span>On-Ground Care Infrastructure</span>
-          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-[#17211F] tracking-tight leading-tight">
             Designed for total visibility &{' '}
             <span className="italic text-[#B86F55]">peace of mind</span>

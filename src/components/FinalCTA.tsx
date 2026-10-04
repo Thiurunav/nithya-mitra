@@ -26,20 +26,6 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenEnquiry }) => {
       />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 mb-6"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
-          <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#D8C8B3]">
-            GETTING STARTED
-          </span>
-        </motion.div>
-
         <motion.h2
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}

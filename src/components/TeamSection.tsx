@@ -15,18 +15,6 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ onScheduleIntro }) => 
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div className="max-w-2xl">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 mb-4"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#B86F55]">
-                LOCAL COORDINATION TEAM
-              </span>
-            </motion.div>
 
             <motion.h2
               initial={{ opacity: 0, y: 16 }}
