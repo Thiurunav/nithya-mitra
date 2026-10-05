@@ -32,7 +32,8 @@ export const ProblemSection: React.FC = () => {
         {/* Eyebrow & Headline */}
         <div className="max-w-3xl mb-14 md:mb-18">
 
-                    <motion.h2
+          <span className="text-[11px] 2xl:text-xs font-mono font-semibold uppercase tracking-widest text-[#B86F55] block mb-3">YOU ARE NOT STRUGGLING BECAUSE YOU DON'T CARE</span>
+          <motion.h2
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
