@@ -20,26 +20,28 @@ export const WhatsAppFloating: React.FC<WhatsAppFloatingProps> = ({ onOpenEnquir
 
   return (
     <>
-      {/* Desktop Floating WhatsApp Pill (Single element - no duplicate ghost layers) */}
+      {/* Desktop Floating WhatsApp Button: Shows ONLY the icon until hover, smoothly expands to 'WhatsApp Us' without phone number */}
       <a
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="hidden md:inline-flex fixed bottom-6 right-6 z-50 items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#17352F] text-[#F7F4ED] border border-[#D8C8B3]/35 shadow-[0_10px_30px_rgba(23,53,47,0.35)] hover:bg-[#21463F] hover:shadow-[0_14px_36px_rgba(23,53,47,0.45)] hover:-translate-y-1 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 group cursor-pointer select-none"
+        className="hidden md:inline-flex fixed bottom-6 right-6 z-50 items-center h-12 rounded-full bg-[#17352F] text-[#F7F4ED] border border-[#D8C8B3]/35 shadow-[0_10px_30px_rgba(23,53,47,0.35)] hover:bg-[#21463F] hover:shadow-[0_14px_36px_rgba(23,53,47,0.45)] hover:-translate-y-1 active:scale-[0.98] transition-all duration-300 ease-out group cursor-pointer select-none overflow-hidden"
         aria-label="Direct WhatsApp line with Nithya Mitra"
       >
-        <div className="relative flex items-center justify-center">
-          <span className="animate-ping absolute inset-0 rounded-full bg-[#25D366] opacity-75 pointer-events-none" />
-          <div className="relative w-7 h-7 rounded-full bg-[#25D366] flex items-center justify-center text-white shrink-0 shadow-sm transition-transform duration-200 group-hover:scale-110">
-            <MessageCircle className="w-4 h-4 fill-current" />
+        {/* Icon Container (always 48x48 centered circle in rest state) */}
+        <div className="w-12 h-12 flex items-center justify-center shrink-0">
+          <div className="relative flex items-center justify-center">
+            <span className="animate-ping absolute inset-0 rounded-full bg-[#25D366] opacity-70 pointer-events-none" />
+            <div className="relative w-8 h-8 rounded-full bg-[#25D366] flex items-center justify-center text-white shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-110">
+              <MessageCircle className="w-4.5 h-4.5 fill-current" />
+            </div>
           </div>
         </div>
-        <div className="flex flex-col text-left">
-          <span className="text-[11px] font-semibold tracking-wider uppercase text-[#FBFAF6] group-hover:text-[#D8C8B3] transition-colors leading-tight">
+
+        {/* Text Container: Hidden until hover, no phone number */}
+        <div className="max-w-0 opacity-0 overflow-hidden whitespace-nowrap transition-all duration-300 ease-out group-hover:max-w-[130px] group-hover:opacity-100 group-hover:pr-4 group-hover:pl-0.5">
+          <span className="text-xs font-semibold tracking-wider uppercase text-[#FBFAF6] group-hover:text-[#D8C8B3] transition-colors leading-none">
             WhatsApp Us
-          </span>
-          <span className="text-[10px] text-[#D8C8B3]/90 font-mono leading-tight mt-0.5">
-            Online · +91 97890 66588
           </span>
         </div>
       </a>
