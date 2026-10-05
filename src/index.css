@@ -19,6 +19,15 @@
   --font-serif: "Cormorant Garamond", "DM Serif Display", Georgia, serif;
   --font-display: "DM Serif Display", "Cormorant Garamond", Georgia, serif;
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+  --breakpoint-xs: 30rem;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
+  --breakpoint-3xl: 120rem;
+  --breakpoint-4xl: 160rem;
 }
 
 @layer base {
@@ -26,6 +35,50 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Mobile compact font-size to prevent tight overflows */
+  @media (max-width: 480px) {
+    html {
+      font-size: 15px;
+    }
+  }
+
+  /* 2K, QHD & 4K Fluid Scaling: Proportionately scales all rem tokens for larger laptops and monitors */
+  @media (min-width: 1600px) {
+    html {
+      font-size: 16.5px;
+    }
+  }
+
+  @media (min-width: 1800px) {
+    html {
+      font-size: 17.5px;
+    }
+  }
+
+  @media (min-width: 2200px) {
+    html {
+      font-size: 19.5px;
+    }
+  }
+
+  @media (min-width: 2560px) {
+    html {
+      font-size: 21.5px;
+    }
+  }
+
+  @media (min-width: 3200px) {
+    html {
+      font-size: 24px;
+    }
+  }
+
+  @media (min-width: 3840px) {
+    html {
+      font-size: 26px;
+    }
   }
 
   body {
@@ -41,71 +94,10 @@
   }
 }
 
-/* Site Frame & Inverted Corner System (Inspiration Architecture) */
+/* Site Frame disabled to prevent artificial margins on 2K/4K and mobile */
 .site-frame,
 .site-corner {
-  display: none;
-}
-
-@media (min-width: 850px) {
-  .site-frame {
-    z-index: 9999;
-    pointer-events: none;
-    background-color: #FFFFFF;
-    display: block;
-    position: fixed;
-  }
-  .site-frame--top {
-    height: 10px;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-  .site-frame--bottom {
-    height: 10px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-  .site-frame--left {
-    width: 10px;
-    top: 0;
-    bottom: 0;
-    left: 0;
-  }
-  .site-frame--right {
-    width: 10px;
-    top: 0;
-    bottom: 0;
-    right: 0;
-  }
-  .site-corner {
-    z-index: 9998;
-    pointer-events: none;
-    color: #FFFFFF;
-    display: block;
-    position: fixed;
-  }
-  .site-corner--top-left {
-    top: 10px;
-    left: 10px;
-    transform: rotate(90deg);
-  }
-  .site-corner--top-right {
-    top: 10px;
-    right: 10px;
-    transform: rotate(180deg);
-  }
-  .site-corner--bottom-left {
-    bottom: 10px;
-    left: 10px;
-    transform: rotate(0);
-  }
-  .site-corner--bottom-right {
-    bottom: 10px;
-    right: 10px;
-    transform: rotate(270deg);
-  }
+  display: none !important;
 }
 
 /* Subtle editorial paper grain texture overlay */
@@ -167,5 +159,15 @@
 .group:hover .card-3d-right {
   transform: rotateY(4deg) rotateX(3deg) scale(1.03) translateZ(25px);
   box-shadow: 8px 18px 40px -8px rgba(23, 53, 47, 0.32);
+}
+
+/* Disable 3D tilt on mobile for perfect edge-to-edge stability */
+@media (max-width: 640px) {
+  .card-3d-left,
+  .card-3d-right,
+  .group:hover .card-3d-left,
+  .group:hover .card-3d-right {
+    transform: none !important;
+  }
 }
 

@@ -12,17 +12,17 @@ import {
 export const VisionMissionSection: React.FC = () => {
   return (
     <section id="vision-mission" className="py-20 md:py-28 bg-[#F7F4ED] border-b border-[#17352F]/10 select-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl 2xl:max-w-[1520px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal tracking-tight text-[#17211F] leading-tight">
+        <div className="text-center max-w-3xl 2xl:max-w-4xl mx-auto mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl font-serif font-normal tracking-tight text-[#17211F] leading-tight">
             Vision & <span className="italic text-[#B86F55]">Mission</span>
           </h2>
         </div>
 
         {/* 2-Column Grid with 3D Perspective Floating Widget Cards (In Nithya Mitra Forest & Terracotta Theme) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 2xl:gap-10 items-stretch">
           
           {/* ========================================================================= */}
           {/* Card 1: Our Vision */}
@@ -32,7 +32,7 @@ export const VisionMissionSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="group relative rounded-[28px] p-6 sm:p-7 lg:p-8 bg-gradient-to-br from-[#0D211C] via-[#17352F] to-[#254F46] text-white overflow-hidden shadow-2xl hover:shadow-[0_24px_50px_rgba(23,53,47,0.25)] transition-all duration-500 flex flex-col justify-between cursor-pointer border border-[#B86F55]/25 hover:border-[#B86F55]/60 hover:-translate-y-1.5 min-h-[320px] sm:min-h-[340px]"
+            className="group relative rounded-[28px] p-6 sm:p-7 lg:p-8 2xl:p-10 bg-gradient-to-br from-[#0D211C] via-[#17352F] to-[#254F46] text-white overflow-hidden shadow-2xl hover:shadow-[0_24px_50px_rgba(23,53,47,0.25)] transition-all duration-500 flex flex-col justify-between cursor-pointer border border-[#B86F55]/25 hover:border-[#B86F55]/60 hover:-translate-y-1.5 min-h-[320px] sm:min-h-[340px] 2xl:min-h-[380px]"
           >
             {/* Diagonal Light Beam Pattern Overlay (Terracotta & Golden Rays) */}
             <svg

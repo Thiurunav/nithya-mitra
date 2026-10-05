@@ -25,13 +25,13 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenEnquiry }) => {
         className="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-[#21463F]/50 blur-3xl pointer-events-none"
       />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div className="max-w-5xl 2xl:max-w-6xl 3xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 text-center relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl sm:text-5xl lg:text-6xl font-serif text-[#FBFAF6] leading-tight font-normal"
+          className="text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl font-serif text-[#FBFAF6] leading-tight font-normal"
         >
           Your family in India.
           <span className="block font-serif italic text-[#D8C8B3] mt-2">
@@ -44,7 +44,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenEnquiry }) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-6 text-base sm:text-xl text-[#F7F4ED]/80 font-light max-w-2xl mx-auto leading-relaxed"
+          className="mt-6 text-base sm:text-xl 2xl:text-2xl text-[#F7F4ED]/80 font-light max-w-2xl 2xl:max-w-3xl mx-auto leading-relaxed"
         >
           You may live thousands of kilometres away. Your family does not have to feel that far away.
         </motion.p>

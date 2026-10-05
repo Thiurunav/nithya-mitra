@@ -52,14 +52,14 @@ export const FAQ: React.FC = () => {
 
   return (
     <section id="faq" className="py-20 md:py-28 bg-[#F7F4ED] border-b border-[#17352F]/10 select-none">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl 2xl:max-w-4xl 3xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
         
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-14">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#17211F] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl font-serif text-[#17211F] tracking-tight leading-tight">
             Straightforward <span className="italic text-[#B86F55]">answers.</span>
           </h2>
-          <p className="mt-3 text-xs sm:text-sm text-[#17211F]/70 font-light max-w-lg mx-auto">
+          <p className="mt-3 text-xs sm:text-sm 2xl:text-base text-[#17211F]/70 font-light max-w-lg 2xl:max-w-xl mx-auto">
             Everything you need to know about our ground coordination model in Chennai.
           </p>
         </div>

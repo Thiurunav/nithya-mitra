@@ -138,7 +138,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={() => setIsPaused(true)}
-      className="relative isolate min-h-[92vh] md:min-h-screen flex items-center pt-28 sm:pt-36 min-[850px]:pt-40 pb-16 sm:pb-20 overflow-hidden border-b border-[#17352F]/15 cursor-default select-none bg-[#F7F4ED]"
+      className="relative isolate min-h-[90vh] md:min-h-screen flex items-center pt-20 sm:pt-28 md:pt-36 2xl:pt-44 pb-14 sm:pb-20 overflow-hidden border-b border-[#17352F]/15 cursor-default select-none bg-[#F7F4ED]"
     >
       {/* FULL-SCREEN HERO BACKGROUND CAROUSEL WITH DYNAMIC SCROLL CURVE */}
       <motion.div
@@ -179,7 +179,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
         </AnimatePresence>
 
         {/* Subtle Directional Scrim for crisp text contrast on left while keeping parents 100% natural on right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/35 via-45% to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 via-45% to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
       </motion.div>
@@ -187,9 +187,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       {/* Main Content Container: Clean Minimal Typography with gentle Scroll Parallax */}
       <motion.div
         style={{ y: contentScrollY, opacity: contentOpacity }}
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full"
+        className="relative z-10 max-w-7xl 2xl:max-w-[1520px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 w-full"
       >
-        <div className="max-w-xl flex flex-col items-start text-left">
+        <div className="max-w-xl 2xl:max-w-3xl 3xl:max-w-4xl flex flex-col items-start text-left">
           
           <AnimatePresence mode="wait">
             <motion.div
@@ -201,7 +201,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
               className="flex flex-col items-start text-left"
             >
               {/* Dynamic Compact 2-Line Headline for Each Scene */}
-              <h1 className="text-3xl sm:text-4xl lg:text-[3.25rem] xl:text-[3.5rem] font-semibold tracking-tight leading-[1.14] mb-7 text-[#F7F4ED] drop-shadow-sm">
+              <h1 className="text-3xl sm:text-4xl lg:text-[3.25rem] 2xl:text-[4.25rem] 3xl:text-[5rem] font-semibold tracking-tight leading-[1.14] mb-6 sm:mb-7 2xl:mb-10 text-[#F7F4ED] drop-shadow-sm">
                 <span className="block font-sans">
                   {slides[currentSlide].headlineLine1}
                 </span>
@@ -220,7 +220,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center gap-4"
+            className="flex flex-wrap items-center gap-3 sm:gap-4 2xl:gap-6"
           >
             {/* Signature Dual-Pill CTA Button */}
             <button
@@ -229,11 +229,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
               className="group relative cursor-pointer inline-flex items-center shadow-2xl transition-all duration-300 focus:outline-none"
             >
               <span className="absolute right-0 inset-y-0 w-[calc(100%-1.75rem)] rounded-xl bg-[#B86F55] transition-colors duration-300 group-hover:bg-[#9E5B44]" />
-              <span className="relative z-10 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-[#0E2420] text-[#F7F4ED] font-medium text-xs sm:text-sm tracking-wide border border-white/20">
+              <span className="relative z-10 px-5 sm:px-7 2xl:px-9 py-3 sm:py-3.5 2xl:py-4 rounded-xl bg-[#0E2420] text-[#F7F4ED] font-medium text-xs sm:text-sm 2xl:text-base tracking-wide border border-white/20">
                 Free Consultation
               </span>
-              <span className="relative -left-px z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center text-[#F7F4ED] bg-[#B86F55] transition-colors duration-300 group-hover:bg-[#9E5B44]">
-                <ArrowDownRight className="w-4 h-4 transition-transform duration-300 group-hover:-rotate-45" />
+              <span className="relative -left-px z-10 w-9 h-9 sm:w-11 sm:h-11 2xl:w-12 2xl:h-12 rounded-xl flex items-center justify-center text-[#F7F4ED] bg-[#B86F55] transition-colors duration-300 group-hover:bg-[#9E5B44]">
+                <ArrowDownRight className="w-4 h-4 2xl:w-5 2xl:h-5 transition-transform duration-300 group-hover:-rotate-45" />
               </span>
             </button>
 
@@ -241,10 +241,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
             <button
               onClick={() => scrollTo('how-it-works')}
               type="button"
-              className="inline-flex items-center gap-2.5 px-5 py-3 sm:py-3.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#F7F4ED] border border-white/20 text-xs sm:text-sm font-medium transition-colors cursor-pointer group"
+              className="inline-flex items-center gap-2.5 px-4 sm:px-5 2xl:px-7 py-3 sm:py-3.5 2xl:py-4 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#F7F4ED] border border-white/20 text-xs sm:text-sm 2xl:text-base font-medium transition-colors cursor-pointer group"
             >
-              <div className="w-6 h-6 rounded-full bg-[#B86F55] flex items-center justify-center text-white transition-transform duration-200 group-hover:scale-110">
-                <Play className="w-3 h-3 fill-current ml-0.5" />
+              <div className="w-5 h-5 sm:w-6 sm:h-6 2xl:w-7 2xl:h-7 rounded-full bg-[#B86F55] flex items-center justify-center text-white transition-transform duration-200 group-hover:scale-110">
+                <Play className="w-2.5 h-2.5 sm:w-3 sm:h-3 2xl:w-3.5 2xl:h-3.5 fill-current ml-0.5" />
               </div>
               <span>How It Works</span>
             </button>
@@ -254,7 +254,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       </motion.div>
 
       {/* Bottom Carousel Controls & Active Slide Tag */}
-      <div className="absolute bottom-8 sm:bottom-10 left-4 sm:left-8 right-4 sm:right-8 z-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pointer-events-none">
+      <div className="absolute bottom-4 sm:bottom-8 2xl:bottom-12 left-4 sm:left-8 2xl:left-12 right-4 sm:right-8 2xl:right-12 z-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 pointer-events-none">
         
         {/* Active Scene Caption Pill */}
         <motion.div

@@ -12,6 +12,7 @@ import { FAQ } from '../components/FAQ';
 import { EnquiryForm } from '../components/EnquiryForm';
 import { FinalCTA } from '../components/FinalCTA';
 import { Footer } from '../components/Footer';
+import { WhatsAppFloating } from '../components/WhatsAppFloating';
 
 export const Home: React.FC = () => {
   const [selectedPlan, setSelectedPlan] = useState<string | undefined>(undefined);
@@ -75,6 +76,9 @@ export const Home: React.FC = () => {
 
       {/* Footer */}
       <Footer />
+
+      {/* Floating / Sticky WhatsApp & Quick Consultation */}
+      <WhatsAppFloating onOpenEnquiry={() => scrollToEnquiry()} />
     </div>
   );
 };

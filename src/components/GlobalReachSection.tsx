@@ -6,13 +6,12 @@ import { ArrowDownRight, MapPin, Clock } from 'lucide-react';
 export const GlobalReachSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // 250vh scroll container for smooth, responsive vertical scrolling sequence
+  // Scroll container for fluid vertical scroll tracking
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end'],
   });
 
-  // Smooth responsive spring physics for fluid scroll tracking
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 90,
     damping: 22,
@@ -20,29 +19,27 @@ export const GlobalReachSection: React.FC = () => {
   });
 
   // 1. Text Vertical Position & Scale:
-  // Starts lower ('35vh') -> Center spotlight ('16vh') -> Rests gracefully at top header spot ('0vh')
   const titleY = useTransform(
     smoothProgress,
     [0, 0.28, 0.65],
-    ['35vh', '16vh', '0vh']
+    ['20vh', '8vh', '0vh']
   );
   const titleScale = useTransform(
     smoothProgress,
     [0, 0.28, 0.65],
-    [1.18, 1.18, 0.92]
+    [1.1, 1.1, 0.95]
   );
 
   // 2. Map Vertical Position, Scale & Opacity:
-  // Rises smoothly from down below into the center as the text shrinks
   const mapY = useTransform(
     smoothProgress,
     [0.22, 0.68],
-    ['55vh', '0vh']
+    ['30vh', '0vh']
   );
   const mapScale = useTransform(
     smoothProgress,
     [0.22, 0.68],
-    [0.85, 1.05]
+    [0.9, 1.05]
   );
   const mapOpacity = useTransform(
     smoothProgress,
@@ -50,9 +47,9 @@ export const GlobalReachSection: React.FC = () => {
     [0.2, 1]
   );
 
-  // 3. Bottom live coordination action bar (reveals smoothly beneath the centered map)
+  // 3. Bottom live coordination action bar
   const bottomBarOpacity = useTransform(smoothProgress, [0.65, 0.86], [0, 1]);
-  const bottomBarY = useTransform(smoothProgress, [0.65, 0.86], [35, 0]);
+  const bottomBarY = useTransform(smoothProgress, [0.65, 0.86], [25, 0]);
 
   const scrollToEnquiry = () => {
     const el = document.getElementById('enquiry');
@@ -62,64 +59,67 @@ export const GlobalReachSection: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="relative h-[250vh] bg-[#F7F4ED] text-[#17211F]"
+      className="relative h-[200vh] lg:h-[240vh] bg-[#F7F4ED] text-[#17211F]"
     >
-      {/* Sticky Viewport Frame (100vh) */}
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-start pt-24 sm:pt-28 lg:pt-32 pb-8 overflow-hidden px-4 sm:px-6 lg:px-8 select-none">
+      {/* Sticky Viewport Frame */}
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-between pt-20 sm:pt-24 lg:pt-28 2xl:pt-36 pb-6 sm:pb-10 overflow-hidden px-4 sm:px-6 lg:px-8 2xl:px-12 select-none">
         
-        {/* Animated Header: Glides smoothly from bottom to center, then shrinks and glides to top */}
+        {/* Animated Header */}
         <motion.div
           style={{
             y: titleY,
             scale: titleScale,
           }}
-          className="z-20 text-center pointer-events-none will-change-transform mb-3 sm:mb-5"
+          className="z-20 text-center pointer-events-none will-change-transform"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-normal text-[#17211F] leading-[1.18] tracking-tight">
+          <span className="text-[11px] 2xl:text-xs font-mono font-semibold uppercase tracking-wider text-[#B86F55] block mb-1.5">
+            US · UK · Canada · Gulf · Singapore · Australia
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-serif font-normal text-[#17211F] leading-[1.18] tracking-tight">
             Trusted by NRI families
             <span className="block italic text-[#B86F55]">worldwide</span>
           </h2>
         </motion.div>
 
-        {/* Dotted Map: Rises smoothly from down below to the center */}
+        {/* Dotted Map */}
         <motion.div
           style={{
             y: mapY,
             scale: mapScale,
             opacity: mapOpacity,
           }}
-          className="relative z-10 w-full max-w-5xl flex items-center justify-center will-change-transform"
+          className="relative z-10 w-full max-w-sm sm:max-w-xl md:max-w-3xl lg:max-w-5xl 2xl:max-w-6xl 3xl:max-w-7xl flex items-center justify-center will-change-transform my-auto"
         >
           <DottedMap dotRadius={0.22} dotColor="#17352F" />
         </motion.div>
 
-        {/* Bottom Coordination Status & Action Bar: Reveals under the centered map */}
+        {/* Bottom Coordination Status & Action Bar */}
         <motion.div
           style={{
             opacity: bottomBarOpacity,
             y: bottomBarY,
           }}
-          className="z-20 w-full max-w-xl mt-3 sm:mt-5 will-change-transform"
+          className="z-20 w-full max-w-xl 2xl:max-w-2xl will-change-transform"
         >
-          <div className="w-full bg-white/95 backdrop-blur-xl rounded-2xl p-2.5 sm:p-3.5 border border-[#17352F]/10 shadow-[0_15px_35px_rgba(23,53,47,0.08)] flex flex-wrap sm:flex-nowrap items-center justify-between gap-3">
-            <div className="flex items-center gap-4 px-3 text-xs text-[#17211F]/80">
+          <div className="w-full bg-white/95 backdrop-blur-xl rounded-2xl p-3 sm:p-4 2xl:p-5 border border-[#17352F]/10 shadow-[0_15px_35px_rgba(23,53,47,0.08)] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+            <div className="flex items-center justify-around sm:justify-start gap-4 px-2 text-xs 2xl:text-sm text-[#17211F]/80">
               <div className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#B86F55]" />
+                <MapPin className="w-3.5 h-3.5 2xl:w-4 2xl:h-4 text-[#B86F55]" />
                 <span className="font-medium">Hub: Chennai, India</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-[#17352F]" />
-                <span className="font-mono text-[11px]">24/7 Global NRI Care</span>
+                <Clock className="w-3.5 h-3.5 2xl:w-4 2xl:h-4 text-[#17352F]" />
+                <span className="font-mono text-[11px] 2xl:text-xs">24/7 Global NRI Care</span>
               </div>
             </div>
 
             <button
               onClick={scrollToEnquiry}
               type="button"
-              className="group w-full sm:w-auto px-4 py-2.5 rounded-xl bg-[#17352F] hover:bg-[#21463F] text-[#F7F4ED] text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer shrink-0"
+              className="group w-full sm:w-auto px-4 py-2.5 2xl:px-6 2xl:py-3 rounded-xl bg-[#17352F] hover:bg-[#21463F] text-[#F7F4ED] text-xs 2xl:text-sm font-semibold flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer shrink-0"
             >
               <span>Book Consultation</span>
-              <ArrowDownRight className="w-3.5 h-3.5 text-[#B86F55] transition-transform duration-200 group-hover:-rotate-45" />
+              <ArrowDownRight className="w-3.5 h-3.5 2xl:w-4 2xl:h-4 text-[#B86F55] transition-transform duration-200 group-hover:-rotate-45" />
             </button>
           </div>
         </motion.div>
@@ -128,4 +128,3 @@ export const GlobalReachSection: React.FC = () => {
     </div>
   );
 };
-

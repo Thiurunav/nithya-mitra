@@ -94,8 +94,8 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#0E2420] text-[#F7F4ED] w-full border-t border-[#17352F] rounded-t-3xl pt-16 pb-12 shadow-2xl">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <footer className="bg-[#0E2420] text-[#F7F4ED] w-full border-t border-[#17352F] rounded-t-3xl pt-16 pb-28 sm:pb-12 shadow-2xl">
+      <div className="mx-auto max-w-7xl 2xl:max-w-[1520px] 3xl:max-w-[1760px] px-4 sm:px-6 lg:px-8 2xl:px-12">
         
         {/* Main 12-Column Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-[#21463F]/80">

@@ -9,18 +9,18 @@ import {
 export const BentoGridSection: React.FC = () => {
   return (
     <section className="py-20 md:py-28 bg-[#F7F4ED] text-[#17211F] border-b border-[#17352F]/10 select-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl 2xl:max-w-[1520px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-[#17211F] tracking-tight leading-tight">
+        <div className="text-center max-w-2xl 2xl:max-w-3xl mx-auto mb-14 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl font-serif font-normal text-[#17211F] tracking-tight leading-tight">
             Designed for total visibility &{' '}
             <span className="italic text-[#B86F55]">peace of mind</span>
           </h2>
         </div>
 
         {/* Minimalist Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 2xl:gap-8">
           
           {/* ================================================================= */}
           {/* CARD 1: TALL LEFT CARD (Vibrant Sage Green) */}
@@ -30,21 +30,21 @@ export const BentoGridSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="md:col-span-5 lg:col-span-4 rounded-[2.5rem] bg-[#8DA88D] text-[#11241F] p-7 sm:p-9 flex flex-col justify-between overflow-hidden relative shadow-[0_12px_36px_rgba(23,53,47,0.08)] min-h-[520px] group"
+            className="md:col-span-5 lg:col-span-4 rounded-[2.5rem] bg-[#8DA88D] text-[#11241F] p-6 sm:p-9 flex flex-col justify-between overflow-hidden relative shadow-[0_12px_36px_rgba(23,53,47,0.08)] min-h-[460px] sm:min-h-[520px] 2xl:min-h-[600px] group"
           >
             {/* Header Content */}
-            <div className="z-10 mb-6">
-              <h3 className="text-2xl sm:text-3xl font-serif font-medium text-[#11241F] leading-tight mb-3">
+            <div className="z-10 mb-4 sm:mb-6">
+              <h3 className="text-2xl sm:text-3xl 2xl:text-4xl font-serif font-medium text-[#11241F] leading-tight mb-2 sm:mb-3">
                 Dedicated Coordinator For Every Family
               </h3>
-              <p className="text-xs sm:text-sm text-[#11241F]/80 font-light leading-relaxed">
+              <p className="text-xs sm:text-sm 2xl:text-base text-[#11241F]/80 font-light leading-relaxed">
                 Get your parents set up in minutes with a single verified, dedicated on-ground coordinator in Chennai.
               </p>
             </div>
 
             {/* Transparent iPhone Mockup with Clean Floating Shadow */}
-            <div className="relative z-10 w-full flex justify-center items-end mt-auto -mb-10 sm:-mb-14">
-              <div className="relative w-full max-w-[270px] sm:max-w-[290px] flex justify-center drop-shadow-[0_20px_35px_rgba(17,36,31,0.25)] transition-transform duration-500 group-hover:-translate-y-2">
+            <div className="relative z-10 w-full flex justify-center items-end mt-auto -mb-8 sm:-mb-14">
+              <div className="relative w-full max-w-[250px] sm:max-w-[290px] 2xl:max-w-[340px] flex justify-center drop-shadow-[0_20px_35px_rgba(17,36,31,0.25)] transition-transform duration-500 group-hover:-translate-y-2">
                 <img
                   src="/images/iphone_care_roadmap.png"
                   alt="Nithya Mitra On-ground Care Coordinator iPhone App"
@@ -58,7 +58,7 @@ export const BentoGridSection: React.FC = () => {
           {/* ================================================================= */}
           {/* RIGHT COLUMN GRID WRAPPER (Top Wide + Bottom Two Tiles) */}
           {/* ================================================================= */}
-          <div className="md:col-span-7 lg:col-span-8 flex flex-col gap-5 sm:gap-6">
+          <div className="md:col-span-7 lg:col-span-8 flex flex-col gap-5 sm:gap-6 2xl:gap-8">
             
             {/* --------------------------------------------------------------- */}
             {/* CARD 2: TOP RIGHT WIDE CARD (Soft Creamy Sage) */}
@@ -68,14 +68,14 @@ export const BentoGridSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="rounded-[2.5rem] bg-[#E3EBE0] text-[#17211F] p-7 sm:p-9 flex flex-col lg:flex-row items-center justify-between gap-6 overflow-hidden relative shadow-[0_8px_30px_rgba(23,53,47,0.06)] min-h-[300px] group"
+              className="rounded-[2.5rem] bg-[#E3EBE0] text-[#17211F] p-6 sm:p-9 flex flex-col lg:flex-row items-center justify-between gap-6 overflow-hidden relative shadow-[0_8px_30px_rgba(23,53,47,0.06)] min-h-[280px] sm:min-h-[300px] 2xl:min-h-[360px] group"
             >
               {/* Left Copy */}
-              <div className="lg:max-w-[46%] z-10">
-                <h3 className="text-2xl sm:text-3xl font-serif font-medium text-[#17211F] leading-tight mb-2.5">
+              <div className="lg:max-w-[46%] z-10 text-left">
+                <h3 className="text-2xl sm:text-3xl 2xl:text-4xl font-serif font-medium text-[#17211F] leading-tight mb-2.5">
                   Real-time Ground Data
                 </h3>
-                <p className="text-xs sm:text-sm text-[#17211F]/70 font-light leading-relaxed">
+                <p className="text-xs sm:text-sm 2xl:text-base text-[#17211F]/70 font-light leading-relaxed">
                   Monitor doctor visits, vitals, grocery replenishment, and coordinator updates instantly on WhatsApp.
                 </p>
               </div>
@@ -83,11 +83,11 @@ export const BentoGridSection: React.FC = () => {
               {/* Right Phone Visual with Concentric Waves */}
               <div className="relative w-full lg:w-[48%] flex items-center justify-center">
                 {/* Concentric Ambient Waves */}
-                <div className="absolute w-56 h-56 rounded-full border border-[#8DA88D]/40 pointer-events-none animate-pulse" />
-                <div className="absolute w-44 h-44 rounded-full border border-[#8DA88D]/60 pointer-events-none" />
+                <div className="absolute w-52 sm:w-56 h-52 sm:h-56 rounded-full border border-[#8DA88D]/40 pointer-events-none animate-pulse" />
+                <div className="absolute w-40 sm:w-44 h-40 sm:h-44 rounded-full border border-[#8DA88D]/60 pointer-events-none" />
 
                 {/* Real iPhone Mockup */}
-                <div className="relative z-10 w-full max-w-[240px] sm:max-w-[260px] flex justify-center drop-shadow-[0_16px_35px_rgba(23,53,47,0.22)] transition-transform duration-500 group-hover:scale-[1.03]">
+                <div className="relative z-10 w-full max-w-[220px] sm:max-w-[260px] 2xl:max-w-[300px] flex justify-center drop-shadow-[0_16px_35px_rgba(23,53,47,0.22)] transition-transform duration-500 group-hover:scale-[1.03]">
                   <img
                     src="/images/iphone_ground_data.png"
                     alt="Real-time Health and Doctor Visit Tracking iPhone UI"

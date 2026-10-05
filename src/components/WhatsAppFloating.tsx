@@ -54,8 +54,8 @@ export const WhatsAppFloating: React.FC<WhatsAppFloatingProps> = ({ onOpenEnquir
         </motion.a>
       </motion.div>
 
-      {/* Mobile Sticky Bottom Action Bar with Tap Effects */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FBFAF6]/95 backdrop-blur-md border-t border-[#17352F]/15 px-4 py-2.5 shadow-[0_-4px_20px_rgba(23,53,47,0.1)] flex items-center gap-3">
+      {/* Mobile Sticky Bottom Action Bar with Tap Effects & iOS Home Bar Safe Area */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FBFAF6]/95 backdrop-blur-md border-t border-[#17352F]/15 px-4 pt-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom,0px))] shadow-[0_-4px_20px_rgba(23,53,47,0.1)] flex items-center gap-3">
         <motion.a
           whileTap={{ scale: 0.97 }}
           href={whatsappUrl}
