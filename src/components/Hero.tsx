@@ -253,26 +253,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
         </div>
       </motion.div>
 
-      {/* Bottom Carousel Controls & Active Slide Tag */}
-      <div className="absolute bottom-4 sm:bottom-8 2xl:bottom-12 left-4 sm:left-8 2xl:left-12 right-4 sm:right-8 2xl:right-12 z-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 pointer-events-none">
+      {/* Bottom Carousel Controls & Active Slide Tag (Anchored to the LEFT to eliminate any overlap with the WhatsApp button on the right) */}
+      <div className="absolute bottom-4 sm:bottom-8 2xl:bottom-12 left-4 sm:left-8 2xl:left-12 z-20 flex flex-wrap items-center gap-2.5 sm:gap-3 pointer-events-none">
         
-        {/* Active Scene Caption Pill */}
-        <motion.div
-          key={slides[currentSlide].tag}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 bg-black/45 backdrop-blur-md text-[#F7F4ED] py-1.5 px-4 rounded-full border border-white/20 text-xs pointer-events-auto shadow-md"
-        >
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="font-light tracking-wide text-[11px] sm:text-xs">
-            {slides[currentSlide].tag}
-          </span>
-        </motion.div>
-
-        {/* Carousel Pagination Dots & Nav Arrows */}
-        <div className="flex items-center gap-3 self-end sm:self-auto bg-black/45 backdrop-blur-md py-1.5 px-3 rounded-full border border-white/20 pointer-events-auto shadow-md">
+        {/* Carousel Pagination Dots & Nav Arrows on the LEFT ("the other thing") */}
+        <div className="flex items-center gap-2.5 sm:gap-3 bg-black/55 backdrop-blur-md py-1.5 px-3 rounded-full border border-white/25 pointer-events-auto shadow-xl">
           {/* Prev Button */}
           <button
             onClick={prevSlide}
@@ -307,6 +292,21 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
+
+        {/* Active Scene Caption Pill on the LEFT */}
+        <motion.div
+          key={slides[currentSlide].tag}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="hidden xs:inline-flex items-center gap-2 bg-black/55 backdrop-blur-md text-[#F7F4ED] py-1.5 px-4 rounded-full border border-white/25 text-xs pointer-events-auto shadow-xl"
+        >
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="font-light tracking-wide text-[11px] sm:text-xs">
+            {slides[currentSlide].tag}
+          </span>
+        </motion.div>
 
       </div>
 
