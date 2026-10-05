@@ -19,7 +19,7 @@ export const HowItWorks: React.FC = () => {
       title: 'Share Your Family Needs',
       description:
         'Tell us about your parents’ routines, medical history, location in Chennai, and specific coordination preferences in a confidential 15-minute consultation.',
-      imageSrc: '/triptych-family-sofa.jpg',
+      imageSrc: '/how-it-works-step1-consultation.jpg',
       tag: 'Step 01 · Consultation',
       isLeft: true,
     },
@@ -28,7 +28,7 @@ export const HowItWorks: React.FC = () => {
       title: 'Dedicated Coordinator Assigned',
       description:
         'A verified, compassionate care lead conducts an unhurried introductory home tea visit in Chennai to build trust and understand your household rhythm.',
-      imageSrc: '/nithya-mitra-hero-elderly.jpg',
+      imageSrc: '/how-it-works-step2-coordinator-visit.jpg',
       tag: 'Step 02 · Onboarding',
       isLeft: false,
     },
@@ -46,7 +46,7 @@ export const HowItWorks: React.FC = () => {
       title: 'Instant WhatsApp Reports & Peace of Mind',
       description:
         'Receive same-day digital visit notes, physician summaries, vitals logs, and timestamped photos directly on WhatsApp for full visibility from abroad.',
-      imageSrc: '/nithya-mitra-hero-tablet.jpg',
+      imageSrc: '/how-it-works-step4-whatsapp-update.jpg',
       tag: 'Step 04 · Transparency',
       isLeft: false,
     },
