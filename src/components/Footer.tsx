@@ -55,9 +55,9 @@ const footerData = {
   ],
   aboutLinks: [
     { text: 'About Vayosh', id: 'about' },
-    { text: 'Leadership & Roots', id: 'trust' },
+    { text: 'Support Plans', id: 'plans' },
     { text: 'How It Works', id: 'how-it-works' },
-    { text: 'Ground Infrastructure', id: 'bento-grid' },
+    { text: 'Care Pathways', id: 'care-tracks' },
   ],
   serviceLinks: [
     { text: 'Parent Wellbeing Visits', id: 'services' },

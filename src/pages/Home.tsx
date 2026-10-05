@@ -5,11 +5,9 @@ import { ProblemSection } from '../components/ProblemSection';
 import { CompanionshipSection } from '../components/CompanionshipSection';
 import { ScrollRevealPhrase } from '../components/ScrollRevealPhrase';
 import { ServicesSection } from '../components/ServicesSection';
-import { GlobalReachSection } from '../components/GlobalReachSection';
 import { HowItWorks } from '../components/HowItWorks';
 import { SupportPlans } from '../components/SupportPlans';
 import { CareTracks } from '../components/CareTracks';
-import { TrustSection } from '../components/TrustSection';
 import { FAQ } from '../components/FAQ';
 import { EnquiryForm } from '../components/EnquiryForm';
 import { FinalCTA } from '../components/FinalCTA';
@@ -54,9 +52,6 @@ export const Home: React.FC = () => {
           }
         />
 
-        {/* 6. Global Reach */}
-        <GlobalReachSection />
-
         {/* 7. How It Works: A simple system between you and home (4 steps) */}
         <HowItWorks />
 
@@ -65,9 +60,6 @@ export const Home: React.FC = () => {
 
         {/* 9. Optional Care Tracks: 10 specialized health pathways */}
         <CareTracks />
-
-        {/* 10. Trust Must Be Earned: 4 core pillars + real proof note */}
-        <TrustSection />
 
         {/* 11. FAQ: 6 Client Questions & Honest Answers */}
         <FAQ />

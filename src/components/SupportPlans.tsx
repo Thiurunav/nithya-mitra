@@ -93,16 +93,6 @@ export const SupportPlans: React.FC<SupportPlansProps> = ({ onSelectPlan }) => {
           >
             Choose the support level that may fit your family.
           </motion.h2>
-
-          <p className="mt-4 text-sm sm:text-base text-[#17211F]/80 font-light leading-relaxed">
-            Three levels of ongoing support. If you are unsure which level fits, tell us about your family and we can discuss the right starting point together.
-          </p>
-          <p className="mt-2 text-xs sm:text-sm text-[#68716D] italic">
-            Human connection is part of the support model: from regular wellbeing check-ins to companion visits and higher-touch social support, depending on the family's needs.
-          </p>
-          <div className="mt-4 p-3 bg-white/70 border border-[#17352F]/10 rounded-sm text-xs text-[#17352F] font-medium">
-            Not sure which plan you need? You do not have to decide today. Start with the free family consultation and we will understand the situation first.
-          </div>
         </div>
 
         {/* 3 Clean Plan Cards */}

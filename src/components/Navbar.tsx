@@ -26,7 +26,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
     { label: 'Services', href: '#services' },
     { label: 'How It Works', href: '#how-it-works' },
     { label: 'About', href: '#about' },
-    { label: 'Stories & Trust', href: '#trust' },
+    { label: 'Plans', href: '#plans' },
     { label: 'FAQ', href: '#faq' },
   ];
 
