@@ -191,17 +191,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       >
         <div className="max-w-xl 2xl:max-w-3xl 3xl:max-w-4xl flex flex-col items-start text-left">
           
-          {/* Client Requested Eyebrow Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#D8C8B3] text-xs font-medium tracking-wide mb-4 sm:mb-5"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#B86F55] animate-pulse" />
-            <span>Free consultation · For NRIs with family in India</span>
-          </motion.div>
-
           {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 14 }}
@@ -246,28 +235,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
               </span>
             </button>
 
-            <span className="text-xs text-[#D8C8B3]/90 font-mono tracking-tight">
-              20 minutes · No obligation · WhatsApp / Zoom
-            </span>
+
           </motion.div>
 
-          {/* Accent Reassurance Bar */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="pt-4 border-t border-white/15 w-full"
-          >
-            <p className="text-xs sm:text-sm text-[#F7F4ED]/90 font-serif italic mb-2.5">
-              Working abroad. Still carrying home in your heart.
-            </p>
-            <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-[11px] sm:text-xs text-[#D8C8B3]">
-              <span className="px-2.5 py-1 rounded-md bg-white/10 backdrop-blur-sm border border-white/10">One point of contact</span>
-              <span className="px-2.5 py-1 rounded-md bg-white/10 backdrop-blur-sm border border-white/10">Local coordination</span>
-              <span className="px-2.5 py-1 rounded-md bg-white/10 backdrop-blur-sm border border-white/10">Regular updates</span>
-              <span className="px-2.5 py-1 rounded-md bg-white/10 backdrop-blur-sm border border-white/10">Transparent process</span>
-            </div>
-          </motion.div>
+
 
         </div>
       </motion.div>
