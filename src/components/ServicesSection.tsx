@@ -122,9 +122,6 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
         <div className="max-w-xl mx-auto flex flex-col gap-6">
           {/* Section Heading & Stat */}
           <div>
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#B86F55] block mb-1">
-              06 Core Pillars of Support
-            </span>
             <h2 className="text-2xl sm:text-3xl font-serif font-normal text-[#17211F] leading-tight">
               The rules of <span className="italic text-[#17352F]">family care,</span> rewritten
             </h2>
@@ -225,9 +222,6 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               
               {/* Top Heading */}
               <div>
-                <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#B86F55] block mb-2">
-                  06 Core Coordination Pillars
-                </span>
                 <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] 2xl:text-[3.25rem] font-serif font-normal text-[#17211F] leading-[1.16] tracking-tight">
                   The rules of
                   <span className="block italic text-[#17352F]">family care,</span>

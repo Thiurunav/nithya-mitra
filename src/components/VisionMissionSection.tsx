@@ -73,9 +73,6 @@ export const VisionMissionSection: React.FC = () => {
             {/* Main Content Grid */}
             <div className="relative z-10 grid grid-cols-1 sm:grid-cols-12 gap-5 items-center flex-1">
               <div className="sm:col-span-6 flex flex-col justify-center">
-                <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-[#E5C79E] mb-1 block">
-                  01 · Long-Term Vision
-                </span>
                 <h3 className="text-xl sm:text-2xl font-serif tracking-tight text-white mb-2 leading-snug group-hover:text-[#E5C79E] transition-colors">
                   Our Vision
                 </h3>
@@ -156,9 +153,6 @@ export const VisionMissionSection: React.FC = () => {
             {/* Main Content Grid */}
             <div className="relative z-10 grid grid-cols-1 sm:grid-cols-12 gap-5 items-center flex-1">
               <div className="sm:col-span-6 flex flex-col justify-center">
-                <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-[#E5C79E] mb-1 block">
-                  02 · Ground Execution
-                </span>
                 <h3 className="text-xl sm:text-2xl font-serif tracking-tight text-white mb-2 leading-snug group-hover:text-[#E5C79E] transition-colors">
                   Our Mission
                 </h3>
