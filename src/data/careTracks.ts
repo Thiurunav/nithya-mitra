@@ -64,4 +64,4 @@ export const careTracksData: CareTrack[] = [
 ];
 
 export const careTracksDisclaimer =
-  'Services are coordinated according to family needs and local partner availability. Medical treatment is provided by qualified healthcare professionals, not by Nithya Mitra itself.';
+  'Services are coordinated according to family needs and local partner availability. Medical treatment is provided by qualified healthcare professionals, not by Vayosh itself.';

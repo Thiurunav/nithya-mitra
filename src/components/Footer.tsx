@@ -8,10 +8,10 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const footerData = {
   company: {
-    name: 'NITHYA MITRA',
-    tagline: '“Your Family in India, Our Responsibility.”',
+    name: 'VAYOSH',
+    tagline: '“Your Family in India. Our Responsibility.”',
     description:
-      'Dedicated on-ground family support and eldercare coordination for NRIs across the US, UK, Canada, Australia, Singapore, and worldwide whose parents live in India.',
+      'Trusted NRI family-support coordination in India. One accountable point of contact on the ground.',
   },
   socialLinks: [
     {
@@ -54,7 +54,7 @@ const footerData = {
     },
   ],
   aboutLinks: [
-    { text: 'About Nithya Mitra', id: 'about' },
+    { text: 'About Vayosh', id: 'about' },
     { text: 'Leadership & Roots', id: 'trust' },
     { text: 'How It Works', id: 'how-it-works' },
     { text: 'Ground Infrastructure', id: 'bento-grid' },
@@ -258,7 +258,7 @@ export const Footer: React.FC = () => {
         <div className="mt-8 pt-4">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-xs text-[#F7F4ED]/60 font-light">
             <p>
-              &copy; 2026 {footerData.company.name} Coordination Services. All rights reserved.
+              &copy; 2026 Vayosh. Your Family in India. Our Responsibility.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 text-[11px]">

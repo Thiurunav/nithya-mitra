@@ -8,22 +8,22 @@ export const TrustSection: React.FC = () => {
     {
       icon: ShieldCheck,
       title: 'Clear Accountability',
-      desc: 'One primary point of contact instead of making you chase multiple unknown vendors. When a task is assigned, your Nithya Mitra care lead owns the journey until completion.'
+      desc: 'One primary point of contact rather than making you chase multiple vendors.'
     },
     {
       icon: Eye,
       title: 'Transparent Communication',
-      desc: 'Direct, unambiguous documentation of requested and completed work. Photos, timestamps, doctor visit notes, and receipts are recorded and shared openly.'
+      desc: 'Clear updates and documentation of the work requested and completed.'
     },
     {
       icon: Network,
-      title: 'Vetted Partner Network',
-      desc: 'Where clinical medicine, physiotherapy, nursing, or legal certification is required, we coordinate accredited, vetted third-party partners rather than making amateur claims.'
+      title: 'Partner network',
+      desc: 'Relevant specialists can be coordinated where Vayosh itself is not the service provider.'
     },
     {
       icon: Users,
       title: 'Human Support',
-      desc: 'The goal is never to replace family. It is to bridge the distance with patience, cultural sensitivity, and steady warmth so your parents feel respected and cared for.'
+      desc: 'The objective is not to replace family. It is to make distance easier to manage — including the human need for regular connection.'
     }
   ];
 
@@ -34,6 +34,7 @@ export const TrustSection: React.FC = () => {
         {/* Header */}
         <div className="max-w-3xl mb-16 md:mb-20">
 
+          <span className="text-[11px] 2xl:text-xs font-mono font-semibold uppercase tracking-widest text-[#B86F55] block mb-3">TRUST MUST BE EARNED</span>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -51,7 +52,7 @@ export const TrustSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-4 text-base sm:text-lg text-[#68716D] font-light max-w-2xl leading-relaxed"
           >
-            Because Nithya Mitra deals with families, homes, health records and important local tasks, the trust system needs to be visible, documented, and tested every single day.
+            Because Vayosh deals with families, homes, information and important local tasks, the trust system needs to be visible.
           </motion.p>
         </div>
 
@@ -91,7 +92,7 @@ export const TrustSection: React.FC = () => {
             })}
           </div>
 
-          {/* Right: Architectural Home Photography with Zoom */}
+          {/* Right: Real Proof & Community Stories */}
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -99,11 +100,11 @@ export const TrustSection: React.FC = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="lg:col-span-5"
           >
-            <div className="relative rounded-sm overflow-hidden border border-[#17352F]/15 bg-[#EAE5DB] shadow-md group">
+            <div className="relative rounded-sm overflow-hidden border border-[#17352F]/15 bg-[#EAE5DB] shadow-md group mb-6">
               <img
                 src={brandImages.trust.src}
                 alt={brandImages.trust.alt}
-                className="w-full h-[440px] object-cover filter saturate-[0.95] transition-transform duration-700 ease-out group-hover:scale-103"
+                className="w-full h-[320px] object-cover filter saturate-[0.95] transition-transform duration-700 ease-out group-hover:scale-103"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#17352F]/85 via-transparent to-transparent flex items-end p-6">
@@ -116,6 +117,15 @@ export const TrustSection: React.FC = () => {
                   </p>
                 </div>
               </div>
+            </div>
+
+            <div className="p-6 rounded-sm bg-[#F7F4ED] border border-[#17352F]/15 text-left">
+              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#B86F55] block mb-1.5">
+                Real proof will live here.
+              </span>
+              <p className="text-xs sm:text-sm text-[#17211F]/80 font-light leading-relaxed">
+                As Vayosh serves its first families, this space will become a library of verified customer stories, service outcomes and real case examples.
+              </p>
             </div>
           </motion.div>
 

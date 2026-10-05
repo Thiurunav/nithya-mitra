@@ -6,7 +6,7 @@ export const teamMembersData: TeamMember[] = [
     name: 'Kumaresan',
     role: 'Founder & Managing Director',
     city: 'Chennai, Tamil Nadu',
-    bio: 'Guided by personal experience with distance and family elder care, founded Nithya Mitra to give global Indians an accountable, empathetic local presence back home.',
+    bio: 'Guided by personal experience with distance and family elder care, founded Vayosh to give global Indians an accountable, empathetic local presence back home.',
     image: '/vayosh-founder.jpg',
     specialty: 'Strategy & Family Partnerships'
   },

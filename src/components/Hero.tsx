@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion';
-import { ArrowDownRight, ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import { ArrowDownRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface HeroProps {
   onOpenEnquiry?: () => void;
@@ -191,63 +191,82 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       >
         <div className="max-w-xl 2xl:max-w-3xl 3xl:max-w-4xl flex flex-col items-start text-left">
           
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={slides[currentSlide].id}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col items-start text-left"
-            >
-              {/* Dynamic Compact 2-Line Headline for Each Scene */}
-              <h1 className="text-3xl sm:text-4xl lg:text-[3.25rem] 2xl:text-[4.25rem] 3xl:text-[5rem] font-semibold tracking-tight leading-[1.14] mb-6 sm:mb-7 2xl:mb-10 text-[#F7F4ED] drop-shadow-sm">
-                <span className="block font-sans">
-                  {slides[currentSlide].headlineLine1}
-                </span>
-                <span className="block font-sans text-[#F7F4ED] mt-1">
-                  {slides[currentSlide].headlineLine2Prefix}
-                  <span className="italic font-serif text-[#D8C8B3] font-normal underline decoration-[#B86F55]/60 underline-offset-8">
-                    {slides[currentSlide].headlineEmphasis}
-                  </span>
-                </span>
-              </h1>
-            </motion.div>
-          </AnimatePresence>
+          {/* Client Requested Eyebrow Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#D8C8B3] text-xs font-medium tracking-wide mb-4 sm:mb-5"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#B86F55] animate-pulse" />
+            <span>Free consultation · For NRIs with family in India</span>
+          </motion.div>
 
-          {/* Minimal Action Buttons Row (Free Consultation + How It Works) */}
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl sm:text-4xl lg:text-[3.25rem] 2xl:text-[4.25rem] font-serif font-normal tracking-tight leading-[1.14] mb-4 sm:mb-5 text-[#F7F4ED] drop-shadow-sm"
+          >
+            You built a life abroad.
+            <span className="block font-serif italic text-[#D8C8B3] mt-1 sm:mt-2">
+              Who looks after home?
+            </span>
+          </motion.h1>
+
+          {/* Subheading / Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-sm sm:text-base 2xl:text-lg text-[#F7F4ED]/85 font-light leading-relaxed max-w-xl 2xl:max-w-2xl mb-6 sm:mb-7"
+          >
+            When your parents and family are back in India, distance can turn everyday needs into worry. Vayosh gives you one trusted point of contact on the ground — coordinating parent visits, wellbeing, social connection, healthcare, emergencies and the support your family needs.
+          </motion.p>
+
+          {/* Primary Action Button + Subtext */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center gap-3 sm:gap-4 2xl:gap-6"
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-5 mb-7 sm:mb-8"
           >
-            {/* Signature Dual-Pill CTA Button */}
             <button
               onClick={onOpenEnquiry || (() => scrollTo('enquiry'))}
               type="button"
               className="group relative cursor-pointer inline-flex items-center shadow-2xl transition-all duration-300 focus:outline-none"
             >
               <span className="absolute right-0 inset-y-0 w-[calc(100%-1.75rem)] rounded-xl bg-[#B86F55] transition-colors duration-300 group-hover:bg-[#9E5B44]" />
-              <span className="relative z-10 px-5 sm:px-7 2xl:px-9 py-3 sm:py-3.5 2xl:py-4 rounded-xl bg-[#0E2420] text-[#F7F4ED] font-medium text-xs sm:text-sm 2xl:text-base tracking-wide border border-white/20">
-                Free Consultation
+              <span className="relative z-10 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-[#0E2420] text-[#F7F4ED] font-medium text-xs sm:text-sm 2xl:text-base tracking-wide border border-white/20">
+                Tell Us About Your Family →
               </span>
-              <span className="relative -left-px z-10 w-9 h-9 sm:w-11 sm:h-11 2xl:w-12 2xl:h-12 rounded-xl flex items-center justify-center text-[#F7F4ED] bg-[#B86F55] transition-colors duration-300 group-hover:bg-[#9E5B44]">
+              <span className="relative -left-px z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center text-[#F7F4ED] bg-[#B86F55] transition-colors duration-300 group-hover:bg-[#9E5B44]">
                 <ArrowDownRight className="w-4 h-4 2xl:w-5 2xl:h-5 transition-transform duration-300 group-hover:-rotate-45" />
               </span>
             </button>
 
-            {/* Video / How It Works Pill Button */}
-            <button
-              onClick={() => scrollTo('how-it-works')}
-              type="button"
-              className="inline-flex items-center gap-2.5 px-4 sm:px-5 2xl:px-7 py-3 sm:py-3.5 2xl:py-4 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md text-[#F7F4ED] border border-white/20 text-xs sm:text-sm 2xl:text-base font-medium transition-colors cursor-pointer group"
-            >
-              <div className="w-5 h-5 sm:w-6 sm:h-6 2xl:w-7 2xl:h-7 rounded-full bg-[#B86F55] flex items-center justify-center text-white transition-transform duration-200 group-hover:scale-110">
-                <Play className="w-2.5 h-2.5 sm:w-3 sm:h-3 2xl:w-3.5 2xl:h-3.5 fill-current ml-0.5" />
-              </div>
-              <span>How It Works</span>
-            </button>
+            <span className="text-xs text-[#D8C8B3]/90 font-mono tracking-tight">
+              20 minutes · No obligation · WhatsApp / Zoom
+            </span>
+          </motion.div>
+
+          {/* Accent Reassurance Bar */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="pt-4 border-t border-white/15 w-full"
+          >
+            <p className="text-xs sm:text-sm text-[#F7F4ED]/90 font-serif italic mb-2.5">
+              Working abroad. Still carrying home in your heart.
+            </p>
+            <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-[11px] sm:text-xs text-[#D8C8B3]">
+              <span className="px-2.5 py-1 rounded-md bg-white/10 backdrop-blur-sm border border-white/10">One point of contact</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/10 backdrop-blur-sm border border-white/10">Local coordination</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/10 backdrop-blur-sm border border-white/10">Regular updates</span>
+              <span className="px-2.5 py-1 rounded-md bg-white/10 backdrop-blur-sm border border-white/10">Transparent process</span>
+            </div>
           </motion.div>
 
         </div>

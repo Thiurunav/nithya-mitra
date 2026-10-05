@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
+import { ProblemSection } from '../components/ProblemSection';
+import { CompanionshipSection } from '../components/CompanionshipSection';
+import { ScrollRevealPhrase } from '../components/ScrollRevealPhrase';
 import { ServicesSection } from '../components/ServicesSection';
 import { GlobalReachSection } from '../components/GlobalReachSection';
-import { ScrollRevealPhrase } from '../components/ScrollRevealPhrase';
 import { HowItWorks } from '../components/HowItWorks';
-import { BentoGridSection } from '../components/BentoGridSection';
-import { TrustAndLeadership } from '../components/TrustAndLeadership';
-import { VisionMissionSection } from '../components/VisionMissionSection';
+import { SupportPlans } from '../components/SupportPlans';
+import { CareTracks } from '../components/CareTracks';
+import { TrustSection } from '../components/TrustSection';
 import { FAQ } from '../components/FAQ';
 import { EnquiryForm } from '../components/EnquiryForm';
 import { FinalCTA } from '../components/FinalCTA';
@@ -33,51 +35,57 @@ export const Home: React.FC = () => {
       <Navbar onOpenEnquiry={() => scrollToEnquiry()} />
 
       <main>
-        {/* Hero Section with Oscar Health Scroll-Driven Triptych & Editorial Transition */}
+        {/* 1. Hero: You built a life abroad. Who looks after home? */}
         <Hero onOpenEnquiry={() => scrollToEnquiry()} />
 
-        {/* 6 Core Coordination Pillars */}
+        {/* 2. Pain Points (Shown BEFORE Services as requested): You are not struggling because you don't care */}
+        <ProblemSection />
+
+        {/* 3. Companionship: The Part People Don't Talk About */}
+        <CompanionshipSection />
+
+        {/* 4. What You Actually Want: Not another vendor. A dependable presence in India. */}
+        <ScrollRevealPhrase />
+
+        {/* 5. Services: The Vayosh Approach — 6 Core Pillars */}
         <ServicesSection
           onSelectServiceForEnquiry={(serviceTitle) =>
             scrollToEnquiry(undefined, serviceTitle)
           }
         />
 
-        {/* Global NRI Working Grid with MagicUI DottedMap */}
+        {/* 6. Global Reach */}
         <GlobalReachSection />
 
-        {/* Scroll-Driven Editorial Phrase Reveal */}
-        <ScrollRevealPhrase />
-
-        {/* 3-Step Simple System */}
+        {/* 7. How It Works: A simple system between you and home (4 steps) */}
         <HowItWorks />
 
-        {/* Feature Bento Grid (Reference Layout with Phone Mockup & Status Badges) */}
-        <BentoGridSection />
+        {/* 8. Flexible Family Support: Advanced, Premium, Elite */}
+        <SupportPlans onSelectPlan={(planId) => scrollToEnquiry(planId)} />
 
-        {/* Trust, Chennai Roots & Leadership */}
-        <TrustAndLeadership />
+        {/* 9. Optional Care Tracks: 10 specialized health pathways */}
+        <CareTracks />
 
-        {/* Vision & Mission Interactive Sliding Notch Cards (From Zenin architecture) */}
-        <VisionMissionSection />
+        {/* 10. Trust Must Be Earned: 4 core pillars + real proof note */}
+        <TrustSection />
 
-        {/* 5 Essential FAQs */}
+        {/* 11. FAQ: 6 Client Questions & Honest Answers */}
         <FAQ />
 
-        {/* Frictionless Consultation Booking */}
+        {/* 12. Let's Talk: Tell Us About Your Family */}
         <EnquiryForm
           initialPlan={selectedPlan}
           initialService={selectedService}
         />
 
-        {/* Final Reassuring CTA */}
+        {/* 13. Final CTA: Your Family in India. Our Responsibility. */}
         <FinalCTA onOpenEnquiry={() => scrollToEnquiry()} />
       </main>
 
       {/* Footer */}
       <Footer />
 
-      {/* Floating / Sticky WhatsApp & Quick Consultation */}
+      {/* Floating / Sticky WhatsApp (Icon until hover, no phone number) */}
       <WhatsAppFloating onOpenEnquiry={() => scrollToEnquiry()} />
     </div>
   );

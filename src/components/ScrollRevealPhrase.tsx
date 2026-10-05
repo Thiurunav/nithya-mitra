@@ -98,29 +98,17 @@ export const ScrollRevealPhrase: React.FC = () => {
   const containerOpacity = useTransform(smoothProgress, [0.90, 1.0], [1, 0.1]);
 
   const words = [
-    'We',
-    'care',
-    'for',
-    'your',
-    'parents',
-    'in',
-    'Chennai',
-    'with',
-    'the',
-    'same',
-    'devotion,',
-    'respect',
-    '&',
+    'Not',
+    'another',
+    'vendor.',
+    'A',
+    'dependable',
     'presence',
-    'as',
-    'if',
-    'you',
-    'were',
-    'right',
-    'there.',
+    'in',
+    'India.',
   ];
 
-  const accentWords = ['parents', 'devotion,', 'presence', 'right', 'there.'];
+  const accentWords = ['vendor.', 'dependable', 'presence'];
 
   return (
     <section
@@ -130,27 +118,47 @@ export const ScrollRevealPhrase: React.FC = () => {
       {/* Sticky Viewport Stage */}
       <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
 
-        {/* Giant Right-to-Left Gliding Typography with Mixed Direction Word Entrances */}
-        <motion.div
-          style={{ x: containerX, y: containerY, opacity: containerOpacity }}
-          className="whitespace-nowrap flex items-center will-change-transform"
-        >
-          <h2
-            ref={textRef}
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-[6.5rem] font-serif font-normal text-[#17211F] tracking-tight leading-none px-6"
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
+          {/* Eyebrow */}
+          <span className="text-[11px] 2xl:text-xs font-mono font-semibold uppercase tracking-widest text-[#B86F55] block mb-4">
+            WHAT YOU ACTUALLY WANT
+          </span>
+
+          {/* Giant Right-to-Left Gliding Typography */}
+          <motion.div
+            style={{ x: containerX, y: containerY, opacity: containerOpacity }}
+            className="whitespace-nowrap flex items-center will-change-transform my-4"
           >
-            {words.map((word, i) => (
-              <AnimatedWord
-                key={i}
-                word={word}
-                index={i}
-                totalWords={words.length}
-                progress={smoothProgress}
-                isAccent={accentWords.includes(word)}
-              />
-            ))}
-          </h2>
-        </motion.div>
+            <h2
+              ref={textRef}
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-[6.5rem] font-serif font-normal text-[#17211F] tracking-tight leading-none"
+            >
+              {words.map((word, i) => (
+                <AnimatedWord
+                  key={i}
+                  word={word}
+                  index={i}
+                  totalWords={words.length}
+                  progress={smoothProgress}
+                  isAccent={accentWords.includes(word)}
+                />
+              ))}
+            </h2>
+          </motion.div>
+
+          {/* Supporting Client Copy */}
+          <div className="max-w-3xl mt-6 space-y-4">
+            <p className="font-serif italic text-lg sm:text-xl text-[#17352F] leading-snug">
+              “I want to know that if something happens, someone I trust will take care of it — without me having to organise everything from abroad.”
+            </p>
+            <p className="text-sm sm:text-base text-[#17211F]/80 font-light leading-relaxed">
+              You want your parents to feel supported, connected and cared for — not managed. You want your home looked after. You want local issues handled without becoming a second full-time job. And most importantly, you want to be able to stay connected to your family without constantly worrying about what you cannot see.
+            </p>
+            <p className="text-xs sm:text-sm font-medium text-[#B86F55] pt-2 border-t border-[#17352F]/10">
+              That is the outcome Vayosh is designed around: peace of mind for you, and dependable human support for them.
+            </p>
+          </div>
+        </div>
 
       </div>
     </section>

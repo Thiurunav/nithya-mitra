@@ -1,4 +1,4 @@
-// Centralized image registry for Nithya Mitra
+// Centralized image registry for Vayosh
 // Future client photography can be dropped in here to instantly update the entire website.
 
 export const brandImages = {
@@ -9,17 +9,17 @@ export const brandImages = {
   },
   teamUniform: {
     src: '/vayosh-team-uniform.jpg',
-    alt: 'Nithya Mitra on-ground coordination team wearing matching branded forest-green polo t-shirts outside a family home in Chennai',
-    caption: 'Nithya Mitra field care coordinators in official attire outside a family residence in Chennai, Tamil Nadu.'
+    alt: 'Vayosh on-ground coordination team wearing matching branded forest-green polo t-shirts outside a family home in Chennai',
+    caption: 'Vayosh field care coordinators in official attire outside a family residence in Chennai, Tamil Nadu.'
   },
   companionship: {
     src: '/vayosh-companionship.jpg',
-    alt: 'Nithya Mitra care coordinator in official green polo sharing an unhurried morning conversation over filter coffee with an elderly mother in Chennai',
+    alt: 'Vayosh care coordinator in official green polo sharing an unhurried morning conversation over filter coffee with an elderly mother in Chennai',
     caption: 'Compassionate, unhurried companionship and domestic presence.'
   },
   founder: {
     src: '/vayosh-founder.jpg',
-    alt: 'Kumaresan, Founder & Managing Director of Nithya Mitra, Chennai',
+    alt: 'Kumaresan, Founder & Managing Director of Vayosh, Chennai',
     caption: 'Kumaresan · Founder & Managing Director, Chennai'
   },
   heroConnection: {
@@ -34,7 +34,7 @@ export const brandImages = {
   },
   trust: {
     src: '/vayosh-team-uniform.jpg',
-    alt: 'Nithya Mitra ground team outside ancestral residence',
+    alt: 'Vayosh ground team outside ancestral residence',
     caption: 'Respecting ancestral heritage and local domestic stewardship.'
   }
 };

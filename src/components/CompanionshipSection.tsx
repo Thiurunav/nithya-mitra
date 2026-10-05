@@ -8,17 +8,17 @@ export const CompanionshipSection: React.FC = () => {
     {
       icon: Coffee,
       title: 'Human Check-Ins',
-      desc: 'Agreed wellbeing visits that include a real conversation, not just a checklist. Our team takes the time to sit down, enjoy a warm cup of coffee or chai, and listen.'
+      desc: 'Agreed wellbeing visits or check-ins that include a real conversation, not just a checklist.'
     },
     {
       icon: HeartHandshake,
       title: 'Companionship',
-      desc: 'Coordinate companion time for an evening stroll in the neighbourhood park, an appointment, local temple visit, or simply reassuring company at home.'
+      desc: 'Where appropriate, coordinate companion time for a walk, appointment, errand or simply a little company.'
     },
     {
       icon: PhoneCall,
       title: 'Staying Connected',
-      desc: 'Help make family calls, local connection and everyday social contact easier to maintain, resolving video-calling tech barriers patiently.'
+      desc: 'Help make family calls, local connection and everyday social contact easier to maintain.'
     }
   ];
 
@@ -37,6 +37,7 @@ export const CompanionshipSection: React.FC = () => {
         {/* Header Block */}
         <div className="max-w-3xl mb-16 md:mb-20">
 
+          <span className="text-[11px] 2xl:text-xs font-mono font-semibold uppercase tracking-widest text-[#B86F55] block mb-3">THE PART PEOPLE DON'T TALK ABOUT</span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -57,7 +58,7 @@ export const CompanionshipSection: React.FC = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mt-6 text-base sm:text-lg text-[#F7F4ED]/80 font-light leading-relaxed max-w-2xl"
           >
-            A parent can be physically safe, sheltered, and medically fine — and still feel quiet, lingering loneliness. Distance shouldn't mean silence.
+            A parent can be physically safe and medically fine — and still feel alone. Distance can quietly take away the everyday conversations, visits and small moments that make life feel connected.
           </motion.p>
         </div>
 
@@ -139,13 +140,13 @@ export const CompanionshipSection: React.FC = () => {
         >
           <div className="max-w-2xl">
             <p className="font-serif text-lg sm:text-xl text-[#F7F4ED] leading-snug">
-              Nithya Mitra is not here to replace family. It is here to make sure distance does not mean your parents are left feeling alone.
+              Vayosh is not here to replace family. It is here to make sure distance does not mean your parents are left feeling alone.
             </p>
           </div>
 
           <div className="bg-[#0E2420]/80 border border-[#D8C8B3]/15 px-4 py-3 rounded-sm text-xs text-[#D8C8B3]/80 md:max-w-xs shrink-0 leading-relaxed">
             <span className="font-semibold text-[#D8C8B3] block mb-0.5">Important Clarity:</span>
-            Companionship and social-connection support is not counselling, psychiatric, or medical treatment.
+            This is companionship and social-connection support — not counselling or medical treatment. Where professional support is needed, Vayosh can coordinate appropriate qualified partners.
           </div>
         </motion.div>
 

@@ -67,17 +67,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
         <Link
           to="/"
           className="flex items-center gap-2 group focus:outline-none shrink-0"
-          aria-label="Nithya Mitra Home"
+          aria-label="Vayosh Home"
         >
           <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#17352F] flex items-center justify-center text-[#F7F4ED] font-serif font-bold text-[10px] sm:text-[11px] tracking-wider shadow-xs transition-transform duration-200 group-hover:scale-105">
             NM
           </div>
           <div className="flex flex-col">
             <span className="font-serif tracking-[0.16em] text-xs sm:text-sm 2xl:text-base font-semibold text-[#17211F] uppercase leading-none">
-              NITHYA MITRA
+              VAYOSH
             </span>
             <span className="hidden sm:block text-[9px] font-sans text-[#68716D] tracking-wider uppercase mt-0.5">
-              Chennai Family Care
+              NRI Family Support · India
             </span>
           </div>
         </Link>

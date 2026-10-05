@@ -31,57 +31,57 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   const serviceCards = [
     {
       id: '01',
-      title: 'Gain full healthcare visibility',
-      desc: 'Track doctor visits, medical consultations, and care outcomes across your parents’ health journey.',
-      image: '/vayosh-service-healthcare.jpg',
-      stat: '100%',
-      statLabel: 'Accompanied doctor checkups with digital physician notes',
-      fullService: servicesData[1],
-    },
-    {
-      id: '02',
-      title: 'Active companionship & dignity',
-      desc: 'Regular in-person visits over tea, companion walking, grocery replenishment, and gentle welfare checks.',
+      title: 'Family & parent support',
+      desc: 'Help coordinate everyday needs, visits, errands and local assistance.',
       image: '/vayosh-companionship.jpg',
-      stat: '2-4x',
-      statLabel: 'Scheduled weekly visits by verified local coordinators',
+      stat: 'Dedicated',
+      statLabel: 'Regular wellbeing visits & companion support',
       fullService: servicesData[0],
     },
     {
-      id: '03',
-      title: 'Immediate emergency coordination',
-      desc: 'Calm, verified ground presence for midnight hospital triage liaison, ambulance dispatch, and live updates.',
-      image: '/vayosh-service-emergency.jpg',
-      stat: '<15m',
-      statLabel: 'Average coordinator mobilization time in emergency',
-      fullService: servicesData[5],
+      id: '02',
+      title: 'Healthcare coordination',
+      desc: 'Coordinate appointments, hospital visits and communication with trusted healthcare partners when needed.',
+      image: '/vayosh-service-healthcare.jpg',
+      stat: '100%',
+      statLabel: 'Accompanied doctor appointments & physician updates',
+      fullService: servicesData[1],
     },
     {
-      id: '04',
-      title: 'Supervised property upkeep',
-      desc: 'Supervised physical presence for AC, electrical, masonry, or plumbing repairs with timestamped photos.',
+      id: '03',
+      title: 'Home & property assistance',
+      desc: 'Coordinate inspections, maintenance and local service providers so issues do not sit unattended.',
       image: '/vayosh-service-property.jpg',
-      stat: '0',
-      statLabel: 'Unsupervised contractor visits to your parents’ home',
+      stat: 'Supervised',
+      statLabel: 'On-ground presence for repairs & inspections',
       fullService: servicesData[2],
     },
     {
+      id: '04',
+      title: 'Courier & parcel management',
+      desc: 'Receive items in India, coordinate packing / dispatch and help send them to your preferred destination.',
+      image: '/vayosh-team-uniform.jpg',
+      stat: 'Global',
+      statLabel: 'Safe receipt, packing & international dispatch',
+      fullService: servicesData[3],
+    },
+    {
       id: '05',
-      title: 'Indian paperwork without travel',
-      desc: 'Digital life certificates (Jeevan Pramaan), banking coordination, notarization, and courier formalities.',
+      title: 'Documents & local errands',
+      desc: 'Coordinate practical tasks that are difficult to manage remotely.',
       image: '/vayosh-service-documents.jpg',
-      stat: '100%',
-      statLabel: 'Legal & government documentation tracked digitally',
+      stat: 'On-Ground',
+      statLabel: 'Life certificates, municipal & banking paperwork',
       fullService: servicesData[4],
     },
     {
       id: '06',
-      title: 'Specialist geriatric care network',
-      desc: 'Liaison with vetted geriatric home attendants, licensed physiotherapists, and medical equipment rentals.',
-      image: '/vayosh-service-specialist.jpg',
-      stat: '10+',
-      statLabel: 'Years average healthcare partner vetting threshold',
-      fullService: servicesData[8],
+      title: 'Emergency coordination',
+      desc: 'When something unexpected happens, you have a local point of contact to help coordinate the next steps.',
+      image: '/vayosh-service-emergency.jpg',
+      stat: '24/7',
+      statLabel: 'Calm, rapid local contact for emergency next steps',
+      fullService: servicesData[5],
     },
   ];
 
@@ -122,9 +122,20 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
         <div className="max-w-xl mx-auto flex flex-col gap-6">
           {/* Section Heading & Stat */}
           <div>
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#B86F55] block mb-2">
+              THE VAYOSH APPROACH
+            </span>
             <h2 className="text-2xl sm:text-3xl font-serif font-normal text-[#17211F] leading-tight">
-              The rules of <span className="italic text-[#17352F]">family care,</span> rewritten
+              One trusted point of contact for the things that matter back home.
             </h2>
+            <p className="mt-3 text-xs sm:text-sm text-[#17211F]/75 font-light leading-relaxed">
+              Vayosh is not trying to be your hospital, property manager, courier company or repair service. We coordinate the right support and remain accountable for the journey.
+            </p>
+            <div className="mt-2.5 flex flex-wrap gap-2 text-[10px] font-mono text-[#B86F55]">
+              <span>Practical support on the ground</span>
+              <span>·</span>
+              <span>Healthcare support when it matters</span>
+            </div>
             <div className="mt-4 flex items-baseline gap-3 p-4 bg-white/80 rounded-2xl border border-[#17352F]/10 shadow-xs">
               <span className="font-serif text-4xl text-[#17352F] font-bold">
                 {serviceCards[activeCardIndex].stat}
@@ -222,11 +233,18 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               
               {/* Top Heading */}
               <div>
-                <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] 2xl:text-[3.25rem] font-serif font-normal text-[#17211F] leading-[1.16] tracking-tight">
-                  The rules of
-                  <span className="block italic text-[#17352F]">family care,</span>
-                  <span className="block">rewritten</span>
+                <span className="text-[11px] 2xl:text-xs font-mono font-semibold uppercase tracking-wider text-[#B86F55] block mb-3">
+                  THE VAYOSH APPROACH
+                </span>
+                <h2 className="text-2xl sm:text-3xl lg:text-[2.2rem] 2xl:text-[2.65rem] font-serif font-normal text-[#17211F] leading-[1.16] tracking-tight">
+                  One trusted point of contact for the things that matter back home.
                 </h2>
+                <p className="mt-3 text-xs 2xl:text-sm text-[#17211F]/75 font-light leading-relaxed">
+                  Vayosh is not trying to be your hospital, property manager, courier company or repair service. We coordinate the right support and remain accountable for the journey.
+                </p>
+                <p className="mt-2.5 text-[11px] 2xl:text-xs font-mono text-[#B86F55]">
+                  Practical support on the ground · Healthcare support when it matters.
+                </p>
               </div>
 
               {/* Dynamic Metric Display */}

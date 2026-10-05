@@ -10,39 +10,46 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    id: 'companionship',
+    id: 'loneliness',
     number: '01',
-    title: 'Does Nithya Mitra help with loneliness and companionship?',
+    title: 'Does Vayosh help with loneliness?',
     content:
-      'Yes. We coordinate agreed, unhurried wellbeing visits where our team sits down, listens, enjoys tea, and shares genuine conversation. However, Nithya Mitra is strictly a human support service, not a medical psychiatric or clinical counselling practice.',
+      'We can coordinate agreed companionship, wellbeing check-ins and social-connection support. Vayosh is not a counselling or medical service, and professional support can be coordinated when appropriate.',
   },
   {
-    id: 'agency-vs-coordination',
+    id: 'elder-care',
     number: '02',
-    title: 'Are you an elder-care agency or a family coordination service?',
+    title: 'Is Vayosh an elder-care company?',
     content:
-      'Parent support is our primary starting point, but our broader model is comprehensive family coordination for NRIs. In addition to visits, we handle ancestral property maintenance, hospital navigation, local errands, documents, and emergency liaison.',
+      'Parent support is our starting point, but the broader model is trusted family support and coordination for NRIs.',
+  },
+  {
+    id: 'services-provided',
+    number: '03',
+    title: 'Will you provide every service yourselves?',
+    content:
+      'No. Where specialist expertise is required, the model is to coordinate with appropriate partners rather than pretending to be the specialist.',
   },
   {
     id: 'updates',
-    number: '03',
-    title: 'How will I receive updates after a visit or errand?',
-    content:
-      'You receive structured notes, timestamped photos, and doctor briefings directly on your WhatsApp or email immediately following completion, formatted clearly for overseas family members across any timezone.',
-  },
-  {
-    id: 'medical-care',
     number: '04',
-    title: 'Will you provide medical care yourselves?',
+    title: 'How will I know what happened?',
     content:
-      'No, and we are deliberate about this. Where clinical treatment, surgery, or nursing is required, we coordinate vetted, licensed hospital and attendant partners, and supervise the logistics on your behalf.',
+      'The service should include a clear update process for agreed activities. The exact reporting method and frequency should be defined in your service agreement.',
   },
   {
-    id: 'consultation',
+    id: 'parents-only',
     number: '05',
-    title: 'What if I am not ready to choose a plan immediately?',
+    title: 'Can I use Vayosh mainly for my parents?',
     content:
-      'Start with our free 20-minute consultation. There is zero pressure to commit. We will discuss your family’s circumstances, answer questions honestly, and suggest what makes sense.',
+      'Yes. Parent support is the starting point. As the relationship grows, other agreed family needs can be coordinated too.',
+  },
+  {
+    id: 'not-ready',
+    number: '06',
+    title: 'What if I am not ready to subscribe?',
+    content:
+      'Start with the free consultation. The purpose is to understand the need first, not pressure you into a package.',
   },
 ];
 
@@ -56,12 +63,12 @@ export const FAQ: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-14">
+          <span className="text-[11px] 2xl:text-xs font-mono font-semibold uppercase tracking-widest text-[#B86F55] block mb-3">
+            QUESTIONS YOU MAY BE ASKING
+          </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl font-serif text-[#17211F] tracking-tight leading-tight">
-            Straightforward <span className="italic text-[#B86F55]">answers.</span>
+            Before you trust us, <span className="italic text-[#B86F55]">you should question us.</span>
           </h2>
-          <p className="mt-3 text-xs sm:text-sm 2xl:text-base text-[#17211F]/70 font-light max-w-lg 2xl:max-w-xl mx-auto">
-            Everything you need to know about our ground coordination model in Chennai.
-          </p>
         </div>
 
         {/* Interactive Accordion */}

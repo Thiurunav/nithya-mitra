@@ -3,25 +3,25 @@ import { motion } from 'framer-motion';
 import { brandImages } from '../data/assets';
 
 export const ProblemSection: React.FC = () => {
-  const pains = [
-    "Parents need help while you're abroad.",
+    const pains = [
+    "Parents need help with something while you're abroad.",
     "A home or property issue suddenly needs attention.",
     "A courier, document or local task cannot wait.",
     "You don't know whom to trust locally."
   ];
 
-  const frustrations = [
-    "Calling several people to solve one problem.",
-    "Not knowing whether something was completed.",
-    "Worrying about your parents.",
-    "Parents spending long periods without company.",
+    const frustrations = [
+    "Calling several people just to solve one problem.",
+    "Not knowing whether something was actually completed.",
+    "Worrying about your parents when you cannot be there.",
+    "Knowing they may be managing long stretches of the day without much company.",
     "Being pulled into every small issue from another country."
   ];
 
-  const questions = [
+    const questions = [
     "Can I really trust someone with my family and home?",
-    "Who takes responsibility if something goes wrong?",
-    "Will I get clear updates?",
+    "Who will take responsibility if something goes wrong?",
+    "Will I get clear updates or have to keep chasing?",
     "Is this another service provider I need to manage?"
   ];
 
@@ -32,6 +32,7 @@ export const ProblemSection: React.FC = () => {
         {/* Eyebrow & Headline */}
         <div className="max-w-3xl mb-14 md:mb-18">
 
+          <span className="text-[11px] 2xl:text-xs font-mono font-semibold uppercase tracking-widest text-[#B86F55] block mb-3">YOU ARE NOT STRUGGLING BECAUSE YOU DON'T CARE</span>
           <motion.h2
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -61,9 +62,10 @@ export const ProblemSection: React.FC = () => {
             loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#17352F]/85 via-transparent to-transparent flex items-end p-6 sm:p-10">
-            <p className="font-serif italic text-lg sm:text-2xl text-[#F7F4ED] max-w-2xl leading-snug">
-              "Being thousands of miles away doesn't mean you care any less. It just makes the simplest practical task feel overwhelming."
-            </p>
+            <div className="max-w-2xl text-left">
+              <p className="font-serif italic text-lg sm:text-2xl text-[#F7F4ED] leading-snug">Parents sharing a moment with the family they love.</p>
+              <p className="text-sm text-[#D8C8B3] mt-1 font-light">The worry you carry when you cannot be there.</p>
+            </div>
           </div>
         </motion.div>
 
@@ -112,7 +114,7 @@ export const ProblemSection: React.FC = () => {
             <div>
               <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#17352F]/10">
                 <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#17352F] group-hover:text-[#B86F55] transition-colors">
-                  FRUSTRATIONS
+                  FRUSTRATIONS & FEARS
                 </span>
                 <span className="text-xs text-[#B86F55] font-mono">02 / 03</span>
               </div>
@@ -142,7 +144,7 @@ export const ProblemSection: React.FC = () => {
             <div>
               <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#17352F]/10">
                 <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#17352F] group-hover:text-[#B86F55] transition-colors">
-                  QUESTIONS
+                  BARRIERS & UNCERTAINTIES
                 </span>
                 <span className="text-xs text-[#B86F55] font-mono">03 / 03</span>
               </div>
@@ -156,7 +158,7 @@ export const ProblemSection: React.FC = () => {
               </ul>
             </div>
             <div className="mt-8 pt-4 border-t border-[#17352F]/5 text-xs text-[#68716D] italic">
-              Nithya Mitra was created precisely to answer these questions with accountability.
+              Vayosh gives you one trusted point of contact on the ground.
             </div>
           </motion.div>
 

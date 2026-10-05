@@ -16,38 +16,38 @@ export const HowItWorks: React.FC = () => {
   const stepsData: StepDetail[] = [
     {
       stepNumber: '01',
-      title: 'Share Your Family Needs',
+      title: 'Tell us what matters',
       description:
-        'Tell us about your parents’ routines, medical history, location in Chennai, and specific coordination preferences in a confidential 15-minute consultation.',
+        'We understand your family situation, wellbeing, connection needs and the type of support you need in India.',
       imageSrc: '/how-it-works-step1-consultation.jpg',
-      tag: 'Step 01 · Consultation',
+      tag: 'Step 01 · Assessment',
       isLeft: true,
     },
     {
       stepNumber: '02',
-      title: 'Dedicated Coordinator Assigned',
+      title: 'We coordinate',
       description:
-        'A verified, compassionate care lead conducts an unhurried introductory home tea visit in Chennai to build trust and understand your household rhythm.',
+        'We arrange the relevant local service, partner or visit instead of leaving you to manage several people yourself.',
       imageSrc: '/how-it-works-step2-coordinator-visit.jpg',
-      tag: 'Step 02 · Onboarding',
+      tag: 'Step 02 · Coordination',
       isLeft: false,
     },
     {
       stepNumber: '03',
-      title: 'Accompanied Care & Ground Support',
+      title: 'You stay informed',
       description:
-        'Doctor appointments escorted door-to-door with physician consultation notes, vitals verified, medications delivered, and property upkeep supervised.',
+        'You receive clear updates on what was requested, what happened and what needs your attention.',
       imageSrc: '/nithya-mitra-hero-clinic.jpg',
-      tag: 'Step 03 · Active Support',
+      tag: 'Step 03 · Reporting',
       isLeft: true,
     },
     {
       stepNumber: '04',
-      title: 'Instant WhatsApp Reports & Peace of Mind',
+      title: 'We follow through',
       description:
-        'Receive same-day digital visit notes, physician summaries, vitals logs, and timestamped photos directly on WhatsApp for full visibility from abroad.',
+        'Where follow-up is required, Vayosh stays involved rather than simply handing you another phone number.',
       imageSrc: '/how-it-works-step4-whatsapp-update.jpg',
-      tag: 'Step 04 · Transparency',
+      tag: 'Step 04 · Follow Through',
       isLeft: false,
     },
   ];
@@ -84,11 +84,11 @@ export const HowItWorks: React.FC = () => {
       <div className="relative z-20 max-w-6xl 2xl:max-w-[1520px] 3xl:max-w-[1760px] mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-3xl 2xl:max-w-4xl mx-auto mb-12 sm:mb-16 2xl:mb-24">
+          <span className="text-[11px] 2xl:text-xs font-mono font-semibold uppercase tracking-widest text-[#B86F55] block mb-3">
+            HOW IT WORKS
+          </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl font-serif font-normal text-[#17211F] tracking-tight leading-[1.18]">
-            From Family Needs to Complete Peace of Mind
-            <span className="block font-sans font-semibold text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl text-[#17352F] mt-1.5">
-              in 4 Simple Steps
-            </span>
+            A simple system between you and home.
           </h2>
 
           <p

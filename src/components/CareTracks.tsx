@@ -24,6 +24,7 @@ export const CareTracks: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-2xl">
 
+            <span className="text-[11px] 2xl:text-xs font-mono font-semibold uppercase tracking-widest text-[#B86F55] block mb-2">OPTIONAL CARE TRACKS</span>
             <motion.h2
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -35,7 +36,7 @@ export const CareTracks: React.FC = () => {
             </motion.h2>
 
             <p className="mt-3 text-sm text-[#68716D] font-light">
-              Tailored coordination pathways for chronic conditions, specialist consultations, and mobility needs.
+              These can be added to the core family-support plan and coordinated through appropriate healthcare partners.
             </p>
           </div>
 

@@ -10,43 +10,58 @@ export const SupportPlans: React.FC<SupportPlansProps> = ({ onSelectPlan }) => {
   const plans = [
     {
       id: 'advanced',
-      badge: 'ESSENTIAL',
-      name: 'Nithya Mitra Advanced',
-      forWhom: 'For independent parents who need regular checks and reliable local backup.',
+      badge: 'ESSENTIAL SUPPORT',
+      name: 'Vayosh Advanced',
+      forWhom: 'For independent parents who mainly need regular wellbeing checks, local coordination and a reliable point of contact.',
       highlights: [
-        'Bi-weekly scheduled parent wellbeing visits',
-        'Hospital & doctor appointment booking',
-        'Help with urgent local errands & banking',
-        'Direct WhatsApp channel with coordinator'
+        'Scheduled wellbeing check-ins',
+        'Parent visits and basic home check-ins',
+        'Emergency coordination',
+        'Doctor / hospital appointment coordination',
+        'Access to healthcare and physiotherapy partners',
+        'Help with local errands and essential tasks',
+        'Regular updates to the NRI family'
       ],
-      cta: 'Enquire about Advanced'
+      cta: 'Enquire about Advanced →'
     },
     {
       id: 'premium',
-      badge: 'ENHANCED · MOST CHOSEN',
-      name: 'Nithya Mitra Premium',
+      badge: 'MOST COMPREHENSIVE · ENHANCED SUPPORT',
+      name: 'Vayosh Premium',
       isPopular: true,
-      forWhom: 'For parents who need hands-on assistance and frequent healthcare liaison.',
+      forWhom: 'For parents who need more frequent coordination, healthcare support and hands-on assistance.',
       highlights: [
-        'Everything in Advanced plan',
-        'Weekly in-person companion visits',
-        'Physical hospital escort & doctor summaries',
-        'Home safety review & technician supervision'
+        'Everything in Advanced',
+        'More frequent wellbeing check-ins',
+        'Priority healthcare coordination',
+        'Doctor teleconsultation coordination',
+        'Diagnostics and lab-test coordination',
+        'Hospitalisation support and family coordination',
+        'Digital health-record coordination',
+        'Home safety and fall-risk checks',
+        'Access to verified carers / attendants through partners',
+        'Visit support for appointments and essential errands'
       ],
-      cta: 'Enquire about Premium'
+      cta: 'Enquire about Premium →'
     },
     {
       id: 'elite',
-      badge: 'HIGH-TOUCH',
-      name: 'Nithya Mitra Elite',
-      forWhom: 'For families managing complex health, mobility, or post-operative needs.',
+      badge: 'HIGH-TOUCH SUPPORT',
+      name: 'Vayosh Elite',
+      forWhom: 'For families managing complex health, mobility or day-to-day support needs from abroad.',
       highlights: [
-        'Everything in Premium plan',
-        'Frequent custom wellbeing visits',
-        'Specialist & physiotherapist coordination',
-        'Priority 24/7 emergency response liaison'
+        'Everything in Premium',
+        'High-frequency wellbeing coordination',
+        'Priority emergency coordination',
+        'Ongoing doctor and specialist coordination',
+        'Physiotherapy, nursing and homecare partner coordination',
+        'Regular home visits / companion check-ins',
+        'Hospital and discharge coordination',
+        'Medication and appointment coordination',
+        'Family updates and escalation support',
+        'Customised support for complex family needs'
       ],
-      cta: 'Enquire about Elite'
+      cta: 'Enquire about Elite →'
     }
   ];
 
@@ -65,7 +80,7 @@ export const SupportPlans: React.FC<SupportPlansProps> = ({ onSelectPlan }) => {
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
             <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#B86F55]">
-              SUPPORT PLANS
+              FLEXIBLE FAMILY SUPPORT
             </span>
           </motion.div>
 
@@ -76,12 +91,18 @@ export const SupportPlans: React.FC<SupportPlansProps> = ({ onSelectPlan }) => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17352F] leading-tight"
           >
-            Choose the support level for your family.
+            Choose the support level that may fit your family.
           </motion.h2>
 
-          <p className="mt-3 text-sm sm:text-base text-[#68716D] font-light">
-            No forced subscriptions. We begin with a free consultation to confirm what your parents actually need.
+          <p className="mt-4 text-sm sm:text-base text-[#17211F]/80 font-light leading-relaxed">
+            Three levels of ongoing support. If you are unsure which level fits, tell us about your family and we can discuss the right starting point together.
           </p>
+          <p className="mt-2 text-xs sm:text-sm text-[#68716D] italic">
+            Human connection is part of the support model: from regular wellbeing check-ins to companion visits and higher-touch social support, depending on the family's needs.
+          </p>
+          <div className="mt-4 p-3 bg-white/70 border border-[#17352F]/10 rounded-sm text-xs text-[#17352F] font-medium">
+            Not sure which plan you need? You do not have to decide today. Start with the free family consultation and we will understand the situation first.
+          </div>
         </div>
 
         {/* 3 Clean Plan Cards */}
