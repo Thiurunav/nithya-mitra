@@ -155,7 +155,7 @@ export const ScrollRevealPhrase: React.FC = () => {
               You want your parents to feel supported, connected and cared for — not managed. You want your home looked after. You want local issues handled without becoming a second full-time job. And most importantly, you want to be able to stay connected to your family without constantly worrying about what you cannot see.
             </p>
             <p className="text-xs sm:text-sm font-medium text-[#B86F55] pt-2 border-t border-[#17352F]/10">
-              That is the outcome Vayosh is designed around: peace of mind for you, and dependable human support for them.
+              That is the outcome Nithya Mitra is designed around: peace of mind for you, and dependable human support for them.
             </p>
           </div>
         </div>

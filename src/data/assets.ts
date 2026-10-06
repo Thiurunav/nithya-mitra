@@ -1,40 +1,40 @@
-// Centralized image registry for Vayosh
+// Centralized image registry for Nithya Mitra
 // Future client photography can be dropped in here to instantly update the entire website.
 
 export const brandImages = {
   hero: {
-    src: '/nithya-mitra-hero-elderly.jpg',
-    alt: 'Elderly South Indian couple at home in Chennai sharing morning filter coffee and reading newspaper in peace',
-    caption: 'One frame, the complete story: Your parents living with dignity, happiness and complete care at home.'
+    src: "/nithya-mitra-hero-elderly.jpg",
+    alt: "Elderly South Indian couple at home in Chennai sharing morning filter coffee and reading newspaper in peace",
+    caption: "One frame, the complete story: Your parents living with dignity, happiness and complete care at home."
   },
   teamUniform: {
-    src: '/vayosh-team-uniform.jpg',
-    alt: 'Vayosh on-ground coordination team wearing matching branded forest-green polo t-shirts outside a family home in Chennai',
-    caption: 'Vayosh field care coordinators in official attire outside a family residence in Chennai, Tamil Nadu.'
+    src: "/vayosh-team-uniform.jpg",
+    alt: "Nithya Mitra on-ground coordination team wearing matching branded forest-green polo t-shirts outside a family home in Chennai",
+    caption: "Nithya Mitra field care coordinators in official attire outside a family residence in Chennai, Tamil Nadu."
   },
   companionship: {
-    src: '/vayosh-companionship.jpg',
-    alt: 'Vayosh care coordinator in official green polo sharing an unhurried morning conversation over filter coffee with an elderly mother in Chennai',
-    caption: 'Compassionate, unhurried companionship and domestic presence.'
+    src: "/vayosh-companionship.jpg",
+    alt: "Nithya Mitra care coordinator sharing an unhurried morning conversation over filter coffee with an elderly mother in India",
+    caption: "Compassionate, unhurried companionship and domestic presence."
   },
   founder: {
-    src: '/vayosh-founder.jpg',
-    alt: 'Kumaresan, Founder & Managing Director of Vayosh, Chennai',
-    caption: 'Kumaresan · Founder & Managing Director, Chennai'
+    src: "/vayosh-founder.jpg",
+    alt: "Kumaresan, Founder & Managing Director of Nithya Mitra, Chennai",
+    caption: "Kumaresan · Founder & Managing Director, Chennai"
   },
   heroConnection: {
-    src: '/vayosh-hero-story.jpg',
-    alt: 'NRI family connected with parents and on-ground coordinator',
-    caption: 'Bridging the distance from North America, the UK, and Australia to India.'
+    src: "/vayosh-hero-story.jpg",
+    alt: "NRI family connected with parents and on-ground coordinator",
+    caption: "Bridging the distance from North America, the UK, and Australia to India."
   },
   problem: {
-    src: '/vayosh-companionship.jpg',
-    alt: 'Indian elder sitting quietly in family home living room',
-    caption: 'When everyday tasks turn into quiet anxiety across timezones.'
+    src: "/vayosh-parent-alone-window.jpg",
+    alt: "Elderly father sitting thoughtfully by the window at home in India with quiet solitude and longing",
+    caption: "The quiet worry and solitude of living alone while family is abroad."
   },
   trust: {
-    src: '/vayosh-team-uniform.jpg',
-    alt: 'Vayosh ground team outside ancestral residence',
-    caption: 'Respecting ancestral heritage and local domestic stewardship.'
+    src: "/vayosh-team-uniform.jpg",
+    alt: "Nithya Mitra ground team outside ancestral residence",
+    caption: "Respecting ancestral heritage and local domestic stewardship."
   }
 };

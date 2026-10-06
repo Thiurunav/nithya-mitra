@@ -16,8 +16,8 @@
   --color-muted: #68716D;
   --color-border-subtle: rgba(23, 53, 47, 0.12);
 
-  --font-serif: "Cormorant Garamond", "DM Serif Display", Georgia, serif;
-  --font-display: "DM Serif Display", "Cormorant Garamond", Georgia, serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
 
   --breakpoint-xs: 30rem;

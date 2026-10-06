@@ -27,7 +27,7 @@ export default async function handler(req: ExtendedRequest, res: ExtendedRespons
       }
     }
 
-    const { fullName, whatsapp, email, cityInIndia, interest, notes } = body || {};
+    const { fullName, whatsapp, email, cityInIndia, interest, notes, residence, whoToSupport, contactPreference } = body || {};
 
     if (!fullName || !whatsapp || !email || !cityInIndia) {
       return res.status(400).json({ error: 'Missing required fields' });

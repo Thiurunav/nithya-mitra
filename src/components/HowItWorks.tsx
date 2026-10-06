@@ -45,7 +45,7 @@ export const HowItWorks: React.FC = () => {
       stepNumber: '04',
       title: 'We follow through',
       description:
-        'Where follow-up is required, Vayosh stays involved rather than simply handing you another phone number.',
+        'Where follow-up is required, Nithya Mitra stays involved rather than simply handing you another phone number.',
       imageSrc: '/how-it-works-step4-whatsapp-update.jpg',
       tag: 'Step 04 · Follow Through',
       isLeft: false,
@@ -81,20 +81,20 @@ export const HowItWorks: React.FC = () => {
       {/* Bottom Smooth Gradient Fade Mask */}
       <div className="absolute bottom-0 inset-x-0 h-16 sm:h-24 bg-gradient-to-t from-[#F7F4ED] via-[#F7F4ED]/80 to-transparent pointer-events-none z-10" />
 
-      <div className="relative z-20 max-w-6xl 2xl:max-w-[1520px] 3xl:max-w-[1760px] mx-auto">
+      <div className="relative z-20 max-w-6xl 2xl:max-w-7xl mx-auto px-2 sm:px-4">
         {/* Section Header */}
-        <div className="text-center max-w-3xl 2xl:max-w-4xl mx-auto mb-12 sm:mb-16 2xl:mb-24">
-          <span className="text-[11px] 2xl:text-xs font-mono font-semibold uppercase tracking-widest text-[#B86F55] block mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
+          <span className="text-[11px] sm:text-xs font-sans font-semibold uppercase tracking-widest text-[#B86F55] block mb-3">
             HOW IT WORKS
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl font-serif font-normal text-[#17211F] tracking-tight leading-[1.18]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-[#17211F] tracking-tight leading-[1.18]">
             A simple system between you and home.
           </h2>
 
           <p
             onMouseEnter={() => setIsParaHovered(true)}
             onMouseLeave={() => setIsParaHovered(false)}
-            className="text-sm sm:text-base 2xl:text-lg text-[#68716D] font-light leading-relaxed mt-4 max-w-2xl 2xl:max-w-3xl mx-auto cursor-default"
+            className="text-sm sm:text-base md:text-lg text-[#68716D] font-light leading-relaxed mt-4 max-w-2xl mx-auto cursor-default"
           >
             See how Nithya Mitra unifies on-ground coordinator matching, doctor visit accompaniment, continuous health tracking, and{' '}
             <span className="relative inline-block px-1">
@@ -126,27 +126,24 @@ export const HowItWorks: React.FC = () => {
         </div>
 
         {/* Staggered 4-Step Cards Layout */}
-        <div className="flex flex-col gap-12 sm:gap-16 lg:gap-20 2xl:gap-24 w-full">
+        <div className="flex flex-col gap-16 sm:gap-20 lg:gap-24 w-full">
           {stepsData.map((step, idx) => {
             const hasNextArrow = idx < stepsData.length - 1;
 
             return (
               <div key={step.stepNumber} className="relative w-full flex flex-col">
-                {/* Row Container with Card on one side and Massive Outlined Display Number in adjacent space */}
-                <div className="w-full grid grid-cols-1 lg:grid-cols-12 items-center gap-6 2xl:gap-10">
+                {/* Row Container with Card on one side and Display Number in adjacent space */}
+                <div className="w-full grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-14 2xl:gap-16">
                   {step.isLeft ? (
                     <>
-                      {/* Left Side: Card (7 Cols) */}
-                      <div className="lg:col-span-7 flex justify-start">
+                      {/* Left Side: Card on left side of container */}
+                      <div className="flex justify-center lg:justify-start">
                         <motion.div
-                          initial={{ opacity: 0, y: 24 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, amount: 0.25 }}
-                          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                          className="relative w-full max-w-md 2xl:max-w-lg 3xl:max-w-xl bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-5 2xl:p-7 shadow-[0_12px_36px_rgba(23,53,47,0.06)] border border-[#17352F]/10 hover:shadow-[0_20px_45px_rgba(23,53,47,0.12)] hover:border-[#17352F]/20 transition-all duration-300 group z-20"
+                          
+                          className="relative w-full max-w-[460px] 2xl:max-w-[490px] bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-5 2xl:p-6 shadow-[0_12px_36px_rgba(23,53,47,0.06)] border border-[#17352F]/10 hover:shadow-[0_20px_45px_rgba(23,53,47,0.12)] hover:border-[#17352F]/20 transition-all duration-300 group z-20"
                         >
                           {/* Inner Image Container */}
-                          <div className="relative w-full aspect-[16/9.5] rounded-xl sm:rounded-2xl overflow-hidden bg-[#EFE8DC] mb-4 border border-[#17352F]/8">
+                          <div className="relative w-full aspect-[16/10] rounded-xl sm:rounded-2xl overflow-hidden bg-[#EFE8DC] mb-4 border border-[#17352F]/8">
                             <img
                               src={step.imageSrc}
                               alt={step.title}
@@ -159,25 +156,25 @@ export const HowItWorks: React.FC = () => {
 
                           {/* Clean Content Below Image */}
                           <div className="px-1">
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] 2xl:text-xs font-bold uppercase tracking-wider text-[#17352F] bg-[#17352F]/8 border border-[#17352F]/15 font-mono mb-2.5 lg:hidden">
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider text-[#17352F] bg-[#17352F]/8 border border-[#17352F]/15 font-sans mb-2.5 lg:hidden">
                               {step.tag}
                             </span>
-                            <h3 className="text-lg sm:text-xl 2xl:text-2xl font-serif font-bold text-[#17211F] mb-1.5 group-hover:text-[#B86F55] transition-colors leading-snug">
+                            <h3 className="text-lg sm:text-xl font-serif font-bold text-[#17211F] mb-1.5 group-hover:text-[#B86F55] transition-colors leading-snug">
                               {step.title}
                             </h3>
-                            <p className="text-xs sm:text-sm 2xl:text-base text-[#68716D] font-light leading-relaxed">
+                            <p className="text-xs sm:text-sm text-[#68716D] font-light leading-relaxed">
                               {step.description}
                             </p>
                           </div>
                         </motion.div>
                       </div>
 
-                      {/* Right Adjacent Space: Massive Outlined Display Number 01, 03 (5 Cols) Desktop Only */}
-                      <div className="hidden lg:flex lg:col-span-5 items-center justify-start lg:pl-8 2xl:pl-12 group">
+                      {/* Right Adjacent Space: Outlined Display Number 01, 03 */}
+                      <div className="hidden lg:flex items-center justify-center lg:justify-start lg:pl-10 2xl:pl-14 group">
                         <span
-                          className="font-sans font-black tracking-tighter text-[110px] sm:text-[150px] md:text-[190px] lg:text-[220px] 2xl:text-[270px] 3xl:text-[320px] text-transparent opacity-30 hover:opacity-75 transition-opacity duration-300 select-none leading-none cursor-default"
+                          className="font-sans font-black tracking-tighter text-[130px] xl:text-[160px] 2xl:text-[190px] text-transparent opacity-30 hover:opacity-75 transition-opacity duration-300 select-none leading-none cursor-default"
                           style={{
-                            WebkitTextStroke: '2.5px #17352F',
+                            WebkitTextStroke: '2px #17352F',
                           }}
                         >
                           {step.stepNumber}
@@ -186,29 +183,26 @@ export const HowItWorks: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      {/* Left Adjacent Space: Massive Outlined Display Number 02, 04 (5 Cols) Desktop Only */}
-                      <div className="hidden lg:flex lg:col-span-5 items-center justify-end lg:pr-8 2xl:pr-12 order-2 lg:order-1 group">
+                      {/* Left Adjacent Space: Outlined Display Number 02, 04 */}
+                      <div className="hidden lg:flex items-center justify-center lg:justify-end lg:pr-10 2xl:pr-14 order-2 lg:order-1 group">
                         <span
-                          className="font-sans font-black tracking-tighter text-[110px] sm:text-[150px] md:text-[190px] lg:text-[220px] 2xl:text-[270px] 3xl:text-[320px] text-transparent opacity-30 hover:opacity-75 transition-opacity duration-300 select-none leading-none cursor-default"
+                          className="font-sans font-black tracking-tighter text-[130px] xl:text-[160px] 2xl:text-[190px] text-transparent opacity-30 hover:opacity-75 transition-opacity duration-300 select-none leading-none cursor-default"
                           style={{
-                            WebkitTextStroke: '2.5px #17352F',
+                            WebkitTextStroke: '2px #17352F',
                           }}
                         >
                           {step.stepNumber}
                         </span>
                       </div>
 
-                      {/* Right Side: Card (7 Cols) */}
-                      <div className="lg:col-span-7 flex justify-end order-1 lg:order-2">
+                      {/* Right Side: Card on right side of container */}
+                      <div className="flex justify-center lg:justify-end order-1 lg:order-2">
                         <motion.div
-                          initial={{ opacity: 0, y: 24 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, amount: 0.25 }}
-                          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                          className="relative w-full max-w-md 2xl:max-w-lg 3xl:max-w-xl bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-5 2xl:p-7 shadow-[0_12px_36px_rgba(23,53,47,0.06)] border border-[#17352F]/10 hover:shadow-[0_20px_45px_rgba(23,53,47,0.12)] hover:border-[#17352F]/20 transition-all duration-300 group z-20"
+                          
+                          className="relative w-full max-w-[460px] 2xl:max-w-[490px] bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-5 2xl:p-6 shadow-[0_12px_36px_rgba(23,53,47,0.06)] border border-[#17352F]/10 hover:shadow-[0_20px_45px_rgba(23,53,47,0.12)] hover:border-[#17352F]/20 transition-all duration-300 group z-20"
                         >
                           {/* Inner Image Container */}
-                          <div className="relative w-full aspect-[16/9.5] rounded-xl sm:rounded-2xl overflow-hidden bg-[#EFE8DC] mb-4 border border-[#17352F]/8">
+                          <div className="relative w-full aspect-[16/10] rounded-xl sm:rounded-2xl overflow-hidden bg-[#EFE8DC] mb-4 border border-[#17352F]/8">
                             <img
                               src={step.imageSrc}
                               alt={step.title}
@@ -221,13 +215,13 @@ export const HowItWorks: React.FC = () => {
 
                           {/* Clean Content Below Image */}
                           <div className="px-1">
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] 2xl:text-xs font-bold uppercase tracking-wider text-[#17352F] bg-[#17352F]/8 border border-[#17352F]/15 font-mono mb-2.5 lg:hidden">
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider text-[#17352F] bg-[#17352F]/8 border border-[#17352F]/15 font-sans mb-2.5 lg:hidden">
                               {step.tag}
                             </span>
-                            <h3 className="text-lg sm:text-xl 2xl:text-2xl font-serif font-bold text-[#17211F] mb-1.5 group-hover:text-[#B86F55] transition-colors leading-snug">
+                            <h3 className="text-lg sm:text-xl font-serif font-bold text-[#17211F] mb-1.5 group-hover:text-[#B86F55] transition-colors leading-snug">
                               {step.title}
                             </h3>
-                            <p className="text-xs sm:text-sm 2xl:text-base text-[#68716D] font-light leading-relaxed">
+                            <p className="text-xs sm:text-sm text-[#68716D] font-light leading-relaxed">
                               {step.description}
                             </p>
                           </div>

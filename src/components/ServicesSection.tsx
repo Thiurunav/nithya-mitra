@@ -1,328 +1,193 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { servicesData } from '../data/services';
 import { ServiceDetailDrawer } from './ServiceDetailDrawer';
 import type { ServiceItem } from '../types';
 
 interface ServicesSectionProps {
-  onSelectServiceForEnquiry: (serviceTitle: string) => void;
+  onSelectServiceForEnquiry: (serviceId: string) => void;
 }
 
-export const ServicesSection: React.FC<ServicesSectionProps> = ({
-  onSelectServiceForEnquiry,
-}) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServiceForEnquiry }) => {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
-  const [activeCardIndex, setActiveCardIndex] = useState(0);
 
-  // Desktop 300vh vertical scroll container for horizontal translation
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
-
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 26,
-    restDelta: 0.001,
-  });
-
-  const serviceCards = [
+  const services = [
     {
-      id: '01',
-      title: 'Family & parent support',
-      desc: 'Help coordinate everyday needs, visits, errands and local assistance.',
+      num: '01',
+      tag: 'Parent Care',
+      id: 'dedicated-parent-support',
+      title: 'Dedicated Parent Support',
+      tagline: 'Regular wellbeing visits & companion support',
+      desc: 'Coordinate everyday needs, scheduled wellbeing visits, essential errands, and warm companion presence.',
+      specs: [
+        { label: 'Visits', val: 'Scheduled' },
+        { label: 'Presence', val: 'On-Ground' },
+        { label: 'Support', val: '1-on-1' },
+      ],
       image: '/vayosh-companionship.jpg',
-      stat: 'Dedicated',
-      statLabel: 'Regular wellbeing visits & companion support',
-      fullService: servicesData[0],
+      fullService: servicesData.find((s) => s.id === 'dedicated-parent-support') || servicesData[0],
     },
     {
-      id: '02',
-      title: 'Healthcare coordination',
-      desc: 'Coordinate appointments, hospital visits and communication with trusted healthcare partners when needed.',
+      num: '02',
+      tag: 'Healthcare',
+      id: 'healthcare-coordination',
+      title: 'Healthcare Coordination',
+      tagline: 'Doctor visits, reports & hospital liaison',
+      desc: 'Coordinate appointments, hospital visits, diagnostics, prescription refills, and clear communication with trusted healthcare partners.',
+      specs: [
+        { label: 'Escort', val: 'Clinics' },
+        { label: 'Vitals', val: 'Logged' },
+        { label: 'Reports', val: 'Digital' },
+      ],
       image: '/vayosh-service-healthcare.jpg',
-      stat: '100%',
-      statLabel: 'Accompanied doctor appointments & physician updates',
-      fullService: servicesData[1],
+      fullService: servicesData.find((s) => s.id === 'healthcare-coordination') || servicesData[1],
     },
     {
-      id: '03',
-      title: 'Home & property assistance',
-      desc: 'Coordinate inspections, maintenance and local service providers so issues do not sit unattended.',
+      num: '03',
+      tag: 'Property',
+      id: 'home-property-assistance',
+      title: 'Home & Property Assistance',
+      tagline: 'Maintenance, emergency repairs & vendor oversight',
+      desc: 'Coordinate periodic inspections, domestic repairs, key holding, and vetted service providers so minor issues do not escalate.',
+      specs: [
+        { label: 'Upkeep', val: 'Periodic' },
+        { label: 'Vendors', val: 'Vetted' },
+        { label: 'Access', val: 'Keyholding' },
+      ],
       image: '/vayosh-service-property.jpg',
-      stat: 'Supervised',
-      statLabel: 'On-ground presence for repairs & inspections',
-      fullService: servicesData[2],
+      fullService: servicesData.find((s) => s.id === 'home-property-assistance') || servicesData[2],
     },
     {
-      id: '04',
-      title: 'Courier & parcel management',
-      desc: 'Receive items in India, coordinate packing / dispatch and help send them to your preferred destination.',
+      num: '04',
+      tag: 'Logistics',
+      id: 'courier-parcel-management',
+      title: 'Courier & Parcel Management',
+      tagline: 'Customs, packing & international dispatch',
+      desc: 'Doorstep receipt in India, safe holding, custom clearances, and dependable dispatch of sweets, heirlooms, and legal files.',
+      specs: [
+        { label: 'Customs', val: 'Cleared' },
+        { label: 'Doorstep', val: 'Handled' },
+        { label: 'Tracking', val: 'Live' },
+      ],
       image: '/vayosh-team-uniform.jpg',
-      stat: 'Global',
-      statLabel: 'Safe receipt, packing & international dispatch',
-      fullService: servicesData[3],
+      fullService: servicesData.find((s) => s.id === 'courier-parcel-management') || servicesData[3],
     },
     {
-      id: '05',
-      title: 'Documents & local errands',
-      desc: 'Coordinate practical tasks that are difficult to manage remotely.',
+      num: '05',
+      tag: 'Bureaucracy',
+      id: 'documents-local-errands',
+      title: 'Documents & Local Errands',
+      tagline: 'Physical queues, banking & bureaucracy',
+      desc: 'Assistance with life certificates (Jeevan Pramaan), pension paperwork, banking updates, notary, and municipal registrations.',
+      specs: [
+        { label: 'Queues', val: 'Physical' },
+        { label: 'Pensions', val: 'Verified' },
+        { label: 'Legal', val: 'Notary' },
+      ],
       image: '/vayosh-service-documents.jpg',
-      stat: 'On-Ground',
-      statLabel: 'Life certificates, municipal & banking paperwork',
-      fullService: servicesData[4],
+      fullService: servicesData.find((s) => s.id === 'documents-local-errands') || servicesData[4],
     },
     {
-      id: '06',
-      title: 'Emergency coordination',
-      desc: 'When something unexpected happens, you have a local point of contact to help coordinate the next steps.',
+      num: '06',
+      tag: '24/7 Desk',
+      id: 'emergency-coordination',
+      title: 'Emergency Coordination',
+      tagline: '24/7 calm liaison & hospital triage',
+      desc: 'Immediate on-ground point of contact to coordinate private ambulance dispatch, hospital admission formalities, and live family updates.',
+      specs: [
+        { label: 'Response', val: 'Immediate' },
+        { label: 'Triage', val: '24/7 Calm' },
+        { label: 'Hospital', val: 'Escort' },
+      ],
       image: '/vayosh-service-emergency.jpg',
-      stat: '24/7',
-      statLabel: 'Calm, rapid local contact for emergency next steps',
-      fullService: servicesData[5],
+      fullService: servicesData.find((s) => s.id === 'emergency-coordination') || servicesData[5],
     },
   ];
 
-  const totalCards = serviceCards.length;
-
-  // Translate cards smoothly from right to left on desktop/2K/4K
-  const horizontalX = useTransform(
-    smoothProgress,
-    [0, 1],
-    ['0%', `-${(totalCards - 1.25) * 440}px`]
-  );
-
-  // Update active index based on scroll
-  useEffect(() => {
-    return smoothProgress.on('change', (latest) => {
-      const idx = Math.min(
-        totalCards - 1,
-        Math.floor(latest * totalCards)
-      );
-      setActiveCardIndex(idx);
-    });
-  }, [smoothProgress, totalCards]);
-
-  const nextCard = () => {
-    setActiveCardIndex((prev) => (prev + 1) % totalCards);
-  };
-
-  const prevCard = () => {
-    setActiveCardIndex((prev) => (prev - 1 + totalCards) % totalCards);
-  };
-
   return (
-    <>
-      {/* ========================================================================= */}
-      {/* MOBILE & TABLET LAYOUT (< 1024px): Seamless Swipeable Carousel */}
-      {/* ========================================================================= */}
-      <section id="services-mobile" className="lg:hidden py-14 px-4 sm:px-6 bg-[#F7F4ED] text-[#17211F] border-b border-[#17352F]/10">
-        <div className="max-w-xl mx-auto flex flex-col gap-6">
-          {/* Section Heading & Stat */}
-          <div>
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#B86F55] block mb-2">
-              THE VAYOSH APPROACH
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-normal text-[#17211F] leading-tight">
-              One trusted point of contact for the things that matter back home.
-            </h2>
-            <p className="mt-3 text-xs sm:text-sm text-[#17211F]/75 font-light leading-relaxed">
-              Vayosh is not trying to be your hospital, property manager, courier company or repair service. We coordinate the right support and remain accountable for the journey.
-            </p>
-            <div className="mt-2.5 flex flex-wrap gap-2 text-[10px] font-mono text-[#B86F55]">
-              <span>Practical support on the ground</span>
-              <span>·</span>
-              <span>Healthcare support when it matters</span>
-            </div>
-            <div className="mt-4 flex items-baseline gap-3 p-4 bg-white/80 rounded-2xl border border-[#17352F]/10 shadow-xs">
-              <span className="font-serif text-4xl text-[#17352F] font-bold">
-                {serviceCards[activeCardIndex].stat}
-              </span>
-              <p className="text-xs text-[#68716D] font-light leading-snug">
-                {serviceCards[activeCardIndex].statLabel}
-              </p>
-            </div>
-          </div>
-
-          {/* Active Card for Mobile */}
-          <div
-            onClick={() => setSelectedService(serviceCards[activeCardIndex].fullService)}
-            className="w-full rounded-2xl bg-white border border-[#17352F]/10 p-5 shadow-sm flex flex-col justify-between cursor-pointer hover:border-[#17352F]/30 transition-all"
-          >
-            <div className="w-full aspect-[16/10] rounded-xl overflow-hidden bg-[#EFE8DC] mb-4 flex items-center justify-center p-2">
-              <img
-                src={serviceCards[activeCardIndex].image}
-                alt={serviceCards[activeCardIndex].title}
-                className="w-full h-full object-cover rounded-lg filter saturate-[1.02]"
-                loading="lazy"
-              />
-            </div>
-
-            <div>
-              <div className="flex items-center justify-between mb-1.5">
-                <span className="text-[11px] font-mono text-[#B86F55] font-semibold">
-                  Pillar {serviceCards[activeCardIndex].id} of 06
-                </span>
-                <span className="text-xs font-semibold text-[#17352F] inline-flex items-center gap-1">
-                  Details <ArrowRight className="w-3 h-3" />
-                </span>
-              </div>
-              <h3 className="font-serif text-xl font-bold text-[#17211F] leading-snug mb-2">
-                {serviceCards[activeCardIndex].title}
-              </h3>
-              <p className="text-xs text-[#68716D] font-light leading-relaxed">
-                {serviceCards[activeCardIndex].desc}
-              </p>
-            </div>
-          </div>
-
-          {/* Carousel Controls */}
-          <div className="flex items-center justify-between pt-1">
-            <div className="flex items-center gap-1.5">
-              {serviceCards.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveCardIndex(idx)}
-                  className="h-2 rounded-full transition-all duration-300"
-                  style={{
-                    width: activeCardIndex === idx ? '24px' : '8px',
-                    backgroundColor: activeCardIndex === idx ? '#17352F' : 'rgba(23, 53, 47, 0.2)',
-                  }}
-                  aria-label={`Go to service ${idx + 1}`}
-                />
-              ))}
-            </div>
-
-            <div className="flex items-center gap-2">
-              <button
-                onClick={prevCard}
-                className="w-9 h-9 rounded-full bg-white border border-[#17352F]/15 flex items-center justify-center text-[#17211F] shadow-xs active:scale-95"
-                aria-label="Previous service"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={nextCard}
-                className="w-9 h-9 rounded-full bg-white border border-[#17352F]/15 flex items-center justify-center text-[#17211F] shadow-xs active:scale-95"
-                aria-label="Next service"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
+    <section id="services" className="py-20 md:py-28 bg-[#F7F4ED] border-b border-[#17352F]/10 select-none">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header Block */}
+        <div className="max-w-3xl mb-14 md:mb-16">
+          <span className="text-xs font-semibold uppercase tracking-widest text-[#B86F55] block mb-3 font-sans">
+            OUR SERVICES
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17211F] leading-[1.18] font-normal">
+            One trusted point of contact for the things that matter back home.
+          </h2>
+          <p className="mt-4 text-sm sm:text-base text-[#17211F]/75 font-sans leading-relaxed">
+            Nithya Mitra is not trying to be your hospital, property manager, courier company, or repair service. We coordinate the right support and remain accountable for the entire journey.
+          </p>
         </div>
-      </section>
 
-      {/* ========================================================================= */}
-      {/* DESKTOP, 2K & 4K LAYOUT (>= 1024px): Cinematic Sticky Horizontal Track */}
-      {/* ========================================================================= */}
-      <section
-        id="services"
-        ref={containerRef}
-        className="hidden lg:block relative h-[300vh] bg-[#F7F4ED] text-[#17211F]"
-      >
-        {/* Sticky Viewport Frame */}
-        <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden px-8 lg:px-14 2xl:px-20 3xl:px-28 select-none">
-          
-          <div className="max-w-7xl 2xl:max-w-[1520px] 3xl:max-w-[1760px] mx-auto w-full flex flex-row items-center justify-between gap-12 2xl:gap-16">
-            
-            {/* Left Column: Pinned Editorial Header & Metric */}
-            <div className="w-[32%] xl:w-[28%] shrink-0 flex flex-col justify-between h-[480px] 2xl:h-[540px] py-4">
-              
-              {/* Top Heading */}
+        {/* 3x2 Grid Display Styled in Exact Inspiration Architecture */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {services.map((item) => (
+            <div
+              key={item.id}
+              onClick={() => setSelectedService(item.fullService)}
+              className="bg-white rounded-3xl p-4 sm:p-5 border border-[#17352F]/10 shadow-[0_8px_28px_rgba(23,53,47,0.06)] hover:shadow-[0_18px_40px_rgba(23,53,47,0.12)] hover:border-[#17352F]/25 flex flex-col justify-between cursor-pointer group transition-all duration-300 hover:-translate-y-1.5"
+            >
               <div>
-                <span className="text-[11px] 2xl:text-xs font-mono font-semibold uppercase tracking-wider text-[#B86F55] block mb-3">
-                  THE VAYOSH APPROACH
-                </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-[2.2rem] 2xl:text-[2.65rem] font-serif font-normal text-[#17211F] leading-[1.16] tracking-tight">
-                  One trusted point of contact for the things that matter back home.
-                </h2>
-                <p className="mt-3 text-xs 2xl:text-sm text-[#17211F]/75 font-light leading-relaxed">
-                  Vayosh is not trying to be your hospital, property manager, courier company or repair service. We coordinate the right support and remain accountable for the journey.
-                </p>
-                <p className="mt-2.5 text-[11px] 2xl:text-xs font-mono text-[#B86F55]">
-                  Practical support on the ground · Healthcare support when it matters.
-                </p>
-              </div>
-
-              {/* Dynamic Metric Display */}
-              <div className="my-auto py-6">
-                <span className="font-serif text-5xl lg:text-6xl 2xl:text-7xl text-[#17211F] font-normal leading-none block">
-                  {serviceCards[activeCardIndex].stat}
-                </span>
-                <p className="mt-3 text-xs sm:text-sm 2xl:text-base text-[#17211F]/70 font-light max-w-[260px] leading-relaxed">
-                  {serviceCards[activeCardIndex].statLabel}
-                </p>
-              </div>
-
-              {/* Bottom Progress Indicator Dots */}
-              <div className="flex items-center gap-2">
-                {serviceCards.map((_, idx) => (
-                  <div
-                    key={idx}
-                    className="h-1.5 rounded-full transition-all duration-300"
-                    style={{
-                      width: activeCardIndex === idx ? '28px' : '8px',
-                      backgroundColor: activeCardIndex === idx ? '#17211F' : 'rgba(23, 53, 47, 0.2)',
-                    }}
+                {/* Top Image Container */}
+                <div className="relative w-full h-48 sm:h-52 2xl:h-56 rounded-2xl overflow-hidden mb-4 bg-[#EFE8DC] border border-[#17352F]/8">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover object-center filter saturate-[0.98] contrast-[1.02] transition-transform duration-700 ease-out group-hover:scale-105 block"
                   />
-                ))}
+                  
+                  {/* Top-Left In-Image Badge */}
+                  <span className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-sans font-semibold text-[#17352F] shadow-sm border border-white/80 z-10">
+                    {item.tag}
+                  </span>
+
+                  {/* Top-Right In-Image Floating Action Icon */}
+                  <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/95 backdrop-blur-md flex items-center justify-center text-[#17352F] group-hover:bg-[#17352F] group-hover:text-[#F7F4ED] shadow-sm transition-all duration-300 border border-white/80 z-10">
+                    <ArrowUpRight className="w-4 h-4 text-[#B86F55] group-hover:text-[#F7F4ED] transition-colors" />
+                  </div>
+                </div>
+
+                {/* Title & Tagline below Image */}
+                <div className="px-1">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#17211F] leading-snug mb-1 group-hover:text-[#B86F55] transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-[#B86F55] font-sans font-medium mb-2">
+                    {item.tagline}
+                  </p>
+                  <p className="text-xs text-[#68716D] font-sans leading-relaxed font-light line-clamp-2 mb-4">
+                    {item.desc}
+                  </p>
+                </div>
               </div>
 
-            </div>
-
-            {/* Right Column: Clean Minimal Cards Horizontal Track */}
-            <div className="w-[68%] xl:w-[72%] overflow-hidden">
-              <motion.div
-                style={{ x: horizontalX }}
-                className="flex items-center gap-6 sm:gap-8 2xl:gap-10 will-change-transform py-4"
-              >
-                {serviceCards.map((card) => (
-                  <div
-                    key={card.id}
-                    onClick={() => setSelectedService(card.fullService)}
-                    className="w-[360px] 2xl:w-[420px] 3xl:w-[460px] h-[480px] 2xl:h-[540px] shrink-0 rounded-3xl bg-[#EFE8DC] border border-[#17352F]/10 shadow-[0_12px_32px_rgba(23,53,47,0.05)] p-7 2xl:p-9 flex flex-col justify-between group cursor-pointer hover:shadow-lg hover:bg-[#EAE2D4] hover:border-[#17352F]/20 transition-all duration-300"
-                  >
-                    {/* Floating Center Visual Image */}
-                    <div className="flex-1 flex items-center justify-center p-2 overflow-hidden">
-                      <img
-                        src={card.image}
-                        alt={card.title}
-                        className="max-h-[220px] 2xl:max-h-[260px] w-auto max-w-[92%] object-contain rounded-2xl filter saturate-[1.02] transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                      />
-                    </div>
-
-                    {/* Clean Typography at Bottom */}
-                    <div className="pt-4 border-t border-[#17352F]/10">
-                      <span className="text-[11px] font-mono text-[#B86F55] font-semibold mb-1 block">
-                        Pillar {card.id} · Verified Protocol
-                      </span>
-                      <h3 className="font-serif text-xl 2xl:text-2xl font-bold text-[#17211F] leading-snug mb-2 group-hover:text-[#17352F] transition-colors">
-                        {card.title}
-                      </h3>
-                      <p className="text-xs 2xl:text-sm text-[#17211F]/70 font-light leading-relaxed">
-                        {card.desc}
-                      </p>
-                    </div>
+              {/* Bottom 3-Part Divider Metadata Bar */}
+              <div className="mt-2 pt-3 border-t border-[#17352F]/10 grid grid-cols-3 divide-x divide-[#17352F]/10 text-center font-sans text-[11px]">
+                {item.specs.map((spec, sIdx) => (
+                  <div key={sIdx} className="px-1.5 flex flex-col justify-center">
+                    <span className="text-[9px] uppercase tracking-wider text-[#68716D] font-bold block leading-tight">
+                      {spec.label}
+                    </span>
+                    <span className="font-medium text-[#17352F] text-[11px] mt-0.5 truncate leading-tight">
+                      {spec.val}
+                    </span>
                   </div>
                 ))}
-              </motion.div>
+              </div>
             </div>
-
-          </div>
-
+          ))}
         </div>
-      </section>
 
-      {/* Slide-in Detail Drawer */}
+      </div>
+
+      {/* Slide-in Detail Drawer for complete breakdown */}
       <ServiceDetailDrawer
         service={selectedService}
         onClose={() => setSelectedService(null)}
         onSelectForEnquiry={onSelectServiceForEnquiry}
       />
-    </>
+    </section>
   );
 };

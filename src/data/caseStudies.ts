@@ -7,7 +7,7 @@ export const testimonialsData: TestimonialItem[] = [
     country: 'United States (California)',
     flag: '🇺🇸',
     relationship: 'Son supporting parents in Mylapore, Chennai',
-    quote: 'Real family stories will appear here as Vayosh begins supporting families. We protect our families’ privacy and only publish reflections with written consent.',
+    quote: 'Real family stories will appear here as Nithya Mitra begins supporting families. We protect our families’ privacy and only publish reflections with written consent.',
     parentLocation: 'Chennai, India',
     videoPoster: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=80',
     videoDuration: '1:45',

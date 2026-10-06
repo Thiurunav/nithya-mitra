@@ -28,7 +28,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenEnquiry }) => {
       <div className="max-w-5xl 2xl:max-w-6xl 3xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 text-center relative z-10">
         
         {/* Eyebrow */}
-        <span className="text-[11px] 2xl:text-xs font-mono font-semibold uppercase tracking-widest text-[#B86F55] block mb-3">
+        <span className="text-[11px] 2xl:text-xs font-sans font-semibold uppercase tracking-widest text-[#B86F55] block mb-3">
           TAKE THE FIRST STEP
         </span>
 
@@ -80,7 +80,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenEnquiry }) => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-6 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-[#D8C8B3]/90 font-mono"
+          className="mt-6 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-[#D8C8B3]/90 font-sans"
         >
           <div className="flex items-center gap-1.5">
             <Video className="w-3.5 h-3.5 text-[#B86F55]" />
@@ -115,7 +115,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenEnquiry }) => {
           </a>
 
           <a
-            href="https://wa.me/919789066588?text=Hi%20Thiru%2C%20I%20found%20Vayosh%20online%20and%20would%20like%20to%20understand%20how%20you%20can%20support%20my%20family%20in%20India."
+            href="https://wa.me/919789066588?text=Hi%20Thiru%2C%20I%20found%20Nithya Mitra%20online%20and%20would%20like%20to%20understand%20how%20you%20can%20support%20my%20family%20in%20India."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 hover:text-[#D8C8B3] transition-colors"

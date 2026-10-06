@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
-import { Navbar } from '../components/Navbar';
-import { Hero } from '../components/Hero';
-import { ProblemSection } from '../components/ProblemSection';
-import { CompanionshipSection } from '../components/CompanionshipSection';
-import { ScrollRevealPhrase } from '../components/ScrollRevealPhrase';
-import { ServicesSection } from '../components/ServicesSection';
-import { HowItWorks } from '../components/HowItWorks';
-import { SupportPlans } from '../components/SupportPlans';
-import { CareTracks } from '../components/CareTracks';
-import { FAQ } from '../components/FAQ';
-import { EnquiryForm } from '../components/EnquiryForm';
-import { FinalCTA } from '../components/FinalCTA';
-import { Footer } from '../components/Footer';
-import { WhatsAppFloating } from '../components/WhatsAppFloating';
+import React, { useState } from "react";
+import { Navbar } from "../components/Navbar";
+import { Hero } from "../components/Hero";
+import { ProblemSection } from "../components/ProblemSection";
+import { CompanionshipSection } from "../components/CompanionshipSection";
+import { ServicesSection } from "../components/ServicesSection";
+import { HowItWorks } from "../components/HowItWorks";
+import { SupportPlans } from "../components/SupportPlans";
+import { CareTracks } from "../components/CareTracks";
+import { FAQ } from "../components/FAQ";
+import { EnquiryForm } from "../components/EnquiryForm";
+import { Footer } from "../components/Footer";
+import { WhatsAppFloating } from "../components/WhatsAppFloating";
 
 export const Home: React.FC = () => {
   const [selectedPlan, setSelectedPlan] = useState<string | undefined>(undefined);
@@ -21,9 +19,9 @@ export const Home: React.FC = () => {
   const scrollToEnquiry = (plan?: string, service?: string) => {
     if (plan) setSelectedPlan(plan);
     if (service) setSelectedService(service);
-    const el = document.getElementById('enquiry');
+    const el = document.getElementById("contact");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -32,52 +30,46 @@ export const Home: React.FC = () => {
       {/* Navigation */}
       <Navbar onOpenEnquiry={() => scrollToEnquiry()} />
 
-      <main>
+      <main className="bg-[#F7F4ED]">
         {/* 1. Hero: You built a life abroad. Who looks after home? */}
         <Hero onOpenEnquiry={() => scrollToEnquiry()} />
 
-        {/* 2. Pain Points (Shown BEFORE Services as requested): You are not struggling because you don't care */}
+        {/* 2. Pain Points: You are not struggling because you don't care */}
         <ProblemSection />
 
         {/* 3. Companionship: The Part People Don't Talk About */}
         <CompanionshipSection />
 
-        {/* 4. What You Actually Want: Not another vendor. A dependable presence in India. */}
-        <ScrollRevealPhrase />
-
-        {/* 5. Services: The Vayosh Approach — 6 Core Pillars */}
+        {/* 4. Services: The Nithya Mitra Approach — 6 Core Pillars */}
         <ServicesSection
           onSelectServiceForEnquiry={(serviceTitle) =>
             scrollToEnquiry(undefined, serviceTitle)
           }
         />
 
-        {/* 7. How It Works: A simple system between you and home (4 steps) */}
+        {/* 5. How It Works: A simple system between you and home (4 steps) */}
         <HowItWorks />
 
-        {/* 8. Flexible Family Support: Advanced, Premium, Elite */}
+        {/* 6. Flexible Family Support: Advanced, Premium, Elite */}
         <SupportPlans onSelectPlan={(planId) => scrollToEnquiry(planId)} />
 
-        {/* 9. Optional Care Tracks: 10 specialized health pathways */}
+        {/* 7. Optional Care Tracks: 10 specialized health pathways */}
         <CareTracks />
 
-        {/* 11. FAQ: 6 Client Questions & Honest Answers */}
+        {/* 8. FAQ: 6 Client Questions & Honest Answers */}
         <FAQ />
 
-        {/* 12. Let's Talk: Tell Us About Your Family */}
+        {/* 9. Let's Talk: Tell Us About Your Family */}
         <EnquiryForm
           initialPlan={selectedPlan}
           initialService={selectedService}
         />
-
-        {/* 13. Final CTA: Your Family in India. Our Responsibility. */}
-        <FinalCTA onOpenEnquiry={() => scrollToEnquiry()} />
       </main>
 
-      {/* Footer */}
-      <Footer />
+      {/* Clean Solid Curved Footer */}
+      <Footer onOpenEnquiry={() => scrollToEnquiry()} />
 
-      {/* Floating / Sticky WhatsApp (Icon until hover, no phone number) */}
+      {/* Floating WhatsApp */}
       <WhatsAppFloating onOpenEnquiry={() => scrollToEnquiry()} />
     </div>
   );

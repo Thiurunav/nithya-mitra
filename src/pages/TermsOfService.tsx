@@ -13,7 +13,7 @@ export const TermsOfService: React.FC = () => {
     <div className="min-h-screen bg-[#F7F4ED] text-[#17211F] selection:bg-[#17352F] selection:text-[#F7F4ED]">
       <Navbar />
 
-      <main className="pt-32 pb-24 md:pt-40 md:pb-32">
+      <main className="bg-[#F7F4ED] pt-32 pb-24 md:pt-40 md:pb-32">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Breadcrumb / Back Link */}

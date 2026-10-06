@@ -220,17 +220,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-sm sm:text-base 2xl:text-lg text-[#F7F4ED]/85 font-light leading-relaxed max-w-xl 2xl:max-w-2xl mb-6 sm:mb-7"
+            className="text-sm sm:text-base 2xl:text-lg text-[#F7F4ED]/85 font-light leading-relaxed max-w-xl 2xl:max-w-2xl mb-6 sm:mb-8"
           >
-            When your parents and family are back in India, distance can turn everyday needs into worry. Vayosh gives you one trusted point of contact on the ground — coordinating parent visits, wellbeing, social connection, healthcare, emergencies and the support your family needs.
+            One trusted point of contact on the ground in India for your parents’ wellbeing, healthcare, and emergencies.
           </motion.p>
 
-          {/* Primary Action Button + Subtext */}
+          {/* Primary Action Button */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-5 mb-7 sm:mb-8"
+            className="flex items-center"
           >
             <button
               onClick={onOpenEnquiry || (() => scrollTo('enquiry'))}
@@ -239,34 +239,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
             >
               <span className="absolute right-0 inset-y-0 w-[calc(100%-1.75rem)] rounded-xl bg-[#B86F55] transition-colors duration-300 group-hover:bg-[#9E5B44]" />
               <span className="relative z-10 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-[#0E2420] text-[#F7F4ED] font-medium text-xs sm:text-sm 2xl:text-base tracking-wide border border-white/20">
-                Tell Us About Your Family →
+                Tell Us About Your Family
               </span>
               <span className="relative -left-px z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center text-[#F7F4ED] bg-[#B86F55] transition-colors duration-300 group-hover:bg-[#9E5B44]">
                 <ArrowDownRight className="w-4 h-4 2xl:w-5 2xl:h-5 transition-transform duration-300 group-hover:-rotate-45" />
               </span>
             </button>
-
-            <span className="text-xs text-[#D8C8B3]/90 font-mono tracking-tight">
-              20 minutes · No obligation · WhatsApp / Zoom
-            </span>
-          </motion.div>
-
-          {/* Accent Reassurance Bar */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="pt-4 border-t border-white/15 w-full"
-          >
-            <p className="text-xs sm:text-sm text-[#F7F4ED]/90 font-serif italic mb-2.5">
-              Working abroad. Still carrying home in your heart.
-            </p>
-            <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-[11px] sm:text-xs text-[#D8C8B3]">
-              <span className="px-2.5 py-1 rounded-md bg-white/10 backdrop-blur-sm border border-white/10">One point of contact</span>
-              <span className="px-2.5 py-1 rounded-md bg-white/10 backdrop-blur-sm border border-white/10">Local coordination</span>
-              <span className="px-2.5 py-1 rounded-md bg-white/10 backdrop-blur-sm border border-white/10">Regular updates</span>
-              <span className="px-2.5 py-1 rounded-md bg-white/10 backdrop-blur-sm border border-white/10">Transparent process</span>
-            </div>
           </motion.div>
 
         </div>

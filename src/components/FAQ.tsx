@@ -12,14 +12,14 @@ const faqs: FAQItem[] = [
   {
     id: 'loneliness',
     number: '01',
-    title: 'Does Vayosh help with loneliness?',
+    title: 'Does Nithya Mitra help with loneliness?',
     content:
-      'We can coordinate agreed companionship, wellbeing check-ins and social-connection support. Vayosh is not a counselling or medical service, and professional support can be coordinated when appropriate.',
+      'We can coordinate agreed companionship, wellbeing check-ins and social-connection support. Nithya Mitra is not a counselling or medical service, and professional support can be coordinated when appropriate.',
   },
   {
     id: 'elder-care',
     number: '02',
-    title: 'Is Vayosh an elder-care company?',
+    title: 'Is Nithya Mitra an elder-care company?',
     content:
       'Parent support is our starting point, but the broader model is trusted family support and coordination for NRIs.',
   },
@@ -40,7 +40,7 @@ const faqs: FAQItem[] = [
   {
     id: 'parents-only',
     number: '05',
-    title: 'Can I use Vayosh mainly for my parents?',
+    title: 'Can I use Nithya Mitra mainly for my parents?',
     content:
       'Yes. Parent support is the starting point. As the relationship grows, other agreed family needs can be coordinated too.',
   },
@@ -63,7 +63,7 @@ export const FAQ: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-14">
-          <span className="text-[11px] 2xl:text-xs font-mono font-semibold uppercase tracking-widest text-[#B86F55] block mb-3">
+          <span className="text-[11px] 2xl:text-xs font-sans font-semibold uppercase tracking-widest text-[#B86F55] block mb-3">
             QUESTIONS YOU MAY BE ASKING
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl font-serif text-[#17211F] tracking-tight leading-tight">
@@ -103,7 +103,7 @@ export const FAQ: React.FC = () => {
                         }}
                       />
                       <motion.span
-                        className="relative z-10 text-xs sm:text-sm font-mono font-medium tracking-wider"
+                        className="relative z-10 text-xs sm:text-sm font-sans font-medium tracking-wider"
                         animate={{
                           color: isActive ? '#F7F4ED' : '#17352F',
                           opacity: isActive ? 1 : 0.6,

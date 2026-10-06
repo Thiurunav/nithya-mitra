@@ -3,13 +3,13 @@ import type { FAQItem } from '../types';
 export const faqsData: FAQItem[] = [
   {
     id: 'loneliness',
-    question: 'Does Vayosh help with loneliness?',
+    question: 'Does Nithya Mitra help with loneliness?',
     answer:
-      'Vayosh can coordinate agreed companionship, wellbeing check-ins and social-connection support. Our team members sit, listen, have chai, and connect on human terms. However, Vayosh is strictly a support and coordination service, not a counselling, psychological, or medical psychiatric service.'
+      'Nithya Mitra can coordinate agreed companionship, wellbeing check-ins and social-connection support. Our team members sit, listen, have chai, and connect on human terms. However, Nithya Mitra is strictly a support and coordination service, not a counselling, psychological, or medical psychiatric service.'
   },
   {
     id: 'elder-care',
-    question: 'Is Vayosh an elder-care company?',
+    question: 'Is Nithya Mitra an elder-care company?',
     answer:
       'Parent support is our primary starting point, but the broader model is trusted family support and coordination for NRIs. In addition to parents, we assist with family ancestral home maintenance, local property issues, parcel dispatches, bureaucratic document assistance, and emergency logistics.'
   },
@@ -17,7 +17,7 @@ export const faqsData: FAQItem[] = [
     id: 'service-provision',
     question: 'Will you provide every service yourselves?',
     answer:
-      'No, and we are deliberate about this distinction. Where specialist clinical, nursing, medical, or specialized trade expertise is required, Vayosh coordinates vetted, qualified partners and stays fully accountable for supervising the journey and updating you.'
+      'No, and we are deliberate about this distinction. Where specialist clinical, nursing, medical, or specialized trade expertise is required, Nithya Mitra coordinates vetted, qualified partners and stays fully accountable for supervising the journey and updating you.'
   },
   {
     id: 'reporting',
@@ -27,7 +27,7 @@ export const faqsData: FAQItem[] = [
   },
   {
     id: 'parents-only',
-    question: 'Can I use Vayosh mainly for my parents?',
+    question: 'Can I use Nithya Mitra mainly for my parents?',
     answer:
       'Yes. The vast majority of our NRI clients engage us specifically to look after their ageing parents—ensuring they are not isolated, have someone by their side at doctor appointments, and have dependable local help on call.'
   },
@@ -39,7 +39,7 @@ export const faqsData: FAQItem[] = [
   },
   {
     id: 'locations-served',
-    question: 'Which cities in India does Vayosh currently cover?',
+    question: 'Which cities in India does Nithya Mitra currently cover?',
     answer:
       'Our primary operational coordination hub is based in Chennai, Tamil Nadu, with active partner coordination across major South Indian cities (including Bengaluru, Coimbatore, and Hyderabad) and rapid expansion plans. Tell us your family’s location in the consultation form and we will confirm our coverage.'
   },

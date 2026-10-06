@@ -18,7 +18,7 @@ export const TrustSection: React.FC = () => {
     {
       icon: Network,
       title: 'Partner network',
-      desc: 'Relevant specialists can be coordinated where Vayosh itself is not the service provider.'
+      desc: 'Relevant specialists can be coordinated where Nithya Mitra itself is not the service provider.'
     },
     {
       icon: Users,
@@ -52,7 +52,7 @@ export const TrustSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-4 text-base sm:text-lg text-[#68716D] font-light max-w-2xl leading-relaxed"
           >
-            Because Vayosh deals with families, homes, information and important local tasks, the trust system needs to be visible.
+            Because Nithya Mitra deals with families, homes, information and important local tasks, the trust system needs to be visible.
           </motion.p>
         </div>
 
@@ -124,7 +124,7 @@ export const TrustSection: React.FC = () => {
                 Real proof will live here.
               </span>
               <p className="text-xs sm:text-sm text-[#17211F]/80 font-light leading-relaxed">
-                As Vayosh serves its first families, this space will become a library of verified customer stories, service outcomes and real case examples.
+                As Nithya Mitra serves its first families, this space will become a library of verified customer stories, service outcomes and real case examples.
               </p>
             </div>
           </motion.div>
