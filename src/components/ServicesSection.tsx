@@ -32,14 +32,14 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
       tag: 'Healthcare',
       id: 'healthcare-coordination',
       title: 'Healthcare Coordination',
-      tagline: 'Doctor visits, reports & hospital liaison',
+      tagline: 'Apollo, Kauvery & specialist hospital liaison',
       desc: 'Coordinate appointments, hospital visits, diagnostics, prescription refills, and clear communication with trusted healthcare partners.',
       specs: [
         { label: 'Escort', val: 'Clinics' },
         { label: 'Vitals', val: 'Logged' },
         { label: 'Reports', val: 'Digital' },
       ],
-      image: '/vayosh-service-healthcare.jpg',
+      image: '/apollo-hospital-chennai.jpg',
       fullService: servicesData.find((s) => s.id === 'healthcare-coordination') || servicesData[1],
     },
     {
@@ -61,7 +61,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
       num: '04',
       tag: 'Logistics',
       id: 'courier-parcel-management',
-      title: 'Courier & Parcel Management',
+      title: 'International Courier & Parcel Management',
       tagline: 'Customs, packing & international dispatch',
       desc: 'Doorstep receipt in India, safe holding, custom clearances, and dependable dispatch of sweets, heirlooms, and legal files.',
       specs: [
@@ -99,7 +99,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
         { label: 'Triage', val: '24/7 Calm' },
         { label: 'Hospital', val: 'Escort' },
       ],
-      image: '/vayosh-service-emergency.jpg',
+      image: '/apollo-hospital-chennai.jpg',
       fullService: servicesData.find((s) => s.id === 'emergency-coordination') || servicesData[5],
     },
   ];

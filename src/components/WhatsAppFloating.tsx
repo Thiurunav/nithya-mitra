@@ -7,7 +7,7 @@ interface WhatsAppFloatingProps {
 
 export const WhatsAppFloating: React.FC<WhatsAppFloatingProps> = ({ onOpenEnquiry }) => {
   const whatsappUrl =
-    'https://wa.me/919789066588?text=Hi%20Nithya%20Mitra%2C%20I%20found%20you%20online%20and%20would%20like%20to%20understand%20how%20you%20can%20support%20my%20family%20in%20India.';
+    'https://wa.me/919025166588?text=Hi%20Nithya%20Mitra%2C%20I%20found%20you%20online%20and%20would%20like%20to%20understand%20how%20you%20can%20support%20my%20family%20in%20India.';
 
   const handleEnquiry = () => {
     if (onOpenEnquiry) {

@@ -107,29 +107,29 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenEnquiry }) => {
           className="mt-8 pt-8 border-t border-white/10 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs sm:text-sm text-[#F7F4ED]/85"
         >
           <a
-            href="tel:+919789066588"
+            href="tel:+919025166588"
             className="inline-flex items-center gap-2 hover:text-[#D8C8B3] transition-colors"
           >
             <Phone className="w-4 h-4 text-[#B86F55]" />
-            <span>Call: +91 97890 66588</span>
+            <span>Call: +91 90251 66588</span>
           </a>
 
           <a
-            href="https://wa.me/919789066588?text=Hi%20Thiru%2C%20I%20found%20Nithya Mitra%20online%20and%20would%20like%20to%20understand%20how%20you%20can%20support%20my%20family%20in%20India."
+            href="https://wa.me/919025166588?text=Hi%20Thiru%2C%20I%20found%20Nithya Mitra%20online%20and%20would%20like%20to%20understand%20how%20you%20can%20support%20my%20family%20in%20India."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 hover:text-[#D8C8B3] transition-colors"
           >
             <MessageCircle className="w-4 h-4 text-[#25D366]" />
-            <span>WhatsApp: +91 97890 66588</span>
+            <span>WhatsApp: +91 90251 66588</span>
           </a>
 
           <a
-            href="mailto:thirunav.natarajan@gmail.com"
+            href="mailto:info@nithyamitra.com"
             className="inline-flex items-center gap-2 hover:text-[#D8C8B3] transition-colors"
           >
             <Mail className="w-4 h-4 text-[#B86F55]" />
-            <span>Email: thirunav.natarajan@gmail.com</span>
+            <span>Email: info@nithyamitra.com</span>
           </a>
         </motion.div>
 

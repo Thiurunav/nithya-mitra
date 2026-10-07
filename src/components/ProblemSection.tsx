@@ -55,7 +55,7 @@ export const ProblemSection: React.FC = () => {
             className="lg:col-span-4 relative rounded-3xl overflow-hidden min-h-[420px] lg:min-h-[500px] border border-[#17352F]/10 shadow-sm flex flex-col justify-end p-5 group"
           >
             <img
-              src="/vayosh-nri-persona-karthik.jpg"
+              src="/nri-worried-portrait.jpg"
               alt="NRI professional living abroad looking thoughtfully over the city"
               className="absolute inset-0 w-full h-full object-cover object-center filter saturate-[0.95] contrast-[1.02] transition-transform duration-700 ease-out group-hover:scale-103"
               loading="lazy"

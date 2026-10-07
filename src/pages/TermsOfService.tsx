@@ -90,12 +90,33 @@ export const TermsOfService: React.FC = () => {
               </p>
             </section>
 
-            <section className="space-y-3">
+            <section className="space-y-4">
               <h2 className="text-xl sm:text-2xl font-serif font-medium text-[#17352F]">
                 4. Fees, Billing & Cancellation
               </h2>
               <p>
-                Support plans are billed on a monthly or quarterly basis without lock-in contracts. You may pause, adjust, or cancel your family support plan at any time with a 14-day notice prior to the next billing cycle. Out-of-pocket expenses (such as third-party medical fees, hospital deposits, technician repair parts, or government notary stamps) are charged at actuals with original receipts provided.
+                At <strong>Nithya Mitra</strong>, we strive to ensure complete satisfaction with our services. However, if you wish to cancel your Membership Plan, we offer a transparent and customer-friendly refund process as outlined below.
+              </p>
+              
+              <div className="pt-2">
+                <h3 className="text-sm font-sans font-bold uppercase tracking-wider text-[#17352F] mb-2">
+                  MEMBERSHIP TERMINATION & REFUND ELIGIBILITY
+                </h3>
+                <ul className="space-y-3 pl-4 list-disc text-[#17211F]/80">
+                  <li>
+                    A Member may choose to terminate the Membership Plan with a 14-day notice prior to the next billing cycle.
+                  </li>
+                  <li>
+                    In case of termination of a prepaid annual Membership Plan, NM shall retain the Membership Fee amount for that particular quarter of the year, and the Member shall be issued a refund of the balance payment, subject to deductions (if any).
+                  </li>
+                  <li>
+                    In case of termination of a Membership Plan wherein the Member has opted to make prepaid quarterly payments, no refunds shall be issued.
+                  </li>
+                </ul>
+              </div>
+
+              <p className="pt-2">
+                Out-of-pocket expenses (such as third-party medical fees, hospital deposits, technician repair parts, or government notary stamps) are charged at actuals with original receipts provided.
               </p>
             </section>
 

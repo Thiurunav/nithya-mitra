@@ -398,7 +398,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialService, initia
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-sm">
                       <a
-                        href={"https://wa.me/919789066588?text=" + encodeURIComponent("Hello Nithya Mitra, I just submitted a consultation request for " + name + " regarding parents in " + familyLocation + ".")}
+                        href={"https://wa.me/919025166588?text=" + encodeURIComponent("Hello Nithya Mitra, I just submitted a consultation request for " + name + " regarding parents in " + familyLocation + ".")}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#FBFAF6] hover:bg-white text-[#17352F] text-xs uppercase tracking-wider font-bold font-sans flex items-center justify-center gap-2 shadow-lg transition-all"

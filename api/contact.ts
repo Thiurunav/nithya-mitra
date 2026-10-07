@@ -176,7 +176,7 @@ export default async function handler(req: ExtendedRequest, res: ExtendedRespons
                 <tr>
                   <td style="padding: 20px 32px; background-color: #F2EFE9; border-top: 1px solid #17352F15; font-size: 12px; color: #68716D; text-align: center;">
                     Nithya Mitra Internal Dispatch System · Chennai Operations Hub<br />
-                    Direct emergency coordination line: +91 97890 66588
+                    Direct emergency coordination line: +91 90251 66588
                   </td>
                 </tr>
 
@@ -258,7 +258,7 @@ export default async function handler(req: ExtendedRequest, res: ExtendedRespons
 
                     <!-- Direct Instant WhatsApp Button -->
                     <div style="text-align: center; margin: 28px 0;">
-                      <a href="https://wa.me/919789066588?text=${encodeURIComponent(`Hello Nithya Mitra, I have submitted a consultation request for ${fullName} in ${cityInIndia}.`)}" target="_blank" style="display: inline-block; background-color: #17352F; color: #F7F4ED; font-weight: 600; font-size: 13px; text-decoration: none; padding: 14px 28px; border-radius: 4px; letter-spacing: 0.05em;">
+                      <a href="https://wa.me/919025166588?text=${encodeURIComponent(`Hello Nithya Mitra, I have submitted a consultation request for ${fullName} in ${cityInIndia}.`)}" target="_blank" style="display: inline-block; background-color: #17352F; color: #F7F4ED; font-weight: 600; font-size: 13px; text-decoration: none; padding: 14px 28px; border-radius: 4px; letter-spacing: 0.05em;">
                         Message Chennai Hub on WhatsApp ↗
                       </a>
                     </div>
@@ -266,7 +266,7 @@ export default async function handler(req: ExtendedRequest, res: ExtendedRespons
                     <!-- Emergency Assistance Box -->
                     <div style="background-color: #FAF5F0; border-left: 3px solid #B86F55; padding: 16px 20px; border-radius: 0 4px 4px 0; font-size: 13px; color: #17211F; line-height: 1.6; margin-bottom: 28px;">
                       <strong style="color: #B86F55;">Immediate Emergency in Chennai?</strong><br />
-                      If your parents require urgent hospital escort or immediate on ground attention, call or message our Chennai emergency coordination desk directly anytime at <strong>+91 97890 66588</strong>.
+                      If your parents require urgent hospital escort or immediate on ground attention, call or message our Chennai emergency coordination desk directly anytime at <strong>+91 90251 66588</strong>.
                     </div>
 
                     <!-- Warm Founder Signoff -->

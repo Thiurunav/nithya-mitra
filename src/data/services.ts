@@ -40,7 +40,7 @@ export const servicesData: ServiceItem[] = [
       'Obtaining second opinions and coordinating with trusted local diagnostic centers for blood tests at home.',
       'Ensuring you receive an objective post-consultation summary rather than relying on fragmented phone calls.'
     ],
-    image: '/vayosh-service-healthcare.jpg',
+    image: '/apollo-hospital-chennai.jpg',
     category: 'wellbeing'
   },
   {
@@ -67,7 +67,7 @@ export const servicesData: ServiceItem[] = [
   {
     id: 'courier-parcel-management',
     number: '04',
-    title: 'Courier & Parcel Management',
+    title: 'International Courier & Parcel Management',
     tagline: 'Receive items in India, coordinate packing/dispatch and help send them to the preferred destination.',
     description:
       'Seamless handling of physical goods between countries. Whether it is shipping specialty homemade snacks and heirlooms to you abroad or delivering vital goods directly into your parents’ hands.',
@@ -124,7 +124,7 @@ export const servicesData: ServiceItem[] = [
       'Your parents are admitted to the emergency ward and need a responsible local person by their side while you board your flight.',
       'Coordinating admission formalities, medicine procurement, and hospital administration when hours count.'
     ],
-    image: '/vayosh-service-emergency.jpg',
+    image: '/apollo-hospital-chennai.jpg',
     category: 'specialist'
   },
   {

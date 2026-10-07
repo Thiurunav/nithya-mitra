@@ -128,11 +128,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquiry }) => {
                     Tamil Nadu, India
                   </p>
                   <p className="pt-0.5">
-                    <a href="tel:+919789066588" className="hover:text-[#D8C8B3] transition-colors block">
-                      +91 97890 66588
+                    <a href="tel:+919025166588" className="hover:text-[#D8C8B3] transition-colors block">
+                      +91 90251 66588
                     </a>
-                    <a href="mailto:thirunav.natarajan@gmail.com" className="hover:text-[#D8C8B3] transition-colors block mt-0.5">
-                      thirunav.natarajan@gmail.com
+                    <a href="mailto:info@nithyamitra.com" className="hover:text-[#D8C8B3] transition-colors block mt-0.5">
+                      info@nithyamitra.com
                     </a>
                   </p>
                 </div>

@@ -191,16 +191,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       >
         <div className="max-w-xl 2xl:max-w-3xl 3xl:max-w-4xl flex flex-col items-start text-left">
           
-          {/* Client Requested Eyebrow Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#D8C8B3] text-xs font-medium tracking-wide mb-4 sm:mb-5"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#B86F55] animate-pulse" />
-            <span>Free consultation · For NRIs with family in India</span>
-          </motion.div>
+          
 
           {/* Headline */}
           <motion.h1
@@ -220,9 +211,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-sm sm:text-base 2xl:text-lg text-[#F7F4ED]/85 font-light leading-relaxed max-w-xl 2xl:max-w-2xl mb-6 sm:mb-8"
+            className="text-sm sm:text-base 2xl:text-lg text-[#F7F4ED]/90 font-light leading-relaxed max-w-xl 2xl:max-w-2xl mb-6 sm:mb-8"
           >
-            One trusted point of contact on the ground in India for your parents’ wellbeing, healthcare, and emergencies.
+            When your parents are in India, distance can make everyday things harder. Nithya Mitra gives your family trusted local support in Chennai — when you can’t be there.
           </motion.p>
 
           {/* Primary Action Button */}
