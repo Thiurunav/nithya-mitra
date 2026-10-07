@@ -37,9 +37,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
   const slides: CarouselSlide[] = [
     {
       id: 'slide-1',
+      image: '/vayosh-hero-story.jpg',
+      alt: 'Nithya Mitra verified coordinator visiting elderly parents at home in Chennai with genuine care and accountability',
+      tag: '01 · Verified On-Ground Accountability in India',
+      eyebrow: 'Dedicated Ground Support in Chennai',
+      headlineLine1: 'You Built a Life Abroad.',
+      headlineLine2Prefix: 'Who Looks After ',
+      headlineEmphasis: 'Home?',
+      focusPosition: 'object-[65%_center] md:object-[60%_center]'
+    },
+    {
+      id: 'slide-1b',
       image: '/nithya-mitra-hero-elderly.jpg',
       alt: 'Elderly South Indian couple sharing morning filter coffee and reading newspaper in peace at home in Chennai',
-      tag: '01 · Dignified Living & Wellbeing at Home',
+      tag: '02 · Dignified Living & Wellbeing at Home',
       eyebrow: 'Dignified Living in Chennai',
       headlineLine1: 'Complete Peace of Mind',
       headlineLine2Prefix: 'For Your Parents with ',
