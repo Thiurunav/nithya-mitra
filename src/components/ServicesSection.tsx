@@ -32,14 +32,14 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
       tag: 'Healthcare',
       id: 'healthcare-coordination',
       title: 'Healthcare Coordination',
-      tagline: 'Apollo, Kauvery & specialist hospital liaison',
-      desc: 'Coordinate appointments, hospital visits, diagnostics, prescription refills, and clear communication with trusted healthcare partners.',
+      tagline: 'Doctor visits, diagnostics & specialist liaison',
+      desc: 'Coordinate appointments, clinic visits, diagnostics, prescription refills, and clear communication with trusted healthcare partners.',
       specs: [
         { label: 'Escort', val: 'Clinics' },
         { label: 'Vitals', val: 'Logged' },
         { label: 'Reports', val: 'Digital' },
       ],
-      image: '/apollo-hospital-chennai.jpg',
+      image: '/vayosh-service-healthcare.jpg',
       fullService: servicesData.find((s) => s.id === 'healthcare-coordination') || servicesData[1],
     },
     {

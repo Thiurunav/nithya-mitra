@@ -26,12 +26,12 @@ export const servicesData: ServiceItem[] = [
     id: 'healthcare-coordination',
     number: '02',
     title: 'Healthcare Coordination',
-    tagline: 'Coordinate appointments, hospital visits and communication with trusted healthcare partners.',
+    tagline: 'Coordinate appointments, clinic visits and communication with trusted healthcare partners.',
     description:
       'Navigating India’s healthcare landscape remotely is stressful. Nithya Mitra acts as your on-the-ground coordinator—scheduling consultations, ensuring your parents are accompanied, and transmitting doctor briefings back to you clearly.',
     whatWeCoordinate: [
       'Appointment bookings with vetted specialists, geriatricians, and diagnostics labs',
-      'Compassionate physical accompaniment to hospital consultations and diagnostic clinics',
+      'Compassionate physical accompaniment to doctor consultations and diagnostic clinics',
       'Collection and structured digital sharing of test reports and medical summaries',
       'Medication procurement, dosage organization, and regular refill monitoring'
     ],
@@ -40,7 +40,7 @@ export const servicesData: ServiceItem[] = [
       'Obtaining second opinions and coordinating with trusted local diagnostic centers for blood tests at home.',
       'Ensuring you receive an objective post-consultation summary rather than relying on fragmented phone calls.'
     ],
-    image: '/apollo-hospital-chennai.jpg',
+    image: '/vayosh-service-healthcare.jpg',
     category: 'wellbeing'
   },
   {
