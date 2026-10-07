@@ -19,7 +19,7 @@ export const servicesData: ServiceItem[] = [
       'Checking in after a monsoon storm or sudden power disruption to ensure safety and provisions.',
       'Setting up a new smartphone or television so your parents can stay on video calls with your children.'
     ],
-    image: '/vayosh-service-wellbeing.jpg',
+    image: '/vayosh-hero-story.jpg',
     category: 'core'
   },
   {
@@ -145,7 +145,7 @@ export const servicesData: ServiceItem[] = [
       'Observing that your mother is struggling with stair steps and recommending a ground-floor transition.',
       'Providing peace of mind through detailed photo updates showing your parents smiling and well-supported.'
     ],
-    image: '/vayosh-companionship.jpg',
+    image: '/vayosh-hero-story.jpg',
     category: 'wellbeing'
   },
   {
@@ -166,7 +166,7 @@ export const servicesData: ServiceItem[] = [
       'Your mother would love to visit the neighbourhood temple on Friday mornings with a respectful escort.',
       'A friendly face to share conversation over filter coffee once a week so the house does not feel so quiet.'
     ],
-    image: '/vayosh-companionship.jpg',
+    image: '/vayosh-hero-story.jpg',
     category: 'wellbeing'
   },
   {

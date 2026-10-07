@@ -24,7 +24,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
         { label: 'Presence', val: 'On-Ground' },
         { label: 'Support', val: '1-on-1' },
       ],
-      image: '/vayosh-companionship.jpg',
+      image: '/vayosh-hero-story.jpg',
       fullService: servicesData.find((s) => s.id === 'dedicated-parent-support') || servicesData[0],
     },
     {

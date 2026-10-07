@@ -37,7 +37,7 @@ export const HowItWorks: React.FC = () => {
       title: 'You stay informed',
       description:
         'You receive clear updates on what was requested, what happened and what needs your attention.',
-      imageSrc: '/nithya-mitra-hero-clinic.jpg',
+      imageSrc: '/how-it-works-step4-whatsapp-update.jpg',
       tag: 'Step 03 · Reporting',
       isLeft: true,
     },
@@ -46,7 +46,7 @@ export const HowItWorks: React.FC = () => {
       title: 'We follow through',
       description:
         'Where follow-up is required, Nithya Mitra stays involved rather than simply handing you another phone number.',
-      imageSrc: '/how-it-works-step4-whatsapp-update.jpg',
+      imageSrc: '/nithya-mitra-hero-clinic.jpg',
       tag: 'Step 04 · Follow Through',
       isLeft: false,
     },
