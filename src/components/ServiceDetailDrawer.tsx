@@ -84,13 +84,13 @@ export const ServiceDetailDrawer: React.FC<ServiceDetailDrawerProps> = ({
             </div>
 
             {/* Service Photograph Frame */}
-            <div className="relative rounded-2xl overflow-hidden border border-[#17352F]/15 h-44 sm:h-52 bg-[#EAE5DB]">
+            <div className="relative rounded-2xl overflow-hidden border border-[#17352F]/15 aspect-[16/9] w-full bg-[#EAE5DB] shadow-sm">
               <img
                 src={service.image}
                 alt={service.title}
-                className="w-full h-full object-cover object-center filter saturate-[0.95]"
+                className="w-full h-full object-cover object-top sm:object-center filter saturate-[0.98] contrast-[1.02]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#17352F]/85 via-transparent to-transparent flex items-end p-4">
+              <div className="absolute inset-x-0 bottom-0 h-14 sm:h-16 bg-gradient-to-t from-[#0E2420]/85 to-transparent flex items-end p-3.5 sm:p-4 pointer-events-none">
                 <span className="text-xs text-[#F7F4ED] font-sans font-light tracking-wide flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#B86F55]" />
                   Verified on-ground accountability in India

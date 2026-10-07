@@ -131,11 +131,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
             >
               <div>
                 {/* Top Image Container */}
-                <div className="relative w-full h-48 sm:h-52 2xl:h-56 rounded-2xl overflow-hidden mb-4 bg-[#EFE8DC] border border-[#17352F]/8">
+                <div className="relative w-full aspect-[16/10] sm:aspect-[16/9.5] rounded-2xl overflow-hidden mb-4 bg-[#EFE8DC] border border-[#17352F]/8">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover object-center filter saturate-[0.98] contrast-[1.02] transition-transform duration-700 ease-out group-hover:scale-105 block"
+                    className="w-full h-full object-cover object-top sm:object-center filter saturate-[0.98] contrast-[1.02] transition-transform duration-700 ease-out group-hover:scale-105 block"
                   />
                   
                   {/* Top-Left In-Image Badge */}
