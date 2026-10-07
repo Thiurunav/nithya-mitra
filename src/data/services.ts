@@ -82,7 +82,7 @@ export const servicesData: ServiceItem[] = [
       'Receiving overseas deliveries that require customs payment or local signature verification in India.',
       'Dispatching physical tax filings or property document original files safely across borders.'
     ],
-    image: '/vayosh-team-uniform.jpg',
+    image: '/international-courier-parcel-service.jpg',
     category: 'practical'
   },
   {

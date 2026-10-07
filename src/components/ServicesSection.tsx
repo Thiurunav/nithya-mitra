@@ -69,7 +69,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
         { label: 'Doorstep', val: 'Handled' },
         { label: 'Tracking', val: 'Live' },
       ],
-      image: '/vayosh-team-uniform.jpg',
+      image: '/international-courier-parcel-service.jpg',
       fullService: servicesData.find((s) => s.id === 'courier-parcel-management') || servicesData[3],
     },
     {
