@@ -66,16 +66,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
         {/* Brandmark / Logo */}
         <Link
           to="/"
-          className="flex items-center gap-2.5 group focus:outline-none shrink-0"
+          className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none shrink-0"
           aria-label="Nithya Mitra Home"
         >
-          <div className="w-7 h-7 rounded-full bg-[#17352F] flex items-center justify-center text-[#F7F4ED] font-serif font-bold text-[10px] tracking-wider shadow-xs transition-transform duration-200 group-hover:scale-105">NM</div>
+          <img
+            src="/nithya-mitra-monogram.png"
+            alt="Nithya Mitra Monogram"
+            className="h-8 sm:h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+          />
           <div className="flex flex-col">
-            <span className="font-serif tracking-[0.16em] text-sm font-semibold text-[#17352F] uppercase leading-none">
+            <span className="font-serif tracking-[0.16em] text-sm sm:text-base font-semibold text-[#17352F] uppercase leading-none">
               NITHYA MITRA
             </span>
-            <span className="hidden sm:block text-[9px] font-sans text-[#68716D] tracking-wider uppercase mt-0.5 font-medium">
-              NRI Family Support · India
+            <span className="hidden sm:block text-[9px] font-sans text-[#B86F55] tracking-wider uppercase mt-1 font-medium">
+              Far from home. Not from family.
             </span>
           </div>
         </Link>

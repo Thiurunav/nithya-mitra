@@ -37,8 +37,8 @@ export const ProblemSection: React.FC = () => {
             className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17352F] leading-[1.18] font-normal"
           >
             The problem is not that you do not care.
-            <span className="block italic text-[#17211F] mt-2 font-serif">
-              The problem is that you cannot always be there.
+            <span className="block italic text-[#17211F] mt-2 font-serif sm:whitespace-nowrap">
+              It is that you cannot always be there.
             </span>
           </motion.h2>
         </div>
@@ -46,33 +46,47 @@ export const ProblemSection: React.FC = () => {
         {/* 3-Module Card Layout (Inspiration Design) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           
-          {/* Card 1: Diaspora Visual Frame with Floating Bottom Badge (No Names) */}
+          {/* Card 1: Late Night Phone Call Abroad (USA) - Picture 2 */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="lg:col-span-4 relative rounded-3xl overflow-hidden min-h-[420px] lg:min-h-[500px] border border-[#17352F]/10 shadow-sm flex flex-col justify-end p-5 group"
+            className="lg:col-span-4 relative rounded-3xl overflow-hidden min-h-[440px] lg:min-h-[500px] border border-[#17352F]/15 shadow-sm flex flex-col justify-between p-6 sm:p-7 group"
           >
             <img
-              src="/nri-worried-portrait.jpg"
-              alt="NRI professional living abroad looking thoughtfully over the city"
-              className="absolute inset-0 w-full h-full object-cover object-center filter saturate-[0.95] contrast-[1.02] transition-transform duration-700 ease-out group-hover:scale-103"
+              src="/nri-worried-night-call.jpg"
+              alt="Worried Indian NRI daughter on late night phone call abroad"
+              className="absolute inset-0 w-full h-full object-cover object-center filter contrast-[1.02] transition-transform duration-700 ease-out group-hover:scale-102"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#17352F]/80 via-[#17352F]/20 to-transparent pointer-events-none" />
-            
-            {/* Floating Frosted Pill Badge */}
-            <div className="relative z-10 bg-[#FBFAF6]/95 backdrop-blur-md rounded-2xl p-4 sm:p-5 text-center border border-white/60 shadow-md">
-              <h3 className="text-base sm:text-lg font-bold text-[#17352F] font-sans">
-                Living & Working Abroad
-              </h3>
-              <p className="text-xs text-[#B86F55] font-sans font-medium mt-1">
-                5,000 to 10,000 Miles Away
+            {/* Atmospheric Night Scrim */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 via-45% to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
+
+            {/* Top Timezone Pill: USA */}
+            <div className="relative z-10 flex items-center justify-between">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/15 backdrop-blur-md text-[#D8C8B3] text-xs font-mono uppercase tracking-wider border border-white/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55] animate-pulse" />
+                2:17 AM · USA
+              </span>
+            </div>
+
+            {/* Emotional Narrative Overlay */}
+            <div className="relative z-10 text-left space-y-2.5 pt-8">
+              <p className="text-xs font-mono text-[#D8C8B3]/90 tracking-wide">
+                Your phone rings.
               </p>
-              <div className="mt-2.5 pt-2 border-t border-[#17352F]/10 text-[11px] text-[#68716D] font-sans leading-relaxed">
-                Balancing career & life abroad while managing family responsibilities in India
-              </div>
+              <h3 className="font-serif italic text-xl sm:text-2xl text-[#FBFAF6] leading-tight">
+                "It’s Mum. Dad’s not feeling well."
+              </h3>
+              <p className="text-xs text-[#F7F4ED]/80 font-sans font-light leading-relaxed">
+                You want to be there. But you can’t be there tonight.
+              </p>
+              <div className="w-10 h-px bg-[#B86F55]/80 my-2" />
+              <p className="text-xs text-[#D8C8B3] font-serif italic">
+                When your parents need you, distance suddenly feels very, very far.
+              </p>
             </div>
           </motion.div>
 

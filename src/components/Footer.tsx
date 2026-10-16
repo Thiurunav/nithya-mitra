@@ -94,20 +94,23 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquiry }) => {
             
             {/* Brand Column (Span 4) */}
             <div className="md:col-span-4 text-left">
-              <div className="flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded-full bg-[#17352F] flex items-center justify-center text-[#F7F4ED] font-serif font-bold text-xs tracking-wider border border-white/15">
-                  NM
+              <Link to="/" className="inline-flex items-center gap-3 group focus:outline-none mb-3">
+                <img
+                  src="/nithya-mitra-monogram-white.png"
+                  alt="Nithya Mitra Monogram"
+                  className="h-9 sm:h-10 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+                />
+                <div className="flex flex-col">
+                  <span className="font-serif tracking-[0.16em] text-lg font-semibold text-[#FBFAF6] uppercase leading-none">
+                    NITHYA MITRA
+                  </span>
+                  <span className="text-[10px] font-serif italic text-[#D8C8B3] mt-1">
+                    Far from home. Not from family.
+                  </span>
                 </div>
-                <span className="font-serif tracking-[0.16em] text-lg font-semibold text-[#FBFAF6] uppercase">
-                  NITHYA MITRA
-                </span>
-              </div>
+              </Link>
 
-              <p className="font-serif italic text-xs text-[#D8C8B3] mt-2">
-                Your Family in India. Our Responsibility.
-              </p>
-
-              <p className="text-[#F7F4ED]/70 mt-3 max-w-sm text-xs leading-relaxed font-sans font-light">
+              <p className="text-[#F7F4ED]/70 mt-2 max-w-sm text-xs leading-relaxed font-sans font-light">
                 Trusted NRI family-support coordination in India. One accountable point of contact on the ground.
               </p>
             </div>

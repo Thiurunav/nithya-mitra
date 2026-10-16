@@ -109,16 +109,27 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Block */}
-        <div className="max-w-3xl mb-14 md:mb-16">
+        <div className="max-w-4xl mb-14 md:mb-16">
           <span className="text-xs font-semibold uppercase tracking-widest text-[#B86F55] block mb-3 font-sans">
             OUR SERVICES
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17211F] leading-[1.18] font-normal">
-            One trusted point of contact for the things that matter back home.
+            More Than Care. A Connection That Feels Like Home.
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-[#17211F]/75 font-sans leading-relaxed">
-            Nithya Mitra is not trying to be your hospital, property manager, courier company, or repair service. We coordinate the right support and remain accountable for the entire journey.
+          <p className="mt-4 text-base sm:text-lg text-[#17352F] font-serif italic">
+            Being far away doesn’t mean your parents have to feel alone.
           </p>
+          <p className="mt-3 text-sm sm:text-base text-[#17211F]/80 font-sans leading-relaxed">
+            From friendly visits, meaningful conversations and regular check-ins to healthcare coordination, property management, international courier services, home repairs and financial management support, Nithya Mitra connects you with trusted local specialists and coordinates the help your family needs, keep you informed every step of the way.
+          </p>
+          <div className="mt-5 pt-4 border-t border-[#17352F]/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <p className="text-sm sm:text-base font-semibold text-[#17352F] font-sans">
+              Because sometimes, the greatest support is simply being there.
+            </p>
+            <p className="text-xs sm:text-sm text-[#B86F55] font-sans font-medium tracking-wide">
+              Nithya Mitra — Someone here, when you can’t be.
+            </p>
+          </div>
         </div>
 
         {/* 3x2 Grid Display Styled in Exact Inspiration Architecture */}

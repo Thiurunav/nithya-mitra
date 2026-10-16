@@ -37,9 +37,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
   const slides: CarouselSlide[] = [
     {
       id: 'slide-1',
+      image: '/nithya-mitra-hero-elderly.jpg',
+      alt: 'Elderly South Indian couple sharing morning filter coffee and reading newspaper in peace at home in Chennai',
+      tag: '01 · Dignified Living & Wellbeing at Home',
+      eyebrow: 'Dignified Living in Chennai',
+      headlineLine1: 'You Built a Life Abroad.',
+      headlineLine2Prefix: 'Who Looks After ',
+      headlineEmphasis: 'Home?',
+      focusPosition: 'object-[75%_center] md:object-[68%_center]'
+    },
+    {
+      id: 'slide-2',
       image: '/vayosh-hero-story.jpg',
       alt: 'Nithya Mitra verified coordinator visiting elderly parents at home in Chennai with genuine care and accountability',
-      tag: '01 · Verified On-Ground Accountability in India',
+      tag: '02 · Verified On-Ground Accountability in India',
       eyebrow: 'Dedicated Ground Support in Chennai',
       headlineLine1: 'You Built a Life Abroad.',
       headlineLine2Prefix: 'Who Looks After ',
@@ -47,37 +58,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       focusPosition: 'object-[65%_center] md:object-[60%_center]'
     },
     {
-      id: 'slide-1b',
-      image: '/nithya-mitra-hero-elderly.jpg',
-      alt: 'Elderly South Indian couple sharing morning filter coffee and reading newspaper in peace at home in Chennai',
-      tag: '02 · Dignified Living & Wellbeing at Home',
-      eyebrow: 'Dignified Living in Chennai',
-      headlineLine1: 'Complete Peace of Mind',
-      headlineLine2Prefix: 'For Your Parents with ',
-      headlineEmphasis: 'Unconditional Care',
-      focusPosition: 'object-[75%_center] md:object-[68%_center]'
-    },
-    {
-      id: 'slide-2',
+      id: 'slide-3',
       image: '/nithya-mitra-hero-tablet.jpg',
       alt: 'Elderly South Indian couple sitting on sofa with tablet video calling family with Nithya Mitra coordinator in branded green polo',
-      tag: '02 · Dedicated Family Coordination & Video Connection',
+      tag: '03 · Dedicated Family Coordination & Video Connection',
       eyebrow: 'Now Supporting NRI Families',
       headlineLine1: 'You Built Abroad',
       headlineLine2Prefix: 'Protect Home with ',
       headlineEmphasis: 'Certainty',
       focusPosition: 'object-[75%_center] md:object-[68%_center]'
-    },
-    {
-      id: 'slide-3',
-      image: '/nithya-mitra-hero-walk.jpg',
-      alt: 'Elderly grandmother gently assisted on morning garden walk in Chennai by Nithya Mitra care coordinator in official branded polo',
-      tag: '03 · Assisted Garden Walking & Mobility Support',
-      eyebrow: 'Assisted Daily Living & Mobility',
-      headlineLine1: 'Every Morning Walk',
-      headlineLine2Prefix: 'Cherished with ',
-      headlineEmphasis: 'Gentle Dignity',
-      focusPosition: 'object-[70%_center] md:object-[62%_center]'
     },
     {
       id: 'slide-4',
