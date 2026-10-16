@@ -52,7 +52,7 @@ export const WhatsAppFloating: React.FC<WhatsAppFloatingProps> = ({ onOpenEnquir
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 py-2.5 px-3 rounded-xl bg-[#25D366] text-white text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm active:scale-[0.98] transition-transform"
+          className="flex-1 py-2.5 px-3 min-h-[44px] rounded-xl bg-[#25D366] text-white text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm active:scale-[0.98] transition-transform touch-manipulation"
         >
           <MessageCircle className="w-3.5 h-3.5 fill-current" />
           <span>WhatsApp Us</span>
@@ -61,9 +61,10 @@ export const WhatsAppFloating: React.FC<WhatsAppFloatingProps> = ({ onOpenEnquir
         <button
           type="button"
           onClick={handleEnquiry}
-          className="flex-1 py-2.5 px-3 rounded-xl bg-[#17352F] text-[#F7F4ED] text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm active:scale-[0.98] transition-transform cursor-pointer"
+          className="flex-1 py-2.5 px-3 min-h-[44px] rounded-xl bg-[#17352F] text-[#F7F4ED] text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm active:scale-[0.98] transition-transform cursor-pointer touch-manipulation"
         >
-          <span>Free Consultation</span>
+          <span className="hidden xs:inline">Free Consultation</span>
+          <span className="xs:hidden">Consult</span>
           <ArrowUpRight className="w-3.5 h-3.5 text-[#D8C8B3]" />
         </button>
       </div>

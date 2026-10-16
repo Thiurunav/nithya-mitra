@@ -18,19 +18,24 @@ export const ServiceDetailDrawer: React.FC<ServiceDetailDrawerProps> = ({
   useEffect(() => {
     if (service) {
       document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") onClose();
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+        document.body.style.overflow = "unset";
+      };
     } else {
       document.body.style.overflow = "unset";
     }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [service]);
+  }, [service, onClose]);
 
   if (!service) return null;
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[99999] overflow-y-auto flex items-center justify-center p-4 sm:p-6">
+      <div className="fixed inset-0 z-[99999] overflow-y-auto flex items-center justify-center p-2.5 sm:p-4 md:p-6">
         
         {/* Dark Backdrop with Blur */}
         <motion.div
@@ -47,10 +52,10 @@ export const ServiceDetailDrawer: React.FC<ServiceDetailDrawerProps> = ({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.96, y: 16 }}
           transition={{ type: "spring", damping: 26, stiffness: 300 }}
-          className="relative w-full max-w-xl lg:max-w-2xl bg-[#FBFAF6] text-[#17211F] rounded-3xl shadow-2xl overflow-hidden z-10 border border-[#17352F]/15 flex flex-col max-h-[86vh] my-auto"
+          role="dialog" aria-modal="true" aria-labelledby="service-drawer-title" className="relative w-full max-w-xl lg:max-w-2xl bg-[#FBFAF6] text-[#17211F] rounded-3xl shadow-2xl overflow-hidden z-10 border border-[#17352F]/15 flex flex-col max-h-[90vh] sm:max-h-[86vh] my-auto overscroll-contain"
         >
           {/* Top Modal Header */}
-          <div className="px-6 sm:px-8 py-4 border-b border-[#17352F]/10 flex items-center justify-between bg-[#F7F4ED] shrink-0">
+          <div className="px-4 sm:px-6 md:px-8 py-3.5 sm:py-4 border-b border-[#17352F]/10 flex items-center justify-between bg-[#F7F4ED] shrink-0">
             <div className="flex items-center gap-2.5">
               <span className="text-xs font-sans uppercase tracking-widest text-[#B86F55] font-bold bg-[#EDE8DE] px-3 py-1 rounded-full border border-[#17352F]/10">
                 {service.number}
@@ -63,7 +68,7 @@ export const ServiceDetailDrawer: React.FC<ServiceDetailDrawerProps> = ({
             
             <button
               onClick={onClose}
-              className="w-9 h-9 rounded-full bg-[#EDE8DE] hover:bg-[#17352F] hover:text-[#F7F4ED] text-[#17352F] transition-colors flex items-center justify-center cursor-pointer shadow-xs"
+              className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-[#EDE8DE] hover:bg-[#17352F] hover:text-[#F7F4ED] text-[#17352F] transition-colors flex items-center justify-center cursor-pointer shadow-xs touch-manipulation"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -71,11 +76,11 @@ export const ServiceDetailDrawer: React.FC<ServiceDetailDrawerProps> = ({
           </div>
 
           {/* Modal Scrollable Body */}
-          <div className="px-6 sm:px-8 py-6 space-y-6 overflow-y-auto flex-1">
+          <div className="px-4 sm:px-6 md:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6 overflow-y-auto flex-1 overscroll-contain">
             
             {/* Title & Tagline */}
             <div>
-              <h3 className="text-2xl sm:text-3xl font-serif text-[#17352F] mb-1.5 font-normal">
+              <h3 id="service-drawer-title" className="text-xl xs:text-2xl sm:text-3xl font-serif text-[#17352F] mb-1.5 font-normal">
                 {service.title}
               </h3>
               <p className="text-sm font-serif italic text-[#B86F55]">
@@ -135,10 +140,10 @@ export const ServiceDetailDrawer: React.FC<ServiceDetailDrawerProps> = ({
           </div>
 
           {/* Modal Bottom Sticky Actions */}
-          <div className="px-6 sm:px-8 py-4 border-t border-[#17352F]/10 bg-[#F7F4ED] flex items-center justify-between gap-4 shrink-0">
+          <div className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 border-t border-[#17352F]/10 bg-[#F7F4ED] flex flex-col xs:flex-row items-stretch xs:items-center justify-between gap-2.5 sm:gap-4 shrink-0">
             <button
               onClick={onClose}
-              className="text-xs text-[#68716D] hover:text-[#17352F] uppercase tracking-wider font-bold font-sans px-3 py-2 cursor-pointer"
+              className="min-h-[44px] flex items-center justify-center text-xs text-[#68716D] hover:text-[#17352F] uppercase tracking-wider font-bold font-sans px-3 py-2 cursor-pointer touch-manipulation order-2 xs:order-1"
             >
               Close
             </button>
@@ -147,9 +152,10 @@ export const ServiceDetailDrawer: React.FC<ServiceDetailDrawerProps> = ({
                 onSelectForEnquiry(service.title);
                 onClose();
               }}
-              className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-full bg-[#17352F] hover:bg-[#21463F] text-[#F7F4ED] text-xs uppercase tracking-widest font-bold transition-all shadow-md group cursor-pointer font-sans"
+              className="min-h-[44px] inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 rounded-full bg-[#17352F] hover:bg-[#21463F] text-[#F7F4ED] text-xs uppercase tracking-widest font-bold transition-all shadow-md group cursor-pointer font-sans touch-manipulation order-1 xs:order-2"
             >
-              <span>Discuss This with Nithya Mitra</span>
+              <span className="hidden xs:inline">Discuss This with Nithya Mitra</span>
+              <span className="xs:hidden">Enquire About Service</span>
               <ArrowUpRight className="w-4 h-4 text-[#D8C8B3] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
           </div>

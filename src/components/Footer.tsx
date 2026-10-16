@@ -52,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquiry }) => {
           <div className="mt-6 flex justify-center">
             <button
               onClick={handleConsultationClick}
-              className="px-7 sm:px-9 py-3.5 rounded-full bg-[#FBFAF6] hover:bg-white text-[#17352F] text-xs uppercase tracking-widest font-bold shadow-xl flex items-center justify-center gap-2 cursor-pointer transition-all font-sans active:scale-98"
+              className="px-7 sm:px-9 py-3.5 min-h-[44px] rounded-full bg-[#FBFAF6] hover:bg-white text-[#17352F] text-xs uppercase tracking-widest font-bold shadow-xl flex items-center justify-center gap-2 cursor-pointer transition-all font-sans active:scale-98 touch-manipulation"
             >
               <span>Book Free Family Consultation</span>
               <ArrowUpRight className="w-3.5 h-3.5 text-[#B86F55]" />
@@ -88,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquiry }) => {
         {/* Ambient Bottom Glow Shade */}
         <div className="absolute -bottom-20 left-1/3 w-[500px] h-[200px] bg-[#173E36]/30 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-10 sm:py-12">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pt-10 sm:pt-12 pb-24 md:pb-12">
           
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 pb-8 border-b border-white/10">
             

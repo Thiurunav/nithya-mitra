@@ -52,7 +52,7 @@ export const ProblemSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="lg:col-span-4 relative rounded-3xl overflow-hidden min-h-[440px] lg:min-h-[500px] border border-[#17352F]/15 shadow-sm flex flex-col justify-between p-6 sm:p-7 group"
+            className="lg:col-span-4 relative rounded-3xl overflow-hidden min-h-[420px] sm:min-h-[460px] lg:min-h-[500px] border border-[#17352F]/15 shadow-sm flex flex-col justify-between p-5 sm:p-7 group"
           >
             <img
               src="/nri-worried-night-call.jpg"
@@ -96,7 +96,7 @@ export const ProblemSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="lg:col-span-5 bg-[#EDE8DE] rounded-3xl p-7 sm:p-8 border border-[#17352F]/10 shadow-sm flex flex-col justify-between"
+            className="lg:col-span-5 bg-[#EDE8DE] rounded-3xl p-5 sm:p-7 md:p-8 border border-[#17352F]/10 shadow-sm flex flex-col justify-between"
           >
             <div className="space-y-6">
               
@@ -154,7 +154,7 @@ export const ProblemSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.35 }}
-            className="lg:col-span-3 bg-[#D8E6E0] rounded-3xl p-8 sm:p-10 border border-[#17352F]/10 shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden"
+            className="lg:col-span-3 bg-[#D8E6E0] rounded-3xl p-6 sm:p-8 md:p-10 border border-[#17352F]/10 shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden"
           >
             <div className="w-14 h-14 rounded-full bg-[#17352F]/10 flex items-center justify-center mb-6 text-[#17352F]">
               <Quote className="w-7 h-7 fill-[#17352F]/20 text-[#17352F]" />

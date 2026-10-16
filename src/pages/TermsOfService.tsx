@@ -19,7 +19,7 @@ export const TermsOfService: React.FC = () => {
           {/* Breadcrumb / Back Link */}
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#68716D] hover:text-[#17352F] transition-colors mb-8 group"
+            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#68716D] hover:text-[#17352F] transition-colors mb-8 group min-h-[44px] touch-manipulation"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1 text-[#B86F55]" />
             <span>Back to Home</span>
@@ -27,7 +27,7 @@ export const TermsOfService: React.FC = () => {
 
           {/* Header */}
           <div className="border-b border-[#17352F]/15 pb-8 mb-12">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17352F] leading-tight">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17352F] leading-tight">
               Terms of Service
             </h1>
 

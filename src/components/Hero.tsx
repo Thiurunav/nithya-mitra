@@ -198,7 +198,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-[3.25rem] 2xl:text-[4.25rem] font-serif font-normal tracking-tight leading-[1.14] mb-4 sm:mb-5 text-[#F7F4ED] drop-shadow-sm"
+            className="text-[1.85rem] xs:text-3xl sm:text-4xl lg:text-[3.25rem] 2xl:text-[4.25rem] font-serif font-normal tracking-tight leading-[1.14] mb-4 sm:mb-5 text-[#F7F4ED] drop-shadow-sm"
           >
             You built a life abroad.
             <span className="block font-serif italic text-[#D8C8B3] mt-1 sm:mt-2">
@@ -242,7 +242,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
       </motion.div>
 
       {/* Bottom Carousel Controls (Anchored to the LEFT) */}
-      <div className="absolute bottom-4 sm:bottom-8 2xl:bottom-12 left-4 sm:left-8 2xl:left-12 z-20 flex items-center pointer-events-none">
+      <div className="absolute bottom-20 md:bottom-8 2xl:bottom-12 left-4 sm:left-8 2xl:left-12 z-20 flex items-center pointer-events-none">
         
         {/* Carousel Pagination Dots & Nav Arrows */}
         <div className="flex items-center gap-2.5 sm:gap-3 bg-black/55 backdrop-blur-md py-1.5 px-3 rounded-full border border-white/25 pointer-events-auto shadow-xl">
@@ -250,7 +250,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
           <button
             onClick={prevSlide}
             aria-label="Previous Slide"
-            className="w-7 h-7 rounded-full flex items-center justify-center text-[#F7F4ED]/80 hover:text-white hover:bg-white/15 transition-colors focus:outline-none cursor-pointer"
+            className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#F7F4ED]/90 hover:text-white hover:bg-white/20 active:scale-95 transition-all focus:outline-none cursor-pointer touch-manipulation"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -275,7 +275,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry }) => {
           <button
             onClick={nextSlide}
             aria-label="Next Slide"
-            className="w-7 h-7 rounded-full flex items-center justify-center text-[#F7F4ED]/80 hover:text-white hover:bg-white/15 transition-colors focus:outline-none cursor-pointer"
+            className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#F7F4ED]/90 hover:text-white hover:bg-white/20 active:scale-95 transition-all focus:outline-none cursor-pointer touch-manipulation"
           >
             <ChevronRight className="w-4 h-4" />
           </button>

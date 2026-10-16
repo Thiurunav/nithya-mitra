@@ -92,7 +92,7 @@ export const SupportPlans: React.FC<SupportPlansProps> = ({ onSelectPlan }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17352F] leading-tight font-normal"
+            className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17352F] leading-tight font-normal"
           >
             Choose the support level that fits your family.
           </motion.h2>
@@ -108,7 +108,7 @@ export const SupportPlans: React.FC<SupportPlansProps> = ({ onSelectPlan }) => {
                 key={plan.id}
                 
                 
-                className={`hover:-translate-y-2 rounded-3xl p-8 sm:p-9 flex flex-col justify-between transition-all duration-300 relative overflow-hidden group ${
+                className={`hover:-translate-y-2 rounded-3xl p-5 sm:p-7 md:p-9 flex flex-col justify-between transition-all duration-300 relative overflow-hidden group ${
                   isPopular
                     ? "bg-gradient-to-br from-[#17352F] via-[#21463F] to-[#0E2420] text-[#F7F4ED] shadow-2xl lg:-translate-y-4 border border-white/20 z-10"
                     : "bg-[#FBFAF6] text-[#17211F] border border-[#17352F]/15 shadow-sm hover:shadow-md"
@@ -201,7 +201,7 @@ export const SupportPlans: React.FC<SupportPlansProps> = ({ onSelectPlan }) => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => onSelectPlan(plan.id)}
-                    className={`w-full py-4 rounded-full text-xs uppercase tracking-widest font-bold text-center block cursor-pointer transition-all duration-200 font-sans shadow-sm ${
+                    className={`w-full py-3.5 sm:py-4 min-h-[44px] rounded-full text-xs uppercase tracking-widest font-bold text-center flex items-center justify-center cursor-pointer transition-all duration-200 font-sans shadow-sm touch-manipulation ${
                       isPopular
                         ? "bg-[#FBFAF6] hover:bg-white text-[#17352F] shadow-xl hover:shadow-2xl"
                         : "bg-[#EDE8DE] hover:bg-[#17352F] hover:text-[#F7F4ED] text-[#17352F]"

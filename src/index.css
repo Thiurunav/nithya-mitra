@@ -17,17 +17,16 @@
   --color-border-subtle: rgba(23, 53, 47, 0.12);
 
   --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
 
-  --breakpoint-xs: 30rem;
-  --breakpoint-sm: 40rem;
-  --breakpoint-md: 48rem;
-  --breakpoint-lg: 64rem;
-  --breakpoint-xl: 80rem;
-  --breakpoint-2xl: 96rem;
-  --breakpoint-3xl: 120rem;
-  --breakpoint-4xl: 160rem;
+  --breakpoint-xs: 23.4375rem; /* 375px */
+  --breakpoint-sm: 40rem;      /* 640px */
+  --breakpoint-md: 48rem;      /* 768px */
+  --breakpoint-lg: 64rem;      /* 1024px */
+  --breakpoint-xl: 80rem;      /* 1280px */
+  --breakpoint-2xl: 96rem;     /* 1536px */
+  --breakpoint-3xl: 120rem;    /* 1920px */
+  --breakpoint-4xl: 160rem;    /* 2560px */
 }
 
 @layer base {
@@ -37,47 +36,51 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Mobile compact font-size to prevent tight overflows */
-  @media (max-width: 480px) {
+  /* Mobile-first base typography scale */
+  html {
+    font-size: 16px;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Ultra-compact mobile screens (320px - 360px) */
+  @media (max-width: 360px) {
+    html {
+      font-size: 14.5px;
+    }
+  }
+
+  /* Standard mobile screens (361px - 480px) */
+  @media (min-width: 361px) and (max-width: 480px) {
     html {
       font-size: 15px;
     }
   }
 
-  /* 2K, QHD & 4K Fluid Scaling: Proportionately scales all rem tokens for larger laptops and monitors */
+  /* High-resolution laptop & desktop (1600px - 2199px) */
   @media (min-width: 1600px) {
     html {
       font-size: 16.5px;
     }
   }
 
-  @media (min-width: 1800px) {
-    html {
-      font-size: 17.5px;
-    }
-  }
-
+  /* QHD / 2K Displays (2200px - 2559px) */
   @media (min-width: 2200px) {
     html {
-      font-size: 19.5px;
+      font-size: 17px;
     }
   }
 
+  /* 4K & Ultra-wide Displays (2560px - 3840px+): Controlled, natural proportions without bloating */
   @media (min-width: 2560px) {
     html {
-      font-size: 21.5px;
-    }
-  }
-
-  @media (min-width: 3200px) {
-    html {
-      font-size: 24px;
+      font-size: 18px;
     }
   }
 
   @media (min-width: 3840px) {
     html {
-      font-size: 26px;
+      font-size: 19px;
     }
   }
 
@@ -86,6 +89,7 @@
     color: var(--color-charcoal);
     font-family: var(--font-sans);
     overflow-x: hidden;
+    min-width: 320px;
   }
 
   ::selection {

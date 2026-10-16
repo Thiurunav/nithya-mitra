@@ -80,10 +80,13 @@ export const FAQ: React.FC = () => {
             return (
               <div key={item.id} className="relative">
                 <motion.button
+                  id={`faq-question-${item.id}`}
+                  aria-expanded={isActive}
+                  aria-controls={`faq-answer-${item.id}`}
                   onClick={() => setActiveId(isActive ? null : item.id)}
                   onMouseEnter={() => setHoveredId(item.id)}
                   onMouseLeave={() => setHoveredId(null)}
-                  className="w-full group text-left cursor-pointer focus:outline-none relative py-5 sm:py-6 px-1"
+                  className="w-full group text-left cursor-pointer focus:outline-none relative py-5 sm:py-6 px-1 touch-manipulation"
                   initial={false}
                 >
                   <div className="flex items-center gap-4 sm:gap-6">
@@ -190,6 +193,9 @@ export const FAQ: React.FC = () => {
                 <AnimatePresence mode="wait">
                   {isActive && (
                     <motion.div
+                      id={`faq-answer-${item.id}`}
+                      role="region"
+                      aria-labelledby={`faq-question-${item.id}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{
                         height: 'auto',
@@ -210,7 +216,7 @@ export const FAQ: React.FC = () => {
                       className="overflow-hidden"
                     >
                       <motion.div
-                        className="pl-13 sm:pl-16 pr-8 sm:pr-12 pb-6 pt-1 text-xs sm:text-sm text-[#17211F]/75 font-light leading-relaxed"
+                        className="pl-11 sm:pl-16 pr-2 sm:pr-8 pb-5 pt-1 text-xs sm:text-sm text-[#17211F]/75 font-light leading-relaxed"
                         initial={{ y: -6 }}
                         animate={{ y: 0 }}
                         exit={{ y: -6 }}

@@ -83,7 +83,7 @@ export const CareTracks: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17352F] leading-tight font-normal"
+              className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17352F] leading-tight font-normal"
             >
               Additional support when a specific health need arises.
             </motion.h2>
@@ -98,7 +98,7 @@ export const CareTracks: React.FC = () => {
             <button
               onClick={() => scroll("left")}
               disabled={!canScrollLeft}
-              className={`p-3.5 rounded-full border transition-all cursor-pointer shadow-xs ${
+              className={`w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center p-3 rounded-full border transition-all cursor-pointer shadow-xs touch-manipulation ${
                 canScrollLeft
                   ? "border-[#17352F]/30 text-[#17352F] hover:bg-[#17352F] hover:text-[#F7F4ED] bg-[#FBFAF6]"
                   : "border-[#17352F]/10 text-[#17352F]/30 bg-[#EDE8DE]/40 cursor-not-allowed"
@@ -110,7 +110,7 @@ export const CareTracks: React.FC = () => {
             <button
               onClick={() => scroll("right")}
               disabled={!canScrollRight}
-              className={`p-3.5 rounded-full border transition-all cursor-pointer shadow-xs ${
+              className={`w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center p-3 rounded-full border transition-all cursor-pointer shadow-xs touch-manipulation ${
                 canScrollRight
                   ? "border-[#17352F]/30 text-[#17352F] hover:bg-[#17352F] hover:text-[#F7F4ED] bg-[#FBFAF6]"
                   : "border-[#17352F]/10 text-[#17352F]/30 bg-[#EDE8DE]/40 cursor-not-allowed"
@@ -126,7 +126,7 @@ export const CareTracks: React.FC = () => {
         <div
           ref={scrollContainerRef}
           onScroll={checkScroll}
-          className="flex gap-6 overflow-x-auto pb-8 pt-2 scrollbar-none snap-x snap-mandatory"
+          className="flex gap-6 overflow-x-auto pb-8 pt-2 scrollbar-none snap-x snap-mandatory scroll-px-4"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {careTracksData.map((track, idx) => {
@@ -135,7 +135,7 @@ export const CareTracks: React.FC = () => {
             return (
               <div
                 key={track.id}
-                className={`w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] shrink-0 snap-start ${theme.bg} rounded-3xl p-7 sm:p-8 flex flex-col justify-between text-[#F7F4ED] relative overflow-hidden border border-white/15 shadow-xl transition-all duration-300 group min-h-[380px]`}
+                className={`w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] shrink-0 snap-start ${theme.bg} rounded-3xl p-5 sm:p-7 md:p-8 flex flex-col justify-between text-[#F7F4ED] relative overflow-hidden border border-white/15 shadow-xl transition-all duration-300 group min-h-[380px]`}
               >
                 {/* Subtle Structural Grid Overlay */}
                 <div

@@ -16,7 +16,7 @@ export const CompanionshipSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17352F] leading-[1.18] font-normal"
+            className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17352F] leading-[1.18] font-normal"
           >
             <span className="block lg:whitespace-nowrap">
               Sometimes the hardest part of being alone isn’t needing help.
@@ -36,7 +36,7 @@ export const CompanionshipSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="lg:col-span-6 relative rounded-3xl overflow-hidden min-h-[440px] sm:min-h-[500px] border border-[#17352F]/15 shadow-sm flex flex-col justify-between p-6 sm:p-8 group"
+            className="lg:col-span-6 relative rounded-3xl overflow-hidden min-h-[400px] sm:min-h-[460px] lg:min-h-[500px] border border-[#17352F]/15 shadow-sm flex flex-col justify-between p-5 sm:p-7 md:p-8 group"
           >
             <img
               src="/vayosh-nri-persona-karthik.jpg"
@@ -50,7 +50,7 @@ export const CompanionshipSection: React.FC = () => {
 
             {/* Top Location Pill */}
             <div className="relative z-10 flex items-center justify-between">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/15 backdrop-blur-md text-[#D8C8B3] text-xs font-mono uppercase tracking-wider border border-white/20">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-[#D8C8B3] text-[11px] sm:text-xs font-mono uppercase tracking-wider border border-white/20">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B86F55]" />
                 USA · 5,000 to 10,000 Miles Away
               </span>
@@ -61,7 +61,7 @@ export const CompanionshipSection: React.FC = () => {
               <p className="text-xs sm:text-sm font-mono text-[#D8C8B3]/90 tracking-wide">
                 Living & working abroad.
               </p>
-              <h3 className="font-serif italic text-2xl sm:text-3xl text-[#FBFAF6] leading-tight">
+              <h3 className="font-serif italic text-xl xs:text-2xl sm:text-3xl text-[#FBFAF6] leading-tight">
                 "How are things really back home?"
               </h3>
               <p className="text-xs sm:text-sm text-[#F7F4ED]/80 font-sans font-light leading-relaxed">
@@ -80,7 +80,7 @@ export const CompanionshipSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, delay: 0.25 }}
-            className="lg:col-span-6 relative rounded-3xl overflow-hidden min-h-[440px] sm:min-h-[500px] border border-[#17352F]/15 shadow-sm flex flex-col justify-between p-6 sm:p-8 group"
+            className="lg:col-span-6 relative rounded-3xl overflow-hidden min-h-[400px] sm:min-h-[460px] lg:min-h-[500px] border border-[#17352F]/15 shadow-sm flex flex-col justify-between p-5 sm:p-7 md:p-8 group"
           >
             <img
               src="/vayosh-parent-alone-window.jpg"
@@ -94,7 +94,7 @@ export const CompanionshipSection: React.FC = () => {
 
             {/* Top Location Pill */}
             <div className="relative z-10 flex items-center justify-between">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/15 backdrop-blur-md text-[#D8C8B3] text-xs font-mono uppercase tracking-wider border border-white/20">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-[#D8C8B3] text-[11px] sm:text-xs font-mono uppercase tracking-wider border border-white/20">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                 Chennai, India
               </span>
@@ -105,7 +105,7 @@ export const CompanionshipSection: React.FC = () => {
               <p className="text-xs sm:text-sm font-mono text-[#D8C8B3]/90 tracking-wide">
                 Back home in Chennai.
               </p>
-              <h3 className="font-serif italic text-2xl sm:text-3xl text-[#FBFAF6] leading-tight">
+              <h3 className="font-serif italic text-xl xs:text-2xl sm:text-3xl text-[#FBFAF6] leading-tight">
                 "We didn’t want to worry you."
               </h3>
               <p className="text-xs sm:text-sm text-[#F7F4ED]/80 font-sans font-light leading-relaxed">

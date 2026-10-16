@@ -113,7 +113,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
           <span className="text-xs font-semibold uppercase tracking-widest text-[#B86F55] block mb-3 font-sans">
             OUR SERVICES
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17211F] leading-[1.18] font-normal">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-serif text-[#17211F] leading-[1.18] font-normal">
             More Than Care. A Connection That Feels Like Home.
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#17352F] font-serif italic">
@@ -138,7 +138,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
             <div
               key={item.id}
               onClick={() => setSelectedService(item.fullService)}
-              className="bg-white rounded-3xl p-4 sm:p-5 border border-[#17352F]/10 shadow-[0_8px_28px_rgba(23,53,47,0.06)] hover:shadow-[0_18px_40px_rgba(23,53,47,0.12)] hover:border-[#17352F]/25 flex flex-col justify-between cursor-pointer group transition-all duration-300 hover:-translate-y-1.5"
+              className="bg-white rounded-3xl p-3.5 xs:p-4 sm:p-5 border border-[#17352F]/10 shadow-[0_8px_28px_rgba(23,53,47,0.06)] hover:shadow-[0_18px_40px_rgba(23,53,47,0.12)] hover:border-[#17352F]/25 flex flex-col justify-between cursor-pointer group transition-all duration-300 hover:-translate-y-1.5"
             >
               <div>
                 {/* Top Image Container */}

@@ -119,7 +119,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialService, initia
         </div>
 
         {/* Compact Balanced Green Container */}
-        <div className="bg-[#17352F] text-[#F7F4ED] rounded-3xl p-6 sm:p-8 lg:p-9 shadow-xl border border-[#21463F] relative overflow-hidden">
+        <div className="bg-[#17352F] text-[#F7F4ED] rounded-3xl p-4 sm:p-7 lg:p-9 shadow-xl border border-[#21463F] relative overflow-hidden">
           
           {/* Subtle Ambient Radial Glow */}
           <div className="absolute -top-20 -right-20 w-80 h-80 bg-[#265349]/50 rounded-full blur-3xl pointer-events-none" />
@@ -200,7 +200,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialService, initia
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="e.g. Karthik Venkat"
-                            className="w-full px-3.5 py-2 rounded-xl bg-white/[0.09] border border-white/20 text-xs sm:text-sm text-[#F7F4ED] placeholder:text-white/40 focus:outline-none focus:border-[#D8C8B3] focus:bg-white/[0.14] transition-all font-sans"
+                            className="w-full px-3.5 py-2.5 sm:py-2 min-h-[44px] rounded-xl bg-white/[0.09] border border-white/20 text-base sm:text-sm text-[#F7F4ED] placeholder:text-white/40 focus:outline-none focus:border-[#D8C8B3] focus:bg-white/[0.14] transition-all font-sans"
                           />
                         </div>
                         <div>
@@ -213,7 +213,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialService, initia
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                             placeholder="+44 / +1 / +91 ..."
-                            className="w-full px-3.5 py-2 rounded-xl bg-white/[0.09] border border-white/20 text-xs sm:text-sm text-[#F7F4ED] placeholder:text-white/40 focus:outline-none focus:border-[#D8C8B3] focus:bg-white/[0.14] transition-all font-sans"
+                            className="w-full px-3.5 py-2.5 sm:py-2 min-h-[44px] rounded-xl bg-white/[0.09] border border-white/20 text-base sm:text-sm text-[#F7F4ED] placeholder:text-white/40 focus:outline-none focus:border-[#D8C8B3] focus:bg-white/[0.14] transition-all font-sans"
                           />
                         </div>
                       </div>
@@ -230,7 +230,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialService, initia
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="you@domain.com"
-                            className="w-full px-3.5 py-2 rounded-xl bg-white/[0.09] border border-white/20 text-xs sm:text-sm text-[#F7F4ED] placeholder:text-white/40 focus:outline-none focus:border-[#D8C8B3] focus:bg-white/[0.14] transition-all font-sans"
+                            className="w-full px-3.5 py-2.5 sm:py-2 min-h-[44px] rounded-xl bg-white/[0.09] border border-white/20 text-base sm:text-sm text-[#F7F4ED] placeholder:text-white/40 focus:outline-none focus:border-[#D8C8B3] focus:bg-white/[0.14] transition-all font-sans"
                           />
                         </div>
                         <div>
@@ -241,7 +241,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialService, initia
                             required
                             value={residence}
                             onChange={(e) => setResidence(e.target.value)}
-                            className="w-full px-3.5 py-2 rounded-xl bg-[#0E2420] border border-white/20 text-xs sm:text-sm text-[#F7F4ED] focus:outline-none focus:border-[#D8C8B3] transition-all cursor-pointer font-sans"
+                            className="w-full px-3.5 py-2.5 sm:py-2 min-h-[44px] rounded-xl bg-[#0E2420] border border-white/20 text-base sm:text-sm text-[#F7F4ED] focus:outline-none focus:border-[#D8C8B3] transition-all cursor-pointer font-sans"
                           >
                             <option value="">Select country</option>
                             <option value="USA">USA</option>
@@ -267,7 +267,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialService, initia
                             value={familyLocation}
                             onChange={(e) => setFamilyLocation(e.target.value)}
                             placeholder="e.g. Chennai, Tamil Nadu"
-                            className="w-full px-3.5 py-2 rounded-xl bg-white/[0.09] border border-white/20 text-xs sm:text-sm text-[#F7F4ED] placeholder:text-white/40 focus:outline-none focus:border-[#D8C8B3] focus:bg-white/[0.14] transition-all font-sans"
+                            className="w-full px-3.5 py-2.5 sm:py-2 min-h-[44px] rounded-xl bg-white/[0.09] border border-white/20 text-base sm:text-sm text-[#F7F4ED] placeholder:text-white/40 focus:outline-none focus:border-[#D8C8B3] focus:bg-white/[0.14] transition-all font-sans"
                           />
                         </div>
                         <div>
@@ -278,7 +278,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialService, initia
                             required
                             value={whoToSupport}
                             onChange={(e) => setWhoToSupport(e.target.value)}
-                            className="w-full px-3.5 py-2 rounded-xl bg-[#0E2420] border border-white/20 text-xs sm:text-sm text-[#F7F4ED] focus:outline-none focus:border-[#D8C8B3] transition-all cursor-pointer font-sans"
+                            className="w-full px-3.5 py-2.5 sm:py-2 min-h-[44px] rounded-xl bg-[#0E2420] border border-white/20 text-base sm:text-sm text-[#F7F4ED] focus:outline-none focus:border-[#D8C8B3] transition-all cursor-pointer font-sans"
                           >
                             <option value="">Select</option>
                             <option value="Parents">Both Parents</option>
@@ -332,7 +332,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialService, initia
                           value={moreDetails}
                           onChange={(e) => setMoreDetails(e.target.value)}
                           placeholder="Share any specific routines, travel schedules, or urgent tasks..."
-                          className="w-full px-3.5 py-2 rounded-xl bg-white/[0.09] border border-white/20 text-xs sm:text-sm text-[#F7F4ED] placeholder:text-white/40 focus:outline-none focus:border-[#D8C8B3] focus:bg-white/[0.14] transition-all font-sans"
+                          className="w-full px-3.5 py-2.5 sm:py-2 min-h-[44px] rounded-xl bg-white/[0.09] border border-white/20 text-base sm:text-sm text-[#F7F4ED] placeholder:text-white/40 focus:outline-none focus:border-[#D8C8B3] focus:bg-white/[0.14] transition-all font-sans"
                         />
                       </div>
 
@@ -358,7 +358,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({ initialService, initia
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="px-6 py-3 rounded-full bg-[#FBFAF6] hover:bg-white text-[#17352F] text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer disabled:opacity-50 font-sans shrink-0"
+                          className="w-full sm:w-auto px-6 py-3 min-h-[44px] rounded-full bg-[#FBFAF6] hover:bg-white text-[#17352F] text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer disabled:opacity-50 font-sans shrink-0 touch-manipulation"
                         >
                           <span>{isSubmitting ? "Sending..." : "Send Enquiry"}</span>
                           <Send className="w-3.5 h-3.5 text-[#B86F55]" />
